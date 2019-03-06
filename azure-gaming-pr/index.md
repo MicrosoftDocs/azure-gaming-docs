@@ -18,12 +18,12 @@ TBD Brian - provide 3+ bullets describing the benefits for developers in using A
 
 ## Getting Started
 
-The following guides can help you get started with Azure gaming development.
+The following information can help you get started with Azure gaming development.
 
 | Topic | Description |
 |:------|:------------|
 | [Create a free developer account](https://docs.microsoft.com/en-us/azure/billing/billing-create-free-services-included-free-account) | Describes the range of gaming services that Xbox Live offers. |
-| [General guidelines](general-guidelines.md) | Describes various guidelines worth knowing upfront as you begin design and development. |
+| General guidelines | Describes various guidelines worth knowing upfront as you begin design and development. |
 
 ## Reference Architectures
 
