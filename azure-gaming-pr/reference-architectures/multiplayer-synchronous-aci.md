@@ -12,7 +12,7 @@ ms.service: azure
 
 # Synchronous Multiplayer Using Azure Container Instances (ACI)
 
-Explore this alternative solution using Azure Container Instances, Event Grid, and Azure Functions that automatically scales on demand and is billed per second of usage, if you would prefer to have a simpler architecture and maintenance leveraging hosted virtual machines at the expense of paying a premium.
+Explore this alternative solution using Azure Container Instances, Event Grid, and Azure Functions that automatically scales on demand and is **billed per second of usage**, if you would prefer to have a simpler architecture and maintenance leveraging hosted virtual machines at the expense of paying a premium.
 
 The server state needs to be persistent outside of Azure Container Instances.
 
