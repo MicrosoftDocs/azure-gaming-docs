@@ -42,9 +42,6 @@ The step by step is:
 
 Alternatively to [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview), you could use other database like [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/overview) for example.
 
-> [!TIP]
-> If you are looking for an out-of-the-box solution, [PlayFab](https://playfab.com/features/#services) is a complete back-end platform for building, launching, and growing cloud connected games that has [leaderboard support](https://api.playfab.com/docs/tutorials/landing-tournaments/using-resettable-statistics-and-leaderboards).
-
 ## Advanced leaderboard for large scale
 
 ### Architecture diagram
