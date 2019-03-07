@@ -1,0 +1,74 @@
+---
+title: Multiplayer Game Server Hosting Using Azure Batch - Azure
+description: This is a reference architecture to build a scalable game server hosting on Azure Batch
+author: BrianPeek
+manager: timheuer
+keywords: 
+ms.topic: reference-architecture
+ms.date: 10/29/2018
+ms.author: brpeek
+ms.service: azure
+---
+
+# Synchronous Multiplayer Using Azure Batch
+
+The game server pools are managed by Azure Batch, responsible for **creating virtual machines and open ports**. Each region will have it's own pool of game servers.
+
+## Architecture diagram
+
+[![Synchronous multiplayer using Azure Batch](media/multiplayer/multiplayer-shortsession-batchhosting.png)](media/multiplayer/multiplayer-shortsession-batchhosting.png)
+
+## Relevant services
+
+- [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview): selected as it connects the player to the most appropiate regional zone based on latency.
+- [Azure Batch](https://docs.microsoft.com/azure/batch/batch-technical-overview): Batch is used for creating VMs and opening ports. Selected as it can automatically scale pools based on parameters that you define.
+
+Leverage one resource group for the Azure Traffic Manager and one resource group for each regional virtual machine cluster.
+
+## Deployment template
+
+Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes an article summarizing the naming rules and restrictions for Azure services.
+
+## Step by step
+
+1. The player's device client connects to the traffic manager to route a request for the player to find a game server.
+2. The traffic manager connects to the regional zone with the lowest latency and points to the matchmaker to get a game server available.
+3. The matchmaker has all the information required to select a game server, if more capacity is required it proactively pings the Batch service to start scaling out.
+4. The Batch service receives the request and begins scaling out. If automated scaling was set up, it may have proactively kicked off the process depending on the rules established.
+5. The game servers regularly sends the matchmaker an status update once a game session is over and they are *available*, also their most updated IP and port.
+6. Each of the player devices connect directly to the game server using the connection information provided by the matchmaker.
+7. After the game session is over, relevant information is stored.
+
+## Scaling
+
+With [Batch automatic scaling](https://docs.microsoft.com/azure/batch/batch-automatic-scaling), the service dynamically adds nodes to a pool as task demands increase, and removes compute nodes as they decrease.
+
+You enable automatic scaling on a pool of compute nodes by associating with it an autoscale formula that you define. The Azure Batch service uses the autoscale formula to determine the number of compute nodes that are needed to execute your workload.
+
+You can enable automatic scaling either when a pool is created, or on an existing pool. You can also change an existing formula on a pool that is configured for autoscaling. Batch enables you to evaluate your formulas before assigning them to pools and to monitor the status of automatic scaling runs.
+
+Alternatively like in this example, you can task the matchmaker to proactively let Batch know when to scale out.
+
+## Security considerations
+
+There are some [requirements](https://docs.microsoft.com/azure/batch/batch-virtual-network#vnet-requirements) when you are including an **Azure Batch service pool of virtual machines in a virtual network**.
+
+## Additional resources and samples
+
+[Batch Explorer](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/BatchExplorer): tool that allows you to interact with the Batch Service to view, manage, monitor, and debug entities within an Azure Batch account. A **heat map** is provided to check out all of the running virtual machines and their current state, the way to read it is as follows:
+
+- White blocks mean that the virtual machines are idle and ready to be assigned some work.
+- Yellow blocks mean that the virtual machines cannot be used as they are either  starting up or shutting down.
+- Green blocks mean that the virtual machines are currently running a workload.
+- Red blocks mean that the virtual machines are in a faulty state.
+
+## Pricing
+
+If you don't have an Azure subscription, create a [free account](https://aka.ms/azfreegamedev) to get started with 12 months of free services. You're not charged for services included for free with Azure free account, unless you exceed the limits of these services. Learn how to check usage through the [Azure Portal](https://docs.microsoft.com/azure/billing/billing-check-free-service-usage#check-usage-on-the-azure-portal) or through the [usage file](https://docs.microsoft.com/azure/billing/billing-check-free-service-usage#check-usage-through-the-usage-file).
+
+You are responsible for the cost of the Azure services used while running these reference architectures, the total amount depends on the number of events that will run though the analytics pipeline. See the pricing webpages for each of the services that were used in the reference architectures:
+
+- [Azure Batch](https://azure.microsoft.com/pricing/details/batch/)
+- [Azure Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/)
+
+You also have available the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/), to configure and estimate the costs for the Azure services that you are planning to use.
