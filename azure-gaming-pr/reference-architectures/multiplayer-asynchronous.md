@@ -82,14 +82,17 @@ The Azure Database for MySQL persistent database that will be used to store the 
 |----------|----------|-----------|
 |**ID**|SERIAL PRIMARY KEY|Primary key of this table|
 |**GUID**|VARCHAR(36)|Unique identifier of the game session|
-|**CreatedTime**|TIMESTAMP|Stores when the game session was created|
-|**UpdatedTime**|TIMESTAMP|Stores when the game session was updated|
-|**CreatedPlayer_ID**|BIGINT UNSIGNED|Which player created the game session|
+|**CreatedTime**|TIMESTAMP NOT NULL|Stores when the game session was created|
+|**UpdatedTime**|TIMESTAMP NOT NULL|Stores when the game session was updated|
+|**CreatedPlayer_ID**|BIGINT UNSIGNED NOT NULL|Which player created the game session|
 |**GameStatus**|TINYINT NOT NULL|Matchmaking (0), in progress (1) or completed (2)|
-|**BoardState**|VARCHAR(200)|Serialized board information (where the X and O are placed in the board)|
-|**MovesLeft**|TINYINT|To determine when the game is meant to be over|
+|**BoardState**|VARCHAR(200) NOT NULL|Serialized board information (where the X and O are placed in the board)|
+|**MovesLeft**|TINYINT NOT NULL|To determine when the game is meant to be over|
 |**CurrentTurnPlayer_ID**|BIGINT UNSIGNED|Which player has to make a move|
 |**WinningPlayer_ID**|BIGINT UNSIGNED|The player that won|
+|**CreatedPlayer_ID**|FOREIGN KEY|References player(ID)|
+|**CurrentTurnPlayer_ID**|FOREIGN KEY|References player(ID)|
+|**WinningPlayer_ID**|FOREIGN KEY|References player(ID)|
 
 ### Game session player table
 
@@ -100,6 +103,8 @@ The Azure Database for MySQL persistent database that will be used to store the 
 |**UpdatedTime**|TIMESTAMP NOT NULL|Stores when the player was updated|
 |**GameSession_ID**|BIGINT UNSIGNED NOT NULL|Foreign key. This is the unique game identifier from the game session table|
 |**Player_ID**|BIGINT UNSIGNED NOT NULL|Foreign key. This is the unique player identifier from the player table|
+|**GameSession_ID**|FOREIGN KEY|References gamesession(ID)|
+|**Player_ID**|FOREIGN KEY|References player(ID)|
 
 ## Create database tables
 
@@ -124,7 +129,7 @@ Then this commands to create the 3 tables:
 
 ```sql
 CREATE TABLE player (
-    ID SERIAL PRIMARY KEY,
+	ID SERIAL PRIMARY KEY,
     CreatedTime TIMESTAMP NOT NULL,
     UpdatedTime TIMESTAMP NOT NULL,
     Name VARCHAR(100) NOT NULL
@@ -135,7 +140,7 @@ CREATE TABLE gamesession (
     GUID VARCHAR(36) NOT NULL,
     CreatedTime TIMESTAMP NOT NULL,
     UpdatedTime TIMESTAMP NOT NULL,
-    CreatedPlayer_ID BIGINT UNSIGNED NOT NULL,
+	CreatedPlayer_ID BIGINT UNSIGNED NOT NULL,
     GameStatus TINYINT NOT NULL,
     BoardState VARCHAR(200) NOT NULL,
     MovesLeft TINYINT NOT NULL,
@@ -147,7 +152,7 @@ CREATE TABLE gamesession (
 );
 
 CREATE TABLE gamesession_player (
-    ID SERIAL PRIMARY KEY,
+	ID SERIAL PRIMARY KEY,
     CreatedTime TIMESTAMP NOT NULL,
     UpdatedTime TIMESTAMP NOT NULL,    
     GameSession_ID BIGINT UNSIGNED NOT NULL,
@@ -163,33 +168,47 @@ Check that the 3 tables are created using this command:
 show tables;
 ```
 
-Once the tables are created, let's create a bunch of stored procedures. The first one is for matchmaking, returning a suitable game session (if available), after a new game session is attempted to be created:
-
-```sql
-DELIMITER //
-CREATE PROCEDURE gamesession_SELECT
-(IN param_playerid BIGINT, IN param_limit INTEGER)
-BEGIN
-    SELECT GUID FROM gamesession
-    WHERE GameStatus = 0
-    AND CreatedPlayer_ID <> param_playerid
-    ORDER BY CreatedTime
-    LIMIT param_limit;
-END //
-DELIMITER ;
-```
+Once the tables are created, let's create a bunch of stored procedures.
 
 This one is for creating a new game session, it is executed when the matchmaking attempt hasn't returned any suitable game session:
 
 ```sql
 DELIMITER //
 CREATE PROCEDURE `gamesession_INSERT`
-(IN param_guid VARCHAR(36), IN param_createdplayer_id BIGINT UNSIGNED, IN param_status TINYINT, IN param_boardstate VARCHAR(200), IN param_movesleft TINYINT, IN param_currentturnplayer_id BIGINT UNSIGNED, IN param_winningplayer_id BIGINT UNSIGNED)
+   (IN param_guid VARCHAR(36),
+    IN param_createdplayer_id BIGINT UNSIGNED,
+    IN param_status TINYINT,
+    IN param_boardstate VARCHAR(200),
+    IN param_movesleft TINYINT,
+    IN param_currentturnplayer_id BIGINT UNSIGNED,
+    IN param_winningplayer_id BIGINT UNSIGNED)
 BEGIN
-    INSERT INTO gamesession (GUID, CreatedTime, UpdatedTime, CreatedPlayer_ID, GameStatus, BoardState, MovesLeft)
-    VALUES (param_guid, NOW(), NOW(), param_createdplayer_id, param_status, param_boardstate, param_movesleft);
-  	INSERT INTO gamesession_player (CreatedTime, UpdatedTime, GameSession_ID, Player_ID)
-   	VALUES (NOW(), NOW(), LAST_INSERT_ID(), param_createdplayer_id);
+	INSERT INTO gamesession
+	   (GUID,
+		CreatedTime,
+		UpdatedTime,
+        CreatedPlayer_ID,
+		GameStatus,
+		BoardState,
+		MovesLeft)
+    VALUES 
+       (param_guid,
+		NOW(),
+        NOW(),
+        param_createdplayer_id,
+        param_status,
+        param_boardstate,
+        param_movesleft);
+	INSERT INTO gamesession_player
+	   (CreatedTime,
+        UpdatedTime,
+        GameSession_ID,
+        Player_ID)
+	VALUES
+	   (NOW(),
+        NOW(),
+        LAST_INSERT_ID(),
+        param_createdplayer_id);
 END //
 ```
 
