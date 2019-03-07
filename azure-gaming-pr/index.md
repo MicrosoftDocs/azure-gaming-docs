@@ -14,9 +14,9 @@ Modern games require more powerful development tools, global and flexible multip
 
 Some advantages of building your own game services and back end from scratch include:
 
-* Finer control over the back end services and data that are running your game
-* Creation of a custom solution or features to run your game that existing services do not provide
-* Optimizing costs by paying for only what you use each month
+* Finer control over the back end services and data that are running your game.
+* Creation of a custom solution or features to run your game that existing services do not provide.
+* Optimizing costs by paying for only what you use each month.
 
 ## Getting Started
 
@@ -32,10 +32,10 @@ Topic | Description
 These reference architectures will help start you on the path of building gaming services for your game.  Each architecture is composed of:
 
 * A **highly abstract diagram** showing the different pieces and how they interact with each other.
-* A **deployment template and installation steps**, to help you get started quickly with the implementation of the architecture
-* A list of **considerations** to give you a sense of the scope of requirements covered in the architecture
-* In most cases, a **sample project**, so you can quickly test the deployed infrastructure in your own Azure account
-* A high-level **step by step guide** and **implementation details** to help you understand the sample
+* A **deployment template and installation steps**, to help you get started quickly with the implementation of the architecture.
+* A list of **considerations** to give you a sense of the scope of requirements covered in the architecture.
+* In most cases, a **sample project**, so you can quickly test the deployed infrastructure in your own Azure account.
+* A high-level **step by step guide** and **implementation details** to help you understand the sample.
 
 While we will be working on more categories and implementations in the future, today you can explore:
 
