@@ -14,13 +14,13 @@ ms.service: azure
 
 See how to encapsulate your game server with Docker and build a reliable and automated deployment process of the game server using Azure Resource Manager templates, Azure Functions and DevOps practices.
 
+Refer to [Orchestrating and scaling Icebird's game server with Docker and Azure](https://microsoft.github.io/techcasestudies/devops/azure%20app%20service/azure%20functions/2017/04/21/IceBird.html) to read all the details. There is both **source code** and a **deployment template** available on [GitHub](https://github.com/Annonator/FuncyAutoScale).
+
 ## Architecture diagram
 
 [![Basic game server hosting using encapsulation](media/multiplayer/multiplayer-basicgameserver-encapsulate.png)](media/multiplayer/multiplayer-basicgameserver-encapsulate.png)
 
 ## Reference implementation details
-
-See [Orchestrating and scaling Icebird's game server with Docker and Azure](https://microsoft.github.io/techcasestudies/devops/azure%20app%20service/azure%20functions/2017/04/21/IceBird.html) to read all the details. There is both **source code** and a **deployment template** available on [GitHub](https://github.com/Annonator/FuncyAutoScale).
 
 Each virtual machine includes a docker container that runs a game session. As soon as the virtual machine starts, it puts a docker container inside and open the pertinent port(s) through a custom script extension ([Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/custom-script-linux), [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/custom-script-windows)). Every container have it's own public dedicated IP address.
 
