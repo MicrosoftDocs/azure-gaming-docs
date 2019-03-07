@@ -1,9 +1,9 @@
 ---
 title: Azure Gaming Documentation
-description: Learn how to build your infrastructure on Azure
+description: Learn how to build your gaming infrastructure on Azure
 ms.topic: article
-author: cierram
-ms.author: cierram
+author: BrianPeek
+ms.author: brpeek
 ms.prod: gaming
 ms.date: 03/08/2019
 ---
