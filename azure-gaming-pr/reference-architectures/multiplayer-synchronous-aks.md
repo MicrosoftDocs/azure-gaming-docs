@@ -78,7 +78,7 @@ These components are part of their own namespace (named **dgs-system** in the sa
 
 ### Public IPs
 
-Per Kubernetes design, all Nodes should have a public IP. Azure Kubernetes Services does not provide a public IP by default, use this [GitHub](https://github.com/dgkanatsios/AksNodePublicIPController) project to enable this.
+Game clients should be able to connect directly to a Dedicated Game Server, so all Nodes should have a Public IP. Azure Kubernetes Services does not provide a public IP by default, use this [GitHub](https://github.com/dgkanatsios/AksNodePublicIPController) project to enable that.
 
 ## Deployment template
 
