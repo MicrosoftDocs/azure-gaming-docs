@@ -78,7 +78,7 @@ These components are part of their own namespace (named **dgs-system** in the sa
 
 ### Public IPs
 
-Per Kubernetes design, all Nodes have a public IP.
+Per Kubernetes design, all Nodes should have a public IP. Azure Kubernetes Services does not provide a public IP by default, use this [GitHub](https://github.com/dgkanatsios/AksNodePublicIPController) project to enable this.
 
 ## Deployment template
 
