@@ -24,12 +24,12 @@ The following information can help you get started with Azure gaming development
 
 Topic | Description
 ------|------------
-[Create your Azure free account](https://aka.ms/azfreegamedev) | Get started with 12 months of free services
+[Create your Azure free account](https://aka.ms/azfreegamedev) | Get started with 12 months of free services.
 [General Guidelines](reference-architectures/general-guidelines.md) | A list of general principles that are helpful to know as you begin design and development.
 
 ## Reference Architectures
 
-These reference architectures will help start you on the path of building gaming services for your game.  Each architecture is composed of:
+These reference architectures will help start you on the path of building gaming services for your game. Each architecture is composed of:
 
 * A **highly abstract diagram** showing the different pieces and how they interact with each other.
 * A **deployment template and installation steps**, to help you get started quickly with the implementation of the architecture.
