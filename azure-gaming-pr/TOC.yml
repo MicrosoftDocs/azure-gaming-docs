@@ -1,5 +1,6 @@
-- name: Index
+- name: Azure Gaming
   href: index.md
+- name: Reference Architectures
   items:
   - name: General Guidelines
     href: reference-architectures/general-guidelines.md
