@@ -15,7 +15,7 @@ ms.service: azure
 This reference architecture describes a leaderboard use case and implementation with different alternatives, enabling you to architect your own cloud solution so you can have full control and customization to fit your game design like a glove.
 
 > [!TIP]
-> If you are looking for an out-of-the-box solution, PlayFab is a complete back-end platform for building, launching, and growing cloud connected games that has [leaderboard support](https://docs.microsoft.com/gaming/playfab/features/social/tournaments-leaderboards/).
+> If you are looking for an out-of-the-box leaderboard solution, **PlayFab** is a complete back-end platform for building, launching, and growing cloud connected games that has [leaderboard support](https://docs.microsoft.com/gaming/playfab/features/social/tournaments-leaderboards/).
 
 ## Leaderboard design
 

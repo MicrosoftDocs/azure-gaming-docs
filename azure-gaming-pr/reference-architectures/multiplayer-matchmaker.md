@@ -39,7 +39,7 @@ Additionally there are some related concepts to think about:
 To wrap up, a good approach to reduce random matchmaking time is to have a queue for each type that your game supports and put each player attempting to matchmake in *all* queues matching their request. Then when a queue is full, just start that specific game session and remove the involved players from all of their queues.
 
 > [!TIP]
-> If you are looking for an out-of-the-box matchmaking solution, PlayFab is a complete back-end platform for building, launching, and growing cloud connected games that has [matchmaker support](https://docs.microsoft.com/gaming/playfab/features/multiplayer/matchmaking/).
+> If you are looking for an out-of-the-box matchmaking solution, **PlayFab** is a complete back-end platform for building, launching, and growing cloud connected games that has [matchmaking support](https://docs.microsoft.com/gaming/playfab/features/multiplayer/matchmaking/).
 
 ## Reference implementation details
 

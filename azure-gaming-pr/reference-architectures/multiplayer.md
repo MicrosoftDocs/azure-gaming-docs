@@ -35,7 +35,7 @@ Following are some multiplayer backend use cases for you to explore:
 - [Asynchronous multiplayer](./multiplayer-asynchronous.md)
 
 > [!TIP]
-> If you are looking for an out-of-the-box scaling multiplayer server solution, PlayFab is a complete back-end platform for building, launching, and growing cloud connected games that has [multiplayer servers support](https://docs.microsoft.com/en-us/gaming/playfab/features/multiplayer/servers/).
+> If you are looking for an out-of-the-box scaling multiplayer server solution, **PlayFab** is a complete back-end platform for building, launching, and growing cloud connected games that has [multiplayer servers support](https://docs.microsoft.com/en-us/gaming/playfab/features/multiplayer/servers/).
 
 ## Multiplayer Design
 
