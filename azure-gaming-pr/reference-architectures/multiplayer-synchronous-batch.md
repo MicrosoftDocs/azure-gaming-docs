@@ -31,21 +31,21 @@ There are some differences depending on what operating system the virtual machin
 
 ### Operating system
 
-- Windows
+- **Windows**
     - Windows Server virtual machines take roughly twice the time than Linux virtual machines to be up and running, and ready for scheduling
     - At the present time, Windows Server 2012 performs better than Windows Server 2016
     - It is worth mentioning that if you already possess a valid on-premise license for Windows, you may not have to pay the full cost for the SKU
 
-- Linux
+- **Linux**
     - It's roughly twice as fast to be up and running, and ready for scheduling, than using Windows
 
 ### Platform images
 
-- Platform/Marketplace images
+- **Platform/Marketplace images**
     - They are updated with security patches. Support is available for these images.
     - The downside of using platform images on long living pools is that the image might be deprecated and removed from repository and the pool can never be scaled up.
 
-- Custom images
+- **Custom images**
     - Custom image boot time can vary dramatically depending on the custom softwares and data that are already present the source.
     - They advantage is you can have their image ready with all pre-installed software/data in the OSDisk.
     - Custom image source disk can be one of the three types: 1. Snapshot, 2. Manageddisk, 3. VHD.
