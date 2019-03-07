@@ -1,6 +1,6 @@
 ---
 title: Azure Gaming Documentation
-description: Learn how to build your infrastructure on a gaming cloud with years of experience powering Xbox games and services. 
+description: Learn how to build your infrastructure on Azure
 ms.topic: article
 author: cierram
 ms.author: cierram
@@ -12,24 +12,34 @@ ms.date: 03/08/2019
 
 Modern games require more powerful development tools, global and flexible multiplayer support, and new revenue models. But you’re here to build worlds, not back ends. Let Azure manage your platform so you can focus on making games that make headlines.
 
-Here are some reasons to build your game with Azure:
+Some advantages of building your own game services and back end from scratch include:
 
-TBD Brian - provide 3+ bullets describing the benefits for developers in using Azure (e.g. custom solutions, more control, etc.)
+* Finer control over the back end services and data that are running your game
+* Creation of a custom solution or features to run your game that existing services do not provide
+* Optimizing costs by paying for only what you use each month
 
 ## Getting Started
 
 The following information can help you get started with Azure gaming development.
 
-| Topic | Description |
-|:------|:------------|
-| [Create a free developer account](https://docs.microsoft.com/en-us/azure/billing/billing-create-free-services-included-free-account) | Describes the range of gaming services that Xbox Live offers. |
-| General guidelines | Describes various guidelines worth knowing upfront as you begin design and development. |
+Topic | Description
+------|------------
+[Create your Azure free account](https://aka.ms/azfreegamedev) | Get started with 12 months of free services
+[General Guidelines](reference-architectures/general-guidelines.md) | A list of general principles that are helpful to know as you begin design and development.
 
 ## Reference Architectures
 
-TBD David - provide 2-5 sentences describing what 'reference architecture' documentation is and how/why it's useful to developers.
+These reference architectures will help start you on the path of building gaming services for your game.  Each architecture is composed of:
 
-* Multiplayer & Game Servers
-* Analytics
-* Leaderboards
-* Cognitive Services
+* A **highly abstract diagram** showing the different pieces and how they interact with each other.
+* A **deployment template and installation steps**, to help you get started quickly with the implementation of the architecture
+* A list of **considerations** to give you a sense of the scope of requirements covered in the architecture
+* In most cases, a **sample project**, so you can quickly test the deployed infrastructure in your own Azure account
+* A high-level **step by step guide** and **implementation details** to help you understand the sample
+
+While we will be working on more categories and implementations in the future, today you can explore:
+
+* [Multiplayer / Game Servers](reference-architectures/multiplayer.md)
+* [Analytics](reference-architectures/analytics.md)
+* [Leaderboards](reference-architectures/leaderboard.md)
+* [Cognitive Services](reference-architectures/cognitive.md)
