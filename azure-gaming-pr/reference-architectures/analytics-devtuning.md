@@ -43,6 +43,8 @@ Have a look at the [general guidelines documentation](./general-guidelines.md#na
 
 ## Implementation details
 
+It's worth mentioning that you only need to create a single Azure Function App, that contains the different Functions within.
+
 - [Big data reference architecture and implementation for an online multiplayer game](https://github.com/dgkanatsios/GameAnalyticsEventHubFunctionsCosmosDatalake)
 - [Processing 100,000 Events Per Second on Azure Functions](https://blogs.msdn.microsoft.com/appserviceteam/2017/09/19/processing-100000-events-per-second-on-azure-functions/)
 - [Reliable Event Processing in Azure Functions (how to avoid losing a message)](https://hackernoon.com/reliable-event-processing-in-azure-functions-37054dc2d0fc)
