@@ -42,6 +42,9 @@ Have a look at the [general guidelines documentation](./general-guidelines.md#na
 > - [Azure Database for MySQL template](https://docs.microsoft.com/azure/templates/microsoft.dbformysql/servers)
 > - [Azure Notification Hub template](https://docs.microsoft.com/azure/templates/microsoft.notificationhubs/allversions)
 
+>[!WARNING]
+> The database admin password must contain from 8 to 128 characters. Also it must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, and so on).
+
 >[!TIP]
 > To run the Azure Functions locally, update the *local.settings.json* file with these same app settings.
 
