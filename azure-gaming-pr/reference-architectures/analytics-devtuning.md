@@ -46,7 +46,7 @@ Have a look at the [general guidelines documentation](./general-guidelines.md#na
 >
 > - [Create an Event Hub using Azure Resource Manager template](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub)
 > - [Automate resource deployment for your function app in Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-infrastructure-as-code)
-> - [Azure Cosmos DB template](https://docs.microsoft.com/azure/templates/Microsoft.DocumentDB/2015-04-08/databaseAccounts)
+> - [Azure Cosmos DB template](https://docs.microsoft.com/azure/templates/microsoft.documentdb/databaseaccounts)
 
 >[!TIP]
 > To run the Azure Functions locally, update the *local.settings.json* file with these same app settings.
