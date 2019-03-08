@@ -34,6 +34,17 @@ To wrap this up, in this reference architecture a helper class (Data Client) wil
 
 Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes an article summarizing the naming rules and restrictions for Azure services.
 
+>[!NOTE]
+> If you're interested in how the ARM template works, review the Azure Resource Manager template documentation from each of the different services leveraged in this reference architecture:
+>
+> - [Create an Event Hub using Azure Resource Manager template](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub)
+> - [Automate resource deployment for your function app in Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-infrastructure-as-code)
+> - [Azure Database for MySQL template](https://docs.microsoft.com/azure/templates/microsoft.dbformysql/servers)
+> - [Azure Notification Hub template](https://docs.microsoft.com/azure/templates/microsoft.notificationhubs/allversions)
+
+>[!TIP]
+> To run the Azure Functions locally, update the *local.settings.json* file with these same app settings.
+
 ## Step by step
 
 ### Create a new game session

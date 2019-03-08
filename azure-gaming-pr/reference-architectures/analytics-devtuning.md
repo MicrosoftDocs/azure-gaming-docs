@@ -41,6 +41,16 @@ This reference architecture **focuses on the development phase and a small numbe
 
 Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes an article summarizing the naming rules and restrictions for Azure services.
 
+>[!NOTE]
+> If you're interested in how the ARM template works, review the Azure Resource Manager template documentation from each of the different services leveraged in this reference architecture:
+>
+> - [Create an Event Hub using Azure Resource Manager template](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub)
+> - [Automate resource deployment for your function app in Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-infrastructure-as-code)
+> - [Azure Cosmos DB template](https://docs.microsoft.com/azure/templates/Microsoft.DocumentDB/2015-04-08/databaseAccounts)
+
+>[!TIP]
+> To run the Azure Functions locally, update the *local.settings.json* file with these same app settings.
+
 ## Implementation details
 
 It's worth mentioning that you only need to create a single Azure Function App, that contains the different Functions within.
