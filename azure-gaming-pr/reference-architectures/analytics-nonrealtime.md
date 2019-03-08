@@ -21,7 +21,7 @@ This reference architecture represents a simple analytics pipeline that you can 
 
 ### Relevant services
 
-- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview): Chosen as the proxy receiving the events from the device clients.
+- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview): Chosen as the API receiving the events from the device clients.
 - [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/): Chosen as it's a service tailored for analytics pipelines and is simple to use with little configuration or management overhead. As a bonus, it will be also usable if you decide later on that you need some events to be processed in real-time.
 - [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks): Selected as it can transform directly the data from Azure Even Hub Capture (AVRO format) to JSON files and also for preparing the data into CSV files compatible with Power BI. Streaming data from Azure Event Hubs to Azure Blob Storage in a performant way is not entirely trivial, unless it's really a very small scale.
 - [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview): Chosen as it’s optimized for storing economically massive amounts of unstructured data. Note that it doesn't support a hierarchical file system but sometime in the future you will be able to upgrade to Azure Data Lake Storage Gen2, which offers it as well as the advantages of Blob storage, including low-cost, tiered storage; high availability; strong consistency; and disaster recovery capabilities.
@@ -29,8 +29,8 @@ This reference architecture represents a simple analytics pipeline that you can 
 
 ### Step by step
 
-1. Plug in the device client to the **proxy**, for example an Azure Function like shown in the architecture diagram above.
-2. Transfer data from the proxy to **Azure Event Hub**.
+1. Invoke the **Azure Function** from the device client. Alternatively you could have use virtual machines with a load balancer.
+2. Transfer data from the Azure Function to the **Azure Event Hub**.
 3. Using the out-of-the-box **Event Hub Capture**, AVRO files are generated containing the data.
 4. An **Azure Databricks** job reads the data from the AVRO files and extracts the JSON events in the payload. Azure Databricks does the data preparation and deposits the output (CSV files) into **Azure Blob Storage**.
 5. **Power BI** reads the CSV files stored in Azure Blob Storage and display them in a dashboard/report.
@@ -65,9 +65,9 @@ Have a look at the [general guidelines documentation](./general-guidelines.md#az
 
 Have a look at the [general guidelines documentation](./general-guidelines.md#azure-storage-account-limits) to find out what are the limits of an Azure storage account and how to avoid throttling.
 
-#### Proxy
+#### API
 
-In this reference architecture, the proxy is going to be an Azure Function (serverless), to not have to take into consideration load balancing and scaling servers. The input of the proxy Function is going to be an [HTTP trigger](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#trigger) and the output will be an [Event Hub](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-hubs#output).
+In this reference architecture, the API is going to be implemented via an Azure Function (serverless), to not have to take into consideration load balancing and scaling servers. The input of the Azure Function is going to be an [HTTP trigger](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#trigger) and the output will be an [Event Hub](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-hubs#output).
 
 ```csharp
 [return: EventHub("ehnrtanalytics-output", Connection = "EventHubConnectionAppSetting")]
@@ -109,7 +109,7 @@ The list of steps to pull the information from the Azure Blob Storage and prepar
 
 Do not hard-code any Event Hub connection strings into the source of the Function, instead at the minimum leverage the [Function App Settings](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#manage-app-service-settings) or for bonus points use Key Vault instead as it's the recommended method. There is a tutorial explaining how to [create a Key Vault](https://blogs.msdn.microsoft.com/benjaminperkins/2018/06/13/create-an-azure-key-vault-and-secret/), how to [use a managed service identity with a Function](https://blogs.msdn.microsoft.com/benjaminperkins/2018/06/13/using-managed-service-identity-msi-with-and-azure-app-service-or-an-azure-function/) and finally how to [read the secret stored in Key Vault from a Function](https://blogs.msdn.microsoft.com/benjaminperkins/2018/06/13/how-to-connect-to-a-database-from-an-azure-function-using-azure-key-vault/).
 
-Review the [Event Hub authentication and security model](https://docs.microsoft.com/azure/event-hubs/event-hubs-authentication-and-security-model-overview) and put it in practice to ensure only your proxy can talk to the Azure Event Hub.
+Review the [Event Hub authentication and security model](https://docs.microsoft.com/azure/event-hubs/event-hubs-authentication-and-security-model-overview) and put it in practice to ensure only your API can talk to the Azure Event Hub.
 
 ### Optimization considerations
 

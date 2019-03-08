@@ -23,7 +23,7 @@ There are multiple variables which can be taken into consideration when designin
 1. **Processing time**: real-time, bulk/batch or mixed.
 2. **Stage**: development only, production only or both.
 3. **Presentation**: dashboard (slice and dice), in-game (directly into the game engine) or both.
-4. **Message source**: direct connection between the device and the cloud infrastructure or using a proxy.
+4. **Message source**: direct connection between the device and the cloud infrastructure or using an API.
 
 What doesn't change much is the construction steps that are part of an standard analytics pipeline:
 

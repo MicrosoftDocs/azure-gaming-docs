@@ -27,8 +27,8 @@ This reference architecture **focuses on the development phase and a small numbe
 
 ## Step by step
 
-1. Plug in the device client to the proxy, an **Azure Function** in this case. Alternatively you could use an Azure Load Balancer and Azure Virtual Machines.
-2. Connect the proxy to the **Azure Event Hub**.
+1. Invoke the **Azure Function** from the device client. Alternatively you could have use virtual machines with a load balancer.
+2. Connect the Azure Function to the **Azure Event Hub**.
 3. Transfer data from Azure Event Hub to an **Azure Function** that copies the data through the pipeline.
 4. From the Azure Function target **Azure Cosmos DB** with JSON output.
 5. That concludes the data ingestion part. After that to review the data, within the game engine a set of querying parameters are set, those are submitted to a translator **Azure Function** that converts them into an Azure Cosmos DB query.
