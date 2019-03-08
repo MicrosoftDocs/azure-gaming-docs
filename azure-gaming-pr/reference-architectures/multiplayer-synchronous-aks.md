@@ -1,5 +1,5 @@
 ---
-title: Multiplayer Game Server Hosting Using Azure Kubernetes Service (AKS) - Azure
+title: Multiplayer Game Server Hosting Using Azure Kubernetes Service (AKS)
 description: You can opt to manage containerized dedicated game servers using the Kubernetes orchestrator on Azure using the managed Azure Kubernetes Service (AKS).
 author: BrianPeek
 manager: timheuer

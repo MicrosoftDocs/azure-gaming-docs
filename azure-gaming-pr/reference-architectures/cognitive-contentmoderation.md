@@ -1,5 +1,5 @@
 ---
-title: Content Moderation - Azure
+title: Content Moderation
 description: Not everyone behaves appropriately while they are playing online, and some moderation is needed to maintain a civil, welcoming, and pleasurable experience amongst the players.
 author: BrianPeek
 manager: timheuer

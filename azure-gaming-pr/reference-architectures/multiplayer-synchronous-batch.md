@@ -1,5 +1,5 @@
 ---
-title: Multiplayer Game Server Hosting Using Azure Batch - Azure
+title: Multiplayer Game Server Hosting Using Azure Batch
 description: This is a reference architecture to build a scalable game server hosting on Azure Batch
 author: BrianPeek
 manager: timheuer

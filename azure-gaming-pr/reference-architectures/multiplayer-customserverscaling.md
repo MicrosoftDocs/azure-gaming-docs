@@ -1,5 +1,5 @@
 ---
-title: Custom Game Server Scaling - Azure
+title: Custom Game Server Scaling
 description: See how to encapsulate your game server with Docker and build a reliable and automated deployment process of the game server using Azure Resource Manager templates, Azure Functions and DevOps practices.
 author: BrianPeek
 manager: timheuer

@@ -1,5 +1,5 @@
 ---
-title: General Guidelines - Azure
+title: General Guidelines
 description: Set of best practices and rules of thumb from services leveraged in the Azure gaming reference architectures
 author: BrianPeek
 manager: timheuer

@@ -39,7 +39,8 @@
     "globalMetadata": {
       "breadcrumb_path": "/gaming/azure/breadcrumb/toc.json",
       "extendBreadcrumb": true,
-      "feedback_system": "None"
+      "feedback_system": "None",
+      "titleSuffix": "Azure Gaming"
     },
     "fileMetadata": {},
     "template": [],

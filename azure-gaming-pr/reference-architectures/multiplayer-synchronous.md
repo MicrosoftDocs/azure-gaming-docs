@@ -1,5 +1,5 @@
 ---
-title: Synchronous Multiplayer - Azure
+title: Synchronous Multiplayer
 description: This reference architecture describes a non-persistent real-time multiplayer scenario where latency matters leveraging dedicated servers, and how to get it implemented.
 author: BrianPeek
 manager: timheuer

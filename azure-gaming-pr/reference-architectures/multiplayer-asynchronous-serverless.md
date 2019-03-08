@@ -1,5 +1,5 @@
 ---
-title: Serverless Asynchronous Multiplayer - Azure
+title: Serverless Asynchronous Multiplayer
 description: This is a reference architecture to build a serverless asynchronous multiplayer game on Azure
 author: BrianPeek
 manager: timheuer

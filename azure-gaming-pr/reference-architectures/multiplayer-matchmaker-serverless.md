@@ -1,5 +1,5 @@
 ---
-title: Multiplayer Serverless Matchmaker - Azure
+title: Multiplayer Serverless Matchmaker
 description: This is a reference architecture to build a serverless multiplayer matchmaker on Azure
 author: BrianPeek
 manager: timheuer

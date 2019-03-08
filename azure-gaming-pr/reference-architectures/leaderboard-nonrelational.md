@@ -1,5 +1,5 @@
 ---
-title: Non-relational Leaderboard - Azure
+title: Non-relational Leaderboard
 description: This is a reference architecture to enable a leaderboard in your game using a non-relational database.
 author: BrianPeek
 manager: timheuer

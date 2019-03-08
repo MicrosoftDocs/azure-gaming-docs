@@ -1,5 +1,5 @@
 ---
-title: Relational Leaderboard - Azure
+title: Relational Leaderboard
 description: This is a reference architecture to enable a leaderboard in your game using a relational database.
 author: BrianPeek
 manager: timheuer

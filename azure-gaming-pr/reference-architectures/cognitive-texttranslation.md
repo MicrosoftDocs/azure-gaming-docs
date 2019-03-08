@@ -1,5 +1,5 @@
 ---
-title: Text Translation - Azure
+title: Text Translation
 description: It's not unusual that players in the same game session natively speak different languages and may appreciate receiving both the original message and its translation.
 author: BrianPeek
 manager: timheuer

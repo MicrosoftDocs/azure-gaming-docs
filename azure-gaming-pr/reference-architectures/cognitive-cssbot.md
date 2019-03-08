@@ -1,5 +1,5 @@
 ---
-title: Customer Service Bot - Azure
+title: Customer Service Bot
 description: Provide your players a conversational assistant tailored to your game that understands natural language. This assistant can answer questions defined in one or more knowledge sets containing information from marketing materials to troubleshooting guides and everything in between.
 author: BrianPeek
 manager: timheuer

@@ -1,5 +1,5 @@
 ---
-title: Cognitive Services Reference Architectures - Azure
+title: Cognitive Services Reference Architectures
 description: Infuse your games with intelligent algorithms to see, hear, speak, understand and interpret your player needs through natural methods of communication
 author: BrianPeek
 manager: timheuer

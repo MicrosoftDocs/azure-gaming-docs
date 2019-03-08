@@ -1,5 +1,5 @@
 ---
-title: Basic Game Server Hosting - Azure
+title: Basic Game Server Hosting
 description: This reference architecture details the steps to setup a basic Azure backend that will host a game server on either Windows or Linux, using Minecraft server as an example.
 author: BrianPeek
 manager: timheuer

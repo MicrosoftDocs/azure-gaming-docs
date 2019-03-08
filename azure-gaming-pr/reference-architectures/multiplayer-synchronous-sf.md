@@ -1,5 +1,5 @@
 ---
-title: Multiplayer Game Server Hosting Using Azure Service Fabric - Azure
+title: Multiplayer Game Server Hosting Using Azure Service Fabric
 description: This is a reference architecture to build a scalable game server hosting on Azure Service Fabric
 author: BrianPeek
 manager: timheuer

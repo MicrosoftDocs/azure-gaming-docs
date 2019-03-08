@@ -1,5 +1,5 @@
 ---
-title: Multiplayer Matchmaker - Azure
+title: Multiplayer Matchmaker
 description: This is a reference architecture to build a multiplayer matchmaker on Azure
 author: BrianPeek
 manager: timheuer

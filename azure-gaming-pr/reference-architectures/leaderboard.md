@@ -1,5 +1,5 @@
 ---
-title: Leaderboard Reference Architecture - Azure
+title: Leaderboard Reference Architecture
 description: This reference architecture describes a leaderboard use case and implementation with different alternatives, enabling you to architect your own cloud solution so you can have full control and customization to fit your game design like a glove.
 author: BrianPeek
 manager: timheuer

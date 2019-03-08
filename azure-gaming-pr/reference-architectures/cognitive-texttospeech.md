@@ -1,5 +1,5 @@
 ---
-title: Text to Speech - Azure
+title: Text to Speech
 description: In the case of players with reading disabilities, being able to hear text messages that were sent out using text to speech services may help bringing them into the conversation.
 author: BrianPeek
 manager: timheuer

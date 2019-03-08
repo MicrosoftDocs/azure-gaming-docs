@@ -1,5 +1,5 @@
 ---
-title: Multiplayer Game Server Hosting Using Azure Container Instances (ACI) - Azure
+title: Multiplayer Game Server Hosting Using Azure Container Instances (ACI)
 description: Explore this alternative solution using Azure Container Instances, Event Grid, and Azure Functions that automatically scales on demand and is billed per second of usage. Simpler architecture and maintenance leveraging hosted virtual machines at the expense of paying a premium.
 author: BrianPeek
 manager: timheuer
