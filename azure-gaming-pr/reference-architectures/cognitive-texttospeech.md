@@ -57,6 +57,9 @@ Finally, add these Function [application settings](https://docs.microsoft.com/az
 - TEXTANALYTICS_KEY: the [access key](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) for the Azure Text Analytics cognitive service that was created
 - SPEECH_KEY: the [access key](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) for the Azure Speech Cognitive Service that was created.
 
+>[!TIP]
+> To run the Azure Functions locally, update the *local.settings.json* file with these same app settings.
+
 ## Step by Step
 
 1. The player's device opens a persistent and encrypted connection to the chat server in a specific region determined by **Azure Traffic Manager**. The chat server creates a process responsible for maintaining connectivity with the player along with some basic metadata.

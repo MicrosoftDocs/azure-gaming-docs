@@ -48,6 +48,9 @@ Finally, add these Function [application settings](https://docs.microsoft.com/az
 - EVENTHUB_CONNECTION_STRING: the [connection string](https://docs.microsoft.com/azure/event-hubs/event-hubs-get-connection-string) to the Azure Event Hub namespace that was created
 - TRANSLATORTEXT_KEY: the [access key](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) used to access the Azure Translator Text Cognitive Service that was created
 
+>[!TIP]
+> To run the Azure Functions locally, update the *local.settings.json* file with these same app settings.
+
 ## Step by Step
 
 1. The player's device opens a persistent and encrypted connection to the chat server in a specific region determined by **Azure Traffic Manager**. The chat server creates a process responsible for maintaining connectivity with the player along with some basic metadata.

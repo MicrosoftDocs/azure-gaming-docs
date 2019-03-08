@@ -37,7 +37,7 @@ The summary of steps to complete is:
 6. Install the game server dependencies.
 7. Install the game server itself.
 8. Configure the game server.
-9. Run the game server and double check that the ports are open
+9. Run the game server and double check that the ports are open.
 
 ### Set up a resource group
 

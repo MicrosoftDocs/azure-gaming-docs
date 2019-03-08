@@ -28,18 +28,20 @@ ms.service: azure
 
 Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes an article summarizing the naming rules and restrictions for Azure services.
 
-It's worth reviewing the Azure Resource Manager template documentation from each of the different services leveraged in this reference architecture:
-
-- [Create an Azure Cache for Redis using a template](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-redis-cache-arm-provision)
-- [Create an Event Hub using Azure Resource Manager template](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub)
-- [Automate resource deployment for your function app in Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-infrastructure-as-code)
+>[!NOTE]
+> If you're interested in how the ARM template works, review the Azure Resource Manager template documentation from each of the different services leveraged in this reference architecture:
+>
+> - [Create an Azure Cache for Redis using a template](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-redis-cache-arm-provision)
+> - [Create an Event Hub using Azure Resource Manager template](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub)
+> - [Automate resource deployment for your function app in Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-infrastructure-as-code)
 
 Finally add the Function [application settings](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) so the sample project can reach out to the Azure services:
 
 - EVENTHUB_CONNECTION_STRING: the [connection string](https://docs.microsoft.com/azure/event-hubs/event-hubs-get-connection-string) to the Azure Event Hub namespace that was created.
 - REDIS_CONNECTION_STRING: the [connection string](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#access-keys) to the Azure Cache for Redis that was created.
 
-Update the *local.settings.json* file in the Visual Studio project to use the same app settings for local testing.
+>[!TIP]
+> To run the Azure Functions locally, update the *local.settings.json* file with these same app settings.
 
 ## Step by step
 

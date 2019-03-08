@@ -39,11 +39,12 @@ This reference architecture represents a simple analytics pipeline that you can 
 
 Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes an article summarizing the naming rules and restrictions for Azure services.
 
-It's worth reviewing the Azure Resource Manager template documentation from each of the different services leveraged in this reference architecture:
-
-- [Create an Event Hub using Azure Resource Manager template](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub)
-- [Automate resource deployment for your function app in Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-infrastructure-as-code)
-- [Azure Databricks workspace template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace/)
+>[!NOTE]
+> If you're interested in how the ARM template works, review the Azure Resource Manager template documentation from each of the different services leveraged in this reference architecture:
+>
+> - [Create an Event Hub using Azure Resource Manager template](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub)
+> - [Automate resource deployment for your function app in Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-infrastructure-as-code)
+> - [Azure Databricks workspace template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace/)
 
 As a next step, add the Function [application settings](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) so the sample project can reach out to the Azure services:
 
@@ -52,6 +53,9 @@ As a next step, add the Function [application settings](https://docs.microsoft.c
 Continue by [starting the Azure Databricks cluster](https://docs.azuredatabricks.net/user-guide/clusters/start.html) either through the portal or API.
 
 Then either mount the Azure Storage account using DBFS or setup the access key for directly using APIs. See [https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html](access Azure Blob Storage from Azure Databricks) for all the details. The recommended path is leveraging [secrets](https://docs.databricks.com/user-guide/secrets/secrets.html#secrets) and mounting a container or a folder within the container, then access files as if they were local files.
+
+>[!TIP]
+> To run the Azure Functions locally, update the *local.settings.json* file with these same app settings.
 
 ### Implementation details
 
