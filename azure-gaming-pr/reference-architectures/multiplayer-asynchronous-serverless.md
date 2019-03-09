@@ -18,11 +18,11 @@ ms.service: azure
 
 ## Architecture services
 
-- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview): Chosen as they are the simplest way to run the small pieces of matchmaking logic, also you are only charged when you have users attempting to matchmake and play. Note that when using a Consumption plan, Function definitions are stored in File Storage, meaning that you will have to create an Storage account. For optimal performance you should use a Storage account in the same region as the Functions.
-- [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/): Chosen as the information to store is unlikely going to need schema changes, it won't be requiring persistence. Also the service is fast, lightweight, reliable and cost effective.
-- [Notification Hub](https://docs.microsoft.com/azure/mysql/): choosen as it's an easy-to-use and scaled-out push engine that allows you to send notifications to any platform (iOS, Android, Windows, Kindle, Baidu, etc.).
-- [SignalR](https://azure.microsoft.com/services/signalr-service/): choosen as it simplifies the process of adding real-time web functionality to applications over HTTP, allowing to push to connected device clients.
-- [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview): choosen as it's the best service for secret management, including database connection strings.
+- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview) - Selected as they are the simplest way to run the small pieces of matchmaking logic, also you are only charged when you have users attempting to matchmake and play. Note that when using a Consumption plan, Function definitions are stored in File Storage, meaning that you will have to create an Storage account. For optimal performance you should use a Storage account in the same region as the Functions.
+- [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) - Selected as the information to store is unlikely going to need schema changes, it won't be requiring persistence. Also the service is fast, lightweight, reliable and cost effective.
+- [Notification Hub](https://docs.microsoft.com/azure/mysql/) - Selected as it's an easy-to-use and scaled-out push engine that allows you to send notifications to any platform (iOS, Android, Windows, Kindle, Baidu, etc.).
+- [SignalR](https://azure.microsoft.com/services/signalr-service/) - Selected as it simplifies the process of adding real-time web functionality to applications over HTTP, allowing to push to connected device clients.
+- [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) - Selected as it's the best service for secret management, including database connection strings.
 
 ## Design considerations
 

@@ -92,7 +92,7 @@ On a final note, personal expertise on either alternative is something to take i
 
 Here are two different implementations of the same simple and advanced leaderboard use cases to get you a head start:
 
-- [Non-relational](./leaderboard-nonrelational.md): using Azure Cache for Redis for small scale or Azure Cosmos DB for large scale.
+- [Non-relational](./leaderboard-non-relational.md): using Azure Cache for Redis for small scale or Azure Cosmos DB for large scale.
 - [Relational](./leaderboard-relational.md): using Azure SQL Database or MySQL for small scale or Azure SQL Database for large scale.
 
 ## Additional resources and samples

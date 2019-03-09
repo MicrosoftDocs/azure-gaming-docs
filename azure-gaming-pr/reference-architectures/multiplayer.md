@@ -18,15 +18,15 @@ These reference architectures describe a variety of multiplayer backend use case
 
 There are many variables which can be taken into consideration when designing a multiplayer backend for your game. Here are some examples:
 
-1. **Level of management**: from putting all the effort on yourself to letting the platform take care of everything
-1. **Operating system**: Windows or Linux
-1. **Where does the game session run**: dedicated server or peer-to-peer (P2P)
-1. **Hardware**: what does the game session need to be able to run
-1. **Processing time**: real-time or non-real time (NRT)
-1. **Latency**: players will be at a disadvantage if they have lag or they won't
-1. **Persistence**: the game world continues to exist and develop internally even when there are no players interacting with it, or each session has it's own beginning and end
-1. **Number of concurrent players**: small, medium or large
-1. **Reconnection allowed**: if a player or players get disconnected, can they go back to the game or they have to start a new game session
+1. **Level of management** - From putting all the effort on yourself to letting the platform take care of everything
+1. **Operating system** - Windows or Linux
+1. **Where does the game session run** - Dedicated server or peer-to-peer (P2P)
+1. **Hardware** - What does the game session need to be able to run
+1. **Processing time** - Real-time or non-real time (NRT)
+1. **Latency** - Players will be at a disadvantage if they have lag or they won't
+1. **Persistence** - The game world continues to exist and develop internally even when there are no players interacting with it, or each session has it's own beginning and end
+1. **Number of concurrent players** - Small, medium or large
+1. **Reconnection allowed** - If a player or players get disconnected, can they go back to the game or they have to start a new game session
 
 Following are some multiplayer backend use cases for you to explore:
 
@@ -43,11 +43,11 @@ Following are some multiplayer backend use cases for you to explore:
 
 Compute services vary based on the level of management they offer, from those managed entirely by you, to those managed entirely by the platform:
 
-- **Raw Virtual Machines**: everything is managed by you, it needs a custom scaling solution
-- **Azure Container Instances (ACI)**: everything is managed by your but in a container, it needs a custom scaling solution
-- **Virtual Machine Scale Sets** / **Batch**: manages the scaling of Virtual Machines on your behalf based on rules you define
-- **Service Fabric** / **Azure Kubernetes Service (AKS)**: manages the orchestration of containers on your behalf
-- **PlayFab Multiplayer Servers**: higher level orchestration of game servers on your behalf, running on top of Azure. For more information see [PlayFab Multiplayer Servers](https://docs.microsoft.com/en-us/gaming/playfab/features/multiplayer/servers/).
+- **Raw Virtual Machines** - Everything is managed by you, it needs a custom scaling solution
+- **Azure Container Instances (ACI)** - Everything is managed by your but in a container, it needs a custom scaling solution
+- **Virtual Machine Scale Sets** / **Batch** - Manages the scaling of Virtual Machines on your behalf based on rules you define
+- **Service Fabric** / **Azure Kubernetes Service (AKS)** - Manages the orchestration of containers on your behalf
+- **PlayFab Multiplayer Servers** - Higher level orchestration of game servers on your behalf, running on top of Azure. For more information see [PlayFab Multiplayer Servers](https://docs.microsoft.com/en-us/gaming/playfab/features/multiplayer/servers/).
 
 ### Operating System
 
@@ -105,10 +105,10 @@ A **lobby system** is fairly common for getting players together before actually
 
 In addition to your preferred telemetry solution, you could leverage [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) to expose metrics from the Azure services used in your backend solution, along with diagnostic and activity logs. Azure Monitor can also help you identify issues affecting your game. Consider **enabling alerts** for:
 
-- CPU usage: you want to be notified if your hosts' CPUs are nearing saturation.
-- Disk I/O: set up an alert if your game is either reading from disk or writing to disk more often than expected.
-- Memory utilization: when memory paging is excessive you should receive an alert.
-- Network traffic: you should consider generating an alert when your network traffic is close to saturation or suddenly plummets.
+- CPU usage - You want to be notified if your hosts' CPUs are nearing saturation.
+- Disk I/O - Set up an alert if your game is either reading from disk or writing to disk more often than expected.
+- Memory utilization - When memory paging is excessive you should receive an alert.
+- Network traffic - You should consider generating an alert when your network traffic is close to saturation or suddenly plummets.
 
 You can automate the configuration of Azure Monitor using [Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration). For more information about Azure Monitor see [Full stack end to end monitoring with Azure Monitor](https://channel9.msdn.com/Shows/Azure-Friday/Full-stack-end-to-end-monitoring-with-Azure-Monitor).
 
@@ -171,9 +171,9 @@ For **asynchronous** or turn-based communications, leveraging JSON **over HTTPS*
 
 From the sportsmanship of tic-tac-toe with just 2 players, to the last man standing carnages of battle royale games with 100 players, to the thousands of players of some persistent world games, the number of concurrent players in the same game session impacts the architecture and services to leverage. The three ranges that were considered in these use cases are:
 
-- **Small**: 10 or less concurrent players.
-- **Medium**: Between 11 and 50 concurrent players.
-- **Large**: More than 50 concurrent players.
+- **Small** - 10 or less concurrent players.
+- **Medium** - Between 11 and 50 concurrent players.
+- **Large** - More than 50 concurrent players.
 
 ## Best Practices
 

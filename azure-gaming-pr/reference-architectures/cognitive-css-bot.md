@@ -14,24 +14,24 @@ ms.service: azure
 
 Provide your players a conversational assistant tailored to your game that understands natural language.  This assistant can answer questions defined in one or more knowledge sets containing information from marketing materials to troubleshooting guides and everything in between.
 
-[![Customer service bot look and feel](media/cognitive/cognitive-customerservicebot-qna.png)](media/cognitive/cognitive-customerservicebot-qna.png)
+[![Customer service bot look and feel](media/cognitive/cognitive-customer-service-bot-qna.png)](media/cognitive/cognitive-customer-service-bot-qna.png)
 
 ## Architecture Diagram
 
-[![Customer service bot reference architecture](media/cognitive/cognitive-customerservicebot.png)](media/cognitive/cognitive-customerservicebot.png)
+[![Customer service bot reference architecture](media/cognitive/cognitive-customer-service-bot.png)](media/cognitive/cognitive-customer-service-bot.png)
 
 ## Architecture Services
 
-- [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/): Azure out-of-the-box solution for building serverless and scalable bots.
-- [Azure Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis): Applies custom machine-learning intelligence to a user's conversational, natural language text to predict overall meaning, and pull out relevant, detailed information.
-- [Azure QnA Maker](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/overview/overview): Creates a question and answer repository of data based on information you provide.
-- [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview): Optionally used to monitor the customer service bot. It will automatically detect performance anomalies and help understand what users actually do with the bot.
+- [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/) - Azure out-of-the-box solution for building serverless and scalable bots.
+- [Azure Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis) - Applies custom machine-learning intelligence to a user's conversational, natural language text to predict overall meaning, and pull out relevant, detailed information.
+- [Azure QnA Maker](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/overview/overview) - Creates a question and answer repository of data based on information you provide.
+- [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) - Optionally used to monitor the customer service bot. It will automatically detect performance anomalies and help understand what users actually do with the bot.
 
 ## Architecture considerations
 
 This reference architecture will provide support for **two different knowledge databases**: one for game information and the other for technical support information.
 
-You can, of course, extend and support more knowledge databases of your own.  Please see the [Azure Search pricing page](https://azure.microsoft.com/pricing/details/search/) to find out what pricing tier is more adequate for you, as each knowledge database requires the use of one search index.
+You can, of course, extend and support more knowledge databases of your own. Please see the [Azure Search pricing page](https://azure.microsoft.com/pricing/details/search/) to find out what pricing tier is more adequate for you, as each knowledge database requires the use of one search index.
 
 ## Deployment
 

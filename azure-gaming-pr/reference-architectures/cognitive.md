@@ -16,10 +16,10 @@ ms.service: azure
 
 Following are some multiplayer backend use cases for you to explore:
 
-- [Content Moderation](./cognitive-contentmoderation.md)
-- [Text Translation](./cognitive-texttranslation.md)
-- [Text to Speech](./cognitive-texttospeech.md)
-- [Customer Service Bot](./cognitive-cssbot.md)
+- [Content Moderation](./cognitive-content-moderation.md)
+- [Text Translation](./cognitive-text-translation.md)
+- [Text to Speech](./cognitive-text-to-speech.md)
+- [Customer Service Bot](./cognitive-css-bot.md)
 
 ## Additional resources and samples
 

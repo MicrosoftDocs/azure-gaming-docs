@@ -16,15 +16,15 @@ The backbone for building an asynchronous multiplayer is saving the game state t
 
 There are several variables which can be taken into consideration when defining an asynchronous multiplayer:
 
-- **Support multiple games in parallel**: yes, no.
-- **Deadline**: the player has a specific amount of time (6 hours, 12 hours, 24 hours, etc) to complete a turn or the game is forfeited.
-- **Game custom settings**: consider allowing players that create new game sessions with specific settings from your game.
+- **Support multiple games in parallel** - Yes, no.
+- **Deadline** - The player has a specific amount of time (6 hours, 12 hours, 24 hours, etc) to complete a turn or the game is forfeited.
+- **Game custom settings** - Consider allowing players that create new game sessions with specific settings from your game.
 
 ## Reference implementation details
 
 This specific reference architecture showcases a **serverless simple tic-tac-toe** game. Here are different implementations of the same use case to get you a head start:
 
-- [Serverless](./multiplayer-asynchronous-serverless.md): using Azure Functions.
+- [Serverless](./multiplayer-asynchronous-serverless.md) - Using Azure Functions.
 
 The following sections are covering general design considerations common to the different implementations documented.
 

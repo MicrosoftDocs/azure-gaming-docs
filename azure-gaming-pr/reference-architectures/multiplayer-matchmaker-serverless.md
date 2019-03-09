@@ -14,15 +14,15 @@ ms.service: azure
 
 ## Architecture diagram
 
-[![Matchmaker using Azure Cache for Redis and Azure Functions](media/multiplayer/multiplayer-shortsession-redismatchmaker.png)](media/multiplayer/multiplayer-shortsession-redismatchmaker.png)
+[![Matchmaker using Azure Cache for Redis and Azure Functions](media/multiplayer/multiplayer-serverless-redis-matchmaker.png)](media/multiplayer/multiplayer-serverless-redis-matchmaker.png)
 
 ## Relevant services
 
-- [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview): Selected as it connects the player to the most appropiate regional zone based on latency.
-- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview): Chosen as it's the simplest way to run the small pieces of matchmaking logic, also you are only charged when you have users attempting to matchmake and play.
-- [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/): Allows batching requests, handy to avoid exhausting the Azure Cache of Redis connection pool.
-- [Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-overview): Simple key/value pair database for storing the information of the different players trying to join a multiplayer session, and also the connection information (IP/port) from the game servers used. Selected as query flexibility, indexing, replication and move data out are not a strict requirement, also pricing is based on storage capacity exclusively.
-- [Resource Groups](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal#manage-resource-groups): Leverage one resource group for the Azure Traffic Manager and one resource group for each matchmaking regional handler (i.e: one for North America, another for Europe, another for LATAM, another for Asia, etc).
+- [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) - Selected as it connects the player to the most appropiate regional zone based on latency.
+- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview) - Selected as it's the simplest way to run the small pieces of matchmaking logic, also you are only charged when you have users attempting to matchmake and play.
+- [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) - Allows batching requests, handy to avoid exhausting the Azure Cache of Redis connection pool.
+- [Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-overview) - Simple key/value pair database for storing the information of the different players trying to join a multiplayer session, and also the connection information (IP/port) from the game servers used. Selected as query flexibility, indexing, replication and move data out are not a strict requirement, also pricing is based on storage capacity exclusively.
+- [Resource Groups](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal#manage-resource-groups) - Leverage one resource group for the Azure Traffic Manager and one resource group for each matchmaking regional handler (i.e: one for North America, another for Europe, another for LATAM, another for Asia, etc).
 
 ## Deployment template
 
@@ -37,8 +37,8 @@ Have a look at the [general guidelines documentation](./general-guidelines.md#na
 
 Finally add the Function [application settings](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) so the sample project can reach out to the Azure services:
 
-- EVENTHUB_CONNECTION_STRING: the [connection string](https://docs.microsoft.com/azure/event-hubs/event-hubs-get-connection-string) to the Azure Event Hub namespace that was created.
-- REDIS_CONNECTION_STRING: the [connection string](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#access-keys) to the Azure Cache for Redis that was created.
+- EVENTHUB_CONNECTION_STRING - The [connection string](https://docs.microsoft.com/azure/event-hubs/event-hubs-get-connection-string) to the Azure Event Hub namespace that was created.
+- REDIS_CONNECTION_STRING - The [connection string](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#access-keys) to the Azure Cache for Redis that was created.
 
 >[!TIP]
 > To run the Azure Functions locally, update the *local.settings.json* file with these same app settings.

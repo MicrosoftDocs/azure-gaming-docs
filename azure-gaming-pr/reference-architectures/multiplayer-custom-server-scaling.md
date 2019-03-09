@@ -18,7 +18,7 @@ Refer to [Orchestrating and scaling Icebird's game server with Docker and Azure]
 
 ## Architecture diagram
 
-[![Basic game server hosting using encapsulation](media/multiplayer/multiplayer-basicgameserver-encapsulate.png)](media/multiplayer/multiplayer-basicgameserver-encapsulate.png)
+[![Basic game server hosting using encapsulation](media/multiplayer/multiplayer-custom-game-server-scaling.png)](media/multiplayer/multiplayer-custom-game-server-scaling.png)
 
 ## Reference implementation details
 

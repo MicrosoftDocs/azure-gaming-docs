@@ -16,12 +16,12 @@ The game server pools are managed by Azure Batch, responsible for **creating vir
 
 ## Architecture diagram
 
-[![Synchronous multiplayer using Azure Batch](media/multiplayer/multiplayer-shortsession-batchhosting.png)](media/multiplayer/multiplayer-shortsession-batchhosting.png)
+[![Synchronous multiplayer using Azure Batch](media/multiplayer/multiplayer-batch-hosting.png)](media/multiplayer/multiplayer-batch-hosting.png)
 
 ## Relevant services
 
-- [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview): Selected as it connects the player to the most appropiate regional zone based on latency.
-- [Azure Batch](https://docs.microsoft.com/azure/batch/batch-technical-overview): It is used for creating VMs and opening ports. Selected as it can automatically scale pools based on parameters that you define.
+- [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) - Selected as it connects the player to the most appropiate regional zone based on latency.
+- [Azure Batch](https://docs.microsoft.com/azure/batch/batch-technical-overview) - It is used for creating VMs and opening ports. Selected as it can automatically scale pools based on parameters that you define.
 
 Leverage one resource group for the Azure Traffic Manager and one resource group for each regional virtual machine cluster.
 

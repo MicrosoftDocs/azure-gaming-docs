@@ -13,17 +13,17 @@ ms.service: azure
 
 This reference architecture **focuses on the development phase and a small number of users**, gathering data from gameplay sessions and displaying it directly within the game engine - Unreal Engine in this case. It provides the fastest response time so your development and QA teams don't have to wait to get results from the testing sessions.
 
-[![In-editor debugging telemetry look and feel](media/analytics/analytics-ineditortelemetry.png)](media/analytics/analytics-ineditortelemetry.png)
+[![In-editor debugging telemetry look and feel](media/analytics/analytics-in-editor-telemetry.png)](media/analytics/analytics-in-editor-telemetry.png)
 
 ## Architecture diagram
 
-[![In-editor debugging telemetry reference architecture](media/analytics/analytics-ineditordebuggingtelemetry.png)](media/analytics/analytics-ineditordebuggingtelemetry.png)
+[![In-editor debugging telemetry reference architecture](media/analytics/analytics-in-editor-debugging-telemetry.png)](media/analytics/analytics-in-edito-rdebugging-telemetry.png)
 
 ## Relevant services
 
-- [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/): Chosen as it's a service tailored for analytics pipelines and is simple to use with little configuration or management overhead. It is capable of receiving and processing the events in real-time.
-- [Azure Functions](https://azure.microsoft.com/services/functions/): Chosen as we are not going to need windowing (perform some set-based computation or other operations over subsets of events that fall within some period of time) and we are looking to just copying data over from Azure Event Hubs to the storage/databases.
-- [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/): Chosen for being able to store data with a higher rate of ingest.
+- [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) - Selected as it's a service tailored for analytics pipelines and is simple to use with little configuration or management overhead. It is capable of receiving and processing the events in real-time.
+- [Azure Functions](https://azure.microsoft.com/services/functions/) - Selected as we are not going to need windowing (perform some set-based computation or other operations over subsets of events that fall within some period of time) and we are looking to just copying data over from Azure Event Hubs to the storage/databases.
+- [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) - Selected for being able to store data with a higher rate of ingest.
 
 ## Step by step
 

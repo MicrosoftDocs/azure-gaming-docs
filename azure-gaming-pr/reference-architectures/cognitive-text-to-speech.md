@@ -16,16 +16,16 @@ In the case of players with reading disabilities, being able to hear text messag
 
 ## Architecture Diagram
 
-[![Text to speech reference architecture](media/cognitive/cognitive-texttospeech.png)](media/cognitive/cognitive-texttospeech.png)
+[![Text to speech reference architecture](media/cognitive/cognitive-text-to-speech.png)](media/cognitive/cognitive-text-to-speech.png)
 
 ## Architecture Services
 
-- [Azure Event Hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-about): Chosen as it keeps the order of the messages received.
-- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview): Simplest way to run code on-demand in the cloud.
-- [Azure Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview): Included to avoid detect profanity or other undesirable language.
-- [Azure Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview): This service detects the language used by the player, which is required for the Azure Speech service. Alternatively, [Azure Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) can also detect the language.
-- [Azure Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech): The service that provides the text to speech functionality.
-- [Azure Premium Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers): Selected due to latency requirements, as the standard Azure Blob Storage may have limitations if the voice-file read is on demand during game play.
+- [Azure Event Hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-about) - Chosen as it keeps the order of the messages received.
+- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview) - Simplest way to run code on-demand in the cloud.
+- [Azure Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) - Included to avoid detect profanity or other undesirable language.
+- [Azure Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) - This service detects the language used by the player, which is required for the Azure Speech service. Alternatively, [Azure Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) can also detect the language.
+- [Azure Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) - The service that provides the text to speech functionality.
+- [Azure Premium Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) - Selected due to latency requirements, as the standard Azure Blob Storage may have limitations if the voice-file read is on demand during game play.
 
 ## Architecture Considerations
 
@@ -35,9 +35,9 @@ There is a message limit of 245,760 bytes for each event sent.  When the result 
 
 When enabling this functionality in your game, keep in mind the following variables:
 
-- **Voices and languages supported**: for a complete list of voices, see the [language support](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech) topic.
-- **Regions supported**: for information about regional availability, see the [regions](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech) topic.
-- **Audio outputs**: there is a list of supported audio formats. Each incorporates a bitrate and encoding type. The Speech Service supports 24-KHz and 16-KHz audio outputs. For all the details see the [audio outputs](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#audio-outputs) topic.
+- **Voices and languages supported** - For a complete list of voices, see the [language support](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech) topic.
+- **Regions supported** - For information about regional availability, see the [regions](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech) topic.
+- **Audio outputs** - There is a list of supported audio formats. Each incorporates a bitrate and encoding type. The Speech Service supports 24-KHz and 16-KHz audio outputs. For all the details see the [audio outputs](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#audio-outputs) topic.
 
 ## Deployment Template
 
@@ -53,9 +53,9 @@ There are two types of Azure Cognitive Services subscriptions. The first is a su
 
 Finally, add these Function [application settings](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) so the sample project can connect to the Azure services:
 
-- EVENTHUB_CONNECTION_STRING: the [connection string](https://docs.microsoft.com/azure/event-hubs/event-hubs-get-connection-string) to the Azure Event Hub namespace that was created
-- TEXTANALYTICS_KEY: the [access key](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) for the Azure Text Analytics cognitive service that was created
-- SPEECH_KEY: the [access key](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) for the Azure Speech Cognitive Service that was created.
+- EVENTHUB_CONNECTION_STRING - The [connection string](https://docs.microsoft.com/azure/event-hubs/event-hubs-get-connection-string) to the Azure Event Hub namespace that was created
+- TEXTANALYTICS_KEY - The [access key](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) for the Azure Text Analytics cognitive service that was created
+- SPEECH_KEY - The [access key](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) for the Azure Speech Cognitive Service that was created.
 
 >[!TIP]
 > To run the Azure Functions locally, update the *local.settings.json* file with these same app settings.

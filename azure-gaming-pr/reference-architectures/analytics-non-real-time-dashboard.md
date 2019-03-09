@@ -17,15 +17,15 @@ This reference architecture represents a simple analytics pipeline that you can 
 
 ### Architecture diagram
 
-[![Non-real time dashboard reference architecture](media/analytics/analytics-nonrealtimedashboard.png)](media/analytics/analytics-nonrealtimedashboard.png)
+[![Non-real time dashboard reference architecture](media/analytics/analytics-non-real-time-dashboard.png)](media/analytics/analytics-non-real-time-dashboard.png)
 
 ### Relevant services
 
-- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview): Chosen as the API receiving the events from the device clients.
-- [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/): Chosen as it's a service tailored for analytics pipelines and is simple to use with little configuration or management overhead. As a bonus, it will be also usable if you decide later on that you need some events to be processed in real-time.
-- [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks): Selected as it can transform directly the data from Azure Even Hub Capture (AVRO format) to JSON files and also for preparing the data into CSV files compatible with Power BI. Streaming data from Azure Event Hubs to Azure Blob Storage in a performant way is not entirely trivial, unless it's really a very small scale.
-- [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview): Chosen as it’s optimized for storing economically massive amounts of unstructured data. Note that it doesn't support a hierarchical file system but sometime in the future you will be able to upgrade to Azure Data Lake Storage Gen2, which offers it as well as the advantages of Blob storage, including low-cost, tiered storage; high availability; strong consistency; and disaster recovery capabilities.
-- [Power BI](https://powerbi.microsoft.com/): Chosen for the full dashboard customization that it provides. Note that Azure can integrate with other various data visualization products like IBM SPSS or Tableau for example, but at the moment those can't connect directly with Azure Blob Storage, check out the alternative architecture below leveraging Azure SQL Data Warehouse if you are interested on using these data visualization products.
+- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview) - Selected as the API receiving the events from the device clients.
+- [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) - Selected as it's a service tailored for analytics pipelines and is simple to use with little configuration or management overhead. As a bonus, it will be also usable if you decide later on that you need some events to be processed in real-time.
+- [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) - Selected as it can transform directly the data from Azure Even Hub Capture (AVRO format) to JSON files and also for preparing the data into CSV files compatible with Power BI. Streaming data from Azure Event Hubs to Azure Blob Storage in a performant way is not entirely trivial, unless it's really a very small scale.
+- [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) - Selected as it’s optimized for storing economically massive amounts of unstructured data. Note that it doesn't support a hierarchical file system but sometime in the future you will be able to upgrade to Azure Data Lake Storage Gen2, which offers it as well as the advantages of Blob storage, including low-cost, tiered storage; high availability; strong consistency; and disaster recovery capabilities.
+- [Power BI](https://powerbi.microsoft.com/) - Selected for the full dashboard customization that it provides. Note that Azure can integrate with other various data visualization products like IBM SPSS or Tableau for example, but at the moment those can't connect directly with Azure Blob Storage, check out the alternative architecture below leveraging Azure SQL Data Warehouse if you are interested on using these data visualization products.
 
 ### Step by step
 
@@ -127,7 +127,7 @@ You could consider replacing [Azure Databricks](https://docs.microsoft.com/azure
 
 ### Architecture diagram
 
-[![Large scale analytics with Azure SQL Data Warehouse](media/analytics/analytics-sqldatawarehouse.png)](media/analytics/analytics-sqldatawarehouse.png)
+[![Large scale analytics with Azure SQL Data Warehouse](media/analytics/analytics-sql-data-warehouse.png)](media/analytics/analytics-sql-data-warehouse.png)
 
 ### Implementation details
 
@@ -137,7 +137,7 @@ Leveraging [Azure Event Hub Capture](https://docs.microsoft.com/azure/event-hubs
 
 Click the following button to deploy the project to your Azure subscription:
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fevent-grid%2FEventHubsDataMigration.json" target="_blank"><img alt="Deploy using an Azure Resource Manager template" src="media/azureresourcemanager-deploybutton.png"/></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fevent-grid%2FEventHubsDataMigration.json" target="_blank"><img alt="Deploy using an Azure Resource Manager template" src="media/azure-resource-manager-deploy-button.png"/></a>
 
 This operation will trigger a template deployment of the [deploy.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json) ARM template file to your Azure subscription, which will create the necessary Azure resources.
 
@@ -152,7 +152,7 @@ Optionally you can choose to prepare data outside of your warehouse to leverage 
 
 ## Additional resources and samples
 
-- [Azure Event Hubs SDK for Unity](https://docs.microsoft.com/sandbox/gamedev/unity/azure-event-hubs-unity): This is a sandbox project. The content in this article is unsupported, and therefore may be out of date or not in a working state.
+- [Azure Event Hubs SDK for Unity](https://docs.microsoft.com/sandbox/gamedev/unity/azure-event-hubs-unity) - This is a sandbox project. The content in this article is unsupported, and therefore may be out of date or not in a working state.
 - [Deploy Tableau Server via Azure Marketplace](https://azure.microsoft.com/blog/tableau-server-in-the-azure-marketplace/)
 - [Tableau Server in the Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tableau.tableau-server?tab=Overview)
 

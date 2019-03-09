@@ -16,12 +16,12 @@ The game server pools are managed by Azure Service Fabric, responsible for **cre
 
 ## Architecture diagram
 
-[![Synchronous multiplayer using Azure Service Fabric](media/multiplayer/multiplayer-shortsession-sfhosting.png)](media/multiplayer/multiplayer-shortsession-sfhosting.png)
+[![Synchronous multiplayer using Azure Service Fabric](media/multiplayer/multiplayer-sf-hosting.png)](media/multiplayer/multiplayer-sf-hosting.png)
 
 ## Relevant services
 
-- [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview): selected as it connects the player to the most appropiate regional zone based on latency.
-- [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview): makes it easy to package, deploy, and manage scalable and reliable game servers within containers.
+- [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) - Selected as it connects the player to the most appropiate regional zone based on latency.
+- [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) - Makes it easy to package, deploy, and manage scalable and reliable game servers within containers.
 
 Leverage one resource group for the Azure Traffic Manager and one resource group for each regional Service Fabric Cluster.
 

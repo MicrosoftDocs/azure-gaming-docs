@@ -14,11 +14,11 @@ ms.service: azure
 
 ## Simple leaderboard for small scale
 
-[![Simple leaderboard look and feel](media/leaderboard/leaderboard-simpleredis.png)](media/leaderboard/leaderboard-simpleredis.png)
+[![Simple leaderboard look and feel](media/leaderboard/leaderboard-simple-redis.png)](media/leaderboard/leaderboard-simple-redis.png)
 
 ### Architecture diagram
 
-[![Simple leaderboard for small scale using a non-relational database](media/leaderboard/leaderboard-nonrelational-redis.png)](media/leaderboard/leaderboard-nonrelational-redis.png)
+[![Simple leaderboard for small scale using a non-relational database](media/leaderboard/leaderboard-non-relational-redis.png)](media/leaderboard/leaderboard-non-relational-redis.png)
 
 ### Implementation details
 
@@ -46,7 +46,7 @@ Alternatively to [Azure SQL Database](https://docs.microsoft.com/azure/sql-datab
 
 ### Architecture diagram
 
-![Non-relational database leaderboard use case](media/leaderboard/leaderboard-changefeed.png)
+![Non-relational database leaderboard use case](media/leaderboard/leaderboard-change-feed.png)
 
 ### Architecture services
 
@@ -173,7 +173,7 @@ With respect to optimizing Cosmos DB cost, here are some useful resources:
 
 Depending on the platform your players are using, you may want to let them know when their score has been beaten by a friend for example, you can leverage the [Azure Cosmos DB change feed](https://docs.microsoft.com/azure/cosmos-db/change-feed) and the [Azure Notification Hubs service](https://docs.microsoft.com/azure/notification-hubs/) for enabling that.
 
-![Push notification support architecture](media/leaderboard/leaderboard-pushnotification.png)
+![Push notification support architecture](media/leaderboard/leaderboard-push-notification.png)
 
 ## Additional resources and samples
 

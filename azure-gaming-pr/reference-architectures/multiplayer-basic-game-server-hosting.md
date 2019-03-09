@@ -14,16 +14,16 @@ ms.service: azure
 
 This reference architecture details the steps to setup a basic Azure backend that will host a game server on either Windows or Linux, using **Minecraft server** as an example.
 
-![Minecraft server running on an Azure Virtual Machine](media/multiplayer/multiplayer-minecraftserver.png)
+![Minecraft server running on an Azure Virtual Machine](media/multiplayer/multiplayer-minecraft-server.png)
 
 ## Architecture diagram
 
-![Hosting a single game server on an Azure Virtual Machine](media/multiplayer/multiplayer-basicgameserverhosting.png)
+![Hosting a single game server on an Azure Virtual Machine](media/multiplayer/multiplayer-basic-game-server-hosting.png)
 
 ## Relevant services
 
-- [Azure Windows Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/overview) and [Azure Linux Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview): the most basic way to get computing power on Azure.
-- [Azure Disk Storage](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds): basic persistent storage.
+- [Azure Windows Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/overview) and [Azure Linux Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview) - The most basic way to get computing power on Azure.
+- [Azure Disk Storage](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds) - Basic persistent storage.
 
 ## Step by step
 
@@ -128,7 +128,7 @@ In the case of Minecraft servers, just a reminder that the default ports vary de
 
 |Windows|Linux|
 |----------|-----------|
-|Use Disk Management (diskmgmt.msc)<br><br>To open Disk Management, right-click the Start button and select Disk Management.<br><br>Notice that the disk 2 is unallocated, that's the persistent disk that needs to be initialized and formatted.<br>[![Disk Management tool showing disk initialization](media/multiplayer/gameserver-formatdisk.png)](media/multiplayer/gameserver-formatdisk.png)|[Connect to the Linux VM to mount the new disk](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk#connect-to-the-linux-vm-to-mount-the-new-disk)<br><br>It involves the following steps:<br> 1. Discovering the disk<br>2. Partitioning it<br>3. Writing a file system on it<br>4. Mounting it to a directory<br>5. Setting up automatic mounting after reboots|
+|Use Disk Management (diskmgmt.msc)<br><br>To open Disk Management, right-click the Start button and select Disk Management.<br><br>Notice that the disk 2 is unallocated, that's the persistent disk that needs to be initialized and formatted.<br>[![Disk Management tool showing disk initialization](media/multiplayer/game-server-format-disk.png)](media/multiplayer/game-server-format-disk.png)|[Connect to the Linux VM to mount the new disk](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk#connect-to-the-linux-vm-to-mount-the-new-disk)<br><br>It involves the following steps:<br> 1. Discovering the disk<br>2. Partitioning it<br>3. Writing a file system on it<br>4. Mounting it to a directory<br>5. Setting up automatic mounting after reboots|
 
 ### Install game server dependencies
 

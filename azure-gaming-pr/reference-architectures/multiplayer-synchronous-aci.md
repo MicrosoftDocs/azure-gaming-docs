@@ -20,23 +20,23 @@ We're going to describe the solution listed here on [GitHub](https://github.com/
 
 ## Architecture diagram
 
-[![Synchronous multiplayer using Azure Container Instances](media/multiplayer/multiplayer-shortsession-acihosting.png)](media/multiplayer/multiplayer-shortsession-acihosting.png)
+[![Synchronous multiplayer using Azure Container Instances](media/multiplayer/multiplayer-aci-hosting.png)](media/multiplayer/multiplayer-aci-hosting.png)
 
 ## Relevant services
 
-- [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview): Selected as it connects the player to the most appropiate regional zone based on latency.
-- [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-overview): Fastest and simplest way to run a container in Azure, without having to manage any virtual machines and without having to adopt a higher-level service.
-- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview): Chosen as they are the simplest way to run the small pieces of logic.
-- [Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview): simple key/attribute storage for keeping track of the Container Groups state.
-- [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview): Selected as it has built-in support for events coming from Azure services.
-- [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview): We just need a place to store the configuration of the auto-scaling helper.
-- [Resource Groups](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal#manage-resource-groups): Leverage one resource group for the Azure Traffic Manager and one resource group for each regional game server pool (i.e: one for North America, another for Europe, another for LATAM, another for Asia, etc).
+- [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) - Selected as it connects the player to the most appropiate regional zone based on latency.
+- [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-overview) -Fastest and simplest way to run a container in Azure, without having to manage any virtual machines and without having to adopt a higher-level service.
+- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview) - Chosen as they are the simplest way to run the small pieces of logic.
+- [Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) - Simple key/attribute storage for keeping track of the Container Groups state.
+- [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) - Selected as it has built-in support for events coming from Azure services.
+- [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) - We just need a place to store the configuration of the auto-scaling helper.
+- [Resource Groups](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal#manage-resource-groups) - Leverage one resource group for the Azure Traffic Manager and one resource group for each regional game server pool (i.e: one for North America, another for Europe, another for LATAM, another for Asia, etc).
 
 ## Deployment template
 
 Click the following button to deploy the project to your Azure subscription:
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdgkanatsios%2FAzureContainerInstancesManagement%2Fmaster%2Fdeploy.json" target="_blank"><img alt="Deploy using an Azure Resource Manager template" src="media/azureresourcemanager-deploybutton.png"/></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdgkanatsios%2FAzureContainerInstancesManagement%2Fmaster%2Fdeploy.json" target="_blank"><img alt="Deploy using an Azure Resource Manager template" src="media/azure-resource-manager-deploy-button.png"/></a>
 
 This operation will trigger a template deployment of the [deploy.json](https://github.com/dgkanatsios/AzureContainerInstancesManagement/blob/master/deploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources as well as pull the source code from this repository.
 
@@ -62,14 +62,14 @@ Moreover, as soon as the deployment completes, you need to manually add the Even
 
 When you deploy the Event Grid subscription using the Portal, these are the values you need to fill in:
 
-- **Name**: select a distinctive name for the Event Grid subscription.
-- **Topic Type**: select 'Resource Groups' (or 'Azure subscription' if your Azure Container Instances will be deployed in various Resource Groups).
-- **Subscription**: the subscription which you want to monitor for Azure Container Instances' creation.
-- **Resource Group**: select the Resource Group that will contain the Azure Container Instance you create. Make sure that the **Subscribe to all event types** checkbox is checked.
-- **Subscriber type**: Webhook.
-- **Subscription Endpoint**: this will contain the trigger URL for your `ACIMonitor` Azure Function.
-- **Prefix filter**: leave it blank.
-- **Suffix filter**: also leave it blank.
+- **Name** - Select a distinctive name for the Event Grid subscription.
+- **Topic Type** - Select 'Resource Groups' (or 'Azure subscription' if your Azure Container Instances will be deployed in various Resource Groups).
+- **Subscription** - The subscription which you want to monitor for Azure Container Instances' creation.
+- **Resource Group** - Select the Resource Group that will contain the Azure Container Instance you create. Make sure that the **Subscribe to all event types** checkbox is checked.
+- **Subscriber type** - Webhook.
+- **Subscription Endpoint** - This will contain the trigger URL for your `ACIMonitor` Azure Function.
+- **Prefix filter** - Leave it blank.
+- **Suffix filter** - Also leave it blank.
 
 Last but not least, with the new v2 runtime of Azure Functions, the EventGrid binding extension *may* need manual registration. Under normal circumstances, the extension will be installed automatically (as it's registered in the *extensions.csproj* file), but if this does not happen, you can check the following articles on how to do it manually:
 
@@ -98,7 +98,7 @@ Last but not least, with the new v2 runtime of Azure Functions, the EventGrid bi
 
 Using a more specific example:
 
-![Azure Container Instance workflow](media/multiplayer/aci-workflowdiagram2.png)
+![Azure Container Instance workflow](media/multiplayer/aci-workflow-diagram-2.png)
 
 1. At the beginning, there is no server instances.
 2. Suddenly a server is needed for players to connect. `ACICreate` is called.

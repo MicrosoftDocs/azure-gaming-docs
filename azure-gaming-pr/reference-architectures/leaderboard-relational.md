@@ -14,7 +14,7 @@ ms.service: azure
 
 ## Architecture Diagram
 
-![Relational database leaderboard use case](media/leaderboard/leaderboard-sqldatabase.png)
+![Relational database leaderboard use case](media/leaderboard/leaderboard-sql-database.png)
 
 ## Architecture Services
 
@@ -49,7 +49,7 @@ To ensure sufficient resources for gaming launches and ongoing large-scale throu
 
 For the purposes of this reference architecture, we will use the following base tables and supporting constraints and indexes. Each table is intended to cover the “minimum viable” schema and can be extended based on gaming requirements. 
 
-[![Relational database leaderboard schema](media/leaderboard/leaderboard-relationalschema.png)](media/leaderboard/leaderboard-relationalschema.png)
+[![Relational database leaderboard schema](media/leaderboard/leaderboard-relational-schema.png)](media/leaderboard/leaderboard-relational-schema.png)
 
 This schema accommodates the following usage scenario:
 

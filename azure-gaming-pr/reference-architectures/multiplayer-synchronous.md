@@ -30,4 +30,4 @@ Here are different implementations of the same game server hosting use case to g
 - [Azure Kubernetes Service (AKS)](./multiplayer-synchronous-aks.md)
 - [Azure Service Fabric](./multiplayer-synchronous-sf.md)
 - [Azure Container Instances (ACI)](./multiplayer-synchronous-aci.md)
-- [Custom game server scaling](./multiplayer-customserverscaling.md)
+- [Custom game server scaling](./multiplayer-custom-server-scaling.md)

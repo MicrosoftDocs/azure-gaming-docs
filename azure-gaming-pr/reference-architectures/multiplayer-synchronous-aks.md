@@ -18,14 +18,14 @@ We're going to describe the solution listed here on [GitHub](https://github.com/
 
 ## Architecture diagram
 
-[![Synchronous multiplayer using Azure Kubernetes Service](media/multiplayer/multiplayer-shortsession-akshosting.png)](media/multiplayer/multiplayer-shortsession-akshosting.png)
+[![Synchronous multiplayer using Azure Kubernetes Service](media/multiplayer/multiplayer-aks-hosting.png)](media/multiplayer/multiplayer-aks-hosting.png)
 
 ## Relevant services
 
-- [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview): Selected as it connects the player to the most appropiate regional zone based on latency.
-- [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/): Simplifies the deployment and operations of Kubernetes.
+- [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) - Selected as it connects the player to the most appropiate regional zone based on latency.
+- [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) - Simplifies the deployment and operations of Kubernetes.
 - [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
-- [Resource Groups](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal#manage-resource-groups): Leverage one resource group for the Azure Traffic Manager and one resource group for each regional game server pool (i.e: one for North America, another for Europe, another for LATAM, another for Asia, etc).
+- [Resource Groups](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal#manage-resource-groups) - Leverage one resource group for the Azure Traffic Manager and one resource group for each regional game server pool (i.e: one for North America, another for Europe, another for LATAM, another for Asia, etc).
 
 ## Architecture considerations
 
@@ -92,7 +92,7 @@ All API methods are protected via an access code, represented as string and kept
 
 For smaller clusters you can simplify by using a single Pod (the one containing the API Server subcomponent, Webhook subcomponent and controllers) for all the Nodes. In a Kubernetes cluster, every Pod can talk to other Pods in all other Nodes by design.
 
-[![Server hosting using AKS with a single management set of Pods](media/multiplayer/multiplayer-shortsession-akshosting-single.png)](media/multiplayer/multiplayer-shortsession-akshosting-single.png)
+[![Server hosting using AKS with a single management set of Pods](media/multiplayer/multiplayer-aks-hosting-single.png)](media/multiplayer/multiplayer-aks-hosting-single.png)
 
 ## Additional resources and samples
 
