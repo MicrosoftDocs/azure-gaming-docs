@@ -4,7 +4,7 @@ description: These reference architectures describes a variety of analytics use 
 manager: 
 keywords: analytics 
 ms.topic: reference-architecture
-ms.date: 10/29/2018
+ms.date: 3/14/2019
 ms.author: brpeek
 ms.service: azure
 ---

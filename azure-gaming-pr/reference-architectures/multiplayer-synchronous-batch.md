@@ -2,10 +2,9 @@
 title: Multiplayer Game Server Hosting Using Azure Batch
 description: This is a reference architecture to build a scalable game server hosting on Azure Batch
 author: BrianPeek
-manager: timheuer
 keywords: 
 ms.topic: reference-architecture
-ms.date: 10/29/2018
+ms.date: 3/14/2019
 ms.author: brpeek
 ms.service: azure
 ---

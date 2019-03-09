@@ -2,10 +2,9 @@
 title: Text Translation
 description: It's not unusual that players in the same game session natively speak different languages and may appreciate receiving both the original message and its translation.
 author: BrianPeek
-manager: timheuer
 keywords: 
 ms.topic: reference-architecture
-ms.date: 10/29/2018
+ms.date: 3/14/2019
 ms.author: brpeek
 ms.service: azure
 ---

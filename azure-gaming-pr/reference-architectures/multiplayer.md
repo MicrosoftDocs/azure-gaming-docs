@@ -2,10 +2,9 @@
 title: Multiplayer Backend Reference Architectures
 description: These reference architectures describe a variety of multiplayer backend use cases and implementations with different alternatives, enabling you to architect a cloud solution that works for your game.
 author: BrianPeek
-manager: timheuer
 keywords: 
 ms.topic: reference-architecture
-ms.date: 10/29/2018
+ms.date: 3/14/2019
 ms.author: brpeek
 ms.service: azure
 ---

@@ -2,10 +2,9 @@
 title: Asynchronous Multiplayer
 description: This is a reference architecture to build an asynchronous multiplayer game on Azure
 author: BrianPeek
-manager: timheuer
 keywords: 
 ms.topic: reference-architecture
-ms.date: 10/29/2018
+ms.date: 3/14/2019
 ms.author: brpeek
 ms.service: azure
 ---

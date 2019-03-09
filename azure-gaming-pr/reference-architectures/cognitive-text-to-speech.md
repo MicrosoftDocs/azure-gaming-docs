@@ -2,10 +2,9 @@
 title: Text to Speech
 description: In the case of players with reading disabilities, being able to hear text messages that were sent out using text to speech services may help bringing them into the conversation.
 author: BrianPeek
-manager: timheuer
 keywords: 
 ms.topic: reference-architecture
-ms.date: 10/29/2018
+ms.date: 3/14/2019
 ms.author: brpeek
 ms.service: azure
 ---

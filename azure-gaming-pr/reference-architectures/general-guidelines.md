@@ -2,10 +2,9 @@
 title: General Guidelines
 description: Set of best practices and rules of thumb from services leveraged in the Azure gaming reference architectures
 author: BrianPeek
-manager: timheuer
 keywords: 
 ms.topic: reference-architecture
-ms.date: 10/29/2018
+ms.date: 3/14/2019
 ms.author: brpeek
 ms.service: azure
 ---

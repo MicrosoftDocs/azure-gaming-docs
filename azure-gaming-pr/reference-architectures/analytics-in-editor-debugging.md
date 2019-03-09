@@ -4,7 +4,7 @@ description: This reference architecture focuses on the development phase and a 
 manager: 
 keywords: analytics 
 ms.topic: reference-architecture
-ms.date: 10/29/2018
+ms.date: 3/14/2019
 ms.author: brpeek
 ms.service: azure
 ---

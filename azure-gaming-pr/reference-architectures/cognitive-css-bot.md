@@ -2,10 +2,9 @@
 title: Customer Service Bot
 description: Provide your players a conversational assistant tailored to your game that understands natural language. This assistant can answer questions defined in one or more knowledge sets containing information from marketing materials to troubleshooting guides and everything in between.
 author: BrianPeek
-manager: timheuer
 keywords: 
 ms.topic: reference-architecture
-ms.date: 10/29/2018
+ms.date: 3/14/2019
 ms.author: brpeek
 ms.service: azure
 ---

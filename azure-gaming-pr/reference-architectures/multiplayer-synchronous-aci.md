@@ -2,10 +2,9 @@
 title: Multiplayer Game Server Hosting Using ACI
 description: Explore this alternative solution using Azure Container Instances, Event Grid, and Azure Functions that automatically scales on demand and is billed per second of usage. Simpler architecture and maintenance leveraging hosted virtual machines at the expense of paying a premium.
 author: BrianPeek
-manager: timheuer
 keywords: 
 ms.topic: reference-architecture
-ms.date: 10/29/2018
+ms.date: 3/14/2019
 ms.author: brpeek
 ms.service: azure
 ---

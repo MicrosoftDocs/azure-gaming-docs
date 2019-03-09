@@ -2,10 +2,9 @@
 title: Content Moderation
 description: Not everyone behaves appropriately while they are playing online, and some moderation is needed to maintain a civil, welcoming, and pleasurable experience amongst the players.
 author: BrianPeek
-manager: timheuer
 keywords: 
 ms.topic: reference-architecture
-ms.date: 10/29/2018
+ms.date: 3/14/2019
 ms.author: brpeek
 ms.service: azure
 ---
