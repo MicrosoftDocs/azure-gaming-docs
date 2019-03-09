@@ -17,7 +17,7 @@ This reference architecture **focuses on the development phase and a small numbe
 
 ## Architecture diagram
 
-[![In-editor debugging telemetry reference architecture](media/analytics/analytics-in-editor-debugging-telemetry.png)](media/analytics/analytics-in-edito-rdebugging-telemetry.png)
+[![In-editor debugging telemetry reference architecture](media/analytics/analytics-in-editor-debugging-telemetry.png)](media/analytics/analytics-in-editor-debugging-telemetry.png)
 
 ## Relevant services
 

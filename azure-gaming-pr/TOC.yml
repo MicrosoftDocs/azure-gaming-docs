@@ -57,4 +57,4 @@
     - name: Text to Speech
       href: reference-architectures/cognitive-text-to-speech.md
     - name: Customer Service Bot
-      href: reference-architectures/cognitive-cssbot.md
+      href: reference-architectures/cognitive-css-bot.md
