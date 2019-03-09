@@ -1,7 +1,6 @@
 ---
 title: Analytics Reference Architectures
 description: These reference architectures describes a variety of analytics use cases and implementations with different alternatives, enabling you to architect your own cloud solution so you can have full control and customization to fit your game design like a glove.
-manager: 
 keywords: analytics 
 ms.topic: reference-architecture
 ms.date: 3/14/2019
