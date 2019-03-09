@@ -11,7 +11,7 @@ ms.service: azure
 
 # Text to Speech Reference Architecture
 
-In the case of players with reading disabilities, being able to hear text messages that were sent out using **text to speech** services may help bringing them into the conversation.
+Help bring everyone into the conversation by converting text messages to audio using **text to speech**.
 
 ## Architecture Diagram
 
