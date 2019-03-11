@@ -50,6 +50,12 @@ There are some differences depending on what operating system the virtual machin
     - Custom image source disk can be one of the three types: 1. Snapshot, 2. Manageddisk, 3. VHD.
         - Currently we recommend the source to be Snapshot. Storage has scale limits which stops Azure Batch from scaling beyond 2500 VMs at once.
 
+### Containers
+
+In case you have containerized you game in Linux containers, there are pre-baked images to run the containers. See [https://docs.microsoft.com/azure/batch/batch-docker-container-workloads](Run container applications on Azure Batch) to learn how to create a pool of compute nodes that support running container tasks, and then run container tasks on the pool.
+
+Refer to the **microsoft-azure-batch** publisher documented in [this link](https://docs.microsoft.com/azure/batch/batch-linux-nodes#list-of-virtual-machine-images) for the available Linux images.
+
 ## Deployment template
 
 Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes an article summarizing the naming rules and restrictions for Azure services.
