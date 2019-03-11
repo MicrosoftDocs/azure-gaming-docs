@@ -31,12 +31,12 @@ There are some differences depending on what operating system the virtual machin
 ### Operating system
 
 - **Windows**
-    - Windows Server virtual machines take roughly twice the time than Linux virtual machines to be up and running, and ready for scheduling
-    - At the present time, Windows Server 2012 performs better than Windows Server 2016
-    - It is worth mentioning that if you already possess a valid on-premise license for Windows, you may not have to pay the full cost for the SKU
+    - Windows Server virtual machines take roughly twice the time than Linux virtual machines to be up and running, and ready for scheduling.
+    - At the present time, Windows Server 2012 performs better than Windows Server 2016.
+    - It is worth mentioning that if you already possess a valid on-premise license for Windows, you may not have to pay the full cost for the SKU.
 
 - **Linux**
-    - It's roughly twice as fast to be up and running, and ready for scheduling, than using Windows
+    - It's roughly twice as fast to be up and running, and ready for scheduling, than using Windows.
 
 ### Platform images
 
