@@ -95,9 +95,11 @@ The device client [polls the match request monitor’s status](https://docs.micr
 
 #### Exercise for the reader
 
-The sample provided doesn't include logic to handle if a player decided to cancel an ongoing matchmaking request. In that scenario, the player should be removed from the database to enable future matchmaking attempts.
+The sample provided doesn't include logic to handle if a player **decided to cancel an ongoing matchmaking request**. In that scenario, the player should be removed from the database to enable future matchmaking attempts.
 
-Also the sample doesn't include the code to do scale out requests when there are no servers available to make it as generic as possible. There is a cue within the batched ready session monitor timer triggered Azure Function.
+It doesn't make use of the PlayersTimeStartedMatchmaking and SessionsCreationTime sorted sets either, they could be leveraged to optimize the time the matchmaking time.
+
+Also the sample doesn't include the code to do **scale out requests** when there are no servers available to make it as generic as possible. There is a cue within the batched ready session monitor timer triggered Azure Function.
 
 ## Database setup
 
