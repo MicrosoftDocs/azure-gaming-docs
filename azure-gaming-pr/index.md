@@ -19,7 +19,7 @@ Some advantages of building your own game services and back end from scratch inc
 * Optimizing costs by paying for only what you use each month.
 
 <ul class="cardsFTitle panelContent">
-    <li>        
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -39,7 +39,7 @@ Some advantages of building your own game services and back end from scratch inc
             </div>
         </div>
     </li>
-    <li>        
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
