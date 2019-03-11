@@ -100,7 +100,7 @@ The schema is:
 ```json
 {
     "id": "1",
-    "platform": "XboxX Live",
+    "platform": "Xbox Live",
     "level": 3,
     "character": "Damian",
     "name": "Brian",  //platform gamertag
