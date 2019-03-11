@@ -35,6 +35,19 @@ Ultimately the goal is to free up the virtual machines as fast as possible, so t
 
 Keep an eye on the [Azure limits](https://aka.ms/azurelimits) page to know how many concurrent users you would be able to run based on the Azure Storage limitations. If you need to scale consider replacing Azure Table storage with Azure Cosmos DB and the table API.
 
+## Deployment template
+
+Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes an article summarizing the naming rules and restrictions for Azure services.
+
+>[!NOTE]
+> If you're interested in how the ARM template works, review the Azure Resource Manager template documentation from each of the different services leveraged in this reference architecture:
+>
+> - [Automate resource deployment for your function app in Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-infrastructure-as-code)
+> - [Azure Container Registry template](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)
+
+>[!TIP]
+> To run the Azure Functions locally, update the *local.settings.json* file with these same app settings.
+
 ## Pricing
 
 If you don't have an Azure subscription, create a [free account](https://aka.ms/azfreegamedev) to get started with 12 months of free services. You're not charged for services included for free with Azure free account, unless you exceed the limits of these services. Learn how to check usage through the [Azure Portal](https://docs.microsoft.com/azure/billing/billing-check-free-service-usage#check-usage-on-the-azure-portal) or through the [usage file](https://docs.microsoft.com/azure/billing/billing-check-free-service-usage#check-usage-through-the-usage-file).
