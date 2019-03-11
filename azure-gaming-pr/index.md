@@ -1,7 +1,8 @@
 ---
 title: Azure Gaming Documentation
 description: Learn how to build your gaming back end infrastructure on Azure with reference architectures, samples, and more
-ms.topic: landing-page
+layout: LandingPage
+ms.topic: article
 author: BrianPeek
 ms.author: brpeek
 ms.prod: gaming
