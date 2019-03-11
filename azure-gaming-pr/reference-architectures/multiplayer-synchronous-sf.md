@@ -49,11 +49,11 @@ Optionally, after the game session is over, relevant information could be stored
 
 There are two main approaches:
 
-1. The matchmaker doesn't scale and Azure Service Fabric owns scaling leveraging [Azure Service Fabric auto scaling](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-autoscaling), where the service dynamically scale your game servers based on the load that they are reporting, or based on their usage of resources. Auto scaling gives great elasticity and enables provisioning of additional instances or partitions of your game server on demand. The entire auto scaling process is automated and transparent, and once you set up your policies, there is no need for manual scaling operations at the game server level. Auto scaling can be turned on either at the creation time, or at any time via updating.
+1. The matchmaker doesn't scale and **Azure Service Fabric owns scaling** leveraging [Azure Service Fabric auto scaling](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-autoscaling), where the service dynamically scale your game servers based on the load that they are reporting, or based on their usage of resources. Auto scaling gives great elasticity and enables provisioning of additional instances or partitions of your game server on demand. The entire auto scaling process is automated and transparent, and once you set up your policies, there is no need for manual scaling operations at the game server level. Auto scaling can be turned on either at the creation time, or at any time via updating.
 
     A common scenario where auto-scaling is useful is when the load varies over time, like in multiplayer games.
 
-2. Alternatively like in this example, you can task the matchmaker to proactively let Azure Service Fabric know when to scale out. The best practice is to use a pool management pattern.
+2. Alternatively like in this example, you can task the matchmaker to proactively let Azure Service Fabric know when to scale out. The best practice is to use a **pool management pattern**.
 
     This pattern is providing a solution for situations where an application requires the ability to dynamically create Service Fabric Service Instances at run-time, most notably through calling [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet). It allows  to register a Service which should be managed and it will ensure the configured number of available instances of your Service are available in the Pool.
 
