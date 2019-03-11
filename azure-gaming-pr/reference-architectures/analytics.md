@@ -13,7 +13,7 @@ ms.service: azure
 These reference architectures describe a variety of analytics use cases and implementations with different alternatives, enabling you to architect your own cloud solution so you can have **full control and customization to fit your game design**.
 
 > [!TIP]
-> If you are looking for an **out-of-the-box** analytics solution, PlayFab is a complete back-end platform for building, launching, and growing cloud connected games that has [analytics support](https://docs.microsoft.com/gaming/playfab#pivot=documentation&panel=analytics).
+> If you are looking for an **out-of-the-box** analytics solution, PlayFab is a complete back-end platform for building, launching, and growing cloud connected games that has [analytics support](https://docs.microsoft.com/gaming/playfab/?branch=master#pivot=documentation&panel=analytics).
 
 ## Use Cases
 
