@@ -40,26 +40,21 @@ Some advantages of building your own game services and back end from scratch inc
             </div>
         </div>
     </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="https://docs.microsoft.com/media/common/i_reference.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Reference Architectures</h3>
-                        <ul>
-                            <li><a href="reference-architectures/multiplayer.md">Multiplayer / Game Servers</a></li>
-                            <li><a href="reference-architectures/analytics.md">Analytics</a></li>
-                            <li><a href="reference-architectures/leaderboard.md">Leaderboards</a></li>
-                            <li><a href="reference-architectures/cognitive.md">Cognitive Services</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
 </ul>
+
+## Reference Architectures
+
+The reference architectures will help start you on the path of building gaming services for your game. Each architecture is composed of:
+
+* A **highly abstract diagram** showing the different pieces and how they interact with each other.
+* A **deployment template and installation steps**, to help you get started quickly with the implementation of the architecture.
+* A list of **considerations** to give you a sense of the scope of requirements covered in the architecture.
+* In most cases, a **sample project**, so you can quickly test the deployed infrastructure in your own Azure account.
+* A high-level **step by step guide** and **implementation details** to help you understand the sample.
+
+While we will be working on more categories and implementations in the future, today you can explore:
+
+* [Multiplayer / Game Servers](reference-architectures/multiplayer.md)
+* [Analytics](reference-architectures/analytics.md)
+* [Leaderboards](reference-architectures/leaderboard.md)
+* [Cognitive Services](reference-architectures/cognitive.md)
