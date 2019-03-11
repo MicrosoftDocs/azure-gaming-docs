@@ -52,7 +52,7 @@ There are some differences depending on what operating system the virtual machin
 
 ### Containers
 
-In case you have containerized you game in Linux containers, there are pre-baked images to run the containers. See [https://docs.microsoft.com/azure/batch/batch-docker-container-workloads](Run container applications on Azure Batch) to learn how to create a pool of compute nodes that support running container tasks, and then run container tasks on the pool.
+In case you have containerized you game in Linux containers, there are pre-baked images to run the containers. See [Run container applications on Azure Batch](https://docs.microsoft.com/azure/batch/batch-docker-container-workloads) to learn how to create a pool of compute nodes that support running container tasks, and then run container tasks on the pool.
 
 Refer to the **microsoft-azure-batch** publisher documented in [this link](https://docs.microsoft.com/azure/batch/batch-linux-nodes#list-of-virtual-machine-images) for the available Linux images.
 
