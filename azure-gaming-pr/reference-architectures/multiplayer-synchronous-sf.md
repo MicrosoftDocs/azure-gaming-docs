@@ -53,7 +53,13 @@ There are two main approaches:
 
     A common scenario where auto-scaling is useful is when the load varies over time, like in multiplayer games.
 
-2. Alternatively like in this example, you can task the matchmaker to proactively let Azure Service Fabric know when to scale out. The best practice is to use the Azure Service Fabric pool manager pattern.
+2. Alternatively like in this example, you can task the matchmaker to proactively let Azure Service Fabric know when to scale out. The best practice is to use a pool management pattern.
+
+    This pattern is providing a solution for situations where an application requires the ability to dynamically create Service Fabric Service Instances at run-time, most notably through calling [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet). It allows  to register a Service which should be managed and it will ensure the configured number of available instances of your Service are available in the Pool.
+
+    Once deployed and initialized, the game simply calls into the manager "asking" for an instance of the Service and it returns a pointer to the Instance that can be used either by returning one previously used by the game, determined by a unique ID, or returning an available Instance not yet allocated. If there are instances of the service which remain idle for a period of time, the manager will deactivate them to open up additional capacity in the cluster.
+
+    The main benefit of using this pattern is to significantly reduce the amount of time the game may be delayed when manually instantiating new Instances.
 
 See [Scaling in Server Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-scalability) to read about how you can build scalable microservices games.
 
