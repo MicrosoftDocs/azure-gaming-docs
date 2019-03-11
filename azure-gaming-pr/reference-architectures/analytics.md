@@ -1,6 +1,6 @@
 ---
 title: Analytics Reference Architectures
-description: These reference architectures describe a variety of analytics use cases and implementations with different alternatives, enabling you to architect your own cloud solution so you can have full control and customization to fit your game design.
+description: These reference architectures describe a variety of analytics use cases and possible implementations to help you architect your own cloud solution customized for your game's needs.
 keywords: analytics 
 ms.topic: reference-architecture
 ms.date: 3/14/2019
@@ -13,23 +13,27 @@ ms.service: azure
 These reference architectures describe a variety of analytics use cases and implementations with different alternatives, enabling you to architect your own cloud solution so you can have **full control and customization to fit your game design**.
 
 > [!TIP]
-> If you are looking for an **out-of-the-box** analytics solution, PlayFab is a complete back-end platform for building, launching, and growing cloud connected games that has [analytics support](https://docs.microsoft.com/gaming/playfab/?branch=master#pivot=documentation&panel=analytics).
+> Azure PlayFab is a complete back-end platform for building, launching, and growing games. Learn more about PlayFab's **out-of-the-box** [analytics solutions](https://docs.microsoft.com/gaming/playfab/?branch=master#pivot=documentation&panel=analytics).
 
 ## Use Cases
 
-There are multiple variables which can be taken into consideration when designing an analytics system. Here are some examples:
+Analytics is a broad area with many use cases. First, consider which types of analytics are needed by your game. Here are some examples:
 
-1. **Processing time** - Real-time, bulk/batch, or mixed.
-2. **Stage** - Development only, production only, or both.
-3. **Presentation** - Dashboard (slice and dice), in-game (directly into the game engine), or both.
-4. **Message source** - Direct connection between the device and the cloud infrastructure, or using an API.
+1. **Real Time Analytics** - Commonly used for development, operational health, customer support, and launch-window monitoring.
+2. **Direct Data Exploration** - Commonly used to answer questions about user behavior below the surface level.
+3. **Performance Metrics** - Commonly used to assess the health of the business against established targets.
+4. **Custom Reporting** - Commonly used to build graphs and dashboards from custom events in your game. 
 
-The pieces that are part of a standard analytics pipeline include:
+Common components of a typical analytics pipeline include:
 
-1. **Event production** - For example the game itself, or any other device or gateway that is generating the events that you are interested on capturing.
-2. **Event queuing and ingestion** - The service that receives the events and dispatches them.
-3. **Storage** - Where the information is saved in a format and place that can be later used.
-4. **Action** - From displaying the data in dashboards to automation to kick-off workflows or machine learning, whatever method suits your analysis and review process.
+1. **Events** - The moments captured by your game or services for later analysis. 
+2. **Event queues and ingestion** - The service that receives the events and dispatches them.
+3. **Storage** - Where events are saved for use in reporting or exploration.
+4. **Enrichment** - Jobs that transform event data and generate metrics on a scheduled cadence.
+5. **Dashboards** - UI that surfaces event level and metrics data in a visual chart or graph
+6. **Query Engine** - Compute resources and query language used to explore the data. 
+7. **Import/Export** - Services that move external data sets between storage location. 
+8. **Machine Learning** - Enrchiment activities used to create predictive metrics from patterns in your data.
 
 Here are several analytics use cases for you to explore:
 
