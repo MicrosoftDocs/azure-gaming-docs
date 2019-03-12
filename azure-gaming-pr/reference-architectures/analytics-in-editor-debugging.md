@@ -21,21 +21,21 @@ This reference architecture **focuses on the development phase and a small numbe
 ## Relevant services
 
 - [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) - Selected as it's a service tailored for analytics pipelines and is simple to use with little configuration or management overhead. It is capable of receiving and processing events in real-time.
-- [Azure Functions](https://azure.microsoft.com/services/functions/) - Selected as we are not going to need windowing (perform some set-based computation or other operations over subsets of events that fall within some period of time) and we are will just copy data over from Azure Event Hubs to the storage/databases.
-- [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) - Selected for being able to store data with a higher rate of ingest.
+- [Azure Functions](https://azure.microsoft.com/services/functions/) - Selected because we would like a simple authentication mechanism, as well as to customize how data processed and queried.  
+- [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) - Selected for being able to scale and store data with a higher rate of ingest.
 
 ## Step by step
 
 ### Ingest data
 
 1. Invoke the **Azure Function** from the device client, sending the telemetry data.
-1. Pass that data to the **Azure Event Hub**.
-1. Transfer data from Azure Event Hub to a second **Azure Function** that copies the data through the pipeline.
-1. From the Azure Function target, add a new document to the **Azure Cosmos DB** database with the telemetry data.
+2. Validate and forward that data to the **Azure Event Hub**.
+3. The **Azure Event Hub** triggers a second **Azure Function** that transforms the data into individual Cosmos DB documents.
+4. From the Azure Function target, add a new document to the **Azure Cosmos DB** database with the telemetry data.
 
 ### View data
 
-1. Within the game engine, a set of querying parameters are set, and those are submitted to an **Azure Function** that converts them into an Azure Cosmos DB query.
+1. Within the game engine, a query is generated sent to an **Azure Function** that converts it into an **Azure Cosmos DB** query.
 1. The data is the pulled from **Azure Cosmos DB** and returned to the game engine for visualization.
 
 > [!TIP]
@@ -57,20 +57,49 @@ Have a look at the [general guidelines documentation](./general-guidelines.md#na
 
 ## Implementation details
 
-It's worth mentioning that you only need to create a single Azure Function App, that contains the multiple functions within.
+A single [Azure Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function) should contain all the functions shown above and can share the same [Hosting Plan](https://docs.microsoft.com/en-us/azure/azure-functions/functions-scale).  
+
+### Ingestion Function
+1. Validates the incoming telemetry payload
+2. Transforms the data into the expected format for the next stage of the data pipeline
+3. Sends the data on to the **Azure Event Hub**
+4. Returns 202 if the data was accepted by the **Azure Event Hub** 
+
+
+### Event Hub Trigger Function
+1. Reads the event data payload
+2. Creates individual Cosmos DB documents for each event 
+3. Uploads the documents to Cosmos DB
+
+### Query Function
+1. Parses the client generated query
+2. Generates a Cosmos DB SQL formatted query
+3. Wraps the results in a JSON object and returns them to the client
+
+
+
+
+Choosing the right pricing plan for your needs will depend on much the telemetry service is used, and what else is running in the same **Azure Function App**.
+
+## Optimization considerations
+
+You can **expire old data automatically stored in Azure Cosmos DB** using [Azure Cosmos DB TTL](https://docs.microsoft.com/azure/cosmos-db/time-to-live) (Time To Live), setting a time horizon where stored documents will be purged.
+
+Events sent to the Ingestion **Azure Function** should be batched on the client to reduce HTTP overhead.  Consider using client-side compression if the batches are large.
+>[!TIP]
+> Compressing the batches server-side prior to transmission to **Event Hub** can help reduce costs of [Throughput Units](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-faq#throughput-units).  This is especially helpful if multiple services are consuming the events, or there are other Event Hubs in the same Namespace.
+
+## Additional resources and samples
 
 - [Big data reference architecture and implementation for an online multiplayer game](https://github.com/dgkanatsios/GameAnalyticsEventHubFunctionsCosmosDatalake)
 - [Processing 100,000 Events Per Second on Azure Functions](https://blogs.msdn.microsoft.com/appserviceteam/2017/09/19/processing-100000-events-per-second-on-azure-functions/)
 - [Reliable Event Processing in Azure Functions (how to avoid losing a message)](https://hackernoon.com/reliable-event-processing-in-azure-functions-37054dc2d0fc)
 - [In-order event processing with Azure Functions](https://medium.com/@jeffhollan/in-order-event-processing-with-azure-functions-bb661eb55428)
 
-## Optimization considerations
-
-You can **expire old data automatically stored in Azure Cosmos DB** using [Azure Cosmos DB TTL](https://docs.microsoft.com/azure/cosmos-db/time-to-live) (Time To Live), setting a time horizon where stored documents will be purged.
-
-## Additional resources and samples
-
+### Advanced streaming aggregation support
 If you are looking for windowing support out-of-the-box, meaning you want to perform set-based computation (aggregation) or other operations over subsets of events that fall within some period of time, then you should consider replacing the Azure Function that connects the Azure Event Hub to Azure Cosmos DB with [Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics).
+
+[Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) can be used for adding advanced aggregation scenarios on the event stream.  For example, **Azure Functions**, being stateless, don't natively support [windowing](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-window-functions) on event streams.
 
 ## Pricing
 
