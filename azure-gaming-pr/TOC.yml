@@ -1,0 +1,60 @@
+- name: Azure Gaming
+  href: index.md
+- name: Reference Architectures
+  expanded: true
+  items:
+  - name: General Guidelines
+    href: reference-architectures/general-guidelines.md
+  - name: Multiplayer / Game Servers
+    href: reference-architectures/multiplayer.md
+    items:
+    - name: Basic Game Server Hosting
+      href: reference-architectures/multiplayer-basic-game-server-hosting.md
+    - name: Matchmaker
+      href: reference-architectures/multiplayer-matchmaker.md
+      items:
+      - name: Serverless
+        href: reference-architectures/multiplayer-matchmaker-serverless.md
+    - name: Synchronous Multiplayer
+      href: reference-architectures/multiplayer-synchronous.md
+      items:
+      - name: Azure Batch
+        href: reference-architectures/multiplayer-synchronous-batch.md
+      - name: Azure Kubernetes Service (AKS)
+        href: reference-architectures/multiplayer-synchronous-aks.md
+      - name: Azure Service Fabric
+        href: reference-architectures/multiplayer-synchronous-sf.md
+      - name: Azure Container Instances (ACI)
+        href: reference-architectures/multiplayer-synchronous-aci.md
+      - name: Custom Server Scaling
+        href: reference-architectures/multiplayer-custom-server-scaling.md
+    - name: Asynchronous Multiplayer
+      href: reference-architectures/multiplayer-asynchronous.md
+      items:
+      - name: Serverless
+        href: reference-architectures/multiplayer-asynchronous-serverless.md
+  - name: Analytics
+    href: reference-architectures/analytics.md
+    items:
+    - name: Non-real Time Dashboard
+      href: reference-architectures/analytics-non-real-time-dashboard.md
+    - name: In-editor Debugging Telemetry
+      href: reference-architectures/analytics-in-editor-debugging.md      
+  - name: Leaderboard
+    href: reference-architectures/leaderboard.md
+    items:
+    - name: Non-relational Database Leaderboard
+      href: reference-architectures/leaderboard-non-relational.md
+    - name: Relational Database Leaderboard
+      href: reference-architectures/leaderboard-relational.md
+  - name: Cognitive Services
+    href: reference-architectures/cognitive.md
+    items:
+    - name: Content Moderation
+      href: reference-architectures/cognitive-content-moderation.md
+    - name: Text Translation
+      href: reference-architectures/cognitive-text-translation.md
+    - name: Text to Speech
+      href: reference-architectures/cognitive-text-to-speech.md
+    - name: Customer Service Bot
+      href: reference-architectures/cognitive-css-bot.md

@@ -4,6 +4,7 @@
       {
         "files": [
           "**/*.md",
+          "**/*.svg",
           "**/*.yml"
         ],
         "exclude": [
@@ -22,6 +23,7 @@
       {
         "files": [
           "**/*.png",
+          "**/*.svg",
           "**/*.jpg"
         ],
         "exclude": [
@@ -37,7 +39,8 @@
     "globalMetadata": {
       "breadcrumb_path": "/gaming/azure/breadcrumb/toc.json",
       "extendBreadcrumb": true,
-      "feedback_system": "None"
+      "feedback_system": "None",
+      "titleSuffix": "Azure Gaming"
     },
     "fileMetadata": {},
     "template": [],
