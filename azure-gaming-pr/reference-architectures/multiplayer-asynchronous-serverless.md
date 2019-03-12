@@ -81,7 +81,7 @@ Have a look at the [general guidelines documentation](./general-guidelines.md#na
 
 ### Exercise for the reader
 
-The sample provided doesn't include logic to scale the *reads* from the database, only the *writes*. Consider fronting the database with a cache or scale up the database to avoid exhausting the connections to the database.
+The sample provided doesn't include logic to scale the *reads* from the database, only the *writes*. Consider [fronting the database with a cache](https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=/azure/redis-cache/toc.json#considerations-for-using-caching) or scale up the database to avoid exhausting the connections to the database.
 
 ## Security considerations
 
