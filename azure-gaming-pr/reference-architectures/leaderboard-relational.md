@@ -42,7 +42,7 @@ While this reference architecture can be extended to support multiple games, iso
 To ensure sufficient resources for gaming launches and ongoing large-scale throughput, consider implementing the data tier on [Premium or Business Critical](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-business-critical) service tier models. These service tiers are designed for games that require low-latency responses from the underlying SSD storage and provide fast recovery if the underlying infrastructure fails. Business Critical enables a free of charge readable secondary replica of the primary database.
 
 > [!NOTE]
-> All schema and queries recommended in this architecture were tested on the [Azure SQL Database Business Critical](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tier-business-critical) Gen 5 service tier, with 14 vCores and using 1.6 Billion rows of game score history.
+> All schema and queries recommended in this architecture were tested on the [Azure SQL Database Business Critical](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-business-critical) Gen 5 service tier, with 14 vCores and using 1.6 Billion rows of game score history.
 
 ## Database schema
 
