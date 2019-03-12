@@ -30,7 +30,7 @@ This reference architecture **focuses on the development phase and a small numbe
 
 1. Invoke the **Azure Function** from the device client, sending the telemetry data.
 2. Validate and forward that data to the **Azure Event Hub**.
-3. The **Azure Event Hub** triggers a second **Azure Function** that transforms the data into individual Cosmos DB documents.
+3. The **Azure Event Hub** triggers a second **Azure Function** that transforms the data into individual Azure Cosmos DB documents.
 4. From the Azure Function target, add a new document to the **Azure Cosmos DB** database with the telemetry data.
 
 ### View data
@@ -57,27 +57,26 @@ Have a look at the [general guidelines documentation](./general-guidelines.md#na
 
 ## Implementation details
 
-A single [Azure Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function) should contain all the functions shown above and can share the same [Hosting Plan](https://docs.microsoft.com/en-us/azure/azure-functions/functions-scale).  
+A single [Azure Function App](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function) should contain all the functions shown above and can share the same [Hosting Plan](https://docs.microsoft.com/azure/azure-functions/functions-scale).  
 
 ### Ingestion Function
+
 1. Validates the incoming telemetry payload
 2. Transforms the data into the expected format for the next stage of the data pipeline
 3. Sends the data on to the **Azure Event Hub**
 4. Returns 202 if the data was accepted by the **Azure Event Hub** 
 
-
 ### Event Hub Trigger Function
+
 1. Reads the event data payload
-2. Creates individual Cosmos DB documents for each event 
-3. Uploads the documents to Cosmos DB
+2. Creates individual Azure Cosmos DB documents for each event 
+3. Uploads the documents to Azure Cosmos DB
 
 ### Query Function
+
 1. Parses the client generated query
-2. Generates a Cosmos DB SQL formatted query
+2. Generates a Azure Cosmos DB SQL formatted query
 3. Wraps the results in a JSON object and returns them to the client
-
-
-
 
 Choosing the right pricing plan for your needs will depend on much the telemetry service is used, and what else is running in the same **Azure Function App**.
 
@@ -87,7 +86,7 @@ You can **expire old data automatically stored in Azure Cosmos DB** using [Azure
 
 Events sent to the Ingestion **Azure Function** should be batched on the client to reduce HTTP overhead.  Consider using client-side compression if the batches are large.
 >[!TIP]
-> Compressing the batches server-side prior to transmission to **Event Hub** can help reduce costs of [Throughput Units](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-faq#throughput-units).  This is especially helpful if multiple services are consuming the events, or there are other Event Hubs in the same Namespace.
+> Compressing the batches server-side prior to transmission to **Event Hub** can help reduce costs of [Throughput Units](https://docs.microsoft.com/azure/event-hubs/event-hubs-faq#throughput-units).  This is especially helpful if multiple services are consuming the events, or there are other Event Hubs in the same Namespace.
 
 ## Additional resources and samples
 
@@ -97,9 +96,10 @@ Events sent to the Ingestion **Azure Function** should be batched on the client 
 - [In-order event processing with Azure Functions](https://medium.com/@jeffhollan/in-order-event-processing-with-azure-functions-bb661eb55428)
 
 ### Advanced streaming aggregation support
+
 If you are looking for windowing support out-of-the-box, meaning you want to perform set-based computation (aggregation) or other operations over subsets of events that fall within some period of time, then you should consider replacing the Azure Function that connects the Azure Event Hub to Azure Cosmos DB with [Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics).
 
-[Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) can be used for adding advanced aggregation scenarios on the event stream.  For example, **Azure Functions**, being stateless, don't natively support [windowing](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-window-functions) on event streams.
+[Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) can be used for adding advanced aggregation scenarios on the event stream.  For example, **Azure Functions**, being stateless, don't natively support [windowing](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-window-functions) on event streams.
 
 ## Pricing
 
