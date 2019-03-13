@@ -36,7 +36,7 @@ The Azure Content Moderator detects profanity (masked or not) and PII. It suppor
 
 Click the following button to deploy the project to your Azure subscription:
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure-Samples%2fgaming-cognitive-services-content-moderation%2fmaster%2fazuredeploy.json" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+<a href="https://aka.ms/arm-gaming-cognitive-services-content-moderation" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/Azure-Samples/gaming-cognitive-services-content-moderation/blob/master/azuredeploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources. This may induce charges in your Azure account.
 
