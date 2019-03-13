@@ -73,7 +73,7 @@ There are two tiers for QnA Maker.  Pease read through the pricing information f
 1. For the **Bot template** selection, select the **SDK v3** option and choose the **Language understanding** option.
 1. After the bot is created, go to the **Application settings** item in the Web App Bot you just created.
 1. Find the **LuisAppId** entry and set its value to the Application ID you received above in the LUIS steps.
-1. You can modify the code as shown in [this article](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/tutorials/integrate-qnamaker-luis#change-code-in-basicluisdialogcs), or see the code in the [GitHub repo](https://github.com/TODO) for this project.
+1. Modify the code as shown in [this article](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/tutorials/integrate-qnamaker-luis#change-code-in-basicluisdialogcs).
 1. With the code in place and built, you can test the bot using the **Test in Web Chat** option in the Azure portal.
 
 ### Channels
