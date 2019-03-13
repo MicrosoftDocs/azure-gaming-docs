@@ -37,7 +37,7 @@ Click the following button to deploy the project to your Azure subscription:
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdgkanatsios%2FAzureContainerInstancesManagement%2Fmaster%2Fdeploy.json" target="_blank"><img alt="Deploy using an Azure Resource Manager template" src="media/azure-resource-manager-deploy-button.png"/></a>
 
-This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/dgkanatsios/AzureContainerInstancesManagement/blob/master/deploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources as well as pull the source code from this repository.
+This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/dgkanatsios/AzureContainerInstancesManagement/blob/master/deploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources as well as pull the source code from this repository. This may induce charges in your Azure account.
 
 Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes an article summarizing the naming rules and restrictions for Azure services.
 
@@ -99,7 +99,7 @@ Using a more specific example:
 
 ![Azure Container Instance workflow](media/multiplayer/aci-workflow-diagram-2.png)
 
-1. At the beginning, there is no server instances.
+1. At the beginning, there are no server instances.
 2. Suddenly a server is needed for players to connect. `ACICreate` is called.
 3. When the create command is executed, the server is not yet up and running. The state is *Creating*.
 4. When the deployment is complete (a few minutes), the Event Grid via `ACIMonitor` will notify that the server instance (Container Group 1) is running in a specific IP address (i.e: 1.2.3.4). State for the instance is updated to *Running*.

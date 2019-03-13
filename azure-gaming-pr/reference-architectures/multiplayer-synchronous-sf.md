@@ -58,7 +58,7 @@ There are two main approaches:
 
     The main benefit of using this pattern is to significantly reduce the amount of time the game may be delayed when manually instantiating new Instances.
 
-See [Scaling in Server Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-scalability) to read about how you can build scalable microservices games.
+See [Scaling in Server Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-scalability) to read about how you can build scalable games.
 
 ## Additional resources and samples
 

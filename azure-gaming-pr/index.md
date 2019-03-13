@@ -1,6 +1,6 @@
 ---
 title: Azure Gaming Documentation
-description: Learn how to build your gaming back end infrastructure on Azure with reference architectures, samples, and more
+description: Learn how to build your gaming backend infrastructure on Azure with reference architectures, samples, and more
 layout: LandingPage
 ms.topic: article
 author: BrianPeek
@@ -11,11 +11,11 @@ ms.date: 03/08/2019
 
 # Get Started with Azure for Gaming
 
-Modern games require more powerful development tools, global and flexible multiplayer support, and new revenue models. But you’re here to build worlds, not back ends. Let Azure manage your platform so you can focus on making games that make headlines.
+Modern games require more powerful development tools, global and flexible multiplayer support, and new revenue models. But you’re here to build worlds, not backends. Let Azure manage your platform so you can focus on making games that make headlines.
 
-Some advantages of building your own game services and back end from scratch include:
+Some advantages of building your own game services and backend from scratch include:
 
-* Finer control over the back end services and data that are running your game.
+* Finer control over the backend services and data that are running your game.
 * Creation of a custom solution or features to run your game that existing services do not provide.
 * Optimizing costs by paying for only what you use each month.
 

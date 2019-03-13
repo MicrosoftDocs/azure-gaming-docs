@@ -97,7 +97,7 @@ In this reference architecture, Azure Database for MySQL was used, however it co
 
 [![Trivia game using Azure SignalR Service and Durable Functions](media/multiplayer/multiplayer-async-trivia.png)](media/multiplayer/multiplayer-async-trivia.png)
 
-Though it's not entirely asynchronous (it runs on a 20 seconds timer), you can find the implementation of a **trivia game** built on durable Functions and Azure SignalR Service [at this link](https://github.com/anthonychu/serverless-trivia). Clues are retrieved from [jservice.io](https://jservice.io/). To see it running, plese see [this link](https://aka.ms/serverlesstriviatrivia).
+Though it's not entirely asynchronous (it runs on a 20 seconds timer), you can find the implementation of a **trivia game** built on durable Functions and Azure SignalR Service [at this link](https://github.com/anthonychu/serverless-trivia). Clues are retrieved from [jservice.io](https://jservice.io/). To see it running, see [this link](https://aka.ms/serverlesstriviatrivia).
 
 Here's how it works:
 

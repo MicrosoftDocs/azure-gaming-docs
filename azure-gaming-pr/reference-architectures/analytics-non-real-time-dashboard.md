@@ -24,14 +24,14 @@ This article will describe the architecture used in [this sample on GitHub](http
 
 - [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview) - Used as the API receiving the events from the device clients.
 - [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) - A service tailored for analytics pipelines and is simple to use with little configuration or management overhead. As a bonus, it will be also usable if you decide later on that you would like to process events in real-time.
-- [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) - Transforms the data from Azure Even Hub Capture (AVRO format) to JSON files, and also converts the data into CSV files compatible with Power BI. Streaming data from Azure Event Hubs to Azure Blob Storage in a performant way is not entirely trivial, unless it's a very small scale.
+- [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) - Transforms the data from Azure Event Hubs Capture (AVRO format) to JSON files, and also converts the data into CSV files compatible with Power BI. Streaming data from Azure Event Hubs to Azure Blob Storage in a performant way is not entirely trivial, unless it's a very small scale.
 - [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) - Optimized for storing  massive amounts of unstructured data.
 - [Power BI](https://powerbi.microsoft.com/) - A fully customizable dashboard. Note that Azure can integrate with other data visualization products like IBM SPSS or Tableau, but at the moment those can't connect directly with Azure Blob Storage.  Please see the alternative architecture below leveraging Azure SQL Data Warehouse if you are interested in using these data visualization products.
 
 ### Step by step
 
 1. Invoke the **Azure Function** from the device client. Alternatively you could have use virtual machines with a load balancer.
-2. Transfer data from the Azure Function to the **Azure Event Hub**.
+2. Transfer data from the Azure Function to the **Azure Event Hubs**.
 3. Using the out-of-the-box **Event Hub Capture**, AVRO files are generated containing the data.
 4. An **Azure Databricks** job reads the data from the AVRO files and extracts the JSON events in the payload. Azure Databricks does the data preparation and deposits the output (CSV files) into **Azure Blob Storage**.
 5. **Power BI** reads the CSV files stored in Azure Blob Storage and display them in a dashboard/report.
@@ -42,10 +42,9 @@ Click the following button to deploy the project to your Azure subscription:
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fgaming-nonrealtime-analytics%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
-This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/Azure-Samples/gaming-nonrealtime-analytics/blob/master/azuredeploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources.
+This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/Azure-Samples/gaming-nonrealtime-analytics/blob/master/azuredeploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources. This may induce charges in your Azure account.
 
-Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that 
-includes a section summarizing the naming rules and restrictions for Azure services.
+Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes a section summarizing the naming rules and restrictions for Azure services.
 
 >[!NOTE]
 > If you're interested in how the ARM template works, review the Azure Resource Manager template documentation from each of the different services leveraged in this reference architecture:
@@ -139,7 +138,7 @@ You could consider replacing [Azure Databricks](https://docs.microsoft.com/azure
 
 ### Implementation details
 
-Leveraging [Azure Event Hub Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) and [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) you can get the data sent by your players into Azure SQL Data Warehouse. For a full step-by-step walkthrough, see [migrate captured Event Hubs data to a SQL Data Warehouse using Event Grid and Azure Functions](https://docs.microsoft.com/azure/event-hubs/store-captured-data-data-warehouse), including how to use [Power BI with SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi).
+Leveraging [Azure Event Hubs Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) and [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) you can get the data sent by your players into Azure SQL Data Warehouse. For a full step-by-step walkthrough, see [migrate captured Event Hubs data to a SQL Data Warehouse using Event Grid and Azure Functions](https://docs.microsoft.com/azure/event-hubs/store-captured-data-data-warehouse), including how to use [Power BI with SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi).
 
 ### Deployment template
 

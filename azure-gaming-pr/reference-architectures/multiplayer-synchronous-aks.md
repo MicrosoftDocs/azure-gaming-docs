@@ -40,7 +40,7 @@ Specifically, there are 2 core entities, which are represented by 2 respective C
 
 ### Components
 
-This reference architecture contains 2 main components, both of which are created as a single instance Kubernetes [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/):
+This reference architecture contains 2 main components, both of which are created as a single instance Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/):
 
 1. **API Server components**
 
@@ -58,7 +58,7 @@ This reference architecture contains 2 main components, both of which are create
 
     Kubernetes controllers are objects that are active reconciliation processes. In simple words, this means that a controller watches an object (or a set of objects) for its desired state as well as its actual state. It actively compares them and makes every effort to bring the actual state to look like the desired state.
 
-    This project contains a set of controllers, each one carrying the task to reconcile a specific set of objects. All controllers are based on the official Kubernetes [sample controller](https://github.com/kubernetes/sample-controller) and the respective documentation here. Controllers in this project were made in order to reconcile our Custom Resource Definition (CRD) objects, i.e. the DedicatedGameServerCollections and the DedicatedGameServers.
+    This project contains a set of controllers, each one carrying the task to reconcile a specific set of objects. All controllers are based on the official Kubernetes [sample controller](https://github.com/kubernetes/sample-controller) and the respective documentation [here](https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md). Controllers in this project were made in order to reconcile our Custom Resource Definition (CRD) objects, i.e. the DedicatedGameServerCollections and the DedicatedGameServers.
 
     1. DedicatedGameServerCollectionController
 

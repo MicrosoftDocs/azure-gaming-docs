@@ -46,7 +46,7 @@ There are some differences depending on what operating system the virtual machin
 
 - **Custom images**
     - Custom image boot time can vary dramatically depending on the custom softwares and data that are already present the source.
-    - They advantage is you can have their image ready with all pre-installed software/data in the OSDisk.
+    - The advantage is you can have their image ready with all pre-installed software/data in the OSDisk.
     - Custom image source disk can be one of the three types: 1. Snapshot, 2. Manageddisk, 3. VHD.
         - Currently we recommend the source to be Snapshot. Storage has scale limits which stops Azure Batch from scaling beyond 2500 VMs at once.
 
@@ -72,7 +72,7 @@ Have a look at the [general guidelines documentation](./general-guidelines.md#na
 3. The matchmaker has all the information required to select a game server, if more capacity is required it proactively pings the Azure Batch service to start scaling out.
 4. The **Azure Batch** service receives the request and begins scaling out. If automated scaling was set up, it may have proactively kicked off the process depending on the rules established.
 5. The game servers regularly sends the matchmaker an status update once a game session is over and they are *available*, also their most updated IP and port.
-6. Each of the player devices connect directly to the game server using the connection information provided by the matchmaker.
+6. Each of the player devices connects directly to the game server using the connection information provided by the matchmaker.
 7. After the game session is over, relevant information is stored.
 
 ## Scaling

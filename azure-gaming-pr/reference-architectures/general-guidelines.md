@@ -75,7 +75,7 @@ Each individual partition is maxed out by 1 MB/sec or 1000 messages/sec ingress,
 
 - Partitions offer high-availability.  If you are sending a message to Event Hubs and want the sends to succeed, you should create multiple partitions and send using `EventHubClient.Send`.
 - The number of partitions will determine how wide the Event Hub pipe is and how fast you can receive and process the messages.  If you have 16 partitions on your Azure Event Hub, it's capacity is maxed out to 16 TUs.  The analogy is **partitions are equal to lanes on a highway**.
-- TU is configured at the namespace level.  And one Event Hubs namespace can have multiple Azure Event Hubs. Each Azure Event Hub can have different number of partitions.
+- TU is configured at the namespace level. Also one Event Hubs namespace can have multiple Azure Event Hubs. Each Azure Event Hub can have different number of partitions.
 
 You **can't take advantage of more TUs than you have partitions**, if you have 3 partitions, you can't use more than 3 TUs. It's typical to have more partitions than TUs, for the following reasons:
 
