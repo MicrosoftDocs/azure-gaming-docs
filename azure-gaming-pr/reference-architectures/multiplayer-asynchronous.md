@@ -128,7 +128,7 @@ Then this commands to create the 3 tables:
 
 ```sql
 CREATE TABLE player (
-	ID SERIAL PRIMARY KEY,
+    ID SERIAL PRIMARY KEY,
     CreatedTime TIMESTAMP NOT NULL,
     UpdatedTime TIMESTAMP NOT NULL,
     Name VARCHAR(100) NOT NULL

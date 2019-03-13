@@ -64,7 +64,7 @@ Before we go any further, it's worth explaining some of the Azure Cosmos DB foun
 
 **Partitioning** is the technique used by Azure Cosmos DB to scale individual containers in a database. The items in a container are divided into distinct subsets, called logical partitions.
 
-The **logical partitions** are created based on the value of a partition key property associated with each item. and they are a distinct subset of items in a container.
+The **logical partitions** are created based on the value of a partition key property associated with each item and they are a distinct subset of items in a container.
 
 The items in a logical partition are identified by the partition key value that is shared by all items in the logical partition. For example, consider a container that holds documents and each document has a UserID property. If UserID serves as the partition key for the items in a container, and there are 1000 unique UserID values, 1000 logical partitions will be created for the container.
 

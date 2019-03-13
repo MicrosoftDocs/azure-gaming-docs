@@ -13,7 +13,7 @@ ms.service: azure
 
 ## Design considerations
 
-For implementing a matchmaker it will be needed a database storing the data from the players that are looking for a matchmaking session and a process running on a server or a set of serverless Azure Functions responsible for handling the logic:
+For implementing a matchmaker you will need a database storing the data from the players that are looking for a matchmaking session and a process running on a server or a set of serverless Azure Functions responsible for handling the logic:
 
 1. **Add player to the queue** - Invoked when the player wants to start searching for a multiplayer session.
 2. **Delete player from the queue** - This is invoked when the player has decided to stop searching for a multiplayer session (cancel matchmaking).

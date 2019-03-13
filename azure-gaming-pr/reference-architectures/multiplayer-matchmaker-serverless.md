@@ -29,7 +29,7 @@ Click the following button to deploy the project to your Azure subscription:
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fgaming-serverless-matchmaker%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
-This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/Azure-Samples/gaming-serverless-matchmaker/blob/master/azuredeploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources.
+This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/Azure-Samples/gaming-serverless-matchmaker/blob/master/azuredeploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources. This may induce charges in your Azure account.
 
 Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes a section summarizing the naming rules and restrictions for Azure services.
 
@@ -53,7 +53,7 @@ Finally add the Function [application settings](https://docs.microsoft.com/azure
 1. The player's device client connects to the traffic manager to route a request for the player to be added to the matchmaking queue.
 2. The traffic manager connects to the regional zone with the lowest latency and points to an Azure Event Hub that captures requests and allows to process them in batch.
 3. The Event Hub passes the details from the new players to be added to the matchmaking pool into an **add players Azure Function**.
-4. This Azure Function first creates a **match request Durable Azure Function Orchestrator** that will an end point to provide the player the game server connection details via polling mechanism. There will be one per matchmaking request and the orchestration instance ID of the orchestrator should be the player GUID for being able to send events to it later.
+4. This Azure Function first creates a **match request Durable Azure Function Orchestrator** that will expose an end point to provide the player with the game server connection details via polling mechanism. There will be one orchestrator per matchmaking request and the orchestration instance ID of the orchestrator should be the player GUID for being able to send events to it later.
 5. Then the same Azure Function adds the players into the database and also includes them into a suitable existing game session, if none was available it creates one.
 6. After that, in a polling mechanism, the player's device client connects to the traffic manager to route a request for the player to be provided a game session connection details.
 7. The traffic manager points to the Azure Function mentioned previously (step 4).
@@ -72,7 +72,7 @@ Finally add the Function [application settings](https://docs.microsoft.com/azure
 When a player wants to connect to a game, start a *Match Request Durable Azure Function Orchestrator* that:
 
 1. Calls **CreateTimer** for the timeout period of the request.
-2. Calls ***WaitForExternalEvent** to wait for a *server ready* event, which contains the server information (see Match Made Notification Distributor Azure Function).
+2. Calls **WaitForExternalEvent** to wait for a *server ready* event, which contains the server information (see Match Made Notification Distributor Azure Function).
 3. Uses Task.WhenAny to await the first task to return, 1 or 2.
 4. If the timeout occurs before a *server ready* event arrives, return some sort of failure message the device client will understand.
 5. If the *server ready* event arrives before the timeout:

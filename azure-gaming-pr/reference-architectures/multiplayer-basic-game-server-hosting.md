@@ -181,7 +181,7 @@ To wrap up, once the server is running double check that the ports needed for yo
 
 ## Security considerations
 
-Public inbound ports are exposed to the internet, use the Azure Portal advanced controls to limit maintenance inbound traffic to known IP addresses, meaning only you can access the Azure Virtual Machine remotely.
+Public inbound ports are exposed to the internet so you should use the Azure Portal advanced controls to limit maintenance inbound traffic to known IP addresses, meaning only you can access the Azure Virtual Machine remotely.
 
 ## Additional resources and samples
 

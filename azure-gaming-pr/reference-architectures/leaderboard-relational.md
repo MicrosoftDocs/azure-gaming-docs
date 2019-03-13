@@ -59,7 +59,7 @@ This schema accommodates the following usage scenario:
     - This is the table that should be used by the application to return ranking results.
     - This table should be populated by a separate process based on the required schedule and frequency (for example, calculating current daily leaderboard ranking every 4 minutes).
     - Data is calculated using the GameCompletion table - and as necessary, the GameCompletionHistory table.
-    - or access to results, always use the LeaderboardSnapshot table (avoid repeated re-calculations of the same ranking results from GamePlatform). 
+    - For access to results, always use the LeaderboardSnapshot table (avoid repeated re-calculations of the same ranking results from GamePlatform). 
 - The **RankResultType** table contains the different types of leaderboard snapshots required for the game. The primary key for this table can then be used in LeaderboardSnapshot to indicate the type of ranking results being retrieved.
 
 The next sections will detail the schema of each of the aforementioned objects.
