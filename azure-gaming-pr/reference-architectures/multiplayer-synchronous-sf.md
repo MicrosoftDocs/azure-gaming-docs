@@ -27,6 +27,12 @@ Refer to [this repository](https://github.com/Azure-Samples/service-fabric-clust
 
 The most basic template to start with is [this one](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG). It allows you  to deploy a secure 5 node, Single Node Type Service Fabric Cluster running Windows Server 2016 Datacenter with containers on a Standard_D2_v2 Size Virtual Machine Scale set with Azure Diagnostics turned on and network security groups enabled.
 
+Click the following button to deploy the project to your Azure subscription:
+
+<a href="https://aka.ms/arm-gaming-hosting-sf" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a> 
+
+This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/5-VM-Windows-1-NodeTypes-Secure-NSG/azuredeploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources. This may induce charges in your Azure account.
+
 Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes an article summarizing the naming rules and restrictions for Azure services.
 
 The game server binaries can be stored in Azure Storage, or alternatively, Azure Container Registry, as Service Fabric can use either.
