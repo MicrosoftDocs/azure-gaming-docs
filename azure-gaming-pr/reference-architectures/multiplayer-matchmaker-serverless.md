@@ -11,11 +11,11 @@ ms.service: azure
 
 # Multiplayer Serverless Matchmaker
 
+We're going to describe the solution listed here on [GitHub](https://github.com/Azure-Samples/gaming-serverless-matchmaker). Keep in mind that the code from this reference architecture is only an example for guidance and there may be a few places to optimize the code pattern before it's ready for production.
+
 ## Architecture diagram
 
 [![Matchmaker using Azure Cache for Redis and Azure Functions](media/multiplayer/multiplayer-serverless-redis-matchmaker.png)](media/multiplayer/multiplayer-serverless-redis-matchmaker.png)
-
-We're going to describe the solution listed here on [GitHub](https://github.com/Azure-Samples/gaming-serverless-matchmaker). Keep in mind that the code from this reference architecture is only an example for guidance and there may be a few places to optimize the code pattern before it's ready for production.
 
 ## Relevant services
 
