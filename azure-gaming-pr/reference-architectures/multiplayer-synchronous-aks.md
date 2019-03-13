@@ -11,9 +11,9 @@ ms.service: azure
 
 # Synchronous Multiplayer Using Azure Kubernetes Service (AKS)
 
-You can opt to manage containerized dedicated game servers using the Kubernetes orchestrator on Azure using the managed Azure Kubernetes Service (AKS).
+You can choose to manage containerized dedicated game servers using the Kubernetes orchestrator on Azure with the managed Azure Kubernetes Service (AKS).
 
-We're going to describe the solution listed here on [GitHub](https://github.com/dgkanatsios/AzureGameServersScalingKubernetes). Keep in mind that the code from this reference architecture is only an example for guidance and there may be a few places to optimize the code pattern before it's ready for production.
+This article will describe the architecture used in [this sample on GitHub](https://github.com/dgkanatsios/AzureGameServersScalingKubernetes). Keep in mind that the code from this reference architecture is only an example for guidance and there may be places to optimize the code before using in a production environment.
 
 ## Architecture diagram
 
@@ -21,10 +21,9 @@ We're going to describe the solution listed here on [GitHub](https://github.com/
 
 ## Relevant services
 
-- [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) - Selected as it connects the player to the most appropiate regional zone based on latency.
+- [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) - Cconnects the player to the most appropriate regional zone based on latency.
 - [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) - Simplifies the deployment and operations of Kubernetes.
 - [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) - Allows storing images for all types of container deployments.
-- [Resource Groups](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal#manage-resource-groups) - Leverage one resource group for the Azure Traffic Manager and one resource group for each regional game server pool (i.e: one for North America, another for Europe, another for LATAM, another for Asia, etc).
 
 ## Architecture considerations
 
@@ -77,19 +76,19 @@ These components are part of their own namespace (named **dgs-system** in the sa
 
 ### Public IPs
 
-Game clients should be able to connect directly to a Dedicated Game Server, so all Nodes should have a Public IP. Azure Kubernetes Services does not provide a public IP by default, use this [GitHub](https://github.com/dgkanatsios/AksNodePublicIPController) project to enable that.
+Game clients should be able to connect directly to a Dedicated Game Server, so all Nodes should have a Public IP. Azure Kubernetes Services does not provide a public IP by default, but you can use this [GitHub](https://github.com/dgkanatsios/AksNodePublicIPController) project to enable that.
 
 ## Deployment template
 
-Follow these [instructions](https://github.com/dgkanatsios/azuregameserversscalingkubernetes/blob/master/docs/installation.md) to create the Azure Kubernetes Cluster. 
+Follow these [instructions](https://github.com/dgkanatsios/azuregameserversscalingkubernetes/blob/master/docs/installation.md) to create the Azure Kubernetes Cluster.
 
 ## Security considerations
 
-All API methods are protected via an access code, represented as string and kept in a Kubernetes Secret called `apiaccesscode`. This is created during project's installation and should be passed in all method calls code GET parameter. The only method that does not require authentication by default is the `/running` one. This, however, can be changed in the API Server process command line arguments.
+All API methods are protected via an access code, represented as string and kept in a Kubernetes Secret called `apiaccesscode`. This is created during the project's installation and should be passed in all method calls code GET parameter. The only method that does not require authentication by default is the `/running` method. This, however, can be changed in the API Server process command line arguments.
 
 ## Optimization considerations
 
-For smaller clusters you can simplify by using a single Pod (the one containing the API Server subcomponent, Webhook subcomponent and controllers) for all the Nodes. In a Kubernetes cluster, every Pod can talk to other Pods in all other Nodes by design.
+For smaller clusters, you can simplify by using a single Pod (the one containing the API Server subcomponent, Webhook subcomponent and controllers) for all the Nodes. In a Kubernetes cluster, every Pod can talk to other Pods in all other Nodes by design.
 
 [![Server hosting using AKS with a single management set of Pods](media/multiplayer/multiplayer-aks-hosting-single.png)](media/multiplayer/multiplayer-aks-hosting-single.png)
 
@@ -101,10 +100,10 @@ For smaller clusters you can simplify by using a single Pod (the one containing 
 
 If you don't have an Azure subscription, create a [free account](https://aka.ms/azfreegamedev) to get started with 12 months of free services. You're not charged for services included for free with Azure free account, unless you exceed the limits of these services. Learn how to check usage through the [Azure Portal](https://docs.microsoft.com/azure/billing/billing-check-free-service-usage#check-usage-on-the-azure-portal) or through the [usage file](https://docs.microsoft.com/azure/billing/billing-check-free-service-usage#check-usage-through-the-usage-file).
 
-You are responsible for the cost of the Azure services used while running these reference architectures, the total amount depends on the number of events that will run though the analytics pipeline. See the pricing webpages for each of the services that were used in the reference architectures:
+You are responsible for the cost of the Azure services used while running these reference architectures.  The total amount will vary based on usage. See the pricing webpages for each of the services that were used in the reference architecture:
 
 - [Azure Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/)
 - [Azure Kubernetes Service](https://azure.microsoft.com/pricing/details/kubernetes-service/)
 - [Azure Container Registry](https://azure.microsoft.com/pricing/details/container-registry/)
 
-You also have available the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/), to configure and estimate the costs for the Azure services that you are planning to use.
+You can also use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to configure and estimate the costs for the Azure services that you are planning to use.

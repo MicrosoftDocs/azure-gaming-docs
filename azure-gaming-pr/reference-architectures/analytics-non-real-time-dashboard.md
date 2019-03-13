@@ -14,7 +14,7 @@ This reference architecture represents a simple analytics pipeline that you can 
 
 ## Gathering analytics in a small scale
 
-We're going to describe the solution listed here on [GitHub](https://github.com/Azure-Samples/gaming-nonrealtime-analytics). Keep in mind that the code from this reference architecture is only an example for guidance and there may be a few places to optimize the code pattern before it's ready for production.
+This article will describe the architecture used in [this sample on GitHub](https://github.com/Azure-Samples/gaming-nonrealtime-analytics). Keep in mind that the code from this reference architecture is only an example for guidance and there may be places to optimize the code before using in a production environment.
 
 ### Architecture diagram
 
