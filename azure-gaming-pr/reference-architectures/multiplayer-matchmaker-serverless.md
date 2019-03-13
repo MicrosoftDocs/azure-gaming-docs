@@ -11,9 +11,7 @@ ms.service: azure
 
 # Multiplayer Serverless Matchmaker
 
-We're going to describe the solution listed here on [GitHub](https://github.com/Azure-Samples/gaming-serverless-matchmaker). Keep in mind that the code from this reference architecture is only an example for guidance and there may be a few places to optimize the code pattern before it's ready for production.
-
-## Architecture diagram
+This article will describe the architecture used in [this sample on GitHub](https://github.com/Azure-Samples/gaming-serverless-matchmaker). Keep in mind that the code from this reference architecture is only an example for guidance and there may be places to optimize the code before using in a production environment.
 
 [![Matchmaker using Azure Cache for Redis and Azure Functions](media/multiplayer/multiplayer-serverless-redis-matchmaker.png)](media/multiplayer/multiplayer-serverless-redis-matchmaker.png)
 
@@ -33,8 +31,7 @@ Click the following button to deploy the project to your Azure subscription:
 
 This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/Azure-Samples/gaming-serverless-matchmaker/blob/master/azuredeploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources.
 
-Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that 
-includes a section summarizing the naming rules and restrictions for Azure services.
+Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes a section summarizing the naming rules and restrictions for Azure services.
 
 >[!NOTE]
 > If you're interested in how the ARM template works, review the Azure Resource Manager template documentation from each of the different services leveraged in this reference architecture:

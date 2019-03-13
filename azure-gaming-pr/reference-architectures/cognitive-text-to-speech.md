@@ -13,7 +13,7 @@ ms.service: azure
 
 Help bring everyone into the conversation by converting text messages to audio using **text to speech**.
 
-We're going to describe the solution listed here on [GitHub](https://github.com/Azure-Samples/gaming-cognitive-services-text-to-speech). Keep in mind that the code from this reference architecture is only an example for guidance and there may be a few places to optimize the code pattern before it's ready for production.
+This article will describe the architecture used in [this sample on GitHub](). Keep in mind that the code from this reference architecture is only an example for guidance and there may be places to optimize the code before using in a production environment.
 
 ## Architecture Diagram
 
@@ -48,8 +48,7 @@ Click the following button to deploy the project to your Azure subscription:
 
 This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/Azure-Samples/gaming-cognitive-services-text-to-speech/blob/master/azuredeploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources.
 
-Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that 
-includes a section summarizing the naming rules and restrictions for Azure services.
+Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes a section summarizing the naming rules and restrictions for Azure services.
 
 >[!NOTE]
 > If you're interested in how the ARM template works, review the Azure Resource Manager template documentation from each of the different services leveraged in this reference architecture:

@@ -15,7 +15,7 @@ Explore this alternative solution using Azure Container Instances, Event Grid, a
 
 The server state needs to be persistent outside of Azure Container Instances.
 
-We're going to describe the solution listed here on [GitHub](https://github.com/dgkanatsios/AzureContainerInstancesManagement). Keep in mind that the code from this reference architecture is only an example for guidance and there may be a few places to optimize the code pattern before it's ready for production.
+This article will describe the architecture used in [this sample on GitHub](https://github.com/dgkanatsios/AzureContainerInstancesManagement). Keep in mind that the code from this reference architecture is only an example for guidance and there may be places to optimize the code before using in a production environment.
 
 ## Architecture diagram
 

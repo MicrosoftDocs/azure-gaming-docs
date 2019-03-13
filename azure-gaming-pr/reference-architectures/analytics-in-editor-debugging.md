@@ -62,21 +62,21 @@ A single [Azure Function App](https://docs.microsoft.com/azure/azure-functions/f
 ### Ingestion Function
 
 1. Validates the incoming telemetry payload
-2. Transforms the data into the expected format for the next stage of the data pipeline
-3. Sends the data on to the **Azure Event Hub**
-4. Returns 202 if the data was accepted by the **Azure Event Hub** 
+1. Transforms the data into the expected format for the next stage of the data pipeline
+1. Sends the data on to the **Azure Event Hub**
+1. Returns 202 if the data was accepted by the **Azure Event Hub**
 
 ### Event Hub Trigger Function
 
 1. Reads the event data payload
-2. Creates individual Azure Cosmos DB documents for each event 
-3. Uploads the documents to Azure Cosmos DB
+1. Creates individual Azure Cosmos DB documents for each event
+1. Uploads the documents to Azure Cosmos DB
 
 ### Query Function
 
 1. Parses the client generated query
-2. Generates a Azure Cosmos DB SQL formatted query
-3. Wraps the results in a JSON object and returns them to the client
+1. Generates a Azure Cosmos DB SQL formatted query
+1. Wraps the results in a JSON object and returns them to the client
 
 Choosing the right pricing plan for your needs will depend on much the telemetry service is used, and what else is running in the same **Azure Function App**.
 

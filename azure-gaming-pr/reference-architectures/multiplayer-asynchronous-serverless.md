@@ -17,21 +17,21 @@ ms.service: azure
 
 ## Architecture services
 
-- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview) - Selected as they are the simplest way to run the small pieces of matchmaking logic, also you are only charged when you have users attempting to matchmake and play. Note that when using a Consumption plan, Function definitions are stored in File Storage, meaning that you will have to create an Storage account. For optimal performance you should use a Storage account in the same region as the Functions.
-- [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) - Selected as the information to store is unlikely going to need schema changes, it won't be requiring persistence. Also the service is fast, lightweight, reliable and cost effective.
-- [Notification Hub](https://docs.microsoft.com/azure/mysql/) - Selected as it's an easy-to-use and scaled-out push engine that allows you to send notifications to any platform (iOS, Android, Windows, Kindle, Baidu, etc.).
-- [SignalR](https://azure.microsoft.com/services/signalr-service/) - Selected as it simplifies the process of adding real-time web functionality to applications over HTTP, allowing to push to connected device clients.
-- [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) - Selected as it's the best service for secret management, including database connection strings.
+- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview) - Used to run small pieces of matchmaking logic. Note that when using a Consumption plan, Function definitions are stored in File Storage, meaning that you will have to create a Storage account. For optimal performance you should use a Storage account in the same region as the Functions.
+- [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) - Used to store the information as it is fast, lightweight, reliable and cost effective.
+- [Notification Hub](https://docs.microsoft.com/azure/mysql/) - An easy-to-use and scaled-out push engine that allows you to send notifications to many platforms (iOS, Android, Windows, Kindle, Baidu, etc.).
+- [SignalR](https://azure.microsoft.com/services/signalr-service/) - Simplifies the process of adding real-time web functionality to applications over HTTP, allowing you to push data to connected device clients.
+- [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) - The best service for managing secrets, including database connection strings.
 
 ## Design considerations
 
-This specific reference architecture showcases a **serverless simple tic-tac-toe** game.
+This specific reference architecture showcases a **simple serverless tic-tac-toe** game.
 
-To wrap this up, in this reference architecture a helper class (Data Client) will be used to take point on connecting and interacting with the database, and the rest of the Functions will make use of it when needed. Also another class (Game Session) is used for calculating the winning logic and play the turn with the information provided by the player. There will be 3 different action events supported: *forfeit* (to give up on a game), *addPlayer* (to join a player to a game session) and *takeTurn*
+In this reference architecture, a helper class (Data Client) will connect to and interact with the database, and the rest of the Functions will make use of it when needed. The Game Session class is used to run the turn with the information submitted by the player, and for calculating the winner. There will be 3 different action events supported: *forfeit* (to give up on a game), *addPlayer* (to join a player to a game session) and *takeTurn*
 
 ## Deployment template
 
-Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes an article summarizing the naming rules and restrictions for Azure services.
+Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes a section summarizing the naming rules and restrictions for Azure services.
 
 >[!NOTE]
 > If you're interested in how the ARM template works, review the Azure Resource Manager template documentation from each of the different services leveraged in this reference architecture:
@@ -42,7 +42,7 @@ Have a look at the [general guidelines documentation](./general-guidelines.md#na
 > - [Azure Notification Hub template](https://docs.microsoft.com/azure/templates/microsoft.notificationhubs/allversions)
 
 >[!WARNING]
-> The database admin password must contain from 8 to 128 characters. Also it must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, and so on).
+> The database admin password must contain 8 to 128 characters. Also, it must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, and so on).
 
 >[!TIP]
 > To run the Azure Functions locally, update the *local.settings.json* file with these same app settings.
@@ -51,31 +51,31 @@ Have a look at the [general guidelines documentation](./general-guidelines.md#na
 
 ### Create a new game session
 
-1. The device client formats any game settings selected by the player and sends the *start game session* event to the backend, then awaits for a response.
-2. The backend receives the command to start a new game session. First of all it tries to find an existing game session that matches the player settings.
-3. Assuming a suitable game session is **not available** for matchmaking, a new game session object is created.
-4. Also and new a durable Orchestrator Function is created.
-5. The durable Orchestrator Function reads the game session object and **awaits until at least 2 players have joined the game session**.
-6. Then another player with the same settings selected by the other player sends a *start game session* event to the backend.
-7. The backend receives the command and tries to find an existing game, in this case it **finds the game session previously created**.
-8. The durable Orchestrator Function receives the *addPlayer* event and stops waiting as the 2 players have joined the game session.
-9. Then the durable Orchestrator Function officially starts the match, setting the game state to **in progress** and selecting randomly a player as the starter. In a nutshell, the Orchestrator is responsible for executing the game logic and updating the game state.
-10. As a next step the durable Orchestrator Function triggers an operation to **persisting the data into the database**.
-11. The writing operations into the persistent database are batched via **Azure Event Hub** to avoid exhausting the database connections.
-12. The Azure Event Hub is bound to an **Azure Function** that leverages the data client helper class to connect to the database to persist the data.
-13. The durable Orchestrator Function continuous then checking against the logic run by the game session instance, in this case returns that it's the turn of a certain player.
-14. It proceeds then **queuing the notifications** to the player or players based on the logic conditions (it's someones turn like in this case, someone won, someone forfeited, etc).
-15. The durable Orchestrator then **invokes itself** with the new game state, ready for the next event to be received.
-16. The device client receives the notification, including the Orchestrator Function unique identifier managing the game session.
-17. The device client sends the *load game session* event to the backend including the durable Orchestrator unique identifier received in the notification.
-18. The backend receives the command to **load the game session** and returns the details of the game session for being displayed in the device client.
-19. The player submits an X or a O directly to the durable Orchestrator Function and ends the turn.
+1. The device client formats any game settings selected by the player and sends the *start game session* event to the backend, then awaits a response.
+1. The backend receives the command to start a new game session. First of all it tries to find an existing game session that matches the player settings.
+1. Assuming a suitable game session is **not available** for matchmaking, a new game session object is created.
+1. A new durable Orchestrator Function is created.
+1. The durable Orchestrator Function reads the game session object and **waits until at least 2 players have joined the game session**.
+1. Another player with the same settings as those selected by the first player sends a *start game session* event to the backend.
+1. The backend receives the command and tries to find an existing game. In this case it **finds the game session previously created**.
+1. The durable Orchestrator Function receives the *addPlayer* event and stops waiting as the 2 players have joined the game session.
+1. The durable Orchestrator Function officially starts the match, setting the game state to **in progress** and randomly selecting one of the players to start. In a nutshell, the Orchestrator is responsible for executing the game logic and updating the game state.
+1. The durable Orchestrator Function triggers an operation to **persist the data into the database**.
+1. Write operations into the database are batched via an **Azure Event Hub** to avoid exhausting the database connections.
+1. The **Azure Event Hub** is bound to an **Azure Function** that leverages the data client helper class to connect to the database to persist the data.
+1. The durable Orchestrator Function runs the game session logic and returns that it's the turn of the next player.
+1. It **queues notifications** to the player or players based on the game conditions (it's some elses turn, someone won, someone forfeited, etc).
+1. The durable Orchestrator then **invokes itself** with the new game state, and waits for the next event to be received.
+1. The device client receives the notification, including the unique identifier of the Orchestrator Function managing the game session.
+1. The device client sends the *load game session* event to the backend, including the unique identifier of the durable Orchestrator received in the notification.
+1. The backend receives the command to **load the game session** and returns the details of the game session to be displayed by the device client.
+1. The player submits an X or a O directly to the durable Orchestrator Function and ends the turn.
 
 ### Request player games list
 
 1. The device client submits the *get list of sessions* command to the backend.
-2. The backend handles the request by querying the persistent database, then sends the device client back the response including the data. Consider limiting the number of results returned by the query and ordering them.
-3. The device client receives the backend response and leverages the data it contains to populate the pertinent UI.
+2. The backend handles the request by querying the database, then sends the the data to the device client. Consider limiting the number of results returned by the query and ordering them.
+3. The device client receives the backend response and uses the data it contains to populate the pertinent UI.
 
 ## Implementation sample
 
@@ -85,11 +85,11 @@ The sample provided doesn't include logic to scale the *reads* from the database
 
 ## Security considerations
 
-If you store the database connection string plain in the code, anyone who has access to source code can search through and get access to the database, because the information required to connect is stored within it. At the minimum it should be stored as part of the Function [application settings](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#settings), for bonus points use Key Vault instead as it's the recommended method. There is a tutorial explaining how to [create a Key Vault](https://blogs.msdn.microsoft.com/benjaminperkins/2018/06/13/create-an-azure-key-vault-and-secret/), how to [use a managed service identity with a Function](https://blogs.msdn.microsoft.com/benjaminperkins/2018/06/13/using-managed-service-identity-msi-with-and-azure-app-service-or-an-azure-function/) and finally how to [read the secret stored in Key Vault from a Function](https://blogs.msdn.microsoft.com/benjaminperkins/2018/06/13/how-to-connect-to-a-database-from-an-azure-function-using-azure-key-vault/).
+Do not hard-code the database connection string into the source of the Function.  Instead, at a minimum, leverage the [Function App Settings](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#manage-app-service-settings) or, for even stronger security, use [Key Vault](https://docs.microsoft.com/azure/key-vault/) instead. There is a tutorial explaining how to [create a Key Vault](https://blogs.msdn.microsoft.com/benjaminperkins/2018/06/13/create-an-azure-key-vault-and-secret/), how to [use a managed service identity with a Function](https://blogs.msdn.microsoft.com/benjaminperkins/2018/06/13/using-managed-service-identity-msi-with-and-azure-app-service-or-an-azure-function/) and finally how to [read the secret stored in Key Vault from a Function](https://blogs.msdn.microsoft.com/benjaminperkins/2018/06/13/how-to-connect-to-a-database-from-an-azure-function-using-azure-key-vault/).
 
 ## Alternatives
 
-In this reference architecture, Azure Database for MySQL was the database that it was opted for. However, it could be replaced for [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview) or [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/).
+In this reference architecture, Azure Database for MySQL was used, however it could be replaced with [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview) or [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/).
 
 ## Additional resources and samples
 
@@ -97,29 +97,27 @@ In this reference architecture, Azure Database for MySQL was the database that i
 
 [![Trivia game using Azure SignalR Service and Durable Functions](media/multiplayer/multiplayer-async-trivia.png)](media/multiplayer/multiplayer-async-trivia.png)
 
-Even though not entirely asynchronous per se as it runs on a 20 seconds timer, you can find the implementation of a **trivia game** built on durable Functions and Azure SignalR Service [on this link](https://github.com/anthonychu/serverless-trivia). Clues are retrieved from [jservice.io](https://jservice.io/). To see it running, access [this link](https://aka.ms/serverlesstriviatrivia).
+Though it's not entirely asynchronous (it runs on a 20 seconds timer), you can find the implementation of a **trivia game** built on durable Functions and Azure SignalR Service [at this link](https://github.com/anthonychu/serverless-trivia). Clues are retrieved from [jservice.io](https://jservice.io/). To see it running, plese see [this link](https://aka.ms/serverlesstriviatrivia).
 
-The step by step is:
+Here's how it works:
 
-1. The trivia owner starts the game, invoking the **HttpStartSingle HTTP triggered Azure Function**, either upon deployment or via a web request.
+1. The trivia game hoster starts the game, invoking the **HttpStartSingle** Azure Function, either upon deployment or via a web request.
 2. That Azure Function kicks off the **TriviaOrchestrator Durable Azure Function**.
-3. Players decide to join the trivia. The device client from each player running the web app reaches out to the backend to get the Azure SignalR Service hub details. The backend receives the request via the **SignalRInfo Azure Function**, a token is generated by the binding using the key in the connection string, then it is sent to the device client. The device client sets the two signals from the Azure SignalR Service that is going to listen to: *newClue* and *newGuess*.
-4. In the backend the **TriviaOrchestrator Durable Azure Function** calls the **GetAndSendClue Durable Activity Azure Function**.
-5. The **TriviaOrchestrator Durable Azure Function** sets a timer to call itself every 20 seconds, that's the time players have to respond to the trivia clue.
+3. Players join the game. The device client from each player running the app retrieves the Azure SignalR Service hub details from the backend. The backend receives the request via the **SignalRInfo Azure Function**.  A token is generated by the function binding by using the key in the connection string, then it is sent to the device client. The device client sets the two events from the Azure SignalR Service that is going to listen to: *newClue* and *newGuess*.
+4. On the backend, the **TriviaOrchestrator Durable Azure Function** calls the **GetAndSendClue Durable Activity Azure Function**.
+5. The **TriviaOrchestrator Durable Azure Function** sets a timer to call itself every 20 seconds, which is the amount of time the players have to respond to the trivia clue.
 6. The **GetAndSendClue Durable Activity Azure Function** pulls a trivia clue from the jservice.io service.
-7. Then the trivia clue is **broadcasted via Azure SignalR Service** to all connected users with the target *newClue*.
-8. Players receives the trivia clue from the **Azure SignalR Service**, then they think what could it be the answer to the trivia question and submit it to the backend.
-9. The backend receives the requests via the **SubmitGuess Azure Function**.
-10. This Azure Function calculate if the answers submitted by the players are correct or not. Then the pertinent outcomes are **broadcasted via Azure SignalR Service** to all connected users with the target *newGuess*.
-11. The device client receives the outcome from **Azure SignalR Service** and updates the number of correct or incorrect guesses.
-
-In case you want to keep the Trivia running all the time, to restart an eternal orchestration, you can make use of a TimerTrigger Azure Function to run on startup (RunOnStartup=true) and periodically check if the eternal orchestration is running, and if not, start a new one.
+7. Then the trivia clue is **broadcast via Azure SignalR Service** to all connected users with the target *newClue*.
+8. Players receives the trivia clue from the **Azure SignalR Service**, and come up with their answer.
+9. The backend receives the player responses via the **SubmitGuess Azure Function**.
+10. This Azure Function calculates if the answers submitted by the players are correct or not. Then the outcomes are **broadcast via Azure SignalR Service** to all connected users with the target *newGuess*.
+11. The device client receives the response from **Azure SignalR Service** and updates the number of correct or incorrect guesses.
 
 ## Pricing
 
 If you don't have an Azure subscription, create a [free account](https://aka.ms/azfreegamedev) to get started with 12 months of free services. You're not charged for services included for free with Azure free account, unless you exceed the limits of these services. Learn how to check usage through the [Azure Portal](https://docs.microsoft.com/azure/billing/billing-check-free-service-usage#check-usage-on-the-azure-portal) or through the [usage file](https://docs.microsoft.com/azure/billing/billing-check-free-service-usage#check-usage-through-the-usage-file).
 
-You are responsible for the cost of the Azure services used while running these reference architectures, the total amount depends on the number of events that will run though the analytics pipeline. See the pricing webpages for each of the services that were used in the reference architectures:
+You are responsible for the cost of the Azure services used while running these reference architectures.  The total amount will vary based on usage. See the pricing webpages for each of the services that were used in the reference architecture:
 
 - [Azure Function](https://azure.microsoft.com/pricing/details/functions/)
 - [Azure Database for MySQL](https://azure.microsoft.com/pricing/details/mysql/)
@@ -127,4 +125,4 @@ You are responsible for the cost of the Azure services used while running these 
 - [Azure SignalR Service](https://azure.microsoft.com/pricing/details/signalr-service/)
 - [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)
 
-You also have available the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/), to configure and estimate the costs for the Azure services that you are planning to use.
+You can also use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to configure and estimate the costs for the Azure services that you are planning to use.
