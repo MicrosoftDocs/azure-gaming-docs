@@ -39,7 +39,7 @@ Keep an eye on the [Azure limits](https://aka.ms/azurelimits) page to know how m
 
 Click the following button to deploy the project to your Azure subscription:
 
-<a href="https://aka.ms/arm-gaming-custom-server-scaling" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+<a href="https://aka.ms/arm-gaming-custom-server-scaling" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a> 
 
 This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/Annonator/FuncyAutoScale/blob/master/FuncyDeploy/azuredeploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources. This may induce charges in your Azure account.
 
