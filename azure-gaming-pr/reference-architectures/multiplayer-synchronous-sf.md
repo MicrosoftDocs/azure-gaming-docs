@@ -29,7 +29,7 @@ The most basic template to start with is [this one](https://github.com/Azure-Sam
 
 Click the following button to deploy the project to your Azure subscription:
 
-<a href="https://aka.ms/arm-gaming-hosting-sf" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a> 
+<a href="https://aka.ms/arm-gaming-hosting-sf" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/5-VM-Windows-1-NodeTypes-Secure-NSG/azuredeploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources. This may induce charges in your Azure account.
 

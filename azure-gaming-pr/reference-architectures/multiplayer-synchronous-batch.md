@@ -58,6 +58,19 @@ Refer to the **microsoft-azure-batch** publisher documented in [this link](https
 
 ## Deployment template
 
+Click the following button to deploy the project to your Azure subscription:
+
+<a href="https://aka.ms/arm-gaming-hosting-batch" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+
+This operation will trigger a template deployment of the [BatchWithPoolDeploy.json](https://gist.github.com/BrianPeek/1d02048356779f91d0a510be12cd0b4e) ARM template file to your Azure subscription, which will create the necessary Azure resources. To be more precise:
+
+- Creates an Azure Storage account.
+- Creates an Azure Batch account associated with the Azure Storage account.
+- Creates a pool with (by default) 5 nodes on D2s_v3 Windows Server 2016.
+- The pool has an empty start task that could be used to launch your game server.
+
+This may induce charges in your Azure account.
+
 Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes an article summarizing the naming rules and restrictions for Azure services.
 
 >[!NOTE]
