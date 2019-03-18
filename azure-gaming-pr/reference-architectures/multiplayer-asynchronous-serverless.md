@@ -40,6 +40,7 @@ Have a look at the [general guidelines documentation](./general-guidelines.md#na
 > - [Automate resource deployment for your function app in Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-infrastructure-as-code)
 > - [Azure Database for MySQL template](https://docs.microsoft.com/azure/templates/microsoft.dbformysql/servers)
 > - [Azure Notification Hub template](https://docs.microsoft.com/azure/templates/microsoft.notificationhubs/allversions)
+> - [Azure SignaR template](https://azure.microsoft.com/resources/templates/101-signalr/)
 
 >[!WARNING]
 > The database admin password must contain 8 to 128 characters. Also, it must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, and so on).
