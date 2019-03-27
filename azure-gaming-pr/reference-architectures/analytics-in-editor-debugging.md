@@ -12,6 +12,8 @@ ms.service: azure
 
 This reference architecture **focuses on the development phase and a small number of users**, gathering data from gameplay sessions and displaying it directly within the game engine - Unreal Engine in this case. It provides the fastest response time so your development and QA teams don't have to wait to get results from testing sessions.
 
+This article will describe the architecture used in [this sample on GitHub](https://github.com/Azure-Samples/gaming-in-editor-telemetry). Keep in mind that the code from this reference architecture is only an example for guidance and there may be places to optimize the code before using in a production environment.
+
 [![In-editor debugging telemetry look and feel](media/analytics/analytics-in-editor-telemetry.png)](media/analytics/analytics-in-editor-telemetry.png)
 
 ## Architecture diagram
@@ -42,6 +44,12 @@ This reference architecture **focuses on the development phase and a small numbe
 > If you are looking to visualize data in a dashboard, hook up the Azure Cosmos DB database to [Power BI](https://docs.microsoft.com/azure/cosmos-db/powerbi-visualize).
 
 ## Deployment template
+
+Click the following button to deploy the project to your Azure subscription:
+
+<a href="https://aka.ms/arm-gaming-in-editor-telemetry" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+
+This operation will trigger a template deployment of the [telemetry_server.deployment.json](https://github.com/Azure-Samples/gaming-in-editor-telemetry/blob/master/Deployment/telemetry_server.deployment.json) ARM template file to your Azure subscription, which will create the necessary Azure resources. This may induce charges in your Azure account.
 
 Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes a section summarizing the naming rules and restrictions for Azure services.
 
