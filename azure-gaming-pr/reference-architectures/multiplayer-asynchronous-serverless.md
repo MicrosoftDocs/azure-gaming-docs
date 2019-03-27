@@ -40,6 +40,7 @@ Have a look at the [general guidelines documentation](./general-guidelines.md#na
 > - [Automate resource deployment for your function app in Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-infrastructure-as-code)
 > - [Azure Database for MySQL template](https://docs.microsoft.com/azure/templates/microsoft.dbformysql/servers)
 > - [Azure Notification Hub template](https://docs.microsoft.com/azure/templates/microsoft.notificationhubs/allversions)
+> - [Azure SignaR template](https://azure.microsoft.com/resources/templates/101-signalr/)
 
 >[!WARNING]
 > The database admin password must contain 8 to 128 characters. Also, it must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, and so on).
@@ -60,9 +61,7 @@ Have a look at the [general guidelines documentation](./general-guidelines.md#na
 1. The backend receives the command and tries to find an existing game. In this case it **finds the game session previously created**.
 1. The durable Orchestrator Function receives the *addPlayer* event and stops waiting as the 2 players have joined the game session.
 1. The durable Orchestrator Function officially starts the match, setting the game state to **in progress** and randomly selecting one of the players to start. In a nutshell, the Orchestrator is responsible for executing the game logic and updating the game state.
-1. The durable Orchestrator Function triggers an operation to **persist the data into the database**.
-1. Write operations into the database are batched via an **Azure Event Hub** to avoid exhausting the database connections.
-1. The **Azure Event Hub** is bound to an **Azure Function** that leverages the data client helper class to connect to the database to persist the data.
+1. The durable Orchestrator Function triggers an operation to **persist the data into the database**. It leverages the data client helper class to connect to the database to persist the data.
 1. The durable Orchestrator Function runs the game session logic and returns that it's the turn of the next player.
 1. It **queues notifications** to the player or players based on the game conditions (it's some elses turn, someone won, someone forfeited, etc).
 1. The durable Orchestrator then **invokes itself** with the new game state, and waits for the next event to be received.
