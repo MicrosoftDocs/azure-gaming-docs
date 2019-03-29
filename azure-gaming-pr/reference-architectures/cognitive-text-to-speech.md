@@ -13,7 +13,7 @@ ms.service: azure
 
 Help bring everyone into the conversation by converting text messages to audio using **text to speech**.
 
-This article will describe the architecture used in [this sample on GitHub](). Keep in mind that the code from this reference architecture is only an example for guidance and there may be places to optimize the code before using in a production environment.
+This article will describe the architecture used in [this sample on GitHub](https://github.com/Azure-Samples/gaming-cognitive-services-text-to-speech). Keep in mind that the code from this reference architecture is only an example for guidance and there may be places to optimize the code before using in a production environment.
 
 ## Architecture Diagram
 
