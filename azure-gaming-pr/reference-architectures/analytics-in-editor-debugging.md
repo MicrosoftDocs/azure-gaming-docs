@@ -10,7 +10,7 @@ ms.service: azure
 
 # In-editor Debugging Telemetry Reference Architecture
 
-This reference architecture **focuses on the development phase and a small number of users**, gathering data from gameplay sessions and displaying it directly within the game engine - Unreal Engine in this case. It provides the fastest response time so your development and QA teams don't have to wait to get results from testing sessions.
+This reference architecture **focuses on the development phase and a small number of users**, gathering data from gameplay sessions and displaying it directly within the game engine - Unreal Engine 4 or Unity Engine in this case. It provides the fastest response time so your development and QA teams don't have to wait to get results from testing sessions.
 
 This article will describe the architecture used in [this sample on GitHub](https://github.com/Azure-Samples/gaming-in-editor-telemetry). Keep in mind that the code from this reference architecture is only an example for guidance and there may be places to optimize the code before using in a production environment.
 
@@ -122,3 +122,5 @@ You are responsible for the cost of the Azure services used while running these 
 - [Azure Virtual Machines pricing](https://azure.microsoft.com/pricing/details/virtual-machines)
 
 You can also use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to configure and estimate the costs for the Azure services that you are planning to use. Prices are estimates and are not intended as actual price quotes. Actual prices may vary depending upon the date of purchase, currency of payment, and type of agreement you enter with Microsoft. Contact a Microsoft sales representative for additional information on pricing.
+
+Refer to this [guide](https://github.com/Azure-Samples/gaming-in-editor-telemetry/blob/master/GTCost_Instructions.md) that will hopefully simplify how the settings in the Azure Pricing Calculator correlate with the implementation of telemetry in your game title.
