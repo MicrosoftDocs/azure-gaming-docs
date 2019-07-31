@@ -124,13 +124,13 @@ If you only have subscription, this step is optional.
     :::column:::
 ```bat
 CALL az account set ^
-  --subscription %YOURSUBSCRIPTIONID%
+&nbsp;--subscription %YOURSUBSCRIPTIONID%
 ```
     :::column-end:::
     :::column:::
 ```bash
 az account set \
- --subscription $YOURSUBSCRIPTIONID
+&nbsp;--subscription $YOURSUBSCRIPTIONID
 ```
     :::column-end:::    
 :::row-end:::
