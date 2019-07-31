@@ -71,6 +71,9 @@ On top of the general configuration variables, the following variables are also 
 | **VMSIZE** | Standard_B1s | Standard_B1s | Standard_F4s_v2 | Standard_F32s_v2 | Virtual Machine option. Be aware that Premium SSD is not supported in every Virtual Machine option. [Learn more](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#Linux).
 | **VMDATADISKSIZEINGB** | 5 | 5 | 10 | 30 | How much persistent disk storage you are going to allocate per Virtual Machine. [Benefits of using managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#benefits-of-managed-disks).
 
+> [!NOTE]
+> Aside from the core steps documented below, for more details about the process of deploying a Virtual Machine on a Managed Disk, refer to the [Create and Manage Linux VMs with the Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm) tutorial that covers basic Azure virtual machine deployment items such as selecting a VM size, selecting a VM image, and deploying a VM.
+
 #### Initialize the variables
 
 ```bash
@@ -80,12 +83,9 @@ SET VMSIZE=Standard_B1s
 SET VMDATADISKSIZEINGB=5
 ```
 
-> [!NOTE]
-> Aside from the core steps documented below, for more details about the process of deploying a Virtual Machine on a Managed Disk, refer to the [Create and Manage Linux VMs with the Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm) tutorial that covers basic Azure virtual machine deployment items such as selecting a VM size, selecting a VM image, and deploying a VM.
-
 #### Login
 
-```batch
+```winbatch
 CALL az login
 ```
 
@@ -93,14 +93,14 @@ CALL az login
 
 If you only have one, this step is optional.
 
-```batch
+```dosbatch
 CALL az account set ^
  --subscription %YOURSUBSCRIPTIONID%
 ```
 
 #### Create a resource group
 
-```batch
+```bat
 CALL az group create ^
  --name %RESOURCEGROUPNAME% ^
  --location %REGIONNAME%
@@ -256,15 +256,15 @@ CALL az vm generalize ^
 
 ## Capture the Virtual Machine Disk Image to generate the custom golden image
 
-#### Command line approach using Azure CLI
+### Command line approach using Azure CLI
 
-To initialize the variables:
+#### Initialize the variables
 
 ```batch
 SET GOLDENIMAGENAME=myGoldenImage
 ```
 
-Then:
+#### Create the custom golden image
 
 ```batch
 CALL az image create ^
@@ -379,11 +379,11 @@ CALL az network lb probe create ^
 
 #### Create an Azure Load Balancer health probe for HTTPs
 
-> [!CAUTION]
+> [!NOTE]
 > This is only supported in the Standard Load Balancer SKU.
 
 ```batch
-if %LBSKU%==Standard ECHO Creating the load balancer health probe for HTTPs (Standard Load Balancer SKU only) & CALL az network lb probe create ^
+if %LBSKU%==Standard CALL az network lb probe create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --lb-name %LBNAME% ^
  --name https ^
@@ -423,11 +423,11 @@ CALL az network lb rule create ^
 
 #### Create a load balancing inbound rule for the port 443
 
-> [!CAUTION]
+> [!NOTE]
 > This is only supported in the Standard Load Balancer SKU.
 
 ```batch
-if %LBSKU%==Standard ECHO Creating a load balancing inbound rule for the port 443 (Standard Load Balancer SKU only) & CALL az network lb rule create ^
+if %LBSKU%==Standard CALL az network lb rule create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %LBRULEHTTPSNAME% ^
  --lb-name %LBNAME% ^
@@ -462,7 +462,7 @@ On top of the previously defined variables, the following variables are also bei
 | **REDISSHARDSTOCREATE** | | Note: Only Premium SKU | Note: Only Premium SKU | 10 | Number of shards per cluster.
 | **REDISSUBNETNAME** | | Note: Only Premium SKU | Note: Only Premium SKU | REDISNAME + Subnet | When an Azure Cache for Redis instance is configured with an Azure Virtual Network, it is not publicly addressable and can only be accessed from virtual machines and applications within the Azure Virtual Network. [Learn More](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet).
 | **SUBNETADDRESSPREFIX** | | Note: Only Premium SKU | Note: Only Premium SKU | 10.0.1.0/24 | **Important**: When deploying an Azure Cache for Redis to an Azure Virtual Network, the cache must be in a dedicated subnet that contains no other resources except for Azure Cache for Redis instances.
-| **SUBNETID** | | Note: Only Premium SKU | Note: Only Premium SKU | SUBNETID=/subscriptions/YOURSUBSCRIPTIONID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/virtualNetworks/VNETNAME/subnets/REDISSUBNETNAME | Note: The full string is required.
+| **SUBNETID** | | Note: Only Premium SKU | Note: Only Premium SKU | SUBNETID | Note: The full string is required.
 
 #### Initialize the variables
 
@@ -480,7 +480,7 @@ SET SUBNETID=/subscriptions/%YOURSUBSCRIPTIONID%/resourceGroups/%RESOURCEGROUPNA
 
 #### Create a specific subnet named cache
 
-> [!CAUTION]
+> [!NOTE]
 > This is only supported in the Premium Azure Cache for Redis SKU.
 
 ```batch
