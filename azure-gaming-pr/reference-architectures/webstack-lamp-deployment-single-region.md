@@ -316,7 +316,7 @@ TBD
 > [!CAUTION]
 > This is the portion of the configuration that requires a more careful look as there are multiple networking elements involved, some interconnected.
 
-Here below is an example of how the topology should look like if you have deployed all the networking resources, including the HTTPs traffic health probe that it's only supported in the Standard Load Balancer SKU.
+Here below is an example of how the topology should look like if you have deployed all the networking resources, including the HTTPs traffic health probe that it's only supported in the Standard Load Balancer SKU, and a Virtual Machine Scale Set with a couple of instances.
 
 [![Connect to a Virtual Machine via Azure Portal](media/webstack/webstack-lamp-single-region-networking-topology.png)](media/webstack/webstack-lamp-single-region-networking-topology.png)
 
@@ -490,7 +490,7 @@ TBD
 
 ### Azure Portal
 
-TBD
+Refer to [Create a Basic Load Balancer by using the Azure portal](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) and [Create a Standard Load Balancer to load balance VMs using the Azure portal](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal) to learn how to create either Azure Load Balancer SKU using the Azure Portal.
 
 ## Deploy the Azure Cache for Redis
 
