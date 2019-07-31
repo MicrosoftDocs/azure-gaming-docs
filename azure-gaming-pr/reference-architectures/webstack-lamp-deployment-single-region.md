@@ -124,7 +124,7 @@ If you only have subscription, this step is optional.
     :::column:::
 ```bat
 CALL az account set ^
-%nbsp;--subscription %YOURSUBSCRIPTIONID%
+  --subscription %YOURSUBSCRIPTIONID%
 ```
     :::column-end:::
     :::column:::
@@ -137,7 +137,7 @@ az account set \
 
 ```azurecli
 CALL az account set ^
-%nbsp;--subscription %YOURSUBSCRIPTIONID%
+ --subscription %YOURSUBSCRIPTIONID%
 ```
 
 #### Create a resource group
