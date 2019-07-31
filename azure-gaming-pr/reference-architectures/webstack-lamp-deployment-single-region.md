@@ -55,11 +55,11 @@ SET REGIONNAME=westus
 SET LOGINUSERNAME=azureuser
 ```
 
-Should you choose to setup the architecture programmatically using a command line interface, you are going to need to install [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2), a command-line tool providing a great experience for managing Azure resources. The CLI is designed to make scripting easy, query data, support long-running operations, and more.
+Should you choose to setup the architecture programmatically using a command line interface and the samples from this document, you are going to need to install [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2), a cross-platform command-line tool providing a great experience for managing Azure resources. The CLI is designed to make scripting easy, query data, support long-running operations, and more.
 
 ## Deploy a Virtual Machine on a Managed Disk
 
-This Virtual Machine only has one specific use, serve as a foundation for the custom golden image. In most cases, it gets deleted afterwards.
+This Virtual Machine only has one specific use: serve as a foundation for the custom golden image. In most cases, it gets deleted afterwards.
 
 ### Command line approach using Azure CLI
 
@@ -193,7 +193,9 @@ On the right side of the screen a new blade will be open, in **Login using VM lo
 
 Using your preferred local bash shell, paste the SSH connection command into the shell to create an SSH session. The following example shows what the SSH connection command looks like:
 
-`ssh azureuser@[PUBLICIP]`
+```bash
+ssh azureuser@[PUBLICIP]
+```
 
 ### Run the installation commands one by one
 
@@ -222,10 +224,7 @@ exit
 
 ### Validate that the web server and PHP are running properly
 
-Replace the PUBLICIP below with the real IP address of your Virtual Machine. Then open your preferred web browser and try to access the default page or any of your specific PHPs for example and check that everything is working as intended.
-
-`http://[PUBLICIP]`
-`http://[PUBLICIP]/phpinfo.php`
+Replace the PUBLICIP below with the real IP address of your Virtual Machine. Then open your preferred web browser and try to access the default page going to `[http://[PUBLICIP]` or any of your specific PHPs for example, and check that everything is working as intended.
 
 ## Deallocate and generalize the Virtual Machine
 
@@ -304,6 +303,10 @@ TBD
 
 > [!CAUTION]
 > This is the portion of the configuration that requires a more careful look as there are multiple networking elements involved, some interconnected.
+
+Here below is an example of how the topology should look like if you have deployed all the networking resources, including the HTTPs traffic health probe that it's only supported in the Standard Load Balancer SKU.
+
+[![Connect to a Virtual Machine via Azure Portal](media/webstack/webstack-lamp-single-region-networking-topology.png)](media/webstack/webstack-lamp-single-region-networking-topology.png)
 
 ### Command line approach using Azure CLI
 
