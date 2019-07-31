@@ -11,7 +11,7 @@ ms.service: azure
 
 # Deploy a single region LAMP architecture
 
-This document covers different methods to deploy a single region LAMP architecture, either using command line tools on either Linux bash or Windows batch for a more hands on programmatic setup, or an Azure Resource Manager template for a one-click deployment. In most cases there will be pointers to how to setup a certain portion of the architecture using the Azure Portal.
+This document covers different methods to deploy a **single region LAMP architecture**, either using **command line tools** on either Linux bash or Windows batch for a more hands on programmatic setup, or an Azure Resource Manager template for a **one-click deployment**. And in most cases there will be pointers to how to setup a certain portion of the architecture using the **Azure Portal**.
 
 In general, when deploying a single region LAMP architecture there are certain steps that are mostly one-offs while others need to be executed in more regular basis as your backend gets updated to match your game requirements. Here below is the full step list:
 
@@ -25,7 +25,7 @@ In general, when deploying a single region LAMP architecture there are certain s
 6. Deploy the Azure Cache for Redis.
 7. Deploy the Azure Database for MySQL.
 8. Create the Azure Storage account and container.
-9. Create your Virtual Machine Scale Set ensuring it references the captured Disk Image as the OS Disk
+9. Create your Virtual Machine Scale Set ensuring it references the captured Disk Image as the OS Disk.
 1. Setup the autoscale settings.
 
 > [!NOTE]
@@ -44,6 +44,8 @@ Regardless of what step you are working on, it's best practice to keep a set of 
 - **RESOURCEGROUPNAME**: The name of the resource group that will contain all the different Azure services from the architecture. Consider appending the region name as a suffix.
 - **PREFIX**: The string that will precede all the Azure services for future identification purposes. i.e: the codename of your game.
 
+Review the [naming conventions](./general-guidelines#naming-conventions) for any of the names that you are choosing for the Azure resources that you are going to be creating.
+
 To initialize the variables:
 
 ```bash
@@ -53,7 +55,7 @@ SET REGIONNAME=westus
 SET LOGINUSERNAME=azureuser
 ```
 
-If you haven't already done so, install [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2), a command-line tool providing a great experience for managing Azure resources. The CLI is designed to make scripting easy, query data, support long-running operations, and more.
+Should you choose to setup the architecture programmatically using a command line interface, you are going to need to install [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2), a command-line tool providing a great experience for managing Azure resources. The CLI is designed to make scripting easy, query data, support long-running operations, and more.
 
 ## Deploy a Virtual Machine on a Managed Disk
 
@@ -85,6 +87,8 @@ SET VMDATADISKSIZEINGB=5
 
 #### Login
 
+Running this command will open a browser for you to log in with your Azure credentials.
+
 ```bat
 CALL az login
 ```
@@ -110,6 +114,8 @@ CALL az account set ^
 ---
 
 #### Create a resource group
+
+All resources created in Azure need to be part of a resource group. [Learn more](./general-guidelines#resource-groups).
 
 ```bat
 CALL az group create ^
@@ -181,7 +187,7 @@ Select the **Connect** button on the overview page for your Virtual Machine.
 
 [![Connect to a Virtual Machine via Azure Portal](media/webstack/webstack-connect-to-vm-portal.png)](media/webstack/webstack-connect-to-vm-portal.png)
 
-On the right side of the screen a new blade will be open, in Login using VM local account a connection command is shown.
+On the right side of the screen a new blade will be open, in **Login using VM local account** a connection command is shown.
 
 ### Connect to the Virtual Machine
 
@@ -193,7 +199,7 @@ Using your preferred local bash shell, paste the SSH connection command into the
 
 The following commands will install Apache and the PHP 7.3 version. You can change to any other PHP version, like 5.6, replacing all the 7.3 references below.
 
-```console
+```bash
 sudo add-apt-repository -y ppa:ondrej/php
 
 sudo apt-get -y update
@@ -219,6 +225,7 @@ exit
 Replace the PUBLICIP below with the real IP address of your Virtual Machine. Then open your preferred web browser and try to access the default page or any of your specific PHPs for example and check that everything is working as intended.
 
 `http://[PUBLICIP]`
+`http://[PUBLICIP]/phpinfo.php`
 
 ## Deallocate and generalize the Virtual Machine
 
@@ -228,7 +235,7 @@ To create an image for deployment, you'll need to clean the system and make it r
 
 Use your preferred local bash shell, the account name, and the public IP address of the Virtual Machine to connect to it remotely and deprovision it.
 
-```console	
+```bash	
 ssh azureuser@[PUBLICIP]
 sudo waagent -deprovision+user -force
 exit 
@@ -245,7 +252,7 @@ The command above performs the following tasks:
 
 ### Stopping, deallocating and generalizing the virtual machine
 
-Before creating an image it's needed to stop and prepare the Linux guest OS on the Virtual Machine. If you create an image from a Virtual Machine that hasn't been generalized, any Virtual Machines created from that image won't start. These operations should be really quick to complete.
+Before creating an image it's needed to stop and prepare the Linux guest OS on the Virtual Machine. If you create an image from a Virtual Machine that **hasn't been generalized**, any Virtual Machines created from that image **won't start**. These operations should be really quick to complete.
 
 #### Command line approach using Azure CLI
 
@@ -267,7 +274,7 @@ On top of the previously defined variables, the following variables are also bei
 
 |Variable|Default value|Description|
 |----------|----------|-----------|
-| **GOLDENIMAGENAME** | myGoldenImage | The name of the custom golden image..
+| **GOLDENIMAGENAME** | myGoldenImage | The name of the custom golden image.
 
 #### Initialize the variables
 
@@ -699,7 +706,8 @@ SET VMSSSKUSIZE=Standard_DS1_v2
 SET VMSSVMTOCREATE=2
 SET VMSSSTORAGETYPE=Premium_LRS
 SET VMSSACELERATEDNETWORKING=false
-SET VMSSUPGRADEPOLICY=Rolling
+SET VMSSUPGRADEPOLICY=Manual
+SET HEALTHPROBEID=/subscriptions/%YOURSUBSCRIPTIONID%/resourceGroups/%RESOURCEGROUPNAME%/providers/Microsoft.Network/loadBalancers/%LBNAME%/probes/http
 SET VMSSOVERPROVISIONING=--disable-overprovision
 ```
 
@@ -712,6 +720,7 @@ CALL az vmss create ^
  --image %GOLDENIMAGENAME% ^
  --upgrade-policy-mode %VMSSUPGRADEPOLICY% ^
  --load-balancer %LBNAME% ^
+ --lb-sku %LBSKU% ^
  --vnet-name %VNETNAME% ^
  --subnet %SUBNETNAME% ^
  --admin-username %LOGINUSERNAME% ^
@@ -722,6 +731,55 @@ CALL az vmss create ^
  --lb-nat-pool-name %LBNATPOOLNAME% ^
  --accelerated-networking %VMSSACELERATEDNETWORKING% ^
  --generate-ssh-keys %VMSSOVERPROVISIONING%
+```
+
+#### Confirm scale set upgrade policy
+
+```bat
+CALL az vmss show ^
+ --resource-group %RESOURCEGROUPNAME% ^
+ --name %VMSSNAME% ^
+ --query upgradePolicy
+```
+
+Scale sets have an "upgrade policy" that determine how VMs are brought up-to-date with the latest scale set model. The three modes for the upgrade policy are:
+
+- **Automatic** - In this mode, the scale set makes no guarantees about the order of VMs being brought down. The scale set may take down all VMs at the same time.
+- **Rolling** - In this mode, the scale set rolls out the update in batches with an optional pause time between batches.
+- **Manual** - In this mode, when you update the scale set model, nothing happens to existing VMs.
+
+Manual upgrade mode is not the most suitable to use when the number of instances is high and you don't have any automation to handle the updates.
+In Automatic mode, all the instances are upgraded at the same time, which may cause down time.
+
+Rolling upgrade mode requires that a health probe is associated to the Virtual Machine Scale Set and also all the Virtual Machine instances.
+
+#### Associate the load balancer health probe to the scale set
+
+```bat
+CALL az vmss update ^
+ --resource-group %RESOURCEGROUPNAME% ^
+ --name %VMSSNAME% ^
+ --query virtualMachineProfile.networkProfile.healthProbe ^
+ --set virtualMachineProfile.networkProfile.healthProbe.id='%HEALTHPROBEID%'
+```
+
+#### Update all the instances from the scale set
+
+```bat
+CALL az vmss update-instances ^
+ --resource-group %RESOURCEGROUPNAME% ^
+ --name %VMSSNAME% ^
+ --instance-ids *
+```
+
+#### Switch to Rolling upgrade mode
+
+```bat
+CALL az vmss update ^
+ --resource-group %RESOURCEGROUPNAME% ^
+ --name %VMSSNAME% ^
+ --query upgradePolicy ^
+ --set upgradePolicy.mode=Rolling
 ```
 
 ### Azure Resource Manager template
