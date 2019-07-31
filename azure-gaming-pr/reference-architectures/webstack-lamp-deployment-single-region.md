@@ -85,7 +85,11 @@ SET VMDATADISKSIZEINGB=5
 
 #### Login
 
-```azurecli-interactive
+| Windows Batch | Bash  |
+| ------ | --------- |
+| `CALL az login`    | `az login` |
+
+```azurecli
 CALL az login
 ```
 
@@ -93,7 +97,13 @@ CALL az login
 
 If you only have one, this step is optional.
 
-```azurecli-interactive
+| Windows Batch | Bash  |
+| ------ | --------- |
+| `CALL az account set ^`    | `az account set \` |
+| ` --subscription %YOURSUBSCRIPTIONID%`    | ` --subscription $YOURSUBSCRIPTIONID` |
+
+
+```azurecli
 CALL az account set ^
  --subscription %YOURSUBSCRIPTIONID%
 ```
