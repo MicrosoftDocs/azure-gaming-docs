@@ -193,7 +193,7 @@ Using your preferred local bash shell, paste the SSH connection command into the
 
 The following commands will install Apache and the PHP 7.3 version. You can change to any other PHP version, like 5.6, replacing all the 7.3 references below.
 
-```bash
+```console
 sudo add-apt-repository -y ppa:ondrej/php
 
 sudo apt-get -y update
@@ -228,7 +228,7 @@ To create an image for deployment, you'll need to clean the system and make it r
 
 Use your preferred local bash shell, the account name, and the public IP address of the Virtual Machine to connect to it remotely and deprovision it.
 
-```bash	
+```console	
 ssh azureuser@[PUBLICIP]
 sudo waagent -deprovision+user -force
 exit 
@@ -249,12 +249,6 @@ Before creating an image it's needed to stop and prepare the Linux guest OS on t
 
 #### Command line approach using Azure CLI
 
-On top of the previously defined variables, the following variables are also being used:
-
-|Variable|Default value|Description|
-|----------|----------|-----------|
-| **GOLDENIMAGENAME** | myGoldenImage | The name of the custom golden image..
-
 ```bat
 CALL az vm deallocate ^
  --resource-group %RESOURCEGROUPNAME% ^
@@ -268,6 +262,12 @@ CALL az vm generalize ^
 ## Capture the Virtual Machine Disk Image to generate the custom golden image
 
 ### Command line approach using Azure CLI
+
+On top of the previously defined variables, the following variables are also being used:
+
+|Variable|Default value|Description|
+|----------|----------|-----------|
+| **GOLDENIMAGENAME** | myGoldenImage | The name of the custom golden image..
 
 #### Initialize the variables
 
