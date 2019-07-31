@@ -35,7 +35,13 @@ In general, when deploying a single region LAMP architecture there are certain s
 
 1. Update the Virtual Machine instances from the Virtual Machine Scale Set with any PHP file modifications.
 
-**General configuration variables and tools**
+## Preparative
+
+You'll need to have at least an Azure subscription. [Learn more](./webstack-lamp#pricing).
+
+Review the [naming conventions](./general-guidelines#naming-conventions) for any of the names that you are choosing for the Azure resources that you are going to be creating.
+
+### Command line general configuration variables and tools
 
 Regardless of what step you are working on, it's best practice to keep a set of general variables handy as they are foundational:
 
@@ -44,9 +50,7 @@ Regardless of what step you are working on, it's best practice to keep a set of 
 - **RESOURCEGROUPNAME**: The name of the resource group that will contain all the different Azure services from the architecture. Consider appending the region name as a suffix.
 - **PREFIX**: The string that will precede all the Azure services for future identification purposes. i.e: the codename of your game.
 
-Review the [naming conventions](./general-guidelines#naming-conventions) for any of the names that you are choosing for the Azure resources that you are going to be creating.
-
-To initialize the variables:
+#### Initialize the variables
 
 ```bash
 SET YOURSUBSCRIPTIONID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
@@ -54,6 +58,8 @@ SET RESOURCEGROUPNAME=myResourceGroup
 SET REGIONNAME=westus
 SET LOGINUSERNAME=azureuser
 ```
+
+#### Tools
 
 Should you choose to setup the architecture programmatically using a command line interface and the samples from this document, you are going to need to install [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2), a cross-platform command-line tool providing a great experience for managing Azure resources. The CLI is designed to make scripting easy, query data, support long-running operations, and more.
 

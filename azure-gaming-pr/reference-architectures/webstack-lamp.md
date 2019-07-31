@@ -63,3 +63,18 @@ Refer to [Deploy a single region LAMP architecture](./webstack-lamp-deployment-s
 Consider leveraging [mysqlnd_ms](https://www.php.net/manual/book.mysqlnd-ms.php) (a plugin for PHP’s native driver for MySQL) that can be used as load balancer proxy to distribute read workload to multiple read replicas.
 
 You can specify server name, user name, and password for connecting to a MySQL Server, so it can work to load balance and scale out by distributing read workload to Azure Database for MySQL read replicas.
+
+## Pricing
+
+If you don't have an Azure subscription, create a [free account](https://aka.ms/azfreegamedev) to get started with 12 months of free services. You're not charged for services included for free with Azure free account, unless you exceed the limits of these services. Learn how to check usage through the [Azure Portal](https://docs.microsoft.com/azure/billing/billing-check-free-service-usage#check-usage-on-the-azure-portal) or through the [usage file](https://docs.microsoft.com/azure/billing/billing-check-free-service-usage#check-usage-through-the-usage-file).
+
+You are responsible for the cost of the Azure services used while running these reference architectures, the total amount depends on the number of events that will run though the analytics pipeline. See the pricing webpages for each of the services that were used in the reference architectures:
+
+- [Azure Linux Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)
+- [Azure Virtual Machine Scale Set](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)
+- [Azure Database for MySQL](https://azure.microsoft.com/pricing/details/mysql/)
+- [Azure Cache for Redis](https://azure.microsoft.com/pricing/details/cache/)
+- [Azure Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/)
+- [Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
+ 
+You also have available the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/), to configure and estimate the costs for the Azure services that you are planning to use.
