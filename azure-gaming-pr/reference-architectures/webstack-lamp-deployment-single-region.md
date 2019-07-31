@@ -76,7 +76,7 @@ On top of the general configuration variables, the following variables are also 
 
 #### Initialize the variables
 
-```azurecli-interactive
+```bat
 SET VMNAME=myVirtualMachine
 SET IMAGE=Canonical:UbuntuServer:16.04-LTS:latest
 SET VMSIZE=Standard_B1s
@@ -85,7 +85,7 @@ SET VMDATADISKSIZEINGB=5
 
 #### Login
 
-```azurecli
+```bat
 CALL az login
 ```
 
@@ -102,7 +102,7 @@ az account set \
 
 # [Windows Batch](#tab/bat)
 
-```batch
+```bat
 CALL az account set ^
  --subscription %YOURSUBSCRIPTIONID%
 ```
@@ -111,7 +111,7 @@ CALL az account set ^
 
 #### Create a resource group
 
-```azurecli-interactive
+```bat
 CALL az group create ^
  --name %RESOURCEGROUPNAME% ^
  --location %REGIONNAME%
@@ -121,7 +121,7 @@ CALL az group create ^
 
 This operation will take several minutes.
 
-```batch
+```bat
 CALL az vm create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %VMNAME% ^
@@ -137,7 +137,7 @@ CALL az vm create ^
 
 #### Open the port 80
 
-```batch
+```bat
 CALL az vm open-port ^
  --port 80 ^
  --priority 900 ^
@@ -147,7 +147,7 @@ CALL az vm open-port ^
 
 #### Open the port 443
 
-```batch
+```bat
 CALL az vm open-port ^
  --port 443 ^
  --priority 901 ^
@@ -169,7 +169,7 @@ Refer to [Create a Linux virtual machine in the Azure portal](https://docs.micro
 
 #### Command line approach using Azure CLI
 
-```batch
+```bat
 CALL az network public-ip list ^
  --resource-group %RESOURCEGROUPNAME% ^
  --query [].ipAddress
@@ -255,7 +255,7 @@ On top of the previously defined variables, the following variables are also bei
 |----------|----------|-----------|
 | **GOLDENIMAGENAME** | myGoldenImage | The name of the custom golden image..
 
-```batch
+```bat
 CALL az vm deallocate ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %VMNAME%
@@ -271,13 +271,13 @@ CALL az vm generalize ^
 
 #### Initialize the variables
 
-```batch
+```bat
 SET GOLDENIMAGENAME=myGoldenImage
 ```
 
 #### Create the custom golden image
 
-```batch
+```bat
 CALL az image create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --source %VMNAME% ^
@@ -323,7 +323,7 @@ On top of the previously defined variables, the following variables are also bei
 
 #### Initialize the variables
 
-```batch
+```bat
 SET LBSKU=Basic
 SET PUBLICIPNAME=%PREFIX%PublicIP
 SET PUBLICIPALLOCATION=Static
@@ -344,7 +344,7 @@ SET LBRULEHTTPSNAME=%LBNAME%HTTPSRule
 
 #### Create the Azure Virtual Network
 
-```batch
+```bat
 CALL az network vnet create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %VNETNAME% ^
@@ -355,7 +355,7 @@ CALL az network vnet create ^
 
 #### Create an inbound public IP address for the load balancer
 
-```batch
+```bat
 CALL az network public-ip create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %PUBLICIPNAME% ^
@@ -366,7 +366,7 @@ CALL az network public-ip create ^
 
 #### Create an Azure Load Balancer
 
-```batch
+```bat
 CALL az network lb create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %LBNAME% ^
@@ -378,7 +378,7 @@ CALL az network lb create ^
 
 #### Create an Azure Load Balancer health probe for HTTP
 
-```batch
+```bat
 CALL az network lb probe create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --lb-name %LBNAME% ^
@@ -393,7 +393,7 @@ CALL az network lb probe create ^
 > [!NOTE]
 > This is only supported in the Standard Load Balancer SKU.
 
-```batch
+```bat
 if %LBSKU%==Standard CALL az network lb probe create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --lb-name %LBNAME% ^
@@ -405,7 +405,7 @@ if %LBSKU%==Standard CALL az network lb probe create ^
 
 #### Create an inbound NAT pool with backend port 22
 
-```batch
+```bat
 CALL az network lb inbound-nat-pool create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %LBNATPOOLNAME% ^
@@ -419,7 +419,7 @@ CALL az network lb inbound-nat-pool create ^
 
 #### Create a load balancing inbound rule for the port 80
 
-```batch
+```bat
 CALL az network lb rule create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %LBRULEHTTPNAME% ^
@@ -437,7 +437,7 @@ CALL az network lb rule create ^
 > [!NOTE]
 > This is only supported in the Standard Load Balancer SKU.
 
-```batch
+```bat
 if %LBSKU%==Standard CALL az network lb rule create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %LBRULEHTTPSNAME% ^
@@ -477,7 +477,7 @@ On top of the previously defined variables, the following variables are also bei
 
 #### Initialize the variables
 
-```batch
+```bat
 SET REDISNAME=%PREFIX%Redis
 SET REDISNAMEUNIQUE=%REDISNAME%%RANDOM%
 SET REDISVMSIZE=P1
@@ -494,7 +494,7 @@ SET SUBNETID=/subscriptions/%YOURSUBSCRIPTIONID%/resourceGroups/%RESOURCEGROUPNA
 > [!NOTE]
 > This is only supported in the Premium Azure Cache for Redis SKU.
 
-```batch
+```bat
 CALL az network vnet subnet create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --vnet-name %VNETNAME% ^
@@ -504,7 +504,7 @@ CALL az network vnet subnet create ^
 
 #### Create an Azure Cache for Redis
 
-```batch
+```bat
 CALL az redis create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %REDISNAMEUNIQUE% ^
@@ -520,7 +520,7 @@ CALL az redis create ^
 
 #### Get details of the cache (hostName, enableNonSslPort, port, sslPort, primaryKey and secondaryKey)
 
-```batch
+```bat
 CALL az redis show ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %REDISNAMEUNIQUE% ^
@@ -568,7 +568,7 @@ On top of the previously defined variables, the following variables are also bei
 
 #### Initialize the variables
 
-```batch
+```bat
 SET MYSQLNAME=%PREFIX%MySQL
 SET MYSQLUSERNAME=azuremysqluser
 SET MYSQLPASSWORD=CHang3thisP4Ssw0rD
@@ -584,7 +584,7 @@ SET MYSQLREADREPLICAREGION=westus
 
 #### Enable Azure CLI db-up extension (in preview)
 
-```batch
+```bat
 CALL az extension add --name db-up
 ```
 
@@ -593,7 +593,7 @@ CALL az extension add --name db-up
 > [!NOTE]
 > In addition to creating the server, the az mysql up command creates a sample database, a root user in the database, opens the firewall for Azure services, and creates default firewall rules for the client computer
 
-```batch
+```bat
 CALL az mysql up ^
  --resource-group %RESOURCEGROUPNAME% ^
  --server-name %MYSQLNAME% ^
@@ -610,7 +610,7 @@ CALL az mysql up ^
 
 #### Create a read replica using the MySQL server as a source (master)
 
-```batch
+```bat
 CALL az mysql server replica create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %MYSQLREADREPLICANAME% ^
@@ -642,7 +642,7 @@ On top of the previously defined variables, the following variables are also bei
 
 #### Initialize variables
 
-```batch
+```bat
 SET STORAGENAME=mygamebackendstrg%RANDOM%
 SET STORAGESKU=Standard_LRS
 SET STORAGECONTAINERNAME=%STORAGENAME%cntnr
@@ -650,7 +650,7 @@ SET STORAGECONTAINERNAME=%STORAGENAME%cntnr
 
 #### Create a storage account
 
-```batch
+```bat
 CALL az storage account create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %STORAGENAME% ^
@@ -660,7 +660,7 @@ CALL az storage account create ^
 
 #### Get the connection string from the storage account
 
-```batch
+```bat
 CALL az storage account show-connection-string -n %STORAGENAME% -g %RESOURCEGROUPNAME% --query connectionString -o tsv > connectionstring.tmp
 SET /p STORAGECONNECTIONSTRING=<connectionstring.tmp
 CALL DEL connectionstring.tmp
@@ -668,7 +668,7 @@ CALL DEL connectionstring.tmp
 
 #### Create a storage container into the storage account
 
-```batch
+```bat
 CALL az storage container create ^
  --name %STORAGECONTAINERNAME% ^
  --connection-string %STORAGECONNECTIONSTRING%
@@ -692,7 +692,7 @@ A virtual machine scale set allows you to deploy and manage a set of identical, 
 
 #### Initialize variables
 
-```batch
+```bat
 SET VMSSNAME=%PREFIX%VMSS
 SET GOLDENIMAGENAME=myGoldenImage
 SET VMSSSKUSIZE=Standard_DS1_v2
@@ -705,7 +705,7 @@ SET VMSSOVERPROVISIONING=--disable-overprovision
 
 #### Create a scale set
 
-```batch
+```bat
 CALL az vmss create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %VMSSNAME% ^
@@ -740,7 +740,7 @@ It monitors the performance of the Virtual Machine instances in your scale set. 
 
 #### Initialize variables
 
-```batch
+```bat
 SET VMSSAUTOSCALERNAME=%PREFIX%Autoscaler
 SET VMSSAUTOSCALERCRITERIA=Percentage CPU
 SET VMSSAUTOSCALERMAXCOUNT=10
@@ -753,7 +753,7 @@ SET VMSSAUTOSCALERINDECREASE=1
 
 #### Define the autoscaling profile
 
-```batch
+```bat
 CALL az monitor autoscale create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --resource %VMSSNAME% ^
@@ -766,7 +766,7 @@ CALL az monitor autoscale create ^
 
 #### Enable virtual machine autoscaler for scaling out
 
-```batch
+```bat
 CALL az monitor autoscale rule create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --autoscale-name %VMSSAUTOSCALERNAME% ^
@@ -776,7 +776,7 @@ CALL az monitor autoscale rule create ^
 
 #### Enable virtual machine autoscaler for scaling in
 
-```batch
+```bat
 CALL az monitor autoscale rule create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --autoscale-name %VMSSAUTOSCALERNAME% ^
