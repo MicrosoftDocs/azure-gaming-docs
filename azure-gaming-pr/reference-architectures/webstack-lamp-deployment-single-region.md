@@ -85,33 +85,6 @@ SET VMDATADISKSIZEINGB=5
 
 #### Login
 
-<ul class="cardsFTitle panelContent">
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Windows Batch</h3>
-                        <ul>
-                            <pre>
-                            CALL az login
-                            </pre>
-                        </ul>
-                    </div>
-                    <div class="cardText">
-                        <h3>Bash</h3>
-                        <ul>
-                            <pre>
-                            az login
-                            </pre>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-</ul>
-
 ```azurecli
 CALL az login
 ```
@@ -164,6 +137,25 @@ az account set \
 
 </tr>
 </table>
+
+
+<table>
+<tr>
+<th>Windows Batch</th>
+<th>Bash</th>
+</tr>
+<tr><td>
+```batch
+CALL az account set ^
+ --subscription %YOURSUBSCRIPTIONID%
+```
+</td>
+<td>
+```bash
+az account set \
+ --subscription $YOURSUBSCRIPTIONID
+```
+</td></tr></table>
 
 
 ```azurecli
