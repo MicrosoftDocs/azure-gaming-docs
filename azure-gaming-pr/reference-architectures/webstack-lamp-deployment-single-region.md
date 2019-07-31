@@ -93,6 +93,13 @@ CALL az login
 
 If you only have subscription, this step is optional.
 
+# [Bash](#tab/bash)
+
+ ``bash
+az account set \
+ --subscription $YOURSUBSCRIPTIONID
+```
+
 # [Windows Batch](#tab/bat)
 
 ```batch
@@ -100,22 +107,7 @@ CALL az account set ^
  --subscription %YOURSUBSCRIPTIONID%
 ```
 
- # [Bash](#tab/bash)
-
-    Add code that uses the output binding on the `context.bindings` object to create a queue message. Add this code before the`context.done` statement.
-
-```bash
-az account set \
- --subscription $YOURSUBSCRIPTIONID
-```
-
 ---
-
-
-```azurecli
-CALL az account set ^
- --subscription %YOURSUBSCRIPTIONID%
-```
 
 #### Create a resource group
 
