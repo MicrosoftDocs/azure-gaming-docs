@@ -85,9 +85,32 @@ SET VMDATADISKSIZEINGB=5
 
 #### Login
 
-| Windows Batch | Bash  |
-| ------ | --------- |
-| `CALL az login`    | `az login` |
+<ul class="cardsFTitle panelContent">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Windows Batch</h3>
+                        <ul>
+                            <pre>
+                            CALL az login
+                            </pre>
+                        </ul>
+                    </div>
+                    <div class="cardText">
+                        <h3>Bash</h3>
+                        <ul>
+                            <pre>
+                            az login
+                            </pre>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
 ```azurecli
 CALL az login
@@ -97,11 +120,34 @@ CALL az login
 
 If you only have one, this step is optional.
 
-| Windows Batch | Bash  |
-| ------ | --------- |
-| `CALL az account set ^`    | `az account set \` |
-| ` --subscription %YOURSUBSCRIPTIONID%`    | ` --subscription $YOURSUBSCRIPTIONID` |
-
+<ul class="cardsFTitle panelContent">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Windows Batch</h3>
+                        <ul>
+                            <pre>
+                            CALL az account set ^
+                             --subscription %YOURSUBSCRIPTIONID%
+                            </pre>
+                        </ul>
+                    </div>
+                    <div class="cardText">
+                        <h3>Bash</h3>
+                        <ul>
+                            <pre>
+                            az account set \
+                              --subscription $YOURSUBSCRIPTIONID
+                            </pre>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
 ```azurecli
 CALL az account set ^
