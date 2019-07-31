@@ -850,3 +850,17 @@ TBD
 ### Azure Portal
 
 Refer to [Automatically scale a virtual machine scale set in the Azure portal](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal), showing you how to create autoscale rules in the Azure Portal.
+
+## Update the Virtual Machine instances from the Virtual Machine Scale Set
+
+### Command line approach using Azure CLI
+
+TBD
+
+### Azure Resource Manager template
+
+TBD
+
+### Azure Portal
+
+TBD
