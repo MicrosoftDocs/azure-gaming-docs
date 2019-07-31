@@ -76,7 +76,7 @@ On top of the general configuration variables, the following variables are also 
 
 #### Initialize the variables
 
-```bash
+```azurecli-interactive
 SET VMNAME=myVirtualMachine
 SET IMAGE=Canonical:UbuntuServer:16.04-LTS:latest
 SET VMSIZE=Standard_B1s
@@ -85,7 +85,7 @@ SET VMDATADISKSIZEINGB=5
 
 #### Login
 
-```winbatch
+```azurecli-interactive
 CALL az login
 ```
 
@@ -93,14 +93,14 @@ CALL az login
 
 If you only have one, this step is optional.
 
-```dosbatch
+```azurecli-interactive
 CALL az account set ^
  --subscription %YOURSUBSCRIPTIONID%
 ```
 
 #### Create a resource group
 
-```bat
+```azurecli-interactive
 CALL az group create ^
  --name %RESOURCEGROUPNAME% ^
  --location %REGIONNAME%
