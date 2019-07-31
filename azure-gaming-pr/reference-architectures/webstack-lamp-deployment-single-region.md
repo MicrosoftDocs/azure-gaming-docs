@@ -752,9 +752,7 @@ Scale sets have an "upgrade policy" that determine how VMs are brought up-to-dat
 - **Manual** - In this mode, when you update the scale set model, nothing happens to existing VMs.
 
 Manual upgrade mode is not the most suitable to use when the number of instances is high and you don't have any automation to handle the updates.
-In Automatic mode, all the instances are upgraded at the same time, which may cause down time.
-
-Rolling upgrade mode requires that a health probe is associated to the Virtual Machine Scale Set and also all the Virtual Machine instances.
+In Automatic mode, all the instances are upgraded at the same time, which may cause down time. Rolling upgrade updates only a portion of the instances from the scale set at a time, meaning your game should be prepared to handle that, at the same time, a subset of the backend servers may be running the older version while the rest is up to date; eventually all the servers will be up to date. Rolling upgrade requires that a health probe is associated to the Virtual Machine Scale Set and also all the Virtual Machine instances.
 
 #### Associate the load balancer health probe to the scale set
 
