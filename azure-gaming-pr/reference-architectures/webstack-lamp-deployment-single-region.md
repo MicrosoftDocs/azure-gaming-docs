@@ -120,52 +120,20 @@ CALL az login
 
 If you only have subscription, this step is optional.
 
-<ul class="cardsFTitle panelContent">
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="https://docs.microsoft.com/media/common/i_get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Windows Batch</h3>
-                        <ul>
-                            <pre>
-                            CALL az account set ^
-                             --subscription %YOURSUBSCRIPTIONID%
-                            </pre>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="https://docs.microsoft.com/media/common/i_reference.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Bash</h3>
-                        <ul>
-                            <pre>
-                            az account set \
-                              --subscription $YOURSUBSCRIPTIONID
-                            </pre>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-</ul>
+:::row:::
+    :::column:::
+```batch
+CALL az account set ^
+ --subscription %YOURSUBSCRIPTIONID%
+```
+    :::column-end:::
+    :::column:::
+```bash
+az account set \
+ --subscription $YOURSUBSCRIPTIONID
+```
+    :::column-end:::    
+:::row-end:::
 
 ```azurecli
 CALL az account set ^
