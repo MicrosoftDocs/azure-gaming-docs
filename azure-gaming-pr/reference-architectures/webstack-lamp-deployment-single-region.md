@@ -95,7 +95,7 @@ If you only have subscription, this step is optional.
 
 # [Bash](#tab/bash)
 
-```bash
+```console
 az account set \
  --subscription $YOURSUBSCRIPTIONID
 ```
