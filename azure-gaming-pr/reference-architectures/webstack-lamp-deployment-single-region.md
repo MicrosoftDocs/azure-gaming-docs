@@ -93,69 +93,23 @@ CALL az login
 
 If you only have subscription, this step is optional.
 
-:::row:::
-    :::column:::
-```bat
-CALL az account set ^
- --subscription %YOURSUBSCRIPTIONID%
-```
-    :::column-end:::
-    :::column:::
-```bash
-az account set \
- --subscription $YOURSUBSCRIPTIONID
-```
-    :::column-end:::    
-:::row-end:::
+# [Windows Batch](#tab/bat)
 
-
-<table>
-<tr>
-<th>
-Windows Batch
-</th>
-<th>
-Bash
-</th>
-</tr>
-
-<tr>
-
-<td>
-<pre>
-CALL az account set ^
- --subscription %YOURSUBSCRIPTIONID%
-</pre>
-</td>
-
-<td>
-<pre>
-az account set \
- --subscription $YOURSUBSCRIPTIONID
-</pre>
-</td>
-
-</tr>
-</table>
-
-
-<table>
-<tr>
-<th>Windows Batch</th>
-<th>Bash</th>
-</tr>
-<tr><td>
 ```batch
 CALL az account set ^
  --subscription %YOURSUBSCRIPTIONID%
 ```
-</td>
-<td>
+
+ # [Bash](#tab/bash)
+
+    Add code that uses the output binding on the `context.bindings` object to create a queue message. Add this code before the`context.done` statement.
+
 ```bash
 az account set \
  --subscription $YOURSUBSCRIPTIONID
 ```
-</td></tr></table>
+
+---
 
 
 ```azurecli
