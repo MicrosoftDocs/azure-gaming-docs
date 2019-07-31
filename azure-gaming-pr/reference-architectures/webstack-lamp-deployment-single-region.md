@@ -124,16 +124,47 @@ If you only have subscription, this step is optional.
     :::column:::
 ```bat
 CALL az account set ^
-&nbsp;--subscription %YOURSUBSCRIPTIONID%
+ --subscription %YOURSUBSCRIPTIONID%
 ```
     :::column-end:::
     :::column:::
 ```bash
 az account set \
-&nbsp;--subscription $YOURSUBSCRIPTIONID
+ --subscription $YOURSUBSCRIPTIONID
 ```
     :::column-end:::    
 :::row-end:::
+
+
+<table>
+<tr>
+<th>
+Windows Batch
+</th>
+<th>
+Bash
+</th>
+</tr>
+
+<tr>
+
+<td>
+<pre>
+CALL az account set ^
+ --subscription %YOURSUBSCRIPTIONID%
+</pre>
+</td>
+
+<td>
+<pre>
+az account set \
+ --subscription $YOURSUBSCRIPTIONID
+</pre>
+</td>
+
+</tr>
+</table>
+
 
 ```azurecli
 CALL az account set ^
