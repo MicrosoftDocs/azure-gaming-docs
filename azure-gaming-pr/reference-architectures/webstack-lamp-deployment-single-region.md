@@ -67,6 +67,9 @@ Should you choose to setup the architecture programmatically using a command lin
 
 This Virtual Machine only has one specific use: serve as a foundation for the custom golden image. In most cases, it gets deleted afterwards.
 
+> [!TIP]
+> When deploying a Virtual Machine, it's recommended to use SSH keys rather than password to protect the access. [Learn more](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+
 ### Command line approach using Azure CLI
 
 On top of the general configuration variables, the following variables are also being used:
@@ -93,7 +96,7 @@ SET VMDATADISKSIZEINGB=5
 
 #### Login
 
-Running this command will open a browser for you to log in with your Azure credentials.
+Running this command will open a browser for you to log in with your Azure credentials. [Learn more about this command](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
 ```bat
 CALL az login
@@ -101,7 +104,7 @@ CALL az login
 
 #### Set the Azure subscription
 
-If you only have subscription, this step is optional.
+If you only have subscription, this step is optional. [Learn more about this command](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set).
 
 # [Bash](#tab/bash)
 
@@ -121,7 +124,7 @@ CALL az account set ^
 
 #### Create a resource group
 
-All resources created in Azure need to be part of a resource group. [Learn more](./general-guidelines#resource-groups).
+All resources created in Azure need to be part of a resource group. [Learn more about this command](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create).
 
 ```bat
 CALL az group create ^
@@ -129,9 +132,11 @@ CALL az group create ^
  --location %REGIONNAME%
 ```
 
+Have a look at the [general guidelines documentation](./general-guidelines.md#resource-groups) to learn more about resource groups.
+
 #### Create a Virtual Machine
 
-This operation will take several minutes.
+This operation will take several minutes. [Learn more about this command](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create).
 
 ```bat
 CALL az vm create ^
@@ -144,10 +149,9 @@ CALL az vm create ^
  --generate-ssh-keys
 ```
 
-> [!TIP]
-> It's recommended to use SSH keys rather than password to protect the access to the Virtual Machines.
+#### Open the ports 80 and 443
 
-#### Open the port 80
+[Learn more about this command](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-open-port).
 
 ```bat
 CALL az vm open-port ^
@@ -155,11 +159,7 @@ CALL az vm open-port ^
  --priority 900 ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %VMNAME%
-```
 
-#### Open the port 443
-
-```bat
 CALL az vm open-port ^
  --port 443 ^
  --priority 901 ^
@@ -180,6 +180,8 @@ Refer to [Create a Linux virtual machine in the Azure portal](https://docs.micro
 ### Get the public IP of the Virtual Machine that was just created
 
 #### Command line approach using Azure CLI
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-list).
 
 ```bat
 CALL az network public-ip list ^
@@ -261,6 +263,8 @@ Before creating an image it's needed to stop and prepare the Linux guest OS on t
 
 #### Command line approach using Azure CLI
 
+Learn more about the [deallocate](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-deallocate) and [generalize](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-generalize) commands.
+
 ```bat
 CALL az vm deallocate ^
  --resource-group %RESOURCEGROUPNAME% ^
@@ -288,6 +292,8 @@ SET GOLDENIMAGENAME=myGoldenImage
 ```
 
 #### Create the custom golden image
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/image?view=azure-cli-latest#az-image-create).
 
 ```bat
 CALL az image create ^
@@ -360,6 +366,8 @@ SET LBRULEHTTPSNAME=%LBNAME%HTTPSRule
 
 #### Create the Azure Virtual Network
 
+[Learn more about this command](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create).
+
 ```bat
 CALL az network vnet create ^
  --resource-group %RESOURCEGROUPNAME% ^
@@ -370,6 +378,8 @@ CALL az network vnet create ^
 ```
 
 #### Create an inbound public IP address for the load balancer
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create).
 
 ```bat
 CALL az network public-ip create ^
@@ -382,6 +392,8 @@ CALL az network public-ip create ^
 
 #### Create an Azure Load Balancer
 
+[Learn more about this command](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create).
+
 ```bat
 CALL az network lb create ^
  --resource-group %RESOURCEGROUPNAME% ^
@@ -393,6 +405,8 @@ CALL az network lb create ^
 ```
 
 #### Create an Azure Load Balancer health probe for HTTP
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create).
 
 ```bat
 CALL az network lb probe create ^
@@ -421,6 +435,8 @@ if %LBSKU%==Standard CALL az network lb probe create ^
 
 #### Create an inbound NAT pool with backend port 22
 
+[Learn more about this command](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az-network-lb-inbound-nat-pool-create).
+
 ```bat
 CALL az network lb inbound-nat-pool create ^
  --resource-group %RESOURCEGROUPNAME% ^
@@ -434,6 +450,8 @@ CALL az network lb inbound-nat-pool create ^
 ```
 
 #### Create a load balancing inbound rule for the port 80
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create).
 
 ```bat
 CALL az network lb rule create ^
@@ -519,6 +537,8 @@ CALL az network vnet subnet create ^
 ```
 
 #### Create an Azure Cache for Redis
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/redis?view=azure-cli-latest#az-redis-create).
 
 ```bat
 CALL az redis create ^
@@ -609,6 +629,8 @@ CALL az extension add --name db-up
 > [!NOTE]
 > In addition to creating the server, the az mysql up command creates a sample database, a root user in the database, opens the firewall for Azure services, and creates default firewall rules for the client computer
 
+[Learn more about this command](https://docs.microsoft.com/cli/azure/ext/db-up/mysql?view=azure-cli-latest#ext-db-up-az-mysql-up).
+
 ```bat
 CALL az mysql up ^
  --resource-group %RESOURCEGROUPNAME% ^
@@ -625,6 +647,8 @@ CALL az mysql up ^
 ```
 
 #### Create a read replica using the MySQL server as a source (master)
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/mysql/server/replica?view=azure-cli-latest#az-mysql-server-replica-create).
 
 ```bat
 CALL az mysql server replica create ^
@@ -666,6 +690,8 @@ SET STORAGECONTAINERNAME=%STORAGENAME%cntnr
 
 #### Create a storage account
 
+[Learn more about this command](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create).
+
 ```bat
 CALL az storage account create ^
  --resource-group %RESOURCEGROUPNAME% ^
@@ -683,6 +709,8 @@ CALL DEL connectionstring.tmp
 ```
 
 #### Create a storage container into the storage account
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create).
 
 ```bat
 CALL az storage container create ^
@@ -721,6 +749,8 @@ SET VMSSOVERPROVISIONING=--disable-overprovision
 ```
 
 #### Create a scale set
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-create).
 
 ```bat
 CALL az vmss create ^
@@ -762,6 +792,8 @@ In Automatic mode, all the instances are upgraded at the same time, which may ca
 
 #### Associate the load balancer health probe to the scale set
 
+[Learn more about this command](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-show).
+
 ```bat
 CALL az vmss update ^
  --resource-group %RESOURCEGROUPNAME% ^
@@ -771,6 +803,8 @@ CALL az vmss update ^
 ```
 
 #### Update all the instances from the scale set
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-update-instances).
 
 ```bat
 CALL az vmss update-instances ^
@@ -818,6 +852,8 @@ SET VMSSAUTOSCALERINDECREASE=1
 
 #### Define the autoscaling profile
 
+[Learn more about this command](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest#az-monitor-autoscale-create).
+
 ```bat
 CALL az monitor autoscale create ^
  --resource-group %RESOURCEGROUPNAME% ^
@@ -830,6 +866,8 @@ CALL az monitor autoscale create ^
 ```
 
 #### Enable virtual machine autoscaler for scaling out
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/monitor/autoscale/rule?view=azure-cli-latest#az-monitor-autoscale-rule-create).
 
 ```bat
 CALL az monitor autoscale rule create ^
