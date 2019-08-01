@@ -308,7 +308,7 @@ CALL az vm generalize ^
 
 Regardless of what method it's used to create the golden image, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional resource created would be the Image itself.
 
-[![Outcome of creating a golden image](media/webstack/webstack-create-golden-image.png)](media/webstack/webstack-golden-image.png)
+[![Outcome of creating a golden image](media/webstack/webstack-create-golden-image.png)](media/webstack/webstack-create-golden-image.png)
 
 ### Command line approach using Azure CLI
 
@@ -537,6 +537,12 @@ Refer to [Create a Basic Load Balancer by using the Azure portal](https://docs.m
 
 ## Deploy the Azure Cache for Redis
 
+Regardless of what method it's used to create the Azure Cache for Redis, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional resource created would be the cache itself.
+
+[![Outcome of creating a golden image](media/webstack/webstack-create-redis.png)](media/webstack/webstack-create-redis.png)
+
+Deploying the Azure Cache for Redis should take less than 30 minutes in total.
+
 ### Command line approach using Azure CLI 
 
 On top of the previously defined variables, the following variables are also being used:
@@ -630,6 +636,12 @@ Refer to [How to configure Virtual Network Support for a Premium Azure Cache for
 
 ## Deploy the Azure Database for MySQL
 
+Regardless of what method it's used to create the Azure Cache for Redis, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional exposed resources created would be the master database itself and, if you created them, the replica or replicas.
+
+[![Outcome of creating a golden image](media/webstack/webstack-create-mysql.png)](media/webstack/webstack-create-mysql.png)
+
+Deploying the Azure Database for MySQL master and replicas should take less than 30 minutes in total.
+
 ### Command line approach using Azure CLI
 
 On top of the previously defined variables, the following variables are also being used:
@@ -719,6 +731,10 @@ Refer to [How to create and manage read replicas in Azure Database for MySQL usi
 
 ## Create the Azure Storage account and container
 
+Regardless of what method it's used to create the Azure Storage account and container, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional exposed resource created would be the Azure Storage itself.
+
+[![Outcome of creating a golden image](media/webstack/webstack-create-storage.png)](media/webstack/webstack-create-storage.png)
+
 ### Command line approach using Azure CLI
 
 On top of the previously defined variables, the following variables are also being used:
@@ -789,6 +805,10 @@ Scale sets have an "upgrade policy" that determine how VMs are brought up-to-dat
 - **Automatic** - In this mode, the scale set makes no guarantees about the order of VMs being brought down. The scale set may take down all VMs at the same time, which may cause down time.
 - **Manual** - In this mode, when you update the scale set model, nothing happens to existing VMs. It isn't the most suitable to use when the number of instances is high and you don't have any automation to handle the updates.
 - **Rolling** - In this mode, the scale set rolls out the update in batches with an optional pause time between batches. Rolling upgrade updates only a portion of the instances from the scale set at a time, meaning your game should be prepared to handle that, at the same time, a subset of the backend servers may be running the older version while the rest is up to date; eventually all the servers will be up to date. Rolling upgrade requires that a health probe is associated to the Virtual Machine Scale Set and also all the Virtual Machine instances.
+
+Regardless of what method it's used to create the Azure Virtual Machine Scale Set, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional exposed resource created would be the scale set itself.
+
+[![Outcome of creating a golden image](media/webstack/webstack-create-vmss.png)](media/webstack/webstack-create-vmss.png)
 
 ### Command line approach using Azure CLI
 
@@ -898,6 +918,8 @@ Refer to [Create a virtual machine scale set in the Azure portal](https://docs.m
 ## Create the autoscaler
 
 It monitors the performance of the Virtual Machine instances in your scale set. These autoscale rules increase or decrease the number of Virtual Machine instances in response to these performance metrics.
+
+Regardless of what method it's used to create the autoscaler, it won't show up  directly exposed resource within the resource group.
 
 ### Command line approach using Azure CLI
 
