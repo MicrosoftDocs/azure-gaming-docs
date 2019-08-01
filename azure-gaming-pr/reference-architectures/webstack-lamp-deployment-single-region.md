@@ -37,7 +37,7 @@ In general, when deploying a single region LAMP architecture there are certain s
 
 ## Preparative
 
-You'll need to have at least an Azure subscription. [Learn more](./webstack-lamp#pricing).
+You'll need to have at least an Azure subscription. [Learn more](./webstack-lamp.md#pricing).
 
 Review the [naming conventions](./general-guidelines.md#naming-conventions) for any of the names that you are choosing for the Azure resources that you are going to be creating.
 
