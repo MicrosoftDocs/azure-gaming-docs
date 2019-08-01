@@ -965,7 +965,7 @@ Refer to [Automatically scale a virtual machine scale set in the Azure portal](h
 
 ## Update the Virtual Machine instances from the Virtual Machine Scale Set
 
-In this document it's covered a simple way to upload a bunch of PHP files within the remote virtual machine instances. You may want to use a more sophisticated system like Azure DevOps, in which case you could start with a couple of good documents: [Deploying Applications to Azure Virtual Machine Scale Sets](https://devblogs.microsoft.com/devops/deploying-applications-to-azure-vm-scale-sets/) or [Using Azure DevOps to Deploy Web Applications to Virtual Machines](https://devblogs.microsoft.com/premier-developer/using-azure-devops-to-deploy-web-applications-to-virtual-machines/).
+In this document it's covered a simple way to upload a bunch of PHP files to the remote virtual machine instances. You may want to use a more sophisticated system like Azure DevOps, in which case you could start with a couple of good documents: [Deploying Applications to Azure Virtual Machine Scale Sets](https://devblogs.microsoft.com/devops/deploying-applications-to-azure-vm-scale-sets/) or [Using Azure DevOps to Deploy Web Applications to Virtual Machines](https://devblogs.microsoft.com/premier-developer/using-azure-devops-to-deploy-web-applications-to-virtual-machines/).
 
 ### Command line approach using Azure CLI
 
