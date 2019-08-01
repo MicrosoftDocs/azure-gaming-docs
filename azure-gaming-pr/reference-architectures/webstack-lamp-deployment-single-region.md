@@ -967,8 +967,103 @@ Refer to [Automatically scale a virtual machine scale set in the Azure portal](h
 
 ### Command line approach using Azure CLI
 
+
+
 > [!TIP]
 > In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download the full Bash [10-update-app.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/10-update-app].sh) or Windows Batch [10-update-app.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/10-update-app.bat) scripts to save you time.
+
+#### Initialize variables
+
+```bat
+SET BLOBSOURCEURI=app\\package.tar.gz
+SET BLOBFILEDESTINATIONNAME=package.tar.gz
+SET SCRIPTUPDATESOURCEURI=scripts\\update-app.sh
+SET SCRIPTUPDATEFILEDESTINATIONAME=update-app.sh
+SET DESTINATIONFOLDER=/var/www/html
+SET SERVICETORESTART=apache2.service
+```
+
+#### Get the connection string from the storage account
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string).
+
+```bat
+CALL az storage account show-connection-string -n %STORAGENAME% -g %RESOURCEGROUPNAME% --query connectionString -o tsv > connectionstring.tmp
+SET /p STORAGECONNECTIONSTRING=<connectionstring.tmp
+CALL DEL connectionstring.tmp
+```
+
+#### Upload both the application files and update application script to the blob storage
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-upload).
+
+```bat
+CALL az storage blob upload ^
+ -c %STORAGECONTAINERNAME% ^
+ -f %BLOBSOURCEURI% ^
+ -n %BLOBFILEDESTINATIONNAME% ^
+ --connection-string %STORAGECONNECTIONSTRING%
+
+CALL az storage blob upload ^
+ -c %STORAGECONTAINERNAME% ^
+ -f %SCRIPTUPDATESOURCEURI% ^
+ -n %SCRIPTUPDATEFILEDESTINATIONAME% ^
+ --connection-string %STORAGECONNECTIONSTRING%
+```
+
+#### Get the URLs from the uploaded files
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-url)
+
+```bat
+CALL az storage blob url -c %STORAGECONTAINERNAME% -n %BLOBFILEDESTINATIONNAME% -o tsv --connection-string %STORAGECONNECTIONSTRING% > bloburl.tmp
+SET /p BLOBURL=<bloburl.tmp
+CALL DEL bloburl.tmp
+
+CALL az storage blob url -c %STORAGECONTAINERNAME% -n %SCRIPTUPDATEFILEDESTINATIONAME% -o tsv --connection-string %STORAGECONNECTIONSTRING% > scripturl.tmp
+SET /p SCRIPTURL=<scripturl.tmp
+CALL DEL scripturl.tmp
+```
+
+#### Build the Protected Settings JSON string
+
+It'll be used by the Custom Script Extension to download the file or files from the storage account. [Learn more about this command](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list)
+
+```bat
+CALL az storage account keys list --account-name %STORAGENAME% --resource-group %RESOURCEGROUPNAME% --query [0].value --output tsv > storagekey.tmp
+SET /p STORAGEKEY=<storagekey.tmp
+CALL DEL storagekey.tmp
+
+SET PROTECTEDSETTINGS="{\"storageAccountName\":\"%STORAGENAME%\",\"storageAccountKey\":\"%STORAGEKEY%\"}"
+SET SETTINGS="{\"fileUris\":[\"%BLOBURL%\",\"%SCRIPTURL%\"],\"commandToExecute\":\"bash %SCRIPTUPDATEFILEDESTINATIONAME% %BLOBFILEDESTINATIONNAME% %DESTINATIONFOLDER% %SERVICETORESTART%\"}"
+```
+
+#### Update the configuration file from the scale set
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/vmss/extension?view=azure-cli-latest#az-vmss-extension-set).
+
+```bat
+CALL az vmss extension set ^
+ --resource-group %RESOURCEGROUPNAME% ^
+ --vmss-name %VMSSNAME% ^
+ --publisher Microsoft.Azure.Extensions ^
+ --name CustomScript ^
+ --version 2.0 ^
+ --settings %SETTINGS% ^
+ --force-update ^
+ --protected-settings %PROTECTEDSETTINGS%
+```
+
+#### Update all the instances from the scale set
+
+This will ensure that in the next update round they download and install the files uploaded to the storage account. [Learn more about this command](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-update-instances).
+
+```bat
+CALL az vmss update-instances ^
+ --instance-ids * ^
+ --name %VMSSNAME% ^
+ --resource-group %RESOURCEGROUPNAME%
+```
 
 ### Azure Resource Manager template
 
