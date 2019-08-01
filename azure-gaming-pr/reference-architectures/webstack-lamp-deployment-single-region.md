@@ -11,7 +11,7 @@ ms.service: azure
 
 # Deploy a single region LAMP architecture
 
-This document covers different methods to deploy a **single region LAMP architecture**, either using **command line tools** on either Linux bash or Windows batch for a more hands on programmatic setup, or an Azure Resource Manager template for a **one-click deployment**. And in most cases there will be pointers to how to setup a certain portion of the architecture using the **Azure Portal**.
+This document covers different methods to deploy a **single region LAMP architecture**, either using **command line tools** on either Linux bash or Windows batch for a more hands on programmatic setup, or an Azure Resource Manager template for a **one-click deployment**. And in most cases there will be pointers to how to setup a certain portion of the architecture using the **Azure Portal**. Alternatively you can use third-party solutions like [Hashicorp Terraform](https://docs.microsoft.com/azure/terraform/terraform-overview).
 
 In general, when deploying a single region LAMP architecture there are certain steps that are mostly one-offs while others need to be executed in more regular basis as your backend gets updated to match your game requirements. Here below is the full step list:
 
@@ -965,9 +965,20 @@ Refer to [Automatically scale a virtual machine scale set in the Azure portal](h
 
 ## Update the Virtual Machine instances from the Virtual Machine Scale Set
 
+In this document it's covered a simple way to upload a bunch of PHP files within the remote virtual machine instances. You may want to use a more sophisticated system like Azure DevOps, in which case you could start with a couple of good documents: [Deploying Applications to Azure Virtual Machine Scale Sets](https://devblogs.microsoft.com/devops/deploying-applications-to-azure-vm-scale-sets/) or [Using Azure DevOps to Deploy Web Applications to Virtual Machines](https://devblogs.microsoft.com/premier-developer/using-azure-devops-to-deploy-web-applications-to-virtual-machines/).
+
 ### Command line approach using Azure CLI
 
+On top of the previously defined variables, the following variables are also being used:
 
+|Variable|Default value|Description|
+|----------|----------|-----------|
+| **BLOBSOURCEURI** | app\\package.tar.gz | The path to the compressed file (TAR GZIP) containing the PHP files.
+| **BLOBFILEDESTINATIONNAME** | package.tar.gz | The filename of the compressed file in the destination.
+| **SCRIPTUPDATESOURCEURI** | scripts\\update-app.sh | The path to the bash script that will decompress the PHP file remotely.
+| **SCRIPTUPDATEFILEDESTINATIONAME** | update-app.sh | The filename of the update script file in the destination.
+| **DESTINATIONFOLDER** | /var/www/html | Directory where the PHP files will be decompressed into.
+| **SERVICETORESTART** | apache2.service | Service to restart after the PHP files are decompressed.
 
 > [!TIP]
 > In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download the full Bash [10-update-app.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/10-update-app].sh) or Windows Batch [10-update-app.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/10-update-app.bat) scripts to save you time.
