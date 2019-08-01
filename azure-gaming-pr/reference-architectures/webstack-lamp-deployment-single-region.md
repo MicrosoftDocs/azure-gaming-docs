@@ -50,12 +50,32 @@ Regardless of what step you are working on, it's best practice to keep a set of 
 - **RESOURCEGROUPNAME**: The name of the resource group that will contain all the different Azure services from the architecture. Consider appending the region name as a suffix.
 - **PREFIX**: The string that will precede all the Azure services for future identification purposes. i.e: the codename of your game.
 
+#### Get the list of Azure region names
+
+```batch
+CALL az account list-locations
+```
+
+Here below are some examples of the region names currently available:
+
+| Region | Name |
+|--------|------|
+| **Japan West** | japanwest |
+| **Japan East** | japaneast |
+| **Korea Central** | koreacentral |
+| **Korea South** | koreasouth |
+| **East Asia** | eastasia |
+| **Southeast Asia** | southeastasia |
+| **Southeast Asia** | southeastasia |
+| **Australia Central** | australiacentral |
+| **Australia Central 2** | australiacentral2 |
+
 #### Initialize the variables
 
 ```bash
 SET YOURSUBSCRIPTIONID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 SET RESOURCEGROUPNAME=myResourceGroup
-SET REGIONNAME=westus
+SET REGIONNAME=japaneast
 SET LOGINUSERNAME=azureuser
 ```
 
@@ -83,7 +103,9 @@ On top of the general configuration variables, the following variables are also 
 | **VMDATADISKSIZEINGB** | 5 | 5 | 10 | 30 | How much persistent disk storage you are going to allocate per Virtual Machine. [Benefits of using managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#benefits-of-managed-disks).
 
 > [!NOTE]
-> Aside from the core steps documented below, for more details about the process of deploying a Virtual Machine on a Managed Disk, refer to the [Create and Manage Linux VMs with the Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm) tutorial that covers basic Azure virtual machine deployment items such as selecting a VM size, selecting a VM image, and deploying a VM.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of a Virtual Machine deployment, you can download the full Windows Batch [1-create-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/1-create-vm.bat) or Bash [1-create-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/1-create-vm.sh) scripts to save you time.
+
+For more details about the process of deploying a Virtual Machine on a Managed Disk, refer to the [Create and Manage Linux VMs with the Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm) tutorial that covers basic Azure virtual machine deployment items such as selecting a VM size, selecting a VM image, and deploying a VM.
 
 #### Initialize the variables
 
@@ -228,7 +250,7 @@ exit
 ```
 
 > [!TIP]
-> You can create a shell script and execute all the commands in a more automated fashion.
+> You can create a shell script and execute all the commands in a more automated fashion, check [install-apache-and-php.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/scripts/install-apache-and-php.sh) out as an example.
 
 ### Validate that the web server and PHP are running properly
 
