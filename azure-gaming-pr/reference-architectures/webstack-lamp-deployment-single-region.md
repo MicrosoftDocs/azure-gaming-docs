@@ -90,6 +90,10 @@ This Virtual Machine only has one specific use: serve as a foundation for the cu
 > [!TIP]
 > When deploying a Virtual Machine, it's recommended to use SSH keys rather than password to protect the access. [Learn more](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 
+Regardless of what method it's used to deploy the Virtual Machine on a Managed Disk, if you look within the resource group in the Azure Portal it should look like it's shown below. The exposed resources created would be the Virtual Machine itself, a couple of disks (the one from the Operating System and another for the data), a public IP address, a Network Security Group, a Network Interface Controller (NIC) and finally a Virtual Network.
+
+[![Outcome of creating a virtual machine](media/webstack/webstack-create-vm.png)](media/webstack/webstack-create-vm.png)
+
 ### Command line approach using Azure CLI
 
 On top of the general configuration variables, the following variables are also being used:
@@ -302,6 +306,10 @@ CALL az vm generalize ^
 
 ## Capture the Virtual Machine Disk Image to generate the custom golden image
 
+Regardless of what method it's used to create the golden image, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional resource created would be the Image itself.
+
+[![Outcome of creating a golden image](media/webstack/webstack-create-golden-image.png)](media/webstack/webstack-golden-image.png)
+
 ### Command line approach using Azure CLI
 
 On top of the previously defined variables, the following variables are also being used:
@@ -347,6 +355,10 @@ TBD
 Here below is an example of how the topology should look like if you have deployed all the networking resources, including the HTTPs traffic health probe that it's only supported in the Standard Load Balancer SKU, and a Virtual Machine Scale Set with a couple of instances.
 
 [![Connect to a Virtual Machine via Azure Portal](media/webstack/webstack-lamp-single-region-networking-topology.png)](media/webstack/webstack-lamp-single-region-networking-topology.png)
+
+Specifically to the networking resources, if you look within the resource group in the Azure Portal it should look like it's shown below. The exposed resources created would be a load balancer, a public IP for the load balancer and a Virtual Network.
+
+[![Outcome of creating a virtual machine](media/webstack/webstack-create-networking.png)](media/webstack/webstack-create-networking.png)
 
 ### Command line approach using Azure CLI
 
