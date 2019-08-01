@@ -92,7 +92,11 @@ This Virtual Machine only has one specific use: serve as a foundation for the cu
 
 Regardless of what method it's used to deploy the Virtual Machine on a Managed Disk, if you look within the resource group in the Azure Portal it should look like it's shown below. The exposed resources created would be the Virtual Machine itself, a couple of disks (the one from the Operating System and another for the data), a public IP address, a Network Security Group, a Network Interface Controller (NIC) and finally a Virtual Network.
 
+<center>
+
 [![Outcome of creating a virtual machine](media/webstack/webstack-create-vm.png)](media/webstack/webstack-create-vm.png)
+
+</center>
 
 ### Command line approach using Azure CLI
 
@@ -219,7 +223,11 @@ CALL az network public-ip list ^
 
 Select the **Connect** button on the overview page for your Virtual Machine.
 
+<center>
+
 [![Connect to a Virtual Machine via Azure Portal](media/webstack/webstack-connect-to-vm-portal.png)](media/webstack/webstack-connect-to-vm-portal.png)
+
+</center>
 
 On the right side of the screen a new blade will be open, in **Login using VM local account** a connection command is shown.
 
@@ -310,7 +318,11 @@ CALL az vm generalize ^
 
 Regardless of what method it's used to create the golden image, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional resource created would be the Image itself.
 
+<center>
+
 [![Outcome of creating a golden image](media/webstack/webstack-create-golden-image.png)](media/webstack/webstack-create-golden-image.png)
+
+</center>
 
 ### Command line approach using Azure CLI
 
@@ -356,11 +368,19 @@ TBD
 
 Here below is an example of how the topology should look like if you have deployed all the networking resources, including the HTTPs traffic health probe that it's only supported in the Standard Load Balancer SKU, and a Virtual Machine Scale Set with a couple of instances.
 
+<center>
+
 [![Networking topology](media/webstack/webstack-lamp-single-region-networking-topology.png)](media/webstack/webstack-lamp-single-region-networking-topology.png)
+
+</center>
 
 Specifically to the networking resources, if you look within the resource group in the Azure Portal it should look like it's shown below. The exposed resources created would be a load balancer, a public IP for the load balancer and a Virtual Network.
 
+<center>
+
 [![Azure Portal exposed networking post creation](media/webstack/webstack-create-networking.png)](media/webstack/webstack-create-networking.png)
+
+</center>
 
 ### Command line approach using Azure CLI
 
@@ -541,7 +561,11 @@ Refer to [Create a Basic Load Balancer by using the Azure portal](https://docs.m
 
 Regardless of what method it's used to create the Azure Cache for Redis, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional resource created would be the cache itself.
 
+<center>
+
 [![Outcome of creating Azure Cache for Redis](media/webstack/webstack-create-redis.png)](media/webstack/webstack-create-redis.png)
+
+</center>
 
 Deploying the Azure Cache for Redis should take less than 30 minutes in total.
 
@@ -640,7 +664,11 @@ Refer to [How to configure Virtual Network Support for a Premium Azure Cache for
 
 Regardless of what method it's used to create the Azure Cache for Redis, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional exposed resources created would be the master database itself and, if you created them, the replica or replicas.
 
+<center>
+
 [![Outcome of creating Azure Database for MySQL](media/webstack/webstack-create-mysql.png)](media/webstack/webstack-create-mysql.png)
+
+</center>
 
 Deploying the Azure Database for MySQL master and replicas should take less than 30 minutes in total.
 
@@ -735,7 +763,11 @@ Refer to [How to create and manage read replicas in Azure Database for MySQL usi
 
 Regardless of what method it's used to create the Azure Storage account and container, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional exposed resource created would be the Azure Storage itself.
 
+<center>
+
 [![Outcome of creating the Azure Storage and container](media/webstack/webstack-create-storage.png)](media/webstack/webstack-create-storage.png)
+
+</center>
 
 ### Command line approach using Azure CLI
 
@@ -810,7 +842,11 @@ Scale sets have an "upgrade policy" that determine how VMs are brought up-to-dat
 
 Regardless of what method it's used to create the Azure Virtual Machine Scale Set, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional exposed resource created would be the scale set itself.
 
+<center>
+
 [![Outcome of creating Azure Virtual Machine Scale Set](media/webstack/webstack-create-vmss.png)](media/webstack/webstack-create-vmss.png)
+
+</center>
 
 ### Command line approach using Azure CLI
 
@@ -923,7 +959,11 @@ It monitors the performance of the Virtual Machine instances in your scale set. 
 
 Regardless of what method it's used to create the autoscaler, it won't show up  directly exposed resource within the resource group unless you enable the **Show hidden types** checkbox. Once that's enable, the autoscaler should look like it's shown below.
 
+<center>
+
 [![Outcome of creating the autoscaler](media/webstack/webstack-create-autoscaler.png)](media/webstack/webstack-create-autoscaler.png)
+
+</center>
 
 ### Command line approach using Azure CLI
 
@@ -1126,7 +1166,11 @@ TBD
 
 Deploying a single region LAMP architecture on Azure should take less than 90 minutes end-to-end using scripts (either Bash or Windows Batch) or ARM deployment templates. Using the Azure Portal will take longer. The deployed architecture should look like as below.
 
+<center>
+
 [![Single region LAMP deployed architecture](media/webstack/webstack-lamp-single-region-deployed-architecture.png)](media/webstack/webstack-lamp-single-region-deployed-architecture.png)
+
+</center>
 
 This table summarizes the scripts and templates available for steps covered in this document.
 
