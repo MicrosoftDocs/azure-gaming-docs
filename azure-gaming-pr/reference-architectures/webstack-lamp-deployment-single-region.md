@@ -29,7 +29,7 @@ In general, when deploying a single region LAMP architecture there are certain s
 1. Setup the autoscale settings.
 
 > [!NOTE]
-> You may want in the future to change to another Linux OS version or PHP version, so that would require to recreate the custom golden image (steps 1-4). Or you may want to make changes into the autoscaler (step 8).
+> You may want in the future to change to another Linux OS version or PHP version, so that would require to recreate the custom golden image (steps 1-4). Or you may want to make changes into the autoscaler (step 10).
 
 **Regular basis operations**
 
