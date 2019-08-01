@@ -919,7 +919,9 @@ Refer to [Create a virtual machine scale set in the Azure portal](https://docs.m
 
 It monitors the performance of the Virtual Machine instances in your scale set. These autoscale rules increase or decrease the number of Virtual Machine instances in response to these performance metrics.
 
-Regardless of what method it's used to create the autoscaler, it won't show up  directly exposed resource within the resource group.
+Regardless of what method it's used to create the autoscaler, it won't show up  directly exposed resource within the resource group unless you enable the **Show hidden types** checkbox. Once that's enable, the autoscaler should look like it's shown below.
+
+[![Outcome of creating a virtual machine](media/webstack/webstack-create-autoscaler.png)](media/webstack/webstack-create-autoscaler.png)
 
 ### Command line approach using Azure CLI
 
