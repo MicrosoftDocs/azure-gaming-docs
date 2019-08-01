@@ -102,8 +102,8 @@ On top of the general configuration variables, the following variables are also 
 | **VMSIZE** | Standard_B1s | Standard_B1s | Standard_F4s_v2 | Standard_F32s_v2 | Virtual Machine option. Be aware that Premium SSD is not supported in every Virtual Machine option. [Learn more](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#Linux).
 | **VMDATADISKSIZEINGB** | 5 | 5 | 10 | 30 | How much persistent disk storage you are going to allocate per Virtual Machine. [Benefits of using managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#benefits-of-managed-disks).
 
-> [!NOTE]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of a Virtual Machine deployment, you can download the full Windows Batch [1-create-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/1-create-vm.bat) or Bash [1-create-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/1-create-vm.sh) scripts to save you time.
+> [!TIP]
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of a Virtual Machine deployment, you can download the full Bash [1-create-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/1-create-vm.sh) or Windows Batch [1-create-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/1-create-vm.bat) scripts to save you time.
 
 For more details about the process of deploying a Virtual Machine on a Managed Disk, refer to the [Create and Manage Linux VMs with the Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm) tutorial that covers basic Azure virtual machine deployment items such as selecting a VM size, selecting a VM image, and deploying a VM.
 
@@ -283,6 +283,9 @@ The command above performs the following tasks:
 
 Before creating an image it's needed to stop and prepare the Linux guest OS on the Virtual Machine. If you create an image from a Virtual Machine that **hasn't been generalized**, any Virtual Machines created from that image **won't start**. These operations should be really quick to complete.
 
+> [!TIP]
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Virtual Machine preparative, you can download the full Bash [2-prepare-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/2-prepare-vm.sh) or Windows Batch [2-prepare-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/2-prepare-vm.bat) scripts to save you time.
+
 #### Command line approach using Azure CLI
 
 Learn more about the [deallocate](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-deallocate) and [generalize](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-generalize) commands.
@@ -306,6 +309,9 @@ On top of the previously defined variables, the following variables are also bei
 |Variable|Default value|Description|
 |----------|----------|-----------|
 | **GOLDENIMAGENAME** | myGoldenImage | The name of the custom golden image.
+
+> [!TIP]
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the creation of the custom golden image, you can download the full Bash [3-create-golden-image.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/3-create-golden-image.sh) or Windows Batch [3-create-golden-image.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/3-create-golden-image.bat) scripts to save you time.
 
 #### Initialize the variables
 
@@ -364,6 +370,9 @@ On top of the previously defined variables, the following variables are also bei
 | **LBNATPOOLNAME** | LBNAME + NATPool | | | | The Azure Load Balancer NAT pool name.
 | **LBRULEHTTPNAME** | LBNAME + HTTPRule | | | | The Azure Load Balancer inbound NAT rule name for the HTTP connections.
 | **LBRULEHTTPSNAME** | | Note: Only Standard SKU | LBNAME + HTTPSRule | LBNAME + HTTPSRule | The Azure Load Balancer inbound NAT rule name for the HTTPs connections.
+
+> [!TIP]
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the deployment of the networking resources, you can download the full Bash [4-create-networking.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/4-create-networking.sh) or Windows Batch [4-create-networking.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/4-create-networking.bat) scripts to save you time.
 
 #### Initialize the variables
 
@@ -524,12 +533,15 @@ On top of the previously defined variables, the following variables are also bei
 |----------|----------|-----------|----------|----------|-----------|
 | **REDISNAME** | PREFIX + Redis | |  | | The Azure Cache for Redis name.
 | **REDISNAMEUNIQUE** | REDISNAME + [Random number] | | | | **Important**: The name of the Azure Cache for Redis has to be entirely unique across all Azure customers. Hence the scripts use a random generator.
-| **REDISVMSIZE** | C1 | C3 | C4 | P4 | c0, c1, c2, c3, c4, c5, c6, p1, p2, p3, p4, p5
+| **REDISVMSIZE** | C1 | C3 | C4 | P4 | Basic/Standard(C0, C1, C2, C3, C4, C5, C6), Premium (P1, P2, P3, P4, P5)
 | **REDISSKU** | Standard | Basic | Standard | Premium | Basic – Single node, multiple sizes, ideal for development/test and non-critical workloads. The basic tier has no SLA.<br>Standard – A replicated cache in a two node Primary/Secondary configuration managed by Microsoft, with a high availability SLA.<br>Premium – The new Premium tier includes all the Standard-tier features and more, such as better performance compared to Basic or Standard-tier caches, bigger workloads, data persistence, and enhanced network security.
 | **REDISSHARDSTOCREATE** | | Note: Only Premium SKU | Note: Only Premium SKU | 10 | Number of shards per cluster.
 | **REDISSUBNETNAME** | | Note: Only Premium SKU | Note: Only Premium SKU | REDISNAME + Subnet | When an Azure Cache for Redis instance is configured with an Azure Virtual Network, it is not publicly addressable and can only be accessed from virtual machines and applications within the Azure Virtual Network. [Learn More](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet).
 | **SUBNETADDRESSPREFIX** | | Note: Only Premium SKU | Note: Only Premium SKU | 10.0.1.0/24 | **Important**: When deploying an Azure Cache for Redis to an Azure Virtual Network, the cache must be in a dedicated subnet that contains no other resources except for Azure Cache for Redis instances.
 | **SUBNETID** | | Note: Only Premium SKU | Note: Only Premium SKU | SUBNETID | Note: The full string is required.
+
+> [!TIP]
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Cache for Redis deployment, you can download the full Bash [5-create-redis.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/5-create-redis.sh) or Windows Batch [5-create-redis.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/5-create-redis.bat) scripts to save you time.
 
 #### Initialize the variables
 
@@ -624,6 +636,9 @@ On top of the previously defined variables, the following variables are also bei
 | **MYSQLREADREPLICANAME** | | | MYSQLNAME + Replica | MYSQLNAME + Replica1 ... | Read replica MySQL name.
 | **MYSQLREADREPLICAREGION** | | | REGIONNAME | REGIONNAME | Azure region where the read replica will be deployed.
 
+> [!TIP]
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Database for MySQL deployment, you can download the full Bash [6-create-mysql.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/6-create-mysql.sh) or Windows Batch [6-create-mysql.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/6-create-mysql.bat) scripts to save you time.
+
 #### Initialize the variables
 
 ```bat
@@ -702,6 +717,9 @@ On top of the previously defined variables, the following variables are also bei
 | **STORAGESKU** | Standard_LRS | Standard_LRS | Premium_LRS | Premium_LRS | The SKU to setup, either standard, premium or ultra.
 | **STORAGECONTAINERNAME** | %STORAGENAME%cntnr | | | | The blobs need to be stored within a container.
 
+> [!TIP]
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download the full Bash [7-create-storage.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/7-create-storage.sh) or Windows Batch [7-create-storage.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/7-create-storage.bat) scripts to save you time.
+
 #### Initialize variables
 
 ```bat
@@ -755,6 +773,9 @@ Refer to [Create a container](https://docs.microsoft.com/azure/storage/blobs/sto
 A virtual machine scale set allows you to deploy and manage a set of identical, auto-scaling virtual machines.
 
 ### Command line approach using Azure CLI
+
+> [!TIP]
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download the full Bash [8-create-vmss.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/8-create-vmss.sh) or Windows Batch [8-create-vmss.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/8-create-vmss.bat) scripts to save you time.
 
 #### Initialize variables
 
@@ -859,6 +880,9 @@ It monitors the performance of the Virtual Machine instances in your scale set. 
 
 ### Command line approach using Azure CLI
 
+> [!TIP]
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download the full Bash [9-create-autoscaler.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/9-create-autoscaler.sh) or Windows Batch [9-create-autoscaler.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/9-create-autoscaler.bat) scripts to save you time.
+
 #### Initialize variables
 
 ```bat
@@ -921,7 +945,8 @@ Refer to [Automatically scale a virtual machine scale set in the Azure portal](h
 
 ### Command line approach using Azure CLI
 
-TBD
+> [!TIP]
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download the full Bash [10-update-app.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/10-update-app].sh) or Windows Batch [10-update-app.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/10-update-app.bat) scripts to save you time.
 
 ### Azure Resource Manager template
 
