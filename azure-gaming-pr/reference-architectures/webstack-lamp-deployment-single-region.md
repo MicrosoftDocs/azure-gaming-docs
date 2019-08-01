@@ -1119,3 +1119,23 @@ TBD
 ### Azure Portal
 
 TBD
+
+## Recapitulation
+
+Deploying a single region LAMP architecture on Azure should take less than 90 minutes end-to-end using scripts (either Bash or Windows Batch) or ARM deployment templates. Using the Azure Portal will take longer.
+
+The table below summarizes the scripts and templates available for steps covered in this document.
+
+| Action | Bash | Windows Batch | ARM template | Portal |
+|--------|--------|--------|--------|--------|
+| **Deploy a Virtual Machine on a Managed Disk** | [1-create-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/1-create-vm.sh) | [1-create-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/1-create-vm.bat) | Foo | Bar
+| **Install Apache, PHP and other stuff you consider** | [install-apache-and-php.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/scripts/install-apache-and-php.sh) | N/A | N/A | N/A
+| **Deallocate and generalize the Virtual Machine** | [2-prepare-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/2-prepare-vm.sh) | [2-prepare-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/2-prepare-vm.bat) | Foo | Bar
+| **Generate the custom golden image** | [3-create-golden-image.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/3-create-golden-image.sh) | [3-create-golden-image.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/3-create-golden-image.bat) | Foo | Bar
+| **Deploy the networking resources** | [4-create-networking.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/4-create-networking.sh) | [4-create-networking.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/4-create-networking.bat) | Foo | Bar
+| **Deploy the Azure Cache for Redis** | [5-create-redis.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/5-create-redis.sh) | [5-create-redis.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/5-create-redis.bat)  | Foo | Bar
+| **Deploy the Azure Database for MySQL** | [6-create-mysql.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/6-create-mysql.sh) | [6-create-mysql.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/6-create-mysql.bat) | Foo | Bar
+| **Create the Azure Storage account and container** | [7-create-storage.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/7-create-storage.sh) | [7-create-storage.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/7-create-storage.bat) | Foo | Bar
+| **Create the Virtual Machine Scale Set** | [8-create-vmss.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/8-create-vmss.sh) | [8-create-vmss.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/8-create-vmss.bat) | Foo | Bar
+| **Setup the autoscale settings** | [9-create-autoscaler.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/9-create-autoscaler.sh) | [9-create-autoscaler.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/9-create-autoscaler.bat) | Foo | Bar
+| **Update the Virtual Machine instances** | [10-update-app.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/10-update-app].sh) | [10-update-app.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/10-update-app.bat) | Foo | Bar
