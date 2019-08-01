@@ -714,7 +714,7 @@ On top of the previously defined variables, the following variables are also bei
 |Variable|Default value|Small T-shirt value|Medium T-shirt value|Large T-shirt value|Description|
 |----------|----------|-----------|----------|----------|-----------|
 | **STORAGENAME** | mygamebackendstrg%RANDOM% | | | | The name of the storage account. **Important**: The name of the Azure Storage has to be entirely unique across all Azure customers. Hence the scripts use a random generator. And it has to be all lowercase.
-| **STORAGESKU** | Standard_LRS | Standard_LRS | Premium_LRS | Premium_LRS | The SKU to setup, either standard, premium or ultra.
+| **STORAGESKU** | Standard_LRS | Standard_LRS | Premium_LRS | Premium_LRS | The storage SKU to setup, either standard, premium or ultra.
 | **STORAGECONTAINERNAME** | %STORAGENAME%cntnr | | | | The blobs need to be stored within a container.
 
 > [!TIP]
@@ -772,7 +772,25 @@ Refer to [Create a container](https://docs.microsoft.com/azure/storage/blobs/sto
 
 A virtual machine scale set allows you to deploy and manage a set of identical, auto-scaling virtual machines.
 
+Scale sets have an "upgrade policy" that determine how VMs are brought up-to-date with the latest scale set model. The three modes for the upgrade policy are:
+
+- **Automatic** - In this mode, the scale set makes no guarantees about the order of VMs being brought down. The scale set may take down all VMs at the same time, which may cause down time.
+- **Manual** - In this mode, when you update the scale set model, nothing happens to existing VMs. It isn't the most suitable to use when the number of instances is high and you don't have any automation to handle the updates.
+- **Rolling** - In this mode, the scale set rolls out the update in batches with an optional pause time between batches. Rolling upgrade updates only a portion of the instances from the scale set at a time, meaning your game should be prepared to handle that, at the same time, a subset of the backend servers may be running the older version while the rest is up to date; eventually all the servers will be up to date. Rolling upgrade requires that a health probe is associated to the Virtual Machine Scale Set and also all the Virtual Machine instances.
+
 ### Command line approach using Azure CLI
+
+On top of the previously defined variables, the following variables are also being used:
+
+|Variable|Default value|Small T-shirt value|Medium T-shirt value|Large T-shirt value|Description|
+|----------|----------|-----------|----------|----------|-----------|
+| **VMSSNAME** | PREFIX + VMSS | | | | The name of the scale set.
+| **VMSSSKUSIZE** | Standard_B1s | Standard_B1s | Standard_F4s_v2 | Standard_F32s_v2 | The SKU to setup, either standard, premium or ultra.
+| **VMSSVMTOCREATE** | 2 | 2 | 10 | 20 | The number of Virtual Machine instances that will be deployed upon creation of the scale set.
+| **VMSSSTORAGETYPE** | Standard_LRS | Standard_LRS | Premium_LRS | Premium_LRS | The storage SKU to setup, either standard, premium or ultra.
+| **VMSSACELERATEDNETWORKING** | false | false | true | true | [Learn more](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#benefits) about the benefits of accelerated networking.
+| **VMSSUPGRADEPOLICY** | Manual | Manual | Rolling | Rolling | Manual, Automatic or Rolling. Explained above.
+| **HEALTHPROBEID** |  |  | Use the health probe ID | Use the health probe ID | Required if Rolling upgrade mode.
 
 > [!TIP]
 > In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download the full Bash [8-create-vmss.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/8-create-vmss.sh) or Windows Batch [8-create-vmss.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/8-create-vmss.bat) scripts to save you time.
@@ -782,7 +800,7 @@ A virtual machine scale set allows you to deploy and manage a set of identical, 
 ```bat
 SET VMSSNAME=%PREFIX%VMSS
 SET GOLDENIMAGENAME=myGoldenImage
-SET VMSSSKUSIZE=Standard_DS1_v2
+SET VMSSSKUSIZE=Standard_B1s
 SET VMSSVMTOCREATE=2
 SET VMSSSTORAGETYPE=Premium_LRS
 SET VMSSACELERATEDNETWORKING=false
@@ -823,15 +841,6 @@ CALL az vmss show ^
  --name %VMSSNAME% ^
  --query upgradePolicy
 ```
-
-Scale sets have an "upgrade policy" that determine how VMs are brought up-to-date with the latest scale set model. The three modes for the upgrade policy are:
-
-- **Automatic** - In this mode, the scale set makes no guarantees about the order of VMs being brought down. The scale set may take down all VMs at the same time.
-- **Rolling** - In this mode, the scale set rolls out the update in batches with an optional pause time between batches.
-- **Manual** - In this mode, when you update the scale set model, nothing happens to existing VMs.
-
-Manual upgrade mode is not the most suitable to use when the number of instances is high and you don't have any automation to handle the updates.
-In Automatic mode, all the instances are upgraded at the same time, which may cause down time. Rolling upgrade updates only a portion of the instances from the scale set at a time, meaning your game should be prepared to handle that, at the same time, a subset of the backend servers may be running the older version while the rest is up to date; eventually all the servers will be up to date. Rolling upgrade requires that a health probe is associated to the Virtual Machine Scale Set and also all the Virtual Machine instances.
 
 #### Associate the load balancer health probe to the scale set
 
