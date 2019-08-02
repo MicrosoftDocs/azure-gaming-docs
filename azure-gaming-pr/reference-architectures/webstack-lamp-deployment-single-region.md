@@ -27,6 +27,7 @@ In general, when deploying a single region LAMP architecture there are certain s
 8. Create the Azure Storage account and container.
 9. Create your Virtual Machine Scale Set ensuring it references the captured Disk Image as the OS Disk.
 1. Setup the autoscale settings.
+1. Enable protection against DDoS attacks.
 
 > [!NOTE]
 > You may want in the future to change to another Linux OS version or PHP version, so that would require to recreate the custom golden image (steps 1-4). Or you may want to make changes into the autoscaler (step 10).
@@ -83,7 +84,7 @@ SET LOGINUSERNAME=azureuser
 
 Should you choose to setup the architecture programmatically using a command line interface and the samples from this document, you are going to need to install [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2), a cross-platform command-line tool providing a great experience for managing Azure resources. The CLI is designed to make scripting easy, query data, support long-running operations, and more.
 
-## Deploy a Virtual Machine on a Managed Disk
+## 1. Deploy a Virtual Machine on a Managed Disk
 
 This Virtual Machine only has one specific use: serve as a foundation for the custom golden image. In most cases, it gets deleted afterwards.
 
@@ -205,7 +206,7 @@ TBD
 
 Refer to [Create a Linux virtual machine in the Azure portal](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) and [Attach a managed data disk to a VM by using the Azure portal](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal#add-a-data-disk) if you prefer to create the Virtual Machine manually using the Azure Portal.
 
-## Install Apache and PHP
+## 2. Install Apache and PHP
 
 ### Get the public IP of the Virtual Machine that was just created
 
@@ -270,7 +271,7 @@ exit
 
 Replace the PUBLICIP below with the real IP address of your Virtual Machine. Then open your preferred web browser and try to access the default page going to `[http://[PUBLICIP]` or any of your specific PHPs for example, and check that everything is working as intended.
 
-## Deallocate and generalize the Virtual Machine
+## 3. Deallocate and generalize the Virtual Machine
 
 ### Clean up the virtual machine
 
@@ -314,7 +315,7 @@ CALL az vm generalize ^
  --name %VMNAME%
 ```
 
-## Capture the Virtual Machine Disk Image to generate the custom golden image
+## 4. Capture the Virtual Machine Disk Image to generate the custom golden image
 
 Regardless of what method it's used to create the golden image, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional resource created would be the Image itself.
 
@@ -361,7 +362,7 @@ TBD
 
 TBD
 
-## Deploy the networking resources
+## 5. Deploy the networking resources
 
 > [!CAUTION]
 > This is the portion of the configuration that requires a more careful look as there are multiple networking elements involved, some interconnected.
@@ -557,7 +558,7 @@ TBD
 
 Refer to [Create a Basic Load Balancer by using the Azure portal](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) and [Create a Standard Load Balancer to load balance VMs using the Azure portal](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal) to learn how to create either Azure Load Balancer SKU using the Azure Portal.
 
-## Deploy the Azure Cache for Redis
+## 6. Deploy the Azure Cache for Redis
 
 Regardless of what method it's used to create the Azure Cache for Redis, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional resource created would be the cache itself.
 
@@ -660,7 +661,7 @@ Refer to [How to configure Redis clustering for a Premium Azure Cache for Redis]
 
 Refer to [How to configure Virtual Network Support for a Premium Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet) that describes how to configure virtual network support for a premium Azure Cache for Redis instance using the Azure Portal.
 
-## Deploy the Azure Database for MySQL
+## 7. Deploy the Azure Database for MySQL
 
 Regardless of what method it's used to create the Azure Cache for Redis, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional exposed resources created would be the master database itself and, if you created them, the replica or replicas.
 
@@ -759,7 +760,7 @@ Refer to [Design an Azure Database for MySQL database using the Azure portal](ht
 
 Refer to [How to create and manage read replicas in Azure Database for MySQL using the Azure portal](https://docs.microsoft.com/azure/mysql/howto-read-replicas-portal), to learn how to create and manage read replicas in the Azure Database for MySQL service using the Azure Portal.
 
-## Create the Azure Storage account and container
+## 8. Create the Azure Storage account and container
 
 Regardless of what method it's used to create the Azure Storage account and container, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional exposed resource created would be the Azure Storage itself.
 
@@ -830,7 +831,7 @@ Refer to [Create a storage account](https://docs.microsoft.com/azure/storage/com
 
 Refer to [Create a container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container), showing you how to create an storage containe in the Azure portal.
 
-## Create a Virtual Machine Scale Set
+## 9. Create a Virtual Machine Scale Set
 
 A virtual machine scale set allows you to deploy and manage a set of identical, auto-scaling virtual machines.
 
@@ -953,7 +954,7 @@ TBD
 
 Refer to [Create a virtual machine scale set in the Azure portal](https://docs.microsoft.com/azure/virtual-machine-scale-sets/quick-create-portal) to learn how to deploy a VM scale set using the Azure Portal.
 
-## Create the autoscaler
+## 10. Create the autoscaler
 
 It monitors the performance of the Virtual Machine instances in your scale set. These autoscale rules increase or decrease the number of Virtual Machine instances in response to these performance metrics.
 
@@ -1041,7 +1042,36 @@ TBD
 
 Refer to [Automatically scale a virtual machine scale set in the Azure portal](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal), showing you how to create autoscale rules in the Azure Portal.
 
-## Update the Virtual Machine instances from the Virtual Machine Scale Set
+## 11. Enable protection against DDoS attacks
+
+Distributed denial of service (DDoS) attacks are some of the largest availability and security concerns facing game studios that are moving their backends to the cloud. DDoS Protection Standard protects resources in a virtual network including public IP addresses associated with virtual machines and load balancers. [Learn more](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
+
+### Command line approach using Azure CLI
+
+On top of the previously defined variables, the following variables are also being used:
+
+|Variable|Default value|Description|
+|----------|----------|-----------|
+| **DDOSPROTECTIONNAME** | PREFIX + DdosPlan | The name of the DDoS Standard Protection plan.
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-create).
+
+```bat
+CALL az network ddos-protection create ^
+ --resource-group %RESOURCEGROUPNAME% ^
+ --name %DDOSPROTECTIONNAME% ^
+ --vnets %VNETNAME%
+```
+
+### Azure Resource Manager template
+
+TBD
+
+### Azure Portal
+
+Refer to [Manage Azure DDoS Protection Standard using the Azure portal](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection) to learn how to enable AzureDDoS Standard Protection via Azure Portal.
+
+## 12. Update the Virtual Machine instances from the Virtual Machine Scale Set
 
 In this document it's covered a simple way to upload a bunch of PHP files to the remote virtual machine instances. You may want to use a more sophisticated system like Azure DevOps, in that case you could start with a couple of good documents: [Deploying Applications to Azure Virtual Machine Scale Sets](https://devblogs.microsoft.com/devops/deploying-applications-to-azure-vm-scale-sets/) or [Using Azure DevOps to Deploy Web Applications to Virtual Machines](https://devblogs.microsoft.com/premier-developer/using-azure-devops-to-deploy-web-applications-to-virtual-machines/).
 
@@ -1186,4 +1216,4 @@ This table summarizes the scripts and templates available for steps covered in t
 | **Create the Azure Storage account and container** | [7-create-storage.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/7-create-storage.sh) | [7-create-storage.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/7-create-storage.bat) | TODO | [Create storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal#create-a-storage-account-1), [Create container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
 | **Create the Virtual Machine Scale Set** | [8-create-vmss.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/8-create-vmss.sh) | [8-create-vmss.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/8-create-vmss.bat) | TODO | [Create scale set](https://docs.microsoft.com/azure/virtual-machine-scale-sets/quick-create-portal)
 | **Setup the autoscale settings** | [9-create-autoscaler.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/9-create-autoscaler.sh) | [9-create-autoscaler.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/9-create-autoscaler.bat) | Foo | [Autoscale scale set](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal)
-| **Update the Virtual Machine instances** | [10-update-app.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/10-update-app.sh) | [10-update-app.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/10-update-app.bat) | TODO | N/A
+| **Update the Virtual Machine instances** | [11-update-app.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/10-update-app.sh) | [11-update-app.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/10-update-app.bat) | TODO | N/A
