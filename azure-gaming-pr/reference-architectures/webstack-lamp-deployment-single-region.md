@@ -42,6 +42,25 @@ You'll need to have at least an Azure subscription. [Learn more](./webstack-lamp
 
 Review the [naming conventions](./general-guidelines.md#naming-conventions) for any of the names that you are choosing for the Azure resources that you are going to be creating.
 
+### Command line alternatives
+
+- **Windows Batch**: With batch files you can simplify routine or repetitive tasks on Windows. A batch file is an unformatted text file that contains one or more commands and has a `.bat` or `.cmd` file name extension. When you type the file name at the command prompt, the `Cmd.exe` (or Command Prompt) from the Windows operating system runs the commands sequentially as they appear in the file. To create and execute a Windows Batch script:
+    1. Create a new file in a folder (i.e. the Desktop) in your computer running Windows.
+    2. Choose a filename and ensure the extension of the file is either `.bat` or `.cmd`, this is very important or the Operating System won't recognize the file as a script that can be run.
+    3. Edit the file using right-click on it, and copy/paste the Windows Bash snippets provided in this document. Just remember that variables need to be initialized before they are used, so they need to be placed higher within the Windows Batch file than the commands that use them.
+    4. Save the file.
+    5. To execute, simply right click on the file and select **Open**.
+
+- **Bash**: Bash is a Unix shell and command language, typically runs in a text window where the user types commands that cause actions. Bash can also read and execute commands from a file, called a shell script. To create and execute a Bash script:
+    1. Create a file in a directory in your computer running Linux/Unix.
+    1. Choose a filename and ensure the extension of the file is `.sh`, to identify it as a Bash script.
+    1. Use your favorite editor to open the file.
+    1. Ensure that that script includes `#!/bin/bash` at the very top.
+    1. Copy/paste the Bash snippets provided in this document. Just remember that variables need to be initialized before they are used, so they need to be placed higher within the Bash file than the commands that use them.
+    1. Save the file.
+    1. Ensure it has execution permissions using `chmod +x [SCRIPTNAME.sh]` substituting `[SCRIPTNAME.sh]` with your script.
+    1. To execute, simply use `./[SCRIPTNAME.sh]`.
+
 ### Command line general configuration variables and tools
 
 Regardless of what step you are working on, it's best practice to keep a set of general variables handy as they are foundational:
@@ -72,6 +91,8 @@ Here below are some examples of the region names currently available:
 | **Australia Central 2** | australiacentral2 |
 
 #### Initialize the variables
+
+Aside from the Azure subscription and the region name, that need to be specific, you can be creative with the resource group name and the login username, as long as they comply with the [naming conventions](./general-guidelines.md#naming-conventions). *myResourceGroup* and *azureuser* are just examples.
 
 ```bash
 SET YOURSUBSCRIPTIONID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
