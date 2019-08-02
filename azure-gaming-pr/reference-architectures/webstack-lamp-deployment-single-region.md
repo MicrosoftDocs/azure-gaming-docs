@@ -44,7 +44,7 @@ Review the [naming conventions](./general-guidelines.md#naming-conventions) for 
 
 ### Command line alternatives
 
-- **Windows Batch**: With batch files you can simplify routine or repetitive tasks on Windows. A batch file is an unformatted text file that contains one or more commands and has a `.bat` or `.cmd` file name extension. When you type the file name at the command prompt, the `Cmd.exe` (or Command Prompt) from the Windows operating system runs the commands sequentially as they appear in the file. To create and execute a Windows Batch script:
+- **Windows Batch**: With batch files (also known as bat files) you can simplify routine or repetitive tasks on Windows. A batch file is an unformatted text file that contains one or more commands and has a `.bat` or `.cmd` file name extension. When you type the file name at the command prompt, the `Cmd.exe` (or Command Prompt) from the Windows operating system runs the commands sequentially as they appear in the file. To create and execute a Windows Batch script:
     1. Create a new file in a folder (i.e. the Desktop) in your computer running Windows.
     2. Choose a filename and ensure the extension of the file is either `.bat` or `.cmd`, this is very important or the Operating System won't recognize the file as a script that can be run.
     3. Edit the file using right-click on it, and copy/paste the Windows Bash snippets provided in this document. Just remember that variables need to be initialized before they are used, so they need to be placed higher within the Windows Batch file than the commands that use them.
@@ -94,7 +94,7 @@ Here below are some examples of the region names currently available:
 
 #### Initialize the variables
 
-Aside from the Azure subscription and the region name, that need to be specific, you can be creative with the resource group name and the login username, as long as they comply with the [naming conventions](./general-guidelines.md#naming-conventions). *myResourceGroup* and *azureuser* are just examples.
+Aside from the Azure subscription ID and the region name, that need to be specific, you can be creative with the resource group name and the login username, as long as they comply with the [naming conventions](./general-guidelines.md#naming-conventions). *myResourceGroup* and *azureuser* are just examples.
 
 ```bash
 SET YOURSUBSCRIPTIONID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
@@ -140,6 +140,8 @@ On top of the general configuration variables, the following variables are also 
 For more details about the process of deploying a Virtual Machine on a Managed Disk, refer to the [Create and Manage Linux VMs with the Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm) tutorial that covers basic Azure virtual machine deployment items such as selecting a VM size, selecting a VM image, and deploying a VM.
 
 #### Initialize the variables
+
+Aside from the image to use, Virtual Machine size and the number of GBs of storage, that need to be specific, you can be creative with the Virtual Machine name, as long as it complies with the [naming conventions](./general-guidelines.md#naming-conventions). *myVirtualMachine* is just an example.
 
 ```bat
 SET VMNAME=myVirtualMachine
@@ -361,6 +363,8 @@ On top of the previously defined variables, the following variables are also bei
 
 #### Initialize the variables
 
+You can be creative with the custom golden image name, as long as it complies with the [naming conventions](./general-guidelines.md#naming-conventions). *myGoldenImage* is just an example.
+
 ```bat
 SET GOLDENIMAGENAME=myGoldenImage
 ```
@@ -433,6 +437,8 @@ On top of the previously defined variables, the following variables are also bei
 > In addition to the following documented individual commands and the order of execution, for you to understand each portion of the deployment of the networking resources, you can download the full Bash [4-create-networking.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/4-create-networking.sh) or Windows Batch [4-create-networking.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/4-create-networking.bat) scripts to save you time.
 
 #### Initialize the variables
+
+You can be creative with the public IP name, load balancer name, virtual network name, subnet name, backend pool name, frontend IP configuration name, NAT pool name and the load balacing rule names, as long as they comply with the [naming conventions](./general-guidelines.md#naming-conventions). *myGameBackendLB* is just an example of how the load balancer could be named.
 
 ```bat
 SET LBSKU=Basic
@@ -613,6 +619,8 @@ On top of the previously defined variables, the following variables are also bei
 
 #### Initialize the variables
 
+You can only be creative with the Azure Cache for Redis name and the subnet name, as long as they comply with the [naming conventions](./general-guidelines.md#naming-conventions). *myGameBackendRedis1234* is just an example of how the Azure Cache for Redis could be named. The remaining variables need to be filled in with a specific set of expected values.
+
 ```bat
 SET REDISNAME=%PREFIX%Redis
 SET REDISNAMEUNIQUE=%REDISNAME%%RANDOM%
@@ -719,6 +727,8 @@ On top of the previously defined variables, the following variables are also bei
 
 #### Initialize the variables
 
+You can only be creative with the Azure Database for MySQL master and read replica(s) server names, the database name, the admin username and password, as long as they comply with the [naming conventions](./general-guidelines.md#naming-conventions). *myGameBackendMySQL* is just an example of how the Azure Database for MysQL server could be named. The remaining variables need to be filled in with a specific set of expected values.
+
 ```bat
 SET MYSQLNAME=%PREFIX%MySQL
 SET MYSQLUSERNAME=azuremysqluser
@@ -808,6 +818,8 @@ On top of the previously defined variables, the following variables are also bei
 
 #### Initialize variables
 
+You can only be creative with the Azure Storage account name and the container name, as long as they comply with the [naming conventions](./general-guidelines.md#naming-conventions). *mygamebackendstrg1234* is just an example of how the Azure Storage account could be named. The remaining variables need to be filled in with a specific set of expected values.
+
 ```bat
 SET STORAGENAME=mygamebackendstrg%RANDOM%
 SET STORAGESKU=Standard_LRS
@@ -890,6 +902,8 @@ On top of the previously defined variables, the following variables are also bei
 > In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download the full Bash [8-create-vmss.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/8-create-vmss.sh) or Windows Batch [8-create-vmss.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/8-create-vmss.bat) scripts to save you time.
 
 #### Initialize variables
+
+You can only be creative with the Azure Virtual MAchine Scale Set name, as long as it complies with the [naming conventions](./general-guidelines.md#naming-conventions). *myGameBackendVMSS* is just an example. The remaining variables need to be filled in with a specific set of expected values.
 
 ```bat
 SET VMSSNAME=%PREFIX%VMSS
@@ -1009,6 +1023,8 @@ On top of the previously defined variables, the following variables are also bei
 
 #### Initialize variables
 
+You can only be creative with the autoscaler name, as long as it complies with the [naming conventions](./general-guidelines.md#naming-conventions). *myGameBackendAutoscaler* is just an example. The remaining variables need to be filled in with a specific set of expected values.
+
 ```bat
 SET VMSSAUTOSCALERNAME=%PREFIX%Autoscaler
 SET VMSSAUTOSCALERCRITERIA=Percentage CPU
@@ -1115,6 +1131,8 @@ On top of the previously defined variables, the following variables are also bei
 > In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download the full Bash [10-update-app.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/10-update-app.sh) or Windows Batch [10-update-app.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/10-update-app.bat) scripts to save you time.
 
 #### Initialize variables
+
+You can be creative with all these variables, just ensure they are matching the expected source and destinatary files/directory names.
 
 ```bat
 SET BLOBSOURCEURI=app\\package.tar.gz
