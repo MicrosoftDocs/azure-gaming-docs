@@ -61,6 +61,8 @@ Review the [naming conventions](./general-guidelines.md#naming-conventions) for 
     1. Ensure it has execution permissions using `chmod +x [SCRIPTNAME.sh]` substituting `[SCRIPTNAME.sh]` with your script.
     1. To execute, simply use `./[SCRIPTNAME.sh]`.
 
+Don't feel obliged to stick to Windows Bash or Bash for deploying the whole architecture end-to-end. You could complete a step like deploying the Azure Cache for Redis using Windows Bash and then switch to Bash to deploy Azure Database for MySQL, although it's not the standard. 
+
 ### Command line general configuration variables and tools
 
 Regardless of what step you are working on, it's best practice to keep a set of general variables handy as they are foundational:
