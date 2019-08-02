@@ -11,7 +11,7 @@ ms.service: azure
 
 # Deploy a single region LAMP architecture
 
-This document covers different methods to deploy a **single region LAMP architecture**, either using **command line tools** on either Linux bash or Windows batch for a more hands on programmatic setup, or an Azure Resource Manager template for a **one-click deployment**. And in most cases there will be pointers to how to setup a certain portion of the architecture using the **Azure Portal**. Alternatively you can use third-party solutions like [Hashicorp Terraform](https://docs.microsoft.com/azure/terraform/terraform-overview).
+This document covers different methods to deploy a **single region LAMP architecture**, either using **command line tools** on either Bash or Windows Batch for a more hands on programmatic setup, or an Azure Resource Manager template for a **one-click deployment**. And in most cases there will be pointers to how to setup a certain portion of the architecture using the **Azure Portal**. Alternatively you can use third-party solutions like [Hashicorp Terraform](https://docs.microsoft.com/azure/terraform/terraform-overview).
 
 In general, when deploying a single region LAMP architecture there are certain steps that are mostly one-offs while others need to be executed in more regular basis as your backend gets updated to match your game requirements. Here below is the full step list:
 
@@ -44,13 +44,6 @@ Review the [naming conventions](./general-guidelines.md#naming-conventions) for 
 
 ### Command line alternatives
 
-- **Windows Batch**: With batch files (also known as bat files) you can simplify routine or repetitive tasks on Windows. A batch file is an unformatted text file that contains one or more commands and has a `.bat` or `.cmd` file name extension. When you type the file name at the command prompt, the `Cmd.exe` (or Command Prompt) from the Windows operating system runs the commands sequentially as they appear in the file. To create and execute a Windows Batch script:
-    1. Create a new file in a folder (i.e. the Desktop) in your computer running Windows.
-    2. Choose a filename and ensure the extension of the file is either `.bat` or `.cmd`, this is very important or the Operating System won't recognize the file as a script that can be run.
-    3. Edit the file using right-click on it, and copy/paste the Windows Bash snippets provided in this document. Just remember that variables need to be initialized before they are used, so they need to be placed higher within the Windows Batch file than the commands that use them.
-    4. Save the file.
-    5. To execute, simply right click on the file and select **Open**.
-
 - **Bash**: Bash is a Unix shell and command language, typically runs in a text window where the user types commands that cause actions. Bash can also read and execute commands from a file, called a shell script. To create and execute a Bash script:
     1. Create a file in a directory in your computer running Linux/Unix.
     1. Choose a filename and ensure the extension of the file is `.sh`, to identify it as a Bash script.
@@ -61,7 +54,14 @@ Review the [naming conventions](./general-guidelines.md#naming-conventions) for 
     1. Ensure it has execution permissions using `chmod +x [SCRIPTNAME.sh]` substituting `[SCRIPTNAME.sh]` with your script.
     1. To execute, simply use `./[SCRIPTNAME.sh]`.
 
-Don't feel obliged to stick to Windows Bash or Bash for deploying the whole architecture end-to-end. You could complete a step like deploying the Azure Cache for Redis using Windows Bash and then switch to Bash to deploy Azure Database for MySQL, although it's not the standard. 
+- **Windows Batch**: With batch files (also known as bat files) you can simplify routine or repetitive tasks on Windows. A batch file is an unformatted text file that contains one or more commands and has a `.bat` or `.cmd` file name extension. When you type the file name at the command prompt, the `Cmd.exe` (or Command Prompt) from the Windows operating system runs the commands sequentially as they appear in the file. To create and execute a Windows Batch script:
+    1. Create a new file in a folder (i.e. the Desktop) in your computer running Windows.
+    2. Choose a filename and ensure the extension of the file is either `.bat` or `.cmd`, this is very important or the Operating System won't recognize the file as a script that can be run.
+    3. Edit the file using right-click on it, and copy/paste the Windows Bash snippets provided in this document. Just remember that variables need to be initialized before they are used, so they need to be placed higher within the Windows Batch file than the commands that use them.
+    4. Save the file.
+    5. To execute, simply right click on the file and select **Open**.
+
+Don't feel obliged to stick to Bash or Windows Batch for deploying the whole architecture end-to-end. You could complete a step like deploying the Azure Cache for Redis using Windows Bash and then switch to Bash to deploy Azure Database for MySQL, although it's not the standard. 
 
 ### Command line general configuration variables and tools
 
