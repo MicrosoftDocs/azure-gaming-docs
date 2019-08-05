@@ -79,3 +79,53 @@ You are responsible for the cost of the Azure services used while running these 
 - [Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
 
 You also have available the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/), to configure and estimate the costs for the Azure services that you are planning to use.
+
+### Cost estimation
+
+It can be laborious to estimate exactly how much a cloud infrastructure will cost. This guide will hopefully simplify how the settings in the Azure Pricing Calculator correlate with the deployment of a single region LAMP architecture for your game backend.
+
+#### Components
+
+The system uses Azure Linux Virtual Machines instances managed by an Azure Virtual Machine Scale Set, Azure Database for MySQL, Azure Cache for Redis, Azure Load Balancer and Azure Storage. For someone implementing this system, these are the important pieces you will need to consider:
+
+TODO
+
+#### Open the calculator
+
+To start, open the Azure Calculator
+
+Set the **Region** in each section to the region you expect to run this from, Japan East for example.
+
+#### Azure Virtual Machine instances
+
+There are no incremental charges for the Virtual Machine Scale Sets service itself, you are only charged for the compute instances you choose, as well as the other underlying infrastructure resources consumed such as storage and networking.
+
+Review the [harware](./multiplayer.md#hardware) considerations to determine the most appropriate Virtual Machine type to use and the number of instances you should start with in your architecture, based on your specific needs.
+
+Bear in mind that from your proof of concept (PoC) until your backend is used fully in production, you may need to make adjustments.
+
+To estimate the monthly compute cost, apply this formula:
+
+((Adjusted to region and Virtual Machine type) (# of Virtual Machine instances) * # of hours running per month) + ((Adjusted to region and Storage type) (# of Virtual Machine instances * # of GBs))
+
+Examples (TODO):
+
+|Number of instances|Virtual Machine Type |Description|
+|----------|----------|-----------|
+| **GOLDENIMAGENAME** | myGoldenImage | The name of the custom golden image.
+
+#### Azure Cache for Redis
+
+TODO
+
+#### Azure Database for MySQL
+
+TODO
+
+#### Azure Load Balancer
+
+TODO
+
+#### Azure Storage
+
+TODO
