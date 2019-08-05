@@ -86,46 +86,47 @@ It can be laborious to estimate exactly how much a cloud infrastructure will cos
 
 #### Components
 
-The system uses Azure Linux Virtual Machines instances managed by an Azure Virtual Machine Scale Set, Azure Database for MySQL, Azure Cache for Redis, Azure Load Balancer and Azure Storage. For someone implementing this system, these are the important pieces you will need to consider:
+For someone implementing this system, these are the important pieces you will need to consider:
+
+1. Azure Virtual Machine instances
+
+There are no incremental charges for the Virtual Machine Scale Sets service itself, you are only charged for the compute instances you choose, as well as the other underlying infrastructure resources consumed such as storage and networking.
+
+Review the [harware](./multiplayer.md#hardware) considerations to determine the most appropriate Virtual Machine type to use and the number of instances you should start with in your architecture, based on your specific needs. Bear in mind that from your proof of concept (PoC) until your backend is used fully in production, you may need to make adjustments.
+
+To estimate the monthly compute cost, apply this formula:
+
+**# of regions * (((Adjusted to region and Virtual Machine type) (# of Virtual Machine instances) * # of hours running per month) + ((adjusted to region and Storage type) (# of Virtual Machine instances * # of GBs)))**
+
+2. Azure Cache for Redis
+
+TODO
+
+3. Azure Database for MySQL
+
+TODO
+
+4. Azure Load Balancer
+
+TODO
+
+5. Azure Storage
+
+TODO
+
+6. Azure Traffic Manager
 
 TODO
 
 #### Open the calculator
 
-To start, open the Azure Calculator
+To start, open the Azure Calculator using any of the different pre-set estimations:
+
+| | Small T-shirt configuration|Medium T-shirt configuration|Large T-shirt configuration|
+|----------|----------|----------|-----------|
+|Single region| **TODO** | **TODO** | **TODO** |
+|Multi region| **TODO** | **TODO** | **TODO** |
 
 Set the **Region** in each section to the region you expect to run this from, Japan East for example.
 
-#### Azure Virtual Machine instances
-
-There are no incremental charges for the Virtual Machine Scale Sets service itself, you are only charged for the compute instances you choose, as well as the other underlying infrastructure resources consumed such as storage and networking.
-
-Review the [harware](./multiplayer.md#hardware) considerations to determine the most appropriate Virtual Machine type to use and the number of instances you should start with in your architecture, based on your specific needs.
-
-Bear in mind that from your proof of concept (PoC) until your backend is used fully in production, you may need to make adjustments.
-
-To estimate the monthly compute cost, apply this formula:
-
-((Adjusted to region and Virtual Machine type) (# of Virtual Machine instances) * # of hours running per month) + ((Adjusted to region and Storage type) (# of Virtual Machine instances * # of GBs))
-
-Examples (TODO):
-
-|Number of instances|Virtual Machine Type |Description|
-|----------|----------|-----------|
-| **GOLDENIMAGENAME** | myGoldenImage | The name of the custom golden image.
-
-#### Azure Cache for Redis
-
-TODO
-
-#### Azure Database for MySQL
-
-TODO
-
-#### Azure Load Balancer
-
-TODO
-
-#### Azure Storage
-
-TODO
+Make any adjustments you consider based on your own scenario.
