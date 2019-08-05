@@ -33,19 +33,19 @@ ms.service: azure
 
 ### Step by step
 
-1. The device client gets the Azure Load Balancer IP address from a domain name system (DNS).
-2. The Azure Load Balancer chooses a specific Azure Linux Virtual Machine instance from the Azure Virtual Machine Scale Set.
-3. The Azure Linux Virtual Machines code attempts to read information stored in the Azure Cache for Redis first, following the [common cache-aside pattern](https://docs.microsoft.com/azure/architecture/patterns/cache-aside).
-4. The Azure Linux Virtual Machines code reads or writes information from/into the Azure Database for MySQL, and any available read replicas, using a connection pooler.
+1. The device client gets the **Azure Load Balancer** IP address from a domain name system (DNS).
+2. The Azure Load Balancer chooses a specific **Azure Linux Virtual Machine** instance from the **Azure Virtual Machine Scale Set**.
+3. The Azure Linux Virtual Machines code attempts to read information stored in the **Azure Cache for Redis** first, following the [common cache-aside pattern](https://docs.microsoft.com/azure/architecture/patterns/cache-aside).
+4. The Azure Linux Virtual Machines code reads or writes information from/into the **Azure Database for MySQL**, and any available read replicas, using a connection pooler.
 5. To ensure high-availability, the Azure Database for MySQL has some kind of replication enabled.
-6. Azure Linux Virtual Machine instances from the Azure Virtual Machine Scale Set read and write flat files from/into a high-performance Azure Storage.
+6. Azure Linux Virtual Machine instances from the Azure Virtual Machine Scale Set read and write flat files from/into a high-performance **Azure Storage**.
 
 ### Deployment
 
 An application running on a Azure Virtual Machine Scale Set is typically deployed in one of the two ways:
 
-- Copying the application files at deployment time by using Virtual Machine extensions.
-- Create a golden image that includes both the OS and the application files in a single custom image.
+- Copying the application files at deployment time by using **Virtual Machine extensions**.
+- Create a **golden image** that includes both the OS and the application files in a single custom image.
 
 The Virtual Machine extension based approach can result in a slower scale out because the extensions will run on a new Virtual Machine each time it is created. If the scale set is based on a golden image, any new Virtual Machine is a copy of the source custom image and the scale out will be faster as the prerequisites and application are already installed.
 
@@ -56,7 +56,8 @@ The golden image approach, also known as immutable deployments has its advantage
 
 You can also do a combination of both, building a golden image that has the most immutable elements, like the OS version, Apache version, PHP version and your custom tools, while leaving out the PHP scripts that require more frequent update.
 
-Refer to [Deploy a single region LAMP architecture](./webstack-lamp-deployment-single-region.md) to find a detailed step by step to deploy this architecture using different methods.
+> [!IMPORTANT]
+> Refer to [Deploy a single region LAMP architecture](./webstack-lamp-deployment-single-region.md) to find a detailed step by step to deploy this architecture using different methods.
 
 ### Distribute read workload to multiple MySQL read replicas in PHP
 
@@ -76,5 +77,5 @@ You are responsible for the cost of the Azure services used while running these 
 - [Azure Cache for Redis](https://azure.microsoft.com/pricing/details/cache/)
 - [Azure Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/)
 - [Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
- 
+
 You also have available the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/), to configure and estimate the costs for the Azure services that you are planning to use.
