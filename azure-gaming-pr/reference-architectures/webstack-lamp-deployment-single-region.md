@@ -595,6 +595,8 @@ Refer to [Create a Basic Load Balancer by using the Azure portal](https://docs.m
 
 ## 6. Deploy the Azure Cache for Redis
 
+Azure Cache for Redis is based on the popular software Redis. It is typically used as a cache to improve the performance and scalability of systems that rely heavily on backend data-stores.
+
 Regardless of what method it's used to create the Azure Cache for Redis, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional resource created would be the cache itself.
 
 <center>
@@ -700,6 +702,8 @@ Refer to [How to configure Virtual Network Support for a Premium Azure Cache for
 
 ## 7. Deploy the Azure Database for MySQL
 
+Azure Database for MySQL is a relational database service based on the open-source MySQL Server engine. It's a fully managed database as a service offering that can handle mission-critical workloads with predictable performance and dynamic scalability. It supports master/slave configuration out of the box via read replicas.
+
 Regardless of what method it's used to create the Azure Cache for Redis, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional exposed resources created would be the master database itself and, if you created them, the replica or replicas.
 
 <center>
@@ -800,6 +804,8 @@ Refer to [Design an Azure Database for MySQL database using the Azure portal](ht
 Refer to [How to create and manage read replicas in Azure Database for MySQL using the Azure portal](https://docs.microsoft.com/azure/mysql/howto-read-replicas-portal), to learn how to create and manage read replicas in the Azure Database for MySQL service using the Azure Portal.
 
 ## 8. Create the Azure Storage account and container
+
+Azure Storage is Microsoft's cloud storage solution for modern data storage scenarios, like storing flat files. Azure Storage offers a massively scalable object store for data objects, a file system service for the cloud, a messaging store for reliable messaging, and a NoSQL store.
 
 Regardless of what method it's used to create the Azure Storage account and container, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional exposed resource created would be the Azure Storage itself.
 
