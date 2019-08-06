@@ -67,16 +67,17 @@ You can specify server name, user name, and password for connecting to a MySQL S
 
 ## Case studies
 
-::::ROW::::
-    ::::COLUMN::::
+:::row:::
+    :::column span="3":::
         ![GameInsight](https://ms-f7-sites-01-cdn.azureedge.net/docs/stories/gameinsights/resources/6c5cf70e-1e44-4d01-83b5-492486cc5866/1105622815614042160)
-    ::::COLUMN::::
-    ::::COLUMN::::
+    :::column-end:::
+    :::column:::
         [Game developer dynamically scales fun in the cloud](https://customers.microsoft.com/story/gameinsights)
+
         *"Azure had everything we needed to run the LAMP stack."*
         *"Azure “played well” with Terraform"*
-    ::::COLUMN::::
-::::ROW::::
+    :::column-end:::
+:::row-end:::
 
 ## Pricing
 
