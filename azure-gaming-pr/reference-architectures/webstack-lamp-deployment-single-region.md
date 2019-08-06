@@ -1,7 +1,7 @@
 ---
 title: Deploy a single region LAMP architecture
 description: Detailed step by step to deploy this architecture using different methods.
-author: DavidJimenez
+author: David Jimenez
 keywords: 
 ms.topic: reference-architecture
 ms.date: 3/14/2019
@@ -13,7 +13,7 @@ ms.service: azure
 
 This document covers different methods to deploy a **single region LAMP architecture**, either using **command line tools** on either Bash or Windows Batch for a more hands on programmatic setup, or an Azure Resource Manager template for a **one-click deployment**. And in most cases there will be pointers to how to setup a certain portion of the architecture using the **Azure Portal**. Alternatively you can use third-party solutions like [Hashicorp Terraform](https://docs.microsoft.com/azure/terraform/terraform-overview).
 
-In general, when deploying a single region LAMP architecture there are certain steps that are mostly one-offs while others need to be executed in more regular basis as your backend gets updated to match your game requirements. Here below is the full step list:
+In general, when deploying a single region LAMP architecture there are certain steps that are mostly one-offs while others need to be executed in more regular basis as your backend gets updated to match your game requirements. Below is the full list of steps:
 
 **Mostly one-offs operations**
 
@@ -30,17 +30,19 @@ In general, when deploying a single region LAMP architecture there are certain s
 1. Enable protection against DDoS attacks.
 
 > [!NOTE]
-> You may want in the future to change to another Linux OS version or PHP version, so that would require to recreate the custom golden image (steps 1-4). Or you may want to make changes into the autoscaler (step 10).
+> In the future you may want to change to another Linux OS version or PHP version, that would require you to recreate the custom golden image (steps 1-4). Or you may want to make changes into the autoscaler (step 10).
 
 **Regular basis operations**
 
-1. Update the Virtual Machine instances from the Virtual Machine Scale Set with any PHP file modifications.
+1. Update the Virtual Machine instances from the Virtual Machine Scale Set created in the step number 9 previously mentioned with any PHP file modifications.
 
 ## Preparative
 
 You'll need to have at least an Azure subscription. [Learn more](./webstack-lamp.md#pricing).
 
 Review the [naming conventions](./general-guidelines.md#naming-conventions) for any of the names that you are choosing for the Azure resources that you are going to be creating.
+
+Do some [research](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) on what Azure Linux Virtual Machine types are supported on what Azure region.
 
 ### Command line alternatives
 
@@ -54,7 +56,7 @@ Review the [naming conventions](./general-guidelines.md#naming-conventions) for 
     1. Ensure it has execution permissions using `chmod +x [SCRIPTNAME.sh]` substituting `[SCRIPTNAME.sh]` with your script.
     1. To execute, simply use `./[SCRIPTNAME.sh]`.
 
-- **Windows Batch**: With batch files (also known as bat files) you can simplify routine or repetitive tasks on Windows. A batch file is an unformatted text file that contains one or more commands and has a `.bat` or `.cmd` file name extension. When you type the file name at the command prompt, the `Cmd.exe` (or Command Prompt) from the Windows operating system runs the commands sequentially as they appear in the file. To create and execute a Windows Batch script:
+- **Windows Batch (bat)**: With batch files (also known as bat files) you can simplify routine or repetitive tasks on Windows. A batch file is an unformatted text file that contains one or more commands and has a `.bat` or `.cmd` file name extension. When you type the file name at the command prompt, the `Cmd.exe` (or Command Prompt) from the Windows operating system runs the commands sequentially as they appear in the file. To create and execute a Windows Batch script:
     1. Create a new file in a folder (i.e. the Desktop) in your computer running Windows.
     2. Choose a filename and ensure the extension of the file is either `.bat` or `.cmd`, this is very important or the Operating System won't recognize the file as a script that can be run.
     3. Edit the file using right-click on it, and copy/paste the Windows Bash snippets provided in this document. Just remember that variables need to be initialized before they are used, so they need to be placed higher within the Windows Batch file than the commands that use them.
@@ -91,6 +93,10 @@ Here below are some examples of the region names currently available:
 | **Southeast Asia** | southeastasia |
 | **Australia Central** | australiacentral |
 | **Australia Central 2** | australiacentral2 |
+
+More specifically you can also query what regions support specific Azure Linux Virtual Machine types.
+
+**TODO**
 
 #### Initialize the variables
 
@@ -135,9 +141,9 @@ On top of the general configuration variables, the following variables are also 
 | **VMDATADISKSIZEINGB** | 5 | 5 | 10 | 30 | How much persistent disk storage you are going to allocate per Virtual Machine. [Benefits of using managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#benefits-of-managed-disks).
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of a Virtual Machine deployment, you can download the full Bash [1-create-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/1-create-vm.sh) or Windows Batch [1-create-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/1-create-vm.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of a Virtual Machine deployment, you can download and tweak to your needs the full Bash [1-create-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/1-create-vm.sh) or Windows Batch [1-create-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/1-create-vm.bat) scripts to save you time.
 
-For more details about the process of deploying a Virtual Machine on a Managed Disk, refer to the [Create and Manage Linux VMs with the Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm) tutorial that covers basic Azure virtual machine deployment items such as selecting a VM size, selecting a VM image, and deploying a VM.
+For more details about the process of deploying a Virtual Machine on a Managed Disk, refer to the [Create and Manage Linux VMs with the Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm) tutorial that covers basic Azure virtual machine deployment items such as selecting a Virtual Machine type, selecting a Virtual Machine image, and deploying a VM.
 
 #### Initialize the variables
 
@@ -290,7 +296,7 @@ exit
 ```
 
 > [!TIP]
-> You can create a shell script and execute all the commands in a more automated fashion, check [install-apache-and-php.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/scripts/install-apache-and-php.sh) out as an example.
+> You can create a shell script and execute all the commands in a more automated fashion, check [2-install-apache-and-php.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/scripts/2-install-apache-and-php.sh) out as an example.
 
 ### Validate that the web server and PHP are running properly
 
@@ -324,7 +330,7 @@ The command above performs the following tasks:
 Before creating an image it's needed to stop and prepare the Linux guest OS on the Virtual Machine. If you create an image from a Virtual Machine that **hasn't been generalized**, any Virtual Machines created from that image **won't start**. These operations should be really quick to complete.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Virtual Machine preparative, you can download the full Bash [2-prepare-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/2-prepare-vm.sh) or Windows Batch [2-prepare-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/2-prepare-vm.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Virtual Machine preparative, you can download and tweak to your needs the full Bash [3-prepare-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/3-prepare-vm.sh) or Windows Batch [3-prepare-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/3-prepare-vm.bat) scripts to save you time.
 
 #### Command line approach using Azure CLI
 
@@ -359,7 +365,7 @@ On top of the previously defined variables, the following variables are also bei
 | **GOLDENIMAGENAME** | myGoldenImage | The name of the custom golden image.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the creation of the custom golden image, you can download the full Bash [3-create-golden-image.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/3-create-golden-image.sh) or Windows Batch [3-create-golden-image.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/3-create-golden-image.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the creation of the custom golden image, you can download and tweak to your needs the full Bash [4-create-golden-image.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/4-create-golden-image.sh) or Windows Batch [4-create-golden-image.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/4-create-golden-image.bat) scripts to save you time.
 
 #### Initialize the variables
 
@@ -434,7 +440,7 @@ On top of the previously defined variables, the following variables are also bei
 | **LBRULEHTTPSNAME** | | Note: Only Standard SKU | LBNAME + HTTPSRule | LBNAME + HTTPSRule | The Azure Load Balancer inbound NAT rule name for the HTTPs connections.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the deployment of the networking resources, you can download the full Bash [4-create-networking.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/4-create-networking.sh) or Windows Batch [4-create-networking.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/4-create-networking.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the deployment of the networking resources, you can download and tweak to your needs the full Bash [5-create-networking.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/5-create-networking.sh) or Windows Batch [5-create-networking.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/5-create-networking.bat) scripts to save you time.
 
 #### Initialize the variables
 
@@ -615,7 +621,7 @@ On top of the previously defined variables, the following variables are also bei
 | **SUBNETID** | | Note: Only Premium SKU | Note: Only Premium SKU | SUBNETID | Note: The full string is required.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Cache for Redis deployment, you can download the full Bash [5-create-redis.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/5-create-redis.sh) or Windows Batch [5-create-redis.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/5-create-redis.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Cache for Redis deployment, you can download and tweak to your needs the full Bash [6-create-redis.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/6-create-redis.sh) or Windows Batch [6-create-redis.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/6-create-redis.bat) scripts to save you time.
 
 #### Initialize the variables
 
@@ -723,7 +729,7 @@ On top of the previously defined variables, the following variables are also bei
 | **MYSQLREADREPLICAREGION** | | | REGIONNAME | REGIONNAME | Azure region where the read replica will be deployed.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Database for MySQL deployment, you can download the full Bash [6-create-mysql.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/6-create-mysql.sh) or Windows Batch [6-create-mysql.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/6-create-mysql.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Database for MySQL deployment, you can download and tweak to your needs the full Bash [7-create-mysql.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/7-create-mysql.sh) or Windows Batch [7-create-mysql.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/7-create-mysql.bat) scripts to save you time.
 
 #### Initialize the variables
 
@@ -814,7 +820,7 @@ On top of the previously defined variables, the following variables are also bei
 | **STORAGECONTAINERNAME** | %STORAGENAME%cntnr | | | | The blobs need to be stored within a container.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download the full Bash [7-create-storage.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/7-create-storage.sh) or Windows Batch [7-create-storage.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/7-create-storage.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download and tweak to your needs the full Bash [8-create-storage.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/8-create-storage.sh) or Windows Batch [8-create-storage.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/8-create-storage.bat) scripts to save you time.
 
 #### Initialize variables
 
@@ -876,6 +882,9 @@ Scale sets have an "upgrade policy" that determine how VMs are brought up-to-dat
 - **Manual** - In this mode, when you update the scale set model, nothing happens to existing VMs. It isn't the most suitable to use when the number of instances is high and you don't have any automation to handle the updates.
 - **Rolling** - In this mode, the scale set rolls out the update in batches with an optional pause time between batches. Rolling upgrade updates only a portion of the instances from the scale set at a time, meaning your game should be prepared to handle that, at the same time, a subset of the backend servers may be running the older version while the rest is up to date; eventually all the servers will be up to date. Rolling upgrade requires that a health probe is associated to the Virtual Machine Scale Set and also all the Virtual Machine instances.
 
+> [!TIP]
+> It's recommended to switch to the **Rolling** policy upgrade once you are moving to production.
+
 Regardless of what method it's used to create the Azure Virtual Machine Scale Set, if you look within the resource group in the Azure Portal it should look like it's shown below. The only additional exposed resource created would be the scale set itself.
 
 <center>
@@ -899,7 +908,7 @@ On top of the previously defined variables, the following variables are also bei
 | **HEALTHPROBEID** |  |  | Use the health probe ID | Use the health probe ID | Required if Rolling upgrade mode.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download the full Bash [8-create-vmss.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/8-create-vmss.sh) or Windows Batch [8-create-vmss.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/8-create-vmss.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download and tweak to your needs the full Bash [9-create-vmss.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/9-create-vmss.sh) or Windows Batch [9-create-vmss.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/9-create-vmss.bat) scripts to save you time.
 
 #### Initialize variables
 
@@ -1019,7 +1028,7 @@ On top of the previously defined variables, the following variables are also bei
 | **VMSSAUTOSCALERINDECREASE** | 1 | 1 | 2 | 3 | How many instances will be removed from  the scale set upon being triggered the scale in request.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download the full Bash [9-create-autoscaler.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/9-create-autoscaler.sh) or Windows Batch [9-create-autoscaler.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/9-create-autoscaler.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download and tweak to your needs the full Bash [10-create-autoscaler.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/10-create-autoscaler.sh) or Windows Batch [10-create-autoscaler.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/10-create-autoscaler.bat) scripts to save you time.
 
 #### Initialize variables
 
@@ -1112,7 +1121,7 @@ Refer to [Manage Azure DDoS Protection Standard using the Azure portal](https://
 
 ## 12. Update the Virtual Machine instances from the Virtual Machine Scale Set
 
-In this document it's covered a simple way to upload a bunch of PHP files to the remote virtual machine instances. You may want to use a more sophisticated system like Azure DevOps, in that case you could start with a couple of good documents: [Deploying Applications to Azure Virtual Machine Scale Sets](https://devblogs.microsoft.com/devops/deploying-applications-to-azure-vm-scale-sets/) or [Using Azure DevOps to Deploy Web Applications to Virtual Machines](https://devblogs.microsoft.com/premier-developer/using-azure-devops-to-deploy-web-applications-to-virtual-machines/).
+This document covers a simple way to upload a bunch of PHP files to the remote Virtual Machine instances. You may want to use a more sophisticated system like Azure DevOps, in that case you could start with a couple of good documents: [Deploying Applications to Azure Virtual Machine Scale Sets](https://devblogs.microsoft.com/devops/deploying-applications-to-azure-vm-scale-sets/) or [Using Azure DevOps to Deploy Web Applications to Virtual Machines](https://devblogs.microsoft.com/premier-developer/using-azure-devops-to-deploy-web-applications-to-virtual-machines/).
 
 ### Command line approach using Azure CLI
 
@@ -1128,11 +1137,11 @@ On top of the previously defined variables, the following variables are also bei
 | **SERVICETORESTART** | apache2.service | Service to restart after the PHP files are decompressed.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download the full Bash [11-update-app.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/11-update-app.sh) or Windows Batch [11-update-app.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/11-update-app.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download and tweak to your needs the full Bash [12-update-app.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/12-update-app.sh) or Windows Batch [12-update-app.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/12-update-app.bat) scripts to save you time.
 
 #### Initialize variables
 
-You can be creative with all these variables, just ensure they are matching the expected source and destinatary files/directory names.
+You can be creative with all these variables, just ensure they are matching the expected source and destination files/directory names.
 
 ```bat
 SET BLOBSOURCEURI=app\\package.tar.gz
@@ -1187,7 +1196,7 @@ CALL DEL scripturl.tmp
 
 #### Build the Protected Settings JSON string
 
-It'll be used by the Custom Script Extension to download the file or files from the storage account. [Learn more about this command](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list)
+This will be  used by the Custom Script Extension to download the file or files from the storage account. [Learn more about this command](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list)
 
 ```bat
 CALL az storage account keys list --account-name %STORAGENAME% --resource-group %RESOURCEGROUPNAME% --query [0].value --output tsv > storagekey.tmp
@@ -1235,7 +1244,7 @@ TBD
 
 ## Recapitulation
 
-Deploying a single region LAMP architecture on Azure should take less than 90 minutes end-to-end using scripts (either Bash or Windows Batch) or ARM deployment templates. Using the Azure Portal will take longer. The deployed architecture should look like as below.
+Deploying a single region LAMP architecture on Azure should take less than 90 minutes end-to-end using scripts (either Bash or Windows Batch) or ARM deployment templates. Using the Azure Portal will take longer. The deployed architecture should look like the image below:
 
 <center>
 
@@ -1248,14 +1257,14 @@ This table summarizes the scripts and templates available for steps covered in t
 | Action | Bash | Windows Batch | ARM template | Portal |
 |--------|--------|--------|--------|--------|
 | **Deploy a Virtual Machine on a Managed Disk** | [1-create-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/1-create-vm.sh) | [1-create-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/1-create-vm.bat) | TODO | [Create VM](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal), [Attach Managed data disk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal#add-a-data-disk)
-| **Install Apache, PHP and other stuff you consider** | [install-apache-and-php.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/scripts/install-apache-and-php.sh) | N/A | N/A | N/A
-| **Deallocate and generalize the Virtual Machine** | [2-prepare-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/2-prepare-vm.sh) | [2-prepare-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/2-prepare-vm.bat) | N/A | N/A
-| **Generate the custom golden image** | [3-create-golden-image.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/3-create-golden-image.sh) | [3-create-golden-image.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/3-create-golden-image.bat) | TODO | N/A
-| **Deploy the networking resources** | [4-create-networking.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/4-create-networking.sh) | [4-create-networking.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/4-create-networking.bat) | TODO | [Basic](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal), [Standard](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)
-| **Deploy the Azure Cache for Redis** | [5-create-redis.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/5-create-redis.sh) | [5-create-redis.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/5-create-redis.bat)  | TODO | [Create a cache](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache#create-a-cache), [Configure cache](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure), [Clustering setup](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-clustering), [VNET support](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet)
-| **Deploy the Azure Database for MySQL** | [6-create-mysql.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/6-create-mysql.sh) | [6-create-mysql.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/6-create-mysql.bat) | TODO | [Create server](https://docs.microsoft.com/azure/mysql/tutorial-design-database-using-portal), [Create read replicas](https://docs.microsoft.com/azure/mysql/howto-read-replicas-portal)
-| **Create the Azure Storage account and container** | [7-create-storage.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/7-create-storage.sh) | [7-create-storage.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/7-create-storage.bat) | TODO | [Create storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal#create-a-storage-account-1), [Create container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
-| **Create the Virtual Machine Scale Set** | [8-create-vmss.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/8-create-vmss.sh) | [8-create-vmss.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/8-create-vmss.bat) | TODO | [Create scale set](https://docs.microsoft.com/azure/virtual-machine-scale-sets/quick-create-portal)
-| **Setup the autoscale settings** | [9-create-autoscaler.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/9-create-autoscaler.sh) | [9-create-autoscaler.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/9-create-autoscaler.bat) | TODO | [Autoscale scale set](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal)
-| **Enable protection against DDoS attacks** | [10-enable-ddos-protection.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/10-enable-ddos-protection.sh) | [10-enable-ddos-protection.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/10-enable-ddos-protection.bat) | TODO | [Create DDoS plan](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
-| **Update the Virtual Machine instances** | [11-update-app.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/11-update-app.sh) | [11-update-app.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/11-update-app.bat) | TODO | N/A
+| **Install Apache, PHP and other stuff you consider** | [2-install-apache-and-php.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/scripts/2-install-apache-and-php.sh) | N/A | N/A | N/A
+| **Deallocate and generalize the Virtual Machine** | [3-prepare-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/3-prepare-vm.sh) | [3-prepare-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/3-prepare-vm.bat) | N/A | N/A
+| **Generate the custom golden image** | [4-create-golden-image.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/4-create-golden-image.sh) | [4-create-golden-image.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/4-create-golden-image.bat) | TODO | N/A
+| **Deploy the networking resources** | [5-create-networking.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/5-create-networking.sh) | [5-create-networking.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/5-create-networking.bat) | TODO | [Basic](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal), [Standard](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)
+| **Deploy the Azure Cache for Redis** | [6-create-redis.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/6-create-redis.sh) | [6-create-redis.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/6-create-redis.bat)  | TODO | [Create a cache](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache#create-a-cache), [Configure cache](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure), [Clustering setup](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-clustering), [VNET support](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet)
+| **Deploy the Azure Database for MySQL** | [7-create-mysql.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/7-create-mysql.sh) | [7-create-mysql.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/7-create-mysql.bat) | TODO | [Create server](https://docs.microsoft.com/azure/mysql/tutorial-design-database-using-portal), [Create read replicas](https://docs.microsoft.com/azure/mysql/howto-read-replicas-portal)
+| **Create the Azure Storage account and container** | [8-create-storage.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/8-create-storage.sh) | [8-create-storage.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/8-create-storage.bat) | TODO | [Create storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal#create-a-storage-account-1), [Create container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
+| **Create the Virtual Machine Scale Set** | [9-create-vmss.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/9-create-vmss.sh) | [9-create-vmss.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/9-create-vmss.bat) | TODO | [Create scale set](https://docs.microsoft.com/azure/virtual-machine-scale-sets/quick-create-portal)
+| **Setup the autoscale settings** | [10-create-autoscaler.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/10-create-autoscaler.sh) | [10-create-autoscaler.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/10-create-autoscaler.bat) | TODO | [Autoscale scale set](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal)
+| **Enable protection against DDoS attacks** | [11-enable-ddos-protection.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/11-enable-ddos-protection.sh) | [11-enable-ddos-protection.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/11-enable-ddos-protection.bat) | TODO | [Create DDoS plan](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+| **Update the Virtual Machine instances** | [12-update-app.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/12-update-app.sh) | [12-update-app.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/12-update-app.bat) | TODO | N/A

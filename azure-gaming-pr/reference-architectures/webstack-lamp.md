@@ -1,7 +1,7 @@
 ---
 title: LAMP Reference Architecture
 description: The LAMP architecture consists of 4 components that are structured in a layered way - OS (Linux), Web server (Apache), data-storage (MySQL) and application programming language (PHP).
-author: DavidJimenez
+author: David Jimenez
 keywords: 
 ms.topic: reference-architecture
 ms.date: 3/14/2019
