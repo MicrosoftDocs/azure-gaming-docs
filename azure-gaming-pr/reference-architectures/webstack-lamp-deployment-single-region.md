@@ -94,12 +94,12 @@ Here below are some examples of the region names currently available:
 | **Australia Central** | australiacentral |
 | **Australia Central 2** | australiacentral2 |
 
-More specifically you can also query what Azure regions support specific Azure Linux Virtual Machine types.
+More specifically you can also query what Azure regions support specific Azure Linux Virtual Machine types. [Learn more about this command](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-list-skus)
 
 ```batch
-CALL az vm list-skus --size Standard_B1s  | findstr \"location\"
-CALL az vm list-skus --size Standard_F4s_v2  | findstr \"location\"
-CALL az vm list-skus --size Standard_F32s_v2  | findstr \"location\"
+CALL az vm list-skus --size Standard_B1s | findstr \"location\"
+CALL az vm list-skus --size Standard_F4s_v2 | findstr \"location\"
+CALL az vm list-skus --size Standard_F32s_v2 | findstr \"location\"
 ```
 
 #### Initialize the variables
