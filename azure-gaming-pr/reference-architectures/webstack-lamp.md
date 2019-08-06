@@ -65,6 +65,16 @@ Consider leveraging [mysqlnd_ms](https://www.php.net/manual/book.mysqlnd-ms.php)
 
 You can specify server name, user name, and password for connecting to a MySQL Server, so it can work to load balance and scale out by distributing read workload to Azure Database for MySQL read replicas.
 
+## Case studies
+
+[![GameInsight](https://ms-f7-sites-01-cdn.azureedge.net/docs/stories/gameinsights/resources/6c5cf70e-1e44-4d01-83b5-492486cc5866/1105622815614042160)
+
+- [Game developer dynamically scales fun in the cloud](https://customers.microsoft.com/story/gameinsights)
+
+    *"Azure had everything we needed to run the LAMP stack."*
+
+    *"Azure “played well” with Terraform"*
+
 ## Pricing
 
 If you don't have an Azure subscription, create a [free account](https://aka.ms/azfreegamedev) to get started with 12 months of free services. You're not charged for services included for free with Azure free account, unless you exceed the limits of these services. Learn how to check usage through the [Azure Portal](https://docs.microsoft.com/azure/billing/billing-check-free-service-usage#check-usage-on-the-azure-portal) or through the [usage file](https://docs.microsoft.com/azure/billing/billing-check-free-service-usage#check-usage-through-the-usage-file).
