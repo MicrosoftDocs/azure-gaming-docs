@@ -67,13 +67,26 @@ You can specify server name, user name, and password for connecting to a MySQL S
 
 ## Case studies
 
-[![GameInsight](https://ms-f7-sites-01-cdn.azureedge.net/docs/stories/gameinsights/resources/6c5cf70e-1e44-4d01-83b5-492486cc5866/1105622815614042160)
-
-- [Game developer dynamically scales fun in the cloud](https://customers.microsoft.com/story/gameinsights)
-
-    *"Azure had everything we needed to run the LAMP stack."*
-
-    *"Azure “played well” with Terraform"*
+<ul class="panelContent cardsK">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage bgdAccent1">
+                            <img src="https://ms-f7-sites-01-cdn.azureedge.net/docs/stories/gameinsights/resources/6c5cf70e-1e44-4d01-83b5-492486cc5866/1105622815614042160" alt="GameInsight" data-linktype="external" class="x-hidden-focus">
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3><a href="(https://customers.microsoft.com/story/gameinsights">Game developer dynamically scales fun in the cloud</a></h3>
+                        <p><i>"Azure had everything we needed to run the LAMP stack."</i></p>
+                        <p><i>"Azure “played well” with Terraform"</i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
 ## Pricing
 
