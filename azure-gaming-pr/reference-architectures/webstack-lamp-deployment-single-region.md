@@ -623,7 +623,7 @@ On top of the previously defined variables, the following variables are also bei
 | **REDISSKU** | Standard | Standard | Standard | Premium | Basic – Single node, multiple sizes, ideal for development/test and non-critical workloads. The basic tier has no SLA.<br>Standard – A replicated cache in a two node Primary/Secondary configuration managed by Microsoft, with a high availability SLA.<br>Premium – The new Premium tier includes all the Standard-tier features and more, such as better performance compared to Basic or Standard-tier caches, bigger workloads, data persistence, and enhanced network security.
 | **REDISSHARDSTOCREATE** | | Note: Only Premium SKU | Note: Only Premium SKU | 10 | Number of shards per cluster.
 | **REDISSUBNETNAME** | | Note: Only Premium SKU | Note: Only Premium SKU | REDISNAME + Subnet | When an Azure Cache for Redis instance is configured with an Azure Virtual Network, it is not publicly addressable and can only be accessed from virtual machines and applications within the Azure Virtual Network. [Learn More](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet).
-| **SUBNETADDRESSPREFIX** | | Note: Only Premium SKU | Note: Only Premium SKU | 10.0.1.0/24 | **Important**: When deploying an Azure Cache for Redis to an Azure Virtual Network, the cache must be in a dedicated subnet that contains no other resources except for Azure Cache for Redis instances.
+| **REDISSUBNETADDRESSPREFIX** | | Note: Only Premium SKU | Note: Only Premium SKU | 10.0.1.0/24 | **Important**: When deploying an Azure Cache for Redis to an Azure Virtual Network, the cache must be in a dedicated subnet that contains no other resources except for Azure Cache for Redis instances.
 | **SUBNETID** | | Note: Only Premium SKU | Note: Only Premium SKU | SUBNETID | Note: The full string is required.
 
 > [!TIP]
@@ -641,7 +641,7 @@ SET REDISSKU=Premium
 SET REDISSHARDSTOCREATE=2
 SET VNETNAME=%PREFIX%VNET
 SET REDISSUBNETNAME=%REDISNAME%Subnet
-SET SUBNETADDRESSPREFIX=10.0.1.0/24
+SET REDISSUBNETADDRESSPREFIX=10.0.1.0/24
 SET SUBNETID=/subscriptions/%YOURSUBSCRIPTIONID%/resourceGroups/%RESOURCEGROUPNAME%/providers/Microsoft.Network/virtualNetworks/%VNETNAME%/subnets/%REDISSUBNETNAME%
 ```
 
@@ -655,7 +655,7 @@ CALL az network vnet subnet create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --vnet-name %VNETNAME% ^
  --name %REDISSUBNETNAME% ^
- --address-prefixes %SUBNETADDRESSPREFIX%
+ --address-prefixes %REDISSUBNETADDRESSPREFIX%
 ```
 
 #### Create an Azure Cache for Redis
@@ -736,7 +736,7 @@ On top of the previously defined variables, the following variables are also bei
 | **MYSQLREADREPLICANAME** | | | MYSQLNAME + Replica | MYSQLNAME + Replica1 ... | Read replica MySQL name.
 | **MYSQLREADREPLICAREGION** | | | REGIONNAME | REGIONNAME | Azure region where the read replica will be deployed.
 | **MYSQLSUBNETNAME** | MYSQLNAME + Subnet | | | Name of the subnet containing the database.  
-| **SUBNETADDRESSPREFIX** | 10.0.2.0/24 | | | | Note: only supported in General Purpose or Memory Optimized tiers.
+| **MYSQLSUBNETADDRESSPREFIX** | 10.0.2.0/24 | | | | Note: only supported in General Purpose or Memory Optimized tiers.
 | **MYSQLRULENAME** | MYSQLNAME + Rule | | | | Name of the rule enabled within the subnet.
 
 > [!TIP]
@@ -759,7 +759,7 @@ SET MYSQLVERSION=5.7
 SET MYSQLREADREPLICANAME=%MYSQLNAME%Replica
 SET MYSQLREADREPLICAREGION=westus
 SET MYSQLSUBNETNAME=%MYSQLNAME%Subnet
-SET SUBNETADDRESSPREFIX=10.0.2.0/24
+SET MYSQLSUBNETADDRESSPREFIX=10.0.2.0/24
 SET MYSQLRULENAME=%MYSQLNAME%Rule
 ```
 
@@ -799,7 +799,7 @@ CALL az network vnet subnet create ^
  --vnet-name %VNETNAME% ^
  --name %MYSQLSUBNETNAME% ^
  --service-endpoints Microsoft.SQL ^
- --address-prefix %SUBNETADDRESSPREFIX%
+ --address-prefix %MYSQLSUBNETADDRESSPREFIX%
 ```
 
 #### Create a Virtual Network rule on the MySQL server to secure it to the subnet
