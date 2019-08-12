@@ -959,8 +959,9 @@ You can only be creative with the Azure Cache for Redis name and the subnet name
 # [Bash](#tab/bash)
 
 ```azurecli-interactive
+export RANDOMNUMBER=`head -200 /dev/urandom | cksum | cut -f2 -d " "`
 export REDISNAME=${PREFIX}Redis
-export REDISNAMEUNIQUE=${REDISNAME}${RANDOM}
+export REDISNAMEUNIQUE=${REDISNAME}${RANDOMNUMBER}
 export REDISVMSIZE=P1
 export REDISSKU=Premium
 export REDISSHARDSTOCREATE=2
@@ -1127,7 +1128,7 @@ On top of the previously defined variables, the following variables are also bei
 | **MYSQLVERSION** | 5.7 | 5.7 | 5.7 | 5.7 | MySQL version.
 | **MYSQLREADREPLICANAME** | | | MYSQLNAME + Replica | MYSQLNAME + Replica1 ... | Read replica MySQL name.
 | **MYSQLREADREPLICAREGION** | | | REGIONNAME | REGIONNAME | Azure region where the read replica will be deployed.
-| **MYSQLSUBNETNAME** | MYSQLNAME + Subnet | | | Name of the subnet containing the database.  
+| **MYSQLSUBNETNAME** | MYSQLNAME + Subnet | | | | Name of the subnet containing the database.  
 | **MYSQLSUBNETADDRESSPREFIX** | 10.0.2.0/24 | | | | Note: only supported in General Purpose or Memory Optimized tiers.
 | **MYSQLRULENAME** | MYSQLNAME + Rule | | | | Name of the rule enabled within the subnet.
 
@@ -1353,7 +1354,7 @@ On top of the previously defined variables, the following variables are also bei
 | **STORAGENAME** | mygamebackendstrg%RANDOM% | | | | The name of the storage account. **Important**: The name of the Azure Storage has to be entirely unique across all Azure customers. Hence the scripts use a random generator. And it has to be all lowercase.
 | **STORAGESKU** | Standard_LRS | Standard_LRS | Premium_LRS | Premium_LRS | The storage SKU to setup, either standard, premium or ultra.
 | **STORAGECONTAINERNAME** | %STORAGENAME%cntnr | | | | The blobs need to be stored within a container.
-| **STORAGESUBNETNAME** | STORAGENAME + Subnet | | | Name of the subnet containing the storage account. 
+| **STORAGESUBNETNAME** | STORAGENAME + Subnet | | | | Name of the subnet containing the storage account.
 | **STORAGESUBNETADDRESSPREFIX** | 10.0.3.0/24 | | | | Subnet address.
 | **STORAGERULENAME** | STORAGENAME + Rule | | | | Name of the rule enabled within the subnet.
 
