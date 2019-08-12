@@ -189,6 +189,17 @@ For more details about the process of deploying a Virtual Machine on a Managed D
 
 Aside from the image to use, Virtual Machine size and the number of GBs of storage, that need to be specific, you can be creative with the Virtual Machine name, as long as it complies with the [naming conventions](./general-guidelines.md#naming-conventions). *myVirtualMachine* is just an example.
 
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+export VMNAME=myVirtualMachine
+export IMAGE=Canonical:UbuntuServer:16.04-LTS:latest
+export VMSIZE=Standard_B1s
+export VMDATADISKSIZEINGB=5
+```
+
+# [Windows Batch](#tab/bat)
+
 ```bat
 SET VMNAME=myVirtualMachine
 SET IMAGE=Canonical:UbuntuServer:16.04-LTS:latest
@@ -196,13 +207,25 @@ SET VMSIZE=Standard_B1s
 SET VMDATADISKSIZEINGB=5
 ```
 
+---
+
 #### Login
 
 Running this command will open a browser for you to log in with your Azure credentials. [Learn more about this command](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az login
+```
+
+# [Windows Batch](#tab/bat)
+
 ```bat
 CALL az login
 ```
+
+---
 
 #### Set the Azure subscription
 
@@ -228,17 +251,44 @@ CALL az account set ^
 
 All resources created in Azure need to be part of a resource group. [Learn more about this command](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create).
 
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az group create \
+ --name $RESOURCEGROUPNAME \
+ --location $REGIONNAME
+```
+
+# [Windows Batch](#tab/bat)
+
 ```bat
 CALL az group create ^
  --name %RESOURCEGROUPNAME% ^
  --location %REGIONNAME%
 ```
 
+---
+
 Have a look at the [general guidelines documentation](./general-guidelines.md#resource-groups) to learn more about resource groups.
 
 #### Create a Virtual Machine
 
 This operation will take several minutes. [Learn more about this command](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az vm create \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $VMNAME \
+ --image $IMAGE \
+ --size $VMSIZE \
+ --admin-username $LOGINUSERNAME \
+ --data-disk-sizes-gb $VMDATADISKSIZEINGB \
+ --generate-ssh-keys
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az vm create ^
@@ -251,9 +301,29 @@ CALL az vm create ^
  --generate-ssh-keys
 ```
 
+---
+
 #### Open the ports 80 and 443
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-open-port).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az vm open-port \
+ --port 80 \
+ --priority 900 \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $VMNAME
+
+az vm open-port \
+ --port 443 \
+ --priority 901 \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $VMNAME
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az vm open-port ^
@@ -268,6 +338,8 @@ CALL az vm open-port ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %VMNAME%
 ```
+
+---
 
 ### Azure Resource Manager template
 
@@ -285,11 +357,23 @@ Refer to [Create a Linux virtual machine in the Azure portal](https://docs.micro
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-list).
 
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az network public-ip list \
+ --resource-group $RESOURCEGROUPNAME \
+ --query [].ipAddress
+```
+
+# [Windows Batch](#tab/bat)
+
 ```bat
 CALL az network public-ip list ^
  --resource-group %RESOURCEGROUPNAME% ^
  --query [].ipAddress
 ```
+
+---
 
 #### Azure Portal
 
@@ -376,6 +460,20 @@ Before creating an image it's needed to stop and prepare the Linux guest OS on t
 
 Learn more about the [deallocate](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-deallocate) and [generalize](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-generalize) commands.
 
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az vm deallocate \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $VMNAME
+
+az vm generalize \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $VMNAME
+```
+
+# [Windows Batch](#tab/bat)
+
 ```bat
 CALL az vm deallocate ^
  --resource-group %RESOURCEGROUPNAME% ^
@@ -385,6 +483,8 @@ CALL az vm generalize ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %VMNAME%
 ```
+
+---
 
 ## 4. Capture the Virtual Machine Disk Image to generate the custom golden image
 
@@ -411,13 +511,35 @@ On top of the previously defined variables, the following variables are also bei
 
 You can be creative with the custom golden image name, as long as it complies with the [naming conventions](./general-guidelines.md#naming-conventions). *myGoldenImage* is just an example.
 
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+export GOLDENIMAGENAME=myGoldenImage
+```
+
+# [Windows Batch](#tab/bat)
+
 ```bat
 SET GOLDENIMAGENAME=myGoldenImage
 ```
 
+---
+
 #### Create the custom golden image
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/image?view=azure-cli-latest#az-image-create).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az image create \
+ --resource-group $RESOURCEGROUPNAME \
+ --source $VMNAME \
+ --name $GOLDENIMAGENAME \
+ --os-type Linux
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az image create ^
@@ -426,6 +548,8 @@ CALL az image create ^
  --name %GOLDENIMAGENAME% ^
  --os-type Linux
 ```
+
+---
 
 ### Azure Resource Manager template
 
@@ -486,6 +610,29 @@ On top of the previously defined variables, the following variables are also bei
 
 You can be creative with the public IP name, load balancer name, virtual network name, subnet name, backend pool name, frontend IP configuration name, NAT pool name and the load balacing rule names, as long as they comply with the [naming conventions](./general-guidelines.md#naming-conventions). *myGameBackendLB* is just an example of how the load balancer could be named.
 
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+export LBSKU=Basic
+export PUBLICIPNAME=${PREFIX}PublicIP
+export PUBLICIPALLOCATION=Static
+export PUBLICIPVERSION=IPv4
+export LBNAME=${PREFIX}LB
+export VNETNAME=${PREFIX}VNET
+export VNETADDRESSPREFIX=10.0.0.0/16
+export SUBNETNAME=${PREFIX}Subnet
+export SUBNETADDRESSPREFIX=10.0.0.0/24
+export LBBEPOOLNAME=${LBNAME}BEPool
+export LBFENAME=${LBNAME}FE
+export LBFEPORTRANGESTART=50000
+export LBFEPORTRANGEEND=50119
+export LBNATPOOLNAME=${LBNAME}NATPool
+export LBRULEHTTPNAME=${LBNAME}HTTPRule
+export LBRULEHTTPSNAME=${LBNAME}HTTPSRule
+```
+
+# [Windows Batch](#tab/bat)
+
 ```bat
 SET LBSKU=Basic
 SET PUBLICIPNAME=%PREFIX%PublicIP
@@ -505,9 +652,24 @@ SET LBRULEHTTPNAME=%LBNAME%HTTPRule
 SET LBRULEHTTPSNAME=%LBNAME%HTTPSRule
 ```
 
+---
+
 #### Create the Azure Virtual Network
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az network vnet create \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $VNETNAME \
+ --address-prefix $VNETADDRESSPREFIX \
+ --subnet-name $SUBNETNAME \
+ --subnet-prefix $SUBNETADDRESSPREFIX
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az network vnet create ^
@@ -518,9 +680,24 @@ CALL az network vnet create ^
  --subnet-prefix %SUBNETADDRESSPREFIX%
 ```
 
+---
+
 #### Create an inbound public IP address for the load balancer
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az network public-ip create \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $PUBLICIPNAME \
+ --allocation-method $PUBLICIPALLOCATION \
+ --sku $LBSKU \
+ --version $PUBLICIPVERSION
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az network public-ip create ^
@@ -531,9 +708,25 @@ CALL az network public-ip create ^
  --version %PUBLICIPVERSION%
 ```
 
+---
+
 #### Create an Azure Load Balancer
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az network lb create \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $LBNAME \
+ --sku $LBSKU \
+ --backend-pool-name $LBBEPOOLNAME \
+ --frontend-ip-name $LBFENAME \
+ --public-ip-address $PUBLICIPNAME
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az network lb create ^
@@ -545,9 +738,25 @@ CALL az network lb create ^
  --public-ip-address %PUBLICIPNAME%
 ```
 
+---
+
 #### Create an Azure Load Balancer health probe for HTTP
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az network lb probe create \
+ --resource-group $RESOURCEGROUPNAME \
+ --lb-name $LBNAME \
+ --name http \
+ --protocol http \
+ --port 80 \
+ --path /
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az network lb probe create ^
@@ -559,10 +768,28 @@ CALL az network lb probe create ^
  --path /
 ```
 
+---
+
 #### Create an Azure Load Balancer health probe for HTTPs
 
 > [!NOTE]
 > This is only supported in the Standard Load Balancer SKU.
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+if [ "$LBSKU" = "Standard" ]; then
+az network lb probe create \
+ --resource-group $RESOURCEGROUPNAME \
+ --lb-name $LBNAME \
+ --name https \
+ --protocol https \
+ --port 443 \
+ --path /
+fi
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 if %LBSKU%==Standard CALL az network lb probe create ^
@@ -574,9 +801,27 @@ if %LBSKU%==Standard CALL az network lb probe create ^
  --path /
 ```
 
+---
+
 #### Create an inbound NAT pool with backend port 22
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az-network-lb-inbound-nat-pool-create).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az network lb inbound-nat-pool create \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $LBNATPOOLNAME \
+ --backend-port 22 \
+ --frontend-port-range-start $LBFEPORTRANGESTART \
+ --frontend-port-range-end $LBFEPORTRANGEEND \
+ --lb-name $LBNAME \
+ --frontend-ip-name $LBFENAME \
+ --protocol Tcp
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az network lb inbound-nat-pool create ^
@@ -590,9 +835,28 @@ CALL az network lb inbound-nat-pool create ^
  --protocol Tcp
 ```
 
+---
+
 #### Create a load balancing inbound rule for the port 80
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az network lb rule create \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $LBRULEHTTPNAME \
+ --lb-name $LBNAME \
+ --protocol tcp \
+ --frontend-port 80 \
+ --backend-port 80 \
+ --probe http \
+ --frontend-ip-name $LBFENAME \
+ --backend-pool-name $LBBEPOOLNAME
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az network lb rule create ^
@@ -607,10 +871,31 @@ CALL az network lb rule create ^
  --backend-pool-name %LBBEPOOLNAME%
 ```
 
+---
+
 #### Create a load balancing inbound rule for the port 443
 
 > [!NOTE]
 > This is only supported in the Standard Load Balancer SKU.
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+if [ "$LBSKU" = "Standard" ]; then
+az network lb rule create \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $LBRULEHTTPSNAME \
+ --lb-name $LBNAME \
+ --protocol tcp \
+ --frontend-port 443 \
+ --backend-port 443 \
+ --probe https \
+ --frontend-ip-name $LBFENAME \
+ --backend-pool-name $LBBEPOOLNAME
+fi
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 if %LBSKU%==Standard CALL az network lb rule create ^
@@ -624,6 +909,8 @@ if %LBSKU%==Standard CALL az network lb rule create ^
  --frontend-ip-name %LBFENAME% ^
  --backend-pool-name %LBBEPOOLNAME%
 ```
+
+---
 
 ### Azure Resource Manager template
 
@@ -669,6 +956,22 @@ On top of the previously defined variables, the following variables are also bei
 
 You can only be creative with the Azure Cache for Redis name and the subnet name, as long as they comply with the [naming conventions](./general-guidelines.md#naming-conventions). *myGameBackendRedis1234* is just an example of how the Azure Cache for Redis could be named. The remaining variables need to be filled in with a specific set of expected values.
 
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+export REDISNAME=${PREFIX}Redis
+export REDISNAMEUNIQUE=${REDISNAME}${RANDOM}
+export REDISVMSIZE=P1
+export REDISSKU=Premium
+export REDISSHARDSTOCREATE=2
+export VNETNAME=${PREFIX}VNET
+export REDISSUBNETNAME=${REDISNAME}Subnet
+export REDISSUBNETADDRESSPREFIX=10.0.1.0/24
+export SUBNETID=/subscriptions/${YOURSUBSCRIPTIONID}/resourceGroups/${RESOURCEGROUPNAME}/providers/Microsoft.Network/virtualNetworks/${VNETNAME}/subnets/${REDISSUBNETNAME}
+```
+
+# [Windows Batch](#tab/bat)
+
 ```bat
 SET REDISNAME=%PREFIX%Redis
 SET REDISNAMEUNIQUE=%REDISNAME%%RANDOM%
@@ -681,10 +984,24 @@ SET REDISSUBNETADDRESSPREFIX=10.0.1.0/24
 SET SUBNETID=/subscriptions/%YOURSUBSCRIPTIONID%/resourceGroups/%RESOURCEGROUPNAME%/providers/Microsoft.Network/virtualNetworks/%VNETNAME%/subnets/%REDISSUBNETNAME%
 ```
 
+---
+
 #### Create a specific subnet named cache
 
 > [!NOTE]
 > This is only supported in the Premium Azure Cache for Redis SKU.
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az network vnet subnet create \
+ --resource-group $RESOURCEGROUPNAME \
+ --vnet-name $VNETNAME \
+ --name $REDISSUBNETNAME \
+ --address-prefixes $REDISSUBNETADDRESSPREFIX
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az network vnet subnet create ^
@@ -694,9 +1011,26 @@ CALL az network vnet subnet create ^
  --address-prefixes %REDISSUBNETADDRESSPREFIX%
 ```
 
+---
+
 #### Create an Azure Cache for Redis
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/redis?view=azure-cli-latest#az-redis-create).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az redis create \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $REDISNAMEUNIQUE \
+ --location $REGIONNAME \
+ --sku $REDISSKU \
+ --vm-size $REDISVMSIZE \
+ --shard-count $REDISSHARDSTOCREATE \
+ --subnet-id $SUBNETID
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az redis create ^
@@ -709,10 +1043,30 @@ CALL az redis create ^
  --subnet-id %SUBNETID%
 ```
 
+---
+
 > [!NOTE]
 > Just remove the `--shard-count` and `--subnet-id` if you are using a non-premium SKU or you don't want to setup a cluster and secure the cache behind an Azure Virtual Network.
 
 #### Get details of the cache (hostName, enableNonSslPort, port, sslPort, primaryKey and secondaryKey)
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az redis show \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $REDISNAMEUNIQUE \
+ --query [hostName,enableNonSslPort,port,sslPort] \
+ --output tsv
+
+az redis list-keys \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $REDISNAMEUNIQUE \
+ --query [primaryKey,secondaryKey] \
+ --output tsv
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az redis show ^
@@ -727,6 +1081,8 @@ CALL az redis list-keys ^
  --query [primaryKey,secondaryKey] ^
  --output tsv
 ```
+
+---
 
 ### Azure Resource Manager template
 
@@ -782,6 +1138,27 @@ On top of the previously defined variables, the following variables are also bei
 
 You can only be creative with the Azure Database for MySQL master and read replica(s) server names, the database name, the subnet name and the admin username and password, as long as they comply with the [naming conventions](./general-guidelines.md#naming-conventions). *myGameBackendMySQL* is just an example of how the Azure Database for MysQL server could be named. The remaining variables need to be filled in with a specific set of expected values.
 
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+export MYSQLNAME=${PREFIX}MySQL
+export MYSQLUSERNAME=azuremysqluser
+export MYSQLPASSWORD=CHang3thisP4Ssw0rD
+export MYSQLDBNAME=gamedb
+export MYSQLBACKUPRETAINEDDAYS=7
+export MYSQLGEOREDUNDANTBACKUP=Disabled
+export MYSQLSKU=GP_Gen5_2
+export MYSQLSTORAGEMBSIZE=51200
+export MYSQLVERSION=5.7
+export MYSQLREADREPLICANAME=${MYSQLNAME}Replica
+export MYSQLREADREPLICAREGION=westus
+export MYSQLSUBNETNAME=${MYSQLNAME}Subnet
+export MYSQLSUBNETADDRESSPREFIX=10.0.2.0/24
+export MYSQLRULENAME=${MYSQLNAME}Rule
+```
+
+# [Windows Batch](#tab/bat)
+
 ```bat
 SET MYSQLNAME=%PREFIX%MySQL
 SET MYSQLUSERNAME=azuremysqluser
@@ -799,11 +1176,23 @@ SET MYSQLSUBNETADDRESSPREFIX=10.0.2.0/24
 SET MYSQLRULENAME=%MYSQLNAME%Rule
 ```
 
+---
+
 #### Enable Azure CLI db-up extension (in preview)
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az extension add --name db-up
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az extension add --name db-up
 ```
+
+---
 
 #### Create the server, database and other routinely tasks
 
@@ -811,6 +1200,25 @@ CALL az extension add --name db-up
 > In addition to creating the server, the az mysql up command creates a sample database, a root user in the database, opens the firewall for Azure services, and creates default firewall rules for the client computer
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/ext/db-up/mysql?view=azure-cli-latest#ext-db-up-az-mysql-up).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az mysql up ^
+ --resource-group $RESOURCEGROUPNAME \
+ --server-name $MYSQLNAME \
+ --admin-user $MYSQLUSERNAME \
+ --admin-password $MYSQLPASSWORD \
+ --backup-retention $MYSQLBACKUPRETAINEDDAYS \
+ --database-name $MYSQLDBNAME \
+ --geo-redundant-backup $MYSQLGEOREDUNDANTBACKUP \
+ --location $REGIONNAME \
+ --sku-name $MYSQLSKU \
+ --storage-size $MYSQLSTORAGEMBSIZE \
+ --version=$MYSQLVERSION
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az mysql up ^
@@ -827,7 +1235,22 @@ CALL az mysql up ^
  --version=%MYSQLVERSION%
 ```
 
+---
+
 #### Create and enable Azure Database for MySQL Virtual Network service endpoints
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az network vnet subnet create \
+ --resource-group $RESOURCEGROUPNAME \
+ --vnet-name $VNETNAME \
+ --name $MYSQLSUBNETNAME \
+ --service-endpoints Microsoft.SQL \
+ --address-prefix $MYSQLSUBNETADDRESSPREFIX
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az network vnet subnet create ^
@@ -838,12 +1261,27 @@ CALL az network vnet subnet create ^
  --address-prefix %MYSQLSUBNETADDRESSPREFIX%
 ```
 
+---
+
 > [!IMPORTANT]
 > **Microsoft.Sql** refers to the Azure service named SQL Database but this service tag also applies to the Azure SQL Database, Azure Database for PostgreSQL and MySQL services. It is important to note when applying the Microsoft.Sql service tag to a VNet service endpoint it configures service endpoint traffic for all Azure Database services, including Azure SQL Database, Azure Database for PostgreSQL and Azure Database for MySQL servers on the subnet.
 
 #### Create a Virtual Network rule on the MySQL server to secure it to the subnet
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/mysql/server/vnet-rule?view=azure-cli-latest#az-mysql-server-vnet-rule-create).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az mysql server vnet-rule create \
+ --resource-group $RESOURCEGROUPNAME \
+ --server-name $MYSQLNAME \
+ --vnet-name $VNETNAME \
+ --subnet $MYSQLSUBNETNAME \
+ --name $MYSQLRULENAME
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az mysql server vnet-rule create ^
@@ -854,9 +1292,23 @@ CALL az mysql server vnet-rule create ^
  --name %MYSQLRULENAME%
 ```
 
+---
+
 #### Create a read replica using the MySQL server as a source (master)
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/mysql/server/replica?view=azure-cli-latest#az-mysql-server-replica-create).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az mysql server replica create \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $MYSQLREADREPLICANAME \
+ --source-server $MYSQLNAME \
+ --location $MYSQLREADREPLICAREGION
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az mysql server replica create ^
@@ -865,6 +1317,8 @@ CALL az mysql server replica create ^
  --source-server %MYSQLNAME% ^
  --location %MYSQLREADREPLICAREGION%
 ```
+
+---
 
 ### Azure Resource Manager template
 
@@ -907,15 +1361,40 @@ On top of the previously defined variables, the following variables are also bei
 
 You can only be creative with the Azure Storage account name and the container name, as long as they comply with the [naming conventions](./general-guidelines.md#naming-conventions). *mygamebackendstrg1234* is just an example of how the Azure Storage account could be named. The remaining variables need to be filled in with a specific set of expected values.
 
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+export RANDOMNUMBER=`head -200 /dev/urandom | cksum | cut -f2 -d " "`
+export STORAGENAME=mygamebackendstrg${RANDOMNUMBER}
+export STORAGESKU=Standard_LRS
+export STORAGECONTAINERNAME=${STORAGENAME}cntnr
+```
+
+# [Windows Batch](#tab/bat)
+
 ```bat
 SET STORAGENAME=mygamebackendstrg%RANDOM%
 SET STORAGESKU=Standard_LRS
 SET STORAGECONTAINERNAME=%STORAGENAME%cntnr
 ```
 
+---
+
 #### Create a storage account
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az storage account create \
+ --resource-group $RESOURCEGROUPNAME% \
+ --name $STORAGENAME \
+ --sku $STORAGESKU \
+ --location $REGIONNAME
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az storage account create ^
@@ -925,7 +1404,17 @@ CALL az storage account create ^
  --location %REGIONNAME%
 ```
 
+---
+
 #### Get the connection string from the storage account
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+export STORAGECONNECTIONSTRING=`az storage account show-connection-string -n $STORAGENAME -g $RESOURCEGROUPNAME --query connectionString -o tsv`
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az storage account show-connection-string -n %STORAGENAME% -g %RESOURCEGROUPNAME% --query connectionString -o tsv > connectionstring.tmp
@@ -933,15 +1422,29 @@ SET /p STORAGECONNECTIONSTRING=<connectionstring.tmp
 CALL DEL connectionstring.tmp
 ```
 
+---
+
 #### Create a storage container into the storage account
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az storage container create \
+ --name $STORAGECONTAINERNAME \
+ --connection-string $STORAGECONNECTIONSTRING
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az storage container create ^
  --name %STORAGECONTAINERNAME% ^
  --connection-string %STORAGECONNECTIONSTRING%
 ```
+
+---
 
 ### Azure Resource Manager template
 
@@ -995,6 +1498,22 @@ On top of the previously defined variables, the following variables are also bei
 
 You can only be creative with the Azure Virtual MAchine Scale Set name, as long as it complies with the [naming conventions](./general-guidelines.md#naming-conventions). *myGameBackendVMSS* is just an example. The remaining variables need to be filled in with a specific set of expected values.
 
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+export VMSSNAME=${PREFIX}VMSS
+export GOLDENIMAGENAME=myGoldenImage
+export VMSSSKUSIZE=Standard_B1s
+export VMSSVMTOCREATE=2
+export VMSSSTORAGETYPE=Premium_LRS
+export VMSSACELERATEDNETWORKING=false
+export VMSSUPGRADEPOLICY=Manual
+export HEALTHPROBEID=/subscriptions/${YOURSUBSCRIPTIONID}/resourceGroups/${RESOURCEGROUPNAME}/providers/Microsoft.Network/loadBalancers/${LBNAME}/probes/http
+export VMSSOVERPROVISIONING=--disable-overprovision
+```
+
+# [Windows Batch](#tab/bat)
+
 ```bat
 SET VMSSNAME=%PREFIX%VMSS
 SET GOLDENIMAGENAME=myGoldenImage
@@ -1007,9 +1526,35 @@ SET HEALTHPROBEID=/subscriptions/%YOURSUBSCRIPTIONID%/resourceGroups/%RESOURCEGR
 SET VMSSOVERPROVISIONING=--disable-overprovision
 ```
 
+---
+
 #### Create a scale set
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-create).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az vmss create \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $VMSSNAME \
+ --image $GOLDENIMAGENAME \
+ --upgrade-policy-mode $VMSSUPGRADEPOLICY \
+ --load-balancer $LBNAME \
+ --lb-sku $LBSKU \
+ --vnet-name $VNETNAME \
+ --subnet $SUBNETNAME \
+ --admin-username $LOGINUSERNAME \
+ --instance-count $VMSSVMTOCREATE \
+ --backend-pool-name $LBBEPOOLNAME \
+ --storage-sku $VMSSSTORAGETYPE \
+ --vm-sku $VMSSSKUSIZE \
+ --lb-nat-pool-name $LBNATPOOLNAME \
+ --accelerated-networking $VMSSACELERATEDNETWORKING \
+ --generate-ssh-keys $VMSSOVERPROVISIONING
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az vmss create ^
@@ -1031,7 +1576,20 @@ CALL az vmss create ^
  --generate-ssh-keys %VMSSOVERPROVISIONING%
 ```
 
+---
+
 #### Confirm scale set upgrade policy
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az vmss show \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $VMSSNAME \
+ --query upgradePolicy
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az vmss show ^
@@ -1040,9 +1598,23 @@ CALL az vmss show ^
  --query upgradePolicy
 ```
 
+---
+
 #### Associate the load balancer health probe to the scale set
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-show).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az vmss update \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $VMSSNAME \
+ --query virtualMachineProfile.networkProfile.healthProbe \
+ --set virtualMachineProfile.networkProfile.healthProbe.id='${HEALTHPROBEID}'
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az vmss update ^
@@ -1052,9 +1624,22 @@ CALL az vmss update ^
  --set virtualMachineProfile.networkProfile.healthProbe.id='%HEALTHPROBEID%'
 ```
 
+---
+
 #### Update all the instances from the scale set
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-update-instances).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az vmss update-instances \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $VMSSNAME \
+ --instance-ids *
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az vmss update-instances ^
@@ -1063,7 +1648,21 @@ CALL az vmss update-instances ^
  --instance-ids *
 ```
 
+---
+
 #### Switch to Rolling upgrade mode
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az vmss update \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $VMSSNAME \
+ --query upgradePolicy \
+ --set upgradePolicy.mode=Rolling
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az vmss update ^
@@ -1072,6 +1671,8 @@ CALL az vmss update ^
  --query upgradePolicy ^
  --set upgradePolicy.mode=Rolling
 ```
+
+---
 
 ### Azure Resource Manager template
 
@@ -1115,6 +1716,21 @@ On top of the previously defined variables, the following variables are also bei
 
 You can only be creative with the autoscaler name, as long as it complies with the [naming conventions](./general-guidelines.md#naming-conventions). *myGameBackendAutoscaler* is just an example. The remaining variables need to be filled in with a specific set of expected values.
 
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+export VMSSAUTOSCALERNAME=${PREFIX}Autoscaler
+export VMSSAUTOSCALERCRITERIA=Percentage CPU
+export VMSSAUTOSCALERMAXCOUNT=10
+export VMSSAUTOSCALERMINCOUNT=$VMSSVMTOCREATE
+export VMSSAUTOSCALERUPTRIGGER=50 avg 5m
+export VMSSAUTOSCALERDOWNTRIGGER=30 avg 5m
+export VMSSAUTOSCALEROUTINCREASE=1
+export VMSSAUTOSCALERINDECREASE=1
+```
+
+# [Windows Batch](#tab/bat)
+
 ```bat
 SET VMSSAUTOSCALERNAME=%PREFIX%Autoscaler
 SET VMSSAUTOSCALERCRITERIA=Percentage CPU
@@ -1126,9 +1742,26 @@ SET VMSSAUTOSCALEROUTINCREASE=1
 SET VMSSAUTOSCALERINDECREASE=1
 ```
 
+---
+
 #### Define the autoscaling profile
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest#az-monitor-autoscale-create).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az monitor autoscale create \
+ --resource-group $RESOURCEGROUPNAME \
+ --resource $VMSSNAME \
+ --resource-type Microsoft.Compute/virtualMachineScaleSets \
+ --name $VMSSAUTOSCALERNAME \
+ --min-count $VMSSAUTOSCALERMINCOUNT \
+ --max-count $VMSSAUTOSCALERMAXCOUNT \
+ --count $VMSSVMTOCREATE
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az monitor autoscale create ^
@@ -1141,9 +1774,23 @@ CALL az monitor autoscale create ^
  --count %VMSSVMTOCREATE%
 ```
 
+---
+
 #### Enable virtual machine autoscaler for scaling out
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/monitor/autoscale/rule?view=azure-cli-latest#az-monitor-autoscale-rule-create).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az monitor autoscale rule create \
+ --resource-group $RESOURCEGROUPNAME \
+ --autoscale-name $VMSSAUTOSCALERNAME \
+ --condition "${VMSSAUTOSCALERCRITERIA} > ${VMSSAUTOSCALERUPTRIGGER}" \
+ --scale out $VMSSAUTOSCALEROUTINCREASE
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az monitor autoscale rule create ^
@@ -1153,7 +1800,21 @@ CALL az monitor autoscale rule create ^
  --scale out %VMSSAUTOSCALEROUTINCREASE%
 ```
 
+---
+
 #### Enable virtual machine autoscaler for scaling in
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az monitor autoscale rule create \
+ --resource-group $RESOURCEGROUPNAME \
+ --autoscale-name $VMSSAUTOSCALERNAME \
+ --condition "${VMSSAUTOSCALERCRITERIA} < ${VMSSAUTOSCALERDOWNTRIGGER}" \
+ --scale in $VMSSAUTOSCALERINDECREASE
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az monitor autoscale rule create ^
@@ -1162,6 +1823,8 @@ CALL az monitor autoscale rule create ^
  --condition "%VMSSAUTOSCALERCRITERIA% < %VMSSAUTOSCALERDOWNTRIGGER%" ^
  --scale in %VMSSAUTOSCALERINDECREASE%
 ```
+
+---
 
 ### Azure Resource Manager template
 
@@ -1193,6 +1856,17 @@ SET DDOSPROTECTIONNAME=%PREFIX%DdosPlan
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-create).
 
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az network ddos-protection create \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $DDOSPROTECTIONNAME \
+ --vnets $VNETNAME
+```
+
+# [Windows Batch](#tab/bat)
+
 ```bat
 CALL az network ddos-protection create ^
  --resource-group %RESOURCEGROUPNAME% ^
@@ -1200,7 +1874,21 @@ CALL az network ddos-protection create ^
  --vnets %VNETNAME%
 ```
 
+---
+
 #### Enable the DDoS Standard plan on the Virtual Network
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az network vnet update \
+ --resource-group $RESOURCEGROUPNAME \
+ --name $VNETNAME \
+ --ddos-protection true \
+ --ddos-protection-plan $DDOSPROTECTIONNAME
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az network vnet update ^
@@ -1209,6 +1897,8 @@ CALL az network vnet update ^
  --ddos-protection true ^
  --ddos-protection-plan %DDOSPROTECTIONNAME%
 ```
+
+---
 
 ### Azure Resource Manager template
 
@@ -1242,6 +1932,19 @@ On top of the previously defined variables, the following variables are also bei
 
 You can be creative with all these variables, just ensure they are matching the expected source and destination files/directory names.
 
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+export BLOBSOURCEURI=./app/package.tar.gz
+export BLOBFILEDESTINATIONNAME=package.tar.gz
+export SCRIPTUPDATESOURCEURI=./scripts/update-app.sh
+export SCRIPTUPDATEFILEDESTINATIONAME=update-app.sh
+export DESTINATIONFOLDER=/var/www/html
+export SERVICETORESTART=apache2.service
+```
+
+# [Windows Batch](#tab/bat)
+
 ```bat
 SET BLOBSOURCEURI=app\\package.tar.gz
 SET BLOBFILEDESTINATIONNAME=package.tar.gz
@@ -1251,9 +1954,19 @@ SET DESTINATIONFOLDER=/var/www/html
 SET SERVICETORESTART=apache2.service
 ```
 
+---
+
 #### Get the connection string from the storage account
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+export STORAGECONNECTIONSTRING=`az storage account show-connection-string -n $STORAGENAME -g $RESOURCEGROUPNAME --query connectionString -o tsv`
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az storage account show-connection-string -n %STORAGENAME% -g %RESOURCEGROUPNAME% --query connectionString -o tsv > connectionstring.tmp
@@ -1261,9 +1974,29 @@ SET /p STORAGECONNECTIONSTRING=<connectionstring.tmp
 CALL DEL connectionstring.tmp
 ```
 
+---
+
 #### Upload both the application files and update application script to the blob storage
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-upload).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az storage blob upload \
+ -c $STORAGECONTAINERNAME \
+ -f $BLOBSOURCEURI \
+ -n $BLOBFILEDESTINATIONNAME \
+ --connection-string $STORAGECONNECTIONSTRING
+
+az storage blob upload \
+ -c $STORAGECONTAINERNAME \
+ -f $SCRIPTUPDATESOURCEURI \
+ -n $SCRIPTUPDATEFILEDESTINATIONAME \
+ --connection-string $STORAGECONNECTIONSTRING
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az storage blob upload ^
@@ -1279,9 +2012,20 @@ CALL az storage blob upload ^
  --connection-string %STORAGECONNECTIONSTRING%
 ```
 
+---
+
 #### Get the URLs from the uploaded files
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-url)
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+export BLOBURL=`az storage blob url -c $STORAGECONTAINERNAME -n $BLOBFILEDESTINATIONNAME -o tsv --connection-string $STORAGECONNECTIONSTRING`
+export SCRIPTURL=`az storage blob url -c $STORAGECONTAINERNAME -n $SCRIPTUPDATEFILEDESTINATIONAME -o tsv --connection-string $STORAGECONNECTIONSTRING`
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az storage blob url -c %STORAGECONTAINERNAME% -n %BLOBFILEDESTINATIONNAME% -o tsv --connection-string %STORAGECONNECTIONSTRING% > bloburl.tmp
@@ -1293,9 +2037,21 @@ SET /p SCRIPTURL=<scripturl.tmp
 CALL DEL scripturl.tmp
 ```
 
+---
+
 #### Build the Protected Settings JSON string
 
 This will be  used by the Custom Script Extension to download the file or files from the storage account. [Learn more about this command](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list)
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+export STORAGEKEY=`az storage account keys list --account-name $STORAGENAME --resource-group $RESOURCEGROUPNAME --query [0].value --output tsv`
+export PROTECTEDSETTINGS="{\"storageAccountName\":\"${STORAGENAME}\",\"storageAccountKey\":\"${STORAGEKEY}\"}"
+export SETTINGS="{\"fileUris\":[\"${BLOBURL}\",\"${SCRIPTURL}\"],\"commandToExecute\":\"bash ${SCRIPTUPDATEFILEDESTINATIONAME} ${BLOBFILEDESTINATIONNAME} ${DESTINATIONFOLDER} ${SERVICETORESTART}\"}"
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az storage account keys list --account-name %STORAGENAME% --resource-group %RESOURCEGROUPNAME% --query [0].value --output tsv > storagekey.tmp
@@ -1306,9 +2062,27 @@ SET PROTECTEDSETTINGS="{\"storageAccountName\":\"%STORAGENAME%\",\"storageAccoun
 SET SETTINGS="{\"fileUris\":[\"%BLOBURL%\",\"%SCRIPTURL%\"],\"commandToExecute\":\"bash %SCRIPTUPDATEFILEDESTINATIONAME% %BLOBFILEDESTINATIONNAME% %DESTINATIONFOLDER% %SERVICETORESTART%\"}"
 ```
 
+---
+
 #### Update the configuration file from the scale set
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/vmss/extension?view=azure-cli-latest#az-vmss-extension-set).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az vmss extension set \
+ --resource-group $RESOURCEGROUPNAME \
+ --vmss-name $VMSSNAME \
+ --publisher Microsoft.Azure.Extensions \
+ --name CustomScript \
+ --version 2.0 \
+ --settings $SETTINGS \
+ --force-update \
+ --protected-settings $PROTECTEDSETTINGS
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az vmss extension set ^
@@ -1322,9 +2096,22 @@ CALL az vmss extension set ^
  --protected-settings %PROTECTEDSETTINGS%
 ```
 
+---
+
 #### Update all the instances from the scale set
 
 This will ensure that in the next update round they download and install the files uploaded to the storage account. [Learn more about this command](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-update-instances).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az vmss update-instances \
+ --instance-ids * \
+ --name $VMSSNAME \
+ --resource-group $RESOURCEGROUPNAME
+```
+
+# [Windows Batch](#tab/bat)
 
 ```bat
 CALL az vmss update-instances ^
@@ -1332,6 +2119,8 @@ CALL az vmss update-instances ^
  --name %VMSSNAME% ^
  --resource-group %RESOURCEGROUPNAME%
 ```
+
+---
 
 ### Azure Resource Manager template
 
