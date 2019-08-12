@@ -76,9 +76,20 @@ Regardless of what step you are working on, it's best practice to keep a set of 
 
 #### Get the list of Azure region names
 
-```batch
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az account list-locations
+```
+
+# [Windows Batch](#tab/bat)
+
+```bat
 CALL az account list-locations
 ```
+
+---
+
 
 Here below are some examples of the region names currently available:
 
@@ -96,22 +107,47 @@ Here below are some examples of the region names currently available:
 
 More specifically you can also query what Azure regions support specific Azure Linux Virtual Machine types. [Learn more about this command](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-list-skus)
 
-```batch
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az vm list-skus --size Standard_B1s --query [].locationInfo[].location
+az vm list-skus --size Standard_F4s_v2 --query [].locationInfo[].location
+az vm list-skus --size Standard_F32s_v2 --query [].locationInfo[].location
+```
+
+# [Windows Batch](#tab/bat)
+
+```bat
 CALL az vm list-skus --size Standard_B1s --query [].locationInfo[].location
 CALL az vm list-skus --size Standard_F4s_v2 --query [].locationInfo[].location
 CALL az vm list-skus --size Standard_F32s_v2 --query [].locationInfo[].location
 ```
 
+---
+
 #### Initialize the variables
 
 Aside from the Azure subscription ID and the region name, that need to be specific, you can be creative with the resource group name and the login username, as long as they comply with the [naming conventions](./general-guidelines.md#naming-conventions). *myResourceGroup* and *azureuser* are just examples.
 
-```bash
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+export YOURSUBSCRIPTIONID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+export RESOURCEGROUPNAME=myResourceGroup
+export REGIONNAME=japaneast
+export LOGINUSERNAME=azureuser
+```
+
+# [Windows Batch](#tab/bat)
+
+```bat
 SET YOURSUBSCRIPTIONID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 SET RESOURCEGROUPNAME=myResourceGroup
 SET REGIONNAME=japaneast
 SET LOGINUSERNAME=azureuser
 ```
+
+---
 
 #### Tools
 
