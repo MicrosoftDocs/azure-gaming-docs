@@ -1353,6 +1353,9 @@ On top of the previously defined variables, the following variables are also bei
 | **STORAGENAME** | mygamebackendstrg%RANDOM% | | | | The name of the storage account. **Important**: The name of the Azure Storage has to be entirely unique across all Azure customers. Hence the scripts use a random generator. And it has to be all lowercase.
 | **STORAGESKU** | Standard_LRS | Standard_LRS | Premium_LRS | Premium_LRS | The storage SKU to setup, either standard, premium or ultra.
 | **STORAGECONTAINERNAME** | %STORAGENAME%cntnr | | | | The blobs need to be stored within a container.
+| **STORAGESUBNETNAME** | STORAGENAME + Subnet | | | Name of the subnet containing the storage account. 
+| **STORAGESUBNETADDRESSPREFIX** | 10.0.3.0/24 | | | | Subnet address.
+| **STORAGERULENAME** | STORAGENAME + Rule | | | | Name of the rule enabled within the subnet.
 
 > [!TIP]
 > In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download and tweak to your needs the full Bash [8-create-storage.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/8-create-storage.sh) or Windows Batch [8-create-storage.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/8-create-storage.bat) scripts to save you time.
@@ -1376,6 +1379,9 @@ export STORAGECONTAINERNAME=${STORAGENAME}cntnr
 SET STORAGENAME=mygamebackendstrg%RANDOM%
 SET STORAGESKU=Standard_LRS
 SET STORAGECONTAINERNAME=%STORAGENAME%cntnr
+SET STORAGESUBNETNAME=%STORAGENAME%Subnet
+SET STORAGESUBNETADDRESSPREFIX=10.0.3.0/24
+SET STORAGERULENAME=%STORAGENAME%Rule
 ```
 
 ---
@@ -1442,6 +1448,56 @@ az storage container create \
 CALL az storage container create ^
  --name %STORAGECONTAINERNAME% ^
  --connection-string %STORAGECONNECTIONSTRING%
+```
+
+#### Enable service endpoint for Azure Storage on the Virtual Network and subnet.
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+az network vnet subnet create \
+ --resource-group $RESOURCEGROUPNAME% \
+ --vnet-name $VNETNAME \
+ --name $STORAGESUBNETNAME \
+ --service-endpoints Microsoft.Storage \
+ --address-prefix $STORAGESUBNETADDRESSPREFIX
+```
+
+# [Windows Batch](#tab/bat)
+
+```bat
+CALL az network vnet subnet create ^
+ --resource-group %RESOURCEGROUPNAME% ^
+ --vnet-name %VNETNAME% ^
+ --name %STORAGESUBNETNAME% ^
+ --service-endpoints Microsoft.Storage ^
+ --address-prefix %STORAGESUBNETADDRESSPREFIX%
+```
+
+---
+
+#### Add a network rule for a virtual network and subnet.
+
+[Learn more about this command](https://docs.microsoft.com/cli/azure/storage/account/network-rule?view=azure-cli-latest#az-storage-account-network-rule-add).
+
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+$STORAGESUBNETID=`az network vnet subnet show --resource-group $RESOURCEGROUPNAME --vnet-name $VNETNAME --name $STORAGESUBNETNAME --query id --output tsv`
+az storage account network-rule add --resource-group $RESOURCEGROUPNAME --account-name $STORAGENAME --subnet $STORAGESUBNETID
+```
+
+# [Windows Batch](#tab/bat)
+
+```bat
+CALL az network vnet subnet show --resource-group %RESOURCEGROUPNAME% --vnet-name %VNETNAME% --name %STORAGESUBNETNAME% --query id --output tsv > storagesubnetid.tmp
+SET /p STORAGESUBNETID=<storagesubnetid.tmp
+CALL DEL storagesubnetid.tmp
+
+CALL az storage account network-rule add ^
+ --resource-group %RESOURCEGROUPNAME% ^
+ --account-name %STORAGENAME% ^
+ --subnet %STORAGESUBNETID% ^
 ```
 
 ---
