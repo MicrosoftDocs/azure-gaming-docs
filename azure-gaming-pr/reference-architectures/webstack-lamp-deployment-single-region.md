@@ -1451,6 +1451,8 @@ CALL az storage container create ^
  --connection-string %STORAGECONNECTIONSTRING%
 ```
 
+---
+
 #### Enable service endpoint for Azure Storage on the Virtual Network and subnet.
 
 # [Bash](#tab/bash)
