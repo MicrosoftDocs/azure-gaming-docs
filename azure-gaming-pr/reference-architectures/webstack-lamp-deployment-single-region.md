@@ -97,9 +97,9 @@ Here below are some examples of the region names currently available:
 More specifically you can also query what Azure regions support specific Azure Linux Virtual Machine types. [Learn more about this command](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-list-skus)
 
 ```batch
-CALL az vm list-skus --size Standard_B1s | findstr \"location\"
-CALL az vm list-skus --size Standard_F4s_v2 | findstr \"location\"
-CALL az vm list-skus --size Standard_F32s_v2 | findstr \"location\"
+CALL az vm list-skus --size Standard_B1s --query [].locationInfo[].location
+CALL az vm list-skus --size Standard_F4s_v2 --query [].locationInfo[].location
+CALL az vm list-skus --size Standard_F32s_v2 --query [].locationInfo[].location
 ```
 
 #### Initialize the variables
@@ -1147,6 +1147,14 @@ On top of the previously defined variables, the following variables are also bei
 |----------|----------|-----------|
 | **DDOSPROTECTIONNAME** | PREFIX + DdosPlan | The name of the DDoS Standard Protection plan.
 
+#### Initialize variables
+
+```bat
+SET DDOSPROTECTIONNAME=%PREFIX%DdosPlan
+```
+
+#### Create the DDoS protection plan
+
 [Learn more about this command](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-create).
 
 ```bat
@@ -1154,6 +1162,16 @@ CALL az network ddos-protection create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %DDOSPROTECTIONNAME% ^
  --vnets %VNETNAME%
+```
+
+#### Enable the DDoS Standard plan on the Virtual Network
+
+```bat
+CALL az network vnet update ^
+ --resource-group %RESOURCEGROUPNAME% ^
+ --name %VNETNAME% ^
+ --ddos-protection true ^
+ --ddos-protection-plan %DDOSPROTECTIONNAME%
 ```
 
 ### Azure Resource Manager template
