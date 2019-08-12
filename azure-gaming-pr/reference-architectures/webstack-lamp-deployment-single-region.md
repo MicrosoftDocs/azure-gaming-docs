@@ -233,7 +233,7 @@ If you only have subscription, this step is optional. [Learn more about this com
 
 # [Bash](#tab/bash)
 
-```bash
+```azurecli-interactive
 az account set \
  --subscription $YOURSUBSCRIPTIONID
 ```
