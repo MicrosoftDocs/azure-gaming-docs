@@ -78,9 +78,7 @@ You can specify server name, user name, and password for connecting to a MySQL S
 <br><br>
 [Game developer dynamically scales fun in the cloud](https://customers.microsoft.com/story/gameinsights)
 
-*"Azure had everything we needed to run the LAMP stack."*
-
-*"Azure “played well” with Terraform"*
+*"Azure had everything we needed to run the LAMP stack."*<br>*"Azure “played well” with Terraform"*
 
     :::column-end:::
 :::row-end:::
