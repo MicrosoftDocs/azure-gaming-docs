@@ -68,7 +68,7 @@ You can specify server name, user name, and password for connecting to a MySQL S
 ## Case studies
 
 :::row:::
-    :::column span="3":::
+    :::column:::
 
 <img src="https://ms-f7-sites-01-cdn.azureedge.net/docs/stories/gameinsights/resources/6c5cf70e-1e44-4d01-83b5-492486cc5866/1105622815614042160" alt="GameInsight" width="80"/>
 
