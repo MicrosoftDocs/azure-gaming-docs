@@ -1453,7 +1453,7 @@ CALL az storage container create ^
 
 ---
 
-#### Enable service endpoint for Azure Storage on the Virtual Network and subnet.
+#### Enable service endpoint for Azure Storage on the Virtual Network and subnet
 
 # [Bash](#tab/bash)
 
@@ -1479,7 +1479,7 @@ CALL az network vnet subnet create ^
 
 ---
 
-#### Add a network rule for a virtual network and subnet.
+#### Add a network rule for a virtual network and subnet
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/storage/account/network-rule?view=azure-cli-latest#az-storage-account-network-rule-add).
 
