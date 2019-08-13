@@ -70,7 +70,7 @@ You can specify server name, user name, and password for connecting to a MySQL S
 :::row:::
     :::column:::
 
-<img src="https://ms-f7-sites-01-cdn.azureedge.net/docs/stories/gameinsights/resources/6c5cf70e-1e44-4d01-83b5-492486cc5866/1105622815614042160" alt="GameInsight" width="80"/>
+<img src="https://ms-f7-sites-01-cdn.azureedge.net/docs/stories/gameinsights/resources/6c5cf70e-1e44-4d01-83b5-492486cc5866/1105622815614042160" alt="GameInsight" width="60"/>
 
     :::column-end:::
     :::column:::
@@ -78,6 +78,7 @@ You can specify server name, user name, and password for connecting to a MySQL S
 [Game developer dynamically scales fun in the cloud](https://customers.microsoft.com/story/gameinsights)
 
 *"Azure had everything we needed to run the LAMP stack."*
+
 *"Azure “played well” with Terraform"*
 
     :::column-end:::
