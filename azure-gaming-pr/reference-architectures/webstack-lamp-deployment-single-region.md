@@ -962,8 +962,8 @@ You can only be creative with the Azure Cache for Redis name and the subnet name
 export RANDOMNUMBER=`head -200 /dev/urandom | cksum | cut -f2 -d " "`
 export REDISNAME=${PREFIX}Redis
 export REDISNAMEUNIQUE=${REDISNAME}${RANDOMNUMBER}
-export REDISVMSIZE=P1
-export REDISSKU=Premium
+export REDISVMSIZE=C1
+export REDISSKU=Standard
 export REDISSHARDSTOCREATE=2
 export VNETNAME=${PREFIX}VNET
 export REDISSUBNETNAME=${REDISNAME}Subnet
