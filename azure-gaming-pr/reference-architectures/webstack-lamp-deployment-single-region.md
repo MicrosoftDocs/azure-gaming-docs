@@ -1205,7 +1205,7 @@ CALL az extension add --name db-up
 # [Bash](#tab/bash)
 
 ```azurecli-interactive
-az mysql up ^
+az mysql up \
  --resource-group $RESOURCEGROUPNAME \
  --server-name $MYSQLNAME \
  --admin-user $MYSQLUSERNAME \
