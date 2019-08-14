@@ -134,7 +134,7 @@ Aside from the Azure subscription ID and the region name, that need to be specif
 ```azurecli-interactive
 export YOURSUBSCRIPTIONID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 export RESOURCEGROUPNAME=myResourceGroup
-export REGIONNAME=japaneast
+export REGIONNAME=japanwest
 export LOGINUSERNAME=azureuser
 ```
 
@@ -143,7 +143,7 @@ export LOGINUSERNAME=azureuser
 ```bat
 SET YOURSUBSCRIPTIONID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 SET RESOURCEGROUPNAME=myResourceGroup
-SET REGIONNAME=japaneast
+SET REGIONNAME=japanwest
 SET LOGINUSERNAME=azureuser
 ```
 
