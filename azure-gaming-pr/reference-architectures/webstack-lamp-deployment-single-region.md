@@ -1021,20 +1021,38 @@ CALL az network vnet subnet create ^
 # [Bash](#tab/bash)
 
 ```azurecli-interactive
+if [ "$REDISSKU" = "Standard" ]; then
 az redis create \
- --resource-group $RESOURCEGROUPNAME \
- --name $REDISNAMEUNIQUE \
- --location $REGIONNAME \
- --sku $REDISSKU \
- --vm-size $REDISVMSIZE \
- --shard-count $REDISSHARDSTOCREATE \
- --subnet-id $SUBNETID
+--resource-group $RESOURCEGROUPNAME \
+--name $REDISNAMEUNIQUE \
+--location $REGIONNAME \
+--sku $REDISSKU \
+--vm-size $REDISVMSIZE /
+fi
+
+if [ "$REDISSKU" = "Premium" ]; then
+az redis create \
+--resource-group $RESOURCEGROUPNAME \
+--name $REDISNAMEUNIQUE \
+--location $REGIONNAME \
+--sku $REDISSKU \
+--vm-size $REDISVMSIZE \
+--shard-count $REDISSHARDSTOCREATE \
+--subnet-id $SUBNETID /
+fi
 ```
 
 # [Windows Batch](#tab/bat)
 
 ```bat
-CALL az redis create ^
+if %REDISSKU%==Standard CALL az redis create ^
+ --resource-group %RESOURCEGROUPNAME% ^
+ --name %REDISNAMEUNIQUE% ^
+ --location %REGIONNAME% ^
+ --sku %REDISSKU% ^
+ --vm-size %REDISVMSIZE%
+
+if %REDISSKU%==Premium CALL az redis create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %REDISNAMEUNIQUE% ^
  --location %REGIONNAME% ^
@@ -1047,7 +1065,7 @@ CALL az redis create ^
 ---
 
 > [!NOTE]
-> Just remove the `--shard-count` and `--subnet-id` if you are using a non-premium SKU or you don't want to setup a cluster and secure the cache behind an Azure Virtual Network.
+> Just note that the main difference between the Standard and Premium plans are the `--shard-count` and `--subnet-id`, which enable to setup a cluster and secure the cache behind an Azure Virtual Network. Remove them if you are not interested on that.
 
 #### Get details of the cache (hostName, enableNonSslPort, port, sslPort, primaryKey and secondaryKey)
 
