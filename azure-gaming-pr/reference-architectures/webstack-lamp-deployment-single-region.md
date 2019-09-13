@@ -1135,7 +1135,9 @@ On top of the previously defined variables, the following variables are also bei
 
 |Variable|Default value|Small T-shirt value|Medium T-shirt value|Large T-shirt value|Description|
 |----------|----------|-----------|----------|----------|-----------|
-| **MYSQLNAME** | PREFIX + MySQL | |  | | The name of the MySQL server.
+| **MYSQLNAME** | PREFIX + MySQL | | | | The name of the Azure Database for MySQL server. |
+| **MYSQLNAMELOWER** | lowercase(MYSQLNAME) | | | | **Important**: The server name of the Azure Database for MySQL has to be entirely lowercase. |
+| **MYSQLNAMEUNIQUE** | MYSQLNAMELOWER + [Random number] | | | | **Important**: The name of the Azure Cache for Redis has to be entirely unique across all Azure customers. Hence the scripts use a random generator.
 | **MYSQLUSERNAME** | azuremysqluser | | | | The admin username to connect to the MySQL server.
 | **MYSQLPASSWORD** | CHang3thisP4Ssw0rD | | | | The admin password to connect to the MySQL server. Change it for whichever you consider, as robust as possible.
 | **MYSQLDBNAME** | gamedb | | | | The name of the game database.
@@ -1144,7 +1146,7 @@ On top of the previously defined variables, the following variables are also bei
 | **MYSQLSKU** | GP_Gen5_2 | GP_Gen5_2 | GP_Gen5_8 | MO_Gen5_16 | **Important**: There is a connection limit depending on the SKU type and number of cores. [Learn more](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
 | **MYSQLSTORAGEMBSIZE** | 51200 | 51200 | 256000 | 1024000 | Space and IOPS vary depending on the SKU and allocated storage size. [Learn more](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
 | **MYSQLVERSION** | 5.7 | 5.7 | 5.7 | 5.7 | MySQL version.
-| **MYSQLREADREPLICANAME** | | | MYSQLNAME + Replica | MYSQLNAME + Replica1 ... | Read replica MySQL name.
+| **MYSQLREADREPLICANAME** | | | MYSQLNAMEUNIQUE + Replica | MYSQLNAMEUNIQUE + Replica1 ... | Read replica MySQL name.
 | **MYSQLREADREPLICAREGION** | | | REGIONNAME | REGIONNAME | Azure region where the read replica will be deployed.
 | **MYSQLSUBNETNAME** | MYSQLNAME + Subnet | | | | Name of the subnet containing the database.  
 | **MYSQLSUBNETADDRESSPREFIX** | 10.0.2.0/24 | | | | Note: only supported in General Purpose or Memory Optimized tiers.
@@ -1160,7 +1162,10 @@ You can only be creative with the Azure Database for MySQL master and read repli
 # [Bash](#tab/bash)
 
 ```azurecli-interactive
+export RANDOMNUMBER=`head -200 /dev/urandom | cksum | cut -f2 -d " "`
 export MYSQLNAME=${PREFIX}MySQL
+export MYSQLNAMELOWER=${MYSQLNAME,,}
+export MYSQLNAMEUNIQUE=${MYSQLNAMELOWER}${RANDOMNUMBER}
 export MYSQLUSERNAME=azuremysqluser
 export MYSQLPASSWORD=CHang3thisP4Ssw0rD
 export MYSQLDBNAME=gamedb
@@ -1169,7 +1174,7 @@ export MYSQLGEOREDUNDANTBACKUP=Disabled
 export MYSQLSKU=GP_Gen5_2
 export MYSQLSTORAGEMBSIZE=51200
 export MYSQLVERSION=5.7
-export MYSQLREADREPLICANAME=${MYSQLNAME}Replica
+export MYSQLREADREPLICANAME=${MYSQLNAMEUNIQUE}Replica
 export MYSQLREADREPLICAREGION=westus
 export MYSQLSUBNETNAME=${MYSQLNAME}Subnet
 export MYSQLSUBNETADDRESSPREFIX=10.0.2.0/24
@@ -1225,7 +1230,7 @@ CALL az extension add --name db-up
 ```azurecli-interactive
 az mysql up \
  --resource-group $RESOURCEGROUPNAME \
- --server-name $MYSQLNAME \
+ --server-name $MYSQLNAMEUNIQUE \
  --admin-user $MYSQLUSERNAME \
  --admin-password $MYSQLPASSWORD \
  --backup-retention $MYSQLBACKUPRETAINEDDAYS \
@@ -1294,7 +1299,7 @@ CALL az network vnet subnet create ^
 ```azurecli-interactive
 az mysql server vnet-rule create \
  --resource-group $RESOURCEGROUPNAME \
- --server-name $MYSQLNAME \
+ --server-name $MYSQLNAMEUNIQUE \
  --vnet-name $VNETNAME \
  --subnet $MYSQLSUBNETNAME \
  --name $MYSQLRULENAME
@@ -1369,9 +1374,11 @@ On top of the previously defined variables, the following variables are also bei
 
 |Variable|Default value|Small T-shirt value|Medium T-shirt value|Large T-shirt value|Description|
 |----------|----------|-----------|----------|----------|-----------|
-| **STORAGENAME** | mygamebackendstrg%RANDOM% | | | | The name of the storage account. **Important**: The name of the Azure Storage has to be entirely unique across all Azure customers. Hence the scripts use a random generator. And it has to be all lowercase.
+| **STORAGENAME** | PREFIX + STRG | | | | The name of the storage account. |
+| **STORAGENAMELOWER** | lowercase(STORAGENAME) | | | | **Important**: The name of the storage account has to be entirely lowercase. |
+| **STORAGENAMEUNIQUE** | STORAGENAMELOWER + [Random number] | | | | **Important**: The name of the storage account has to be entirely unique across all Azure customers. Hence the scripts use a random generator.
 | **STORAGESKU** | Standard_LRS | Standard_LRS | Premium_LRS | Premium_LRS | The storage SKU to setup, either standard, premium or ultra.
-| **STORAGECONTAINERNAME** | %STORAGENAME%cntnr | | | | The blobs need to be stored within a container.
+| **STORAGECONTAINERNAME** | %STORAGENAMELOWER%cntnr | | | | The blobs need to be stored within a container.
 | **STORAGESUBNETNAME** | STORAGENAME + Subnet | | | | Name of the subnet containing the storage account.
 | **STORAGESUBNETADDRESSPREFIX** | 10.0.3.0/24 | | | | Subnet address.
 | **STORAGERULENAME** | STORAGENAME + Rule | | | | Name of the rule enabled within the subnet.
@@ -1387,17 +1394,19 @@ You can only be creative with the Azure Storage account name and the container n
 
 ```azurecli-interactive
 export RANDOMNUMBER=`head -200 /dev/urandom | cksum | cut -f2 -d " "`
-export STORAGENAME=mygamebackendstrg${RANDOMNUMBER}
+export STORAGENAME=${PREFIX}STRG
+export STORAGENAMELOWER=${STORAGENAME,,}
+export STORAGENAMEUNIQUE=${STORAGENAMELOWER}${RANDOMNUMBER}
 export STORAGESKU=Standard_LRS
-export STORAGECONTAINERNAME=${STORAGENAME}cntnr
+export STORAGECONTAINERNAME=${STORAGENAMELOWER}cntnr
 ```
 
 # [Windows Batch](#tab/bat)
 
 ```bat
-SET STORAGENAME=mygamebackendstrg%RANDOM%
+SET STORAGENAMEUNIQUE=mygamebackendstrg%RANDOM%
 SET STORAGESKU=Standard_LRS
-SET STORAGECONTAINERNAME=%STORAGENAME%cntnr
+SET STORAGECONTAINERNAME=%STORAGENAMELOWER%cntnr
 SET STORAGESUBNETNAME=%STORAGENAME%Subnet
 SET STORAGESUBNETADDRESSPREFIX=10.0.3.0/24
 SET STORAGERULENAME=%STORAGENAME%Rule
@@ -1414,7 +1423,7 @@ SET STORAGERULENAME=%STORAGENAME%Rule
 ```azurecli-interactive
 az storage account create \
  --resource-group $RESOURCEGROUPNAME% \
- --name $STORAGENAME \
+ --name $STORAGENAMEUNIQUE \
  --sku $STORAGESKU \
  --location $REGIONNAME
 ```
@@ -1424,7 +1433,7 @@ az storage account create \
 ```bat
 CALL az storage account create ^
  --resource-group %RESOURCEGROUPNAME% ^
- --name %STORAGENAME% ^
+ --name %STORAGENAMEUNIQUE% ^
  --sku %STORAGESKU% ^
  --location %REGIONNAME%
 ```
@@ -1505,7 +1514,7 @@ CALL az network vnet subnet create ^
 
 ```azurecli-interactive
 $STORAGESUBNETID=`az network vnet subnet show --resource-group $RESOURCEGROUPNAME --vnet-name $VNETNAME --name $STORAGESUBNETNAME --query id --output tsv`
-az storage account network-rule add --resource-group $RESOURCEGROUPNAME --account-name $STORAGENAME --subnet $STORAGESUBNETID
+az storage account network-rule add --resource-group $RESOURCEGROUPNAME --account-name $STORAGENAMEUNIQUE --subnet $STORAGESUBNETID
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1517,7 +1526,7 @@ CALL DEL storagesubnetid.tmp
 
 CALL az storage account network-rule add ^
  --resource-group %RESOURCEGROUPNAME% ^
- --account-name %STORAGENAME% ^
+ --account-name %STORAGENAMEUNIQUE% ^
  --subnet %STORAGESUBNETID% ^
 ```
 
