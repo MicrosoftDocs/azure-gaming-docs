@@ -135,6 +135,7 @@ Aside from the Azure subscription ID and the region name, that need to be specif
 export YOURSUBSCRIPTIONID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 export RESOURCEGROUPNAME=myResourceGroup
 export REGIONNAME=japanwest
+export PREFIX=myGameBackend
 export LOGINUSERNAME=azureuser
 ```
 
@@ -144,6 +145,7 @@ export LOGINUSERNAME=azureuser
 SET YOURSUBSCRIPTIONID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 SET RESOURCEGROUPNAME=myResourceGroup
 SET REGIONNAME=japanwest
+SET PREFIX=myGameBackend
 SET LOGINUSERNAME=azureuser
 ```
 
