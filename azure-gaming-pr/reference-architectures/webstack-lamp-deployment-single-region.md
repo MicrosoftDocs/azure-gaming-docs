@@ -11,7 +11,7 @@ ms.service: azure
 
 # Deploy a single region LAMP architecture
 
-This document covers different methods to deploy a **single region LAMP architecture**, either using **command line tools** on either Bash or Windows Batch for a more hands on programmatic setup, or an Azure Resource Manager template for a **one-click deployment**. And in most cases there will be pointers to how to setup a certain portion of the architecture using the **Azure Portal**. Alternatively you can use third-party solutions like [Hashicorp Terraform](https://docs.microsoft.com/azure/terraform/terraform-overview).
+This document covers different methods to deploy a **single region LAMP architecture**, either using **command line tools** on either Bash, Windows Powershell or Windows Batch for a more hands on programmatic setup, or an Azure Resource Manager template for a **one-click deployment**. And in most cases there will be pointers to how to setup a certain portion of the architecture using the **Azure Portal**. Alternatively you can use third-party solutions like [Hashicorp Terraform](https://docs.microsoft.com/azure/terraform/terraform-overview).
 
 In general, when deploying a single region LAMP architecture there are certain steps that are mostly one-offs while others need to be executed in more regular basis as your backend gets updated to match your game requirements. Below is the full list of steps:
 
@@ -26,15 +26,15 @@ In general, when deploying a single region LAMP architecture there are certain s
 7. Deploy the Azure Database for MySQL.
 8. Create the Azure Storage account and container.
 9. Create your Virtual Machine Scale Set ensuring it references the captured Disk Image as the OS Disk.
-1. Setup the autoscale settings.
-1. Enable protection against DDoS attacks.
+10. Setup the autoscale settings.
+11. Enable protection against DDoS attacks.
 
 > [!NOTE]
 > In the future you may want to change to another Linux OS version or PHP version, that would require you to recreate the custom golden image (steps 1-4). Or you may want to make changes into the autoscaler (step 10).
 
 **Regular basis operations**
 
-1. Update the Virtual Machine instances from the Virtual Machine Scale Set created in the step number 9 previously mentioned with any PHP file modifications.
+12. Update the Virtual Machine instances from the Virtual Machine Scale Set created in the step number 9 previously mentioned with any PHP file modifications.
 
 ## Preparative
 
@@ -56,6 +56,13 @@ Do some [research](https://azure.microsoft.com/pricing/details/virtual-machines/
     1. Ensure it has execution permissions using `chmod +x [SCRIPTNAME.sh]` substituting `[SCRIPTNAME.sh]` with your script.
     1. To execute, simply use `./[SCRIPTNAME.sh]`.
 
+- **Windows Powershell**: Command-line shell designed especially for system administrators. Windows PowerShell includes an interactive prompt and a scripting environment that can be used independently or in combination. Unlike most shells, which accept and return text, Windows PowerShell is built on top of the .NET Framework common language runtime (CLR) and the .NET Framework, and accepts and returns .NET Framework objects. To create an execute a Windows Powershell script:
+    1. Create a new file in a folder (i.e: the Desktop) in your computer running Windows.
+    2. Choose a filename and ensure the extension of the file is `.ps1`, this is very important or the Operating System won't recognize the file as a script that can be run.
+    3. Edit the file using right-click on it, and copy/paste the Windows Powershell snippets provided in this document. Just remember that variables need to be initialized before they are used, so they need to be placed higher within the Windows Batch file than the commands that use them.
+    4. Save the file.
+    5. To execute, simply right click on the file and select **Run with Powershell**.
+
 - **Windows Batch (bat)**: With batch files (also known as bat files) you can simplify routine or repetitive tasks on Windows. A batch file is an unformatted text file that contains one or more commands and has a `.bat` or `.cmd` file name extension. When you type the file name at the command prompt, the `Cmd.exe` (or Command Prompt) from the Windows operating system runs the commands sequentially as they appear in the file. To create and execute a Windows Batch script:
     1. Create a new file in a folder (i.e. the Desktop) in your computer running Windows.
     2. Choose a filename and ensure the extension of the file is either `.bat` or `.cmd`, this is very important or the Operating System won't recognize the file as a script that can be run.
@@ -63,7 +70,7 @@ Do some [research](https://azure.microsoft.com/pricing/details/virtual-machines/
     4. Save the file.
     5. To execute, simply right click on the file and select **Open**.
 
-Don't feel obliged to stick to Bash or Windows Batch for deploying the whole architecture end-to-end. You could complete a step like deploying the Azure Cache for Redis using Windows Bash and then switch to Bash to deploy Azure Database for MySQL, although it's not the standard. 
+Don't feel obliged to stick to Bash or Windows Batch for deploying the whole architecture end-to-end. You could complete a step like deploying the Azure Cache for Redis using Windows Bash and then switch to Bash to deploy Azure Database for MySQL, although it's not the standard.
 
 ### Command line general configuration variables and tools
 
@@ -80,6 +87,12 @@ Regardless of what step you are working on, it's best practice to keep a set of 
 
 ```azurecli-interactive
 az account list-locations
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+Get-AzureRmLocation |Format-Table
 ```
 
 # [Windows Batch](#tab/bat)
