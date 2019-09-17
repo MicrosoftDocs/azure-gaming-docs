@@ -131,7 +131,9 @@ az vm list-skus --size Standard_F32s_v2 --query [].locationInfo[].location
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+Get-AzComputeResourceSku | where {$_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_B1s")}
+Get-AzComputeResourceSku | where {$_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_F4s_v2")}
+Get-AzComputeResourceSku | where {$_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_F32s_v2")}
 ```
 
 # [Windows Batch](#tab/bat)
