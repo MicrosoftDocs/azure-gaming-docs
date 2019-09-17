@@ -128,6 +128,12 @@ az vm list-skus --size Standard_F4s_v2 --query [].locationInfo[].location
 az vm list-skus --size Standard_F32s_v2 --query [].locationInfo[].location
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -150,6 +156,12 @@ export RESOURCEGROUPNAME=myResourceGroup
 export REGIONNAME=japanwest
 export PREFIX=myGameBackend
 export LOGINUSERNAME=azureuser
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -213,6 +225,12 @@ export VMSIZE=Standard_B1s
 export VMDATADISKSIZEINGB=5
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -234,6 +252,12 @@ Running this command will open a browser for you to log in with your Azure crede
 az login
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -251,6 +275,12 @@ If you only have subscription, this step is optional. [Learn more about this com
 ```azurecli-interactive
 az account set \
  --subscription $YOURSUBSCRIPTIONID
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -272,6 +302,12 @@ All resources created in Azure need to be part of a resource group. [Learn more 
 az group create \
  --name $RESOURCEGROUPNAME \
  --location $REGIONNAME
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -301,6 +337,12 @@ az vm create \
  --admin-username $LOGINUSERNAME \
  --data-disk-sizes-gb $VMDATADISKSIZEINGB \
  --generate-ssh-keys
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -336,6 +378,12 @@ az vm open-port \
  --priority 901 \
  --resource-group $RESOURCEGROUPNAME \
  --name $VMNAME
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -378,6 +426,12 @@ Refer to [Create a Linux virtual machine in the Azure portal](https://docs.micro
 az network public-ip list \
  --resource-group $RESOURCEGROUPNAME \
  --query [].ipAddress
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -489,6 +543,12 @@ az vm generalize \
  --name $VMNAME
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -534,6 +594,12 @@ You can be creative with the custom golden image name, as long as it complies wi
 export GOLDENIMAGENAME=myGoldenImage
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -554,6 +620,12 @@ az image create \
  --source $VMNAME \
  --name $GOLDENIMAGENAME \
  --os-type Linux
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -648,6 +720,12 @@ export LBRULEHTTPNAME=${LBNAME}HTTPRule
 export LBRULEHTTPSNAME=${LBNAME}HTTPSRule
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -686,6 +764,12 @@ az network vnet create \
  --subnet-prefix $SUBNETADDRESSPREFIX
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -712,6 +796,12 @@ az network public-ip create \
  --allocation-method $PUBLICIPALLOCATION \
  --sku $LBSKU \
  --version $PUBLICIPVERSION
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -743,6 +833,12 @@ az network lb create \
  --public-ip-address $PUBLICIPNAME
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -771,6 +867,12 @@ az network lb probe create \
  --protocol http \
  --port 80 \
  --path /
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -806,6 +908,12 @@ az network lb probe create \
 fi
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -836,6 +944,12 @@ az network lb inbound-nat-pool create \
  --lb-name $LBNAME \
  --frontend-ip-name $LBFENAME \
  --protocol Tcp
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -871,6 +985,12 @@ az network lb rule create \
  --probe http \
  --frontend-ip-name $LBFENAME \
  --backend-pool-name $LBBEPOOLNAME
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -910,6 +1030,12 @@ az network lb rule create \
  --frontend-ip-name $LBFENAME \
  --backend-pool-name $LBBEPOOLNAME
 fi
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -988,6 +1114,12 @@ export REDISSUBNETADDRESSPREFIX=10.0.1.0/24
 export SUBNETID=/subscriptions/${YOURSUBSCRIPTIONID}/resourceGroups/${RESOURCEGROUPNAME}/providers/Microsoft.Network/virtualNetworks/${VNETNAME}/subnets/${REDISSUBNETNAME}
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -1017,6 +1149,12 @@ az network vnet subnet create \
  --vnet-name $VNETNAME \
  --name $REDISSUBNETNAME \
  --address-prefixes $REDISSUBNETADDRESSPREFIX
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1057,6 +1195,12 @@ az redis create \
 --shard-count $REDISSHARDSTOCREATE \
 --subnet-id $SUBNETID /
 fi
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1100,6 +1244,12 @@ az redis list-keys \
  --name $REDISNAMEUNIQUE \
  --query [primaryKey,secondaryKey] \
  --output tsv
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1198,6 +1348,12 @@ export MYSQLSUBNETADDRESSPREFIX=10.0.2.0/24
 export MYSQLRULENAME=${MYSQLNAME}Rule
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -1225,6 +1381,12 @@ SET MYSQLRULENAME=%MYSQLNAME%Rule
 
 ```azurecli-interactive
 az extension add --name db-up
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1259,6 +1421,12 @@ az mysql up \
  --version=$MYSQLVERSION
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -1289,6 +1457,12 @@ az network vnet subnet create \
  --name $MYSQLSUBNETNAME \
  --service-endpoints Microsoft.SQL \
  --address-prefix $MYSQLSUBNETADDRESSPREFIX
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1322,6 +1496,12 @@ az mysql server vnet-rule create \
  --name $MYSQLRULENAME
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -1347,6 +1527,12 @@ az mysql server replica create \
  --name $MYSQLREADREPLICANAME \
  --source-server $MYSQLNAME \
  --location $MYSQLREADREPLICAREGION
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1418,6 +1604,12 @@ export STORAGESKU=Standard_LRS
 export STORAGECONTAINERNAME=${STORAGENAMELOWER}cntnr
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -1445,6 +1637,12 @@ az storage account create \
  --location $REGIONNAME
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -1463,6 +1661,12 @@ CALL az storage account create ^
 
 ```azurecli-interactive
 export STORAGECONNECTIONSTRING=`az storage account show-connection-string -n $STORAGENAME -g $RESOURCEGROUPNAME --query connectionString -o tsv`
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1485,6 +1689,12 @@ CALL DEL connectionstring.tmp
 az storage container create \
  --name $STORAGECONTAINERNAME \
  --connection-string $STORAGECONNECTIONSTRING
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1510,6 +1720,12 @@ az network vnet subnet create \
  --address-prefix $STORAGESUBNETADDRESSPREFIX
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -1532,6 +1748,12 @@ CALL az network vnet subnet create ^
 ```azurecli-interactive
 $STORAGESUBNETID=`az network vnet subnet show --resource-group $RESOURCEGROUPNAME --vnet-name $VNETNAME --name $STORAGESUBNETNAME --query id --output tsv`
 az storage account network-rule add --resource-group $RESOURCEGROUPNAME --account-name $STORAGENAMEUNIQUE --subnet $STORAGESUBNETID
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1615,6 +1837,12 @@ export HEALTHPROBEID=/subscriptions/${YOURSUBSCRIPTIONID}/resourceGroups/${RESOU
 export VMSSOVERPROVISIONING=--disable-overprovision
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -1657,6 +1885,12 @@ az vmss create \
  --generate-ssh-keys $VMSSOVERPROVISIONING
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -1692,6 +1926,12 @@ az vmss show \
  --query upgradePolicy
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -1715,6 +1955,12 @@ az vmss update \
  --name $VMSSNAME \
  --query virtualMachineProfile.networkProfile.healthProbe \
  --set virtualMachineProfile.networkProfile.healthProbe.id='${HEALTHPROBEID}'
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1742,6 +1988,12 @@ az vmss update-instances \
  --instance-ids *
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -1763,6 +2015,12 @@ az vmss update \
  --name $VMSSNAME \
  --query upgradePolicy \
  --set upgradePolicy.mode=Rolling
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1832,6 +2090,12 @@ export VMSSAUTOSCALEROUTINCREASE=1
 export VMSSAUTOSCALERINDECREASE=1
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -1864,6 +2128,12 @@ az monitor autoscale create \
  --count $VMSSVMTOCREATE
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -1893,6 +2163,12 @@ az monitor autoscale rule create \
  --scale out $VMSSAUTOSCALEROUTINCREASE
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -1915,6 +2191,12 @@ az monitor autoscale rule create \
  --autoscale-name $VMSSAUTOSCALERNAME \
  --condition "${VMSSAUTOSCALERCRITERIA} < ${VMSSAUTOSCALERDOWNTRIGGER}" \
  --scale in $VMSSAUTOSCALERINDECREASE
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1968,6 +2250,12 @@ az network ddos-protection create \
  --vnets $VNETNAME
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -1989,6 +2277,12 @@ az network vnet update \
  --name $VNETNAME \
  --ddos-protection true \
  --ddos-protection-plan $DDOSPROTECTIONNAME
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2046,6 +2340,12 @@ export DESTINATIONFOLDER=/var/www/html
 export SERVICETORESTART=apache2.service
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -2067,6 +2367,12 @@ SET SERVICETORESTART=apache2.service
 
 ```azurecli-interactive
 export STORAGECONNECTIONSTRING=`az storage account show-connection-string -n $STORAGENAME -g $RESOURCEGROUPNAME --query connectionString -o tsv`
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2099,6 +2405,12 @@ az storage blob upload \
  --connection-string $STORAGECONNECTIONSTRING
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -2128,6 +2440,12 @@ export BLOBURL=`az storage blob url -c $STORAGECONTAINERNAME -n $BLOBFILEDESTINA
 export SCRIPTURL=`az storage blob url -c $STORAGECONTAINERNAME -n $SCRIPTUPDATEFILEDESTINATIONAME -o tsv --connection-string $STORAGECONNECTIONSTRING`
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -2152,6 +2470,12 @@ This will be  used by the Custom Script Extension to download the file or files 
 export STORAGEKEY=`az storage account keys list --account-name $STORAGENAME --resource-group $RESOURCEGROUPNAME --query [0].value --output tsv`
 export PROTECTEDSETTINGS="{\"storageAccountName\":\"${STORAGENAME}\",\"storageAccountKey\":\"${STORAGEKEY}\"}"
 export SETTINGS="{\"fileUris\":[\"${BLOBURL}\",\"${SCRIPTURL}\"],\"commandToExecute\":\"bash ${SCRIPTUPDATEFILEDESTINATIONAME} ${BLOBFILEDESTINATIONNAME} ${DESTINATIONFOLDER} ${SERVICETORESTART}\"}"
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2185,6 +2509,12 @@ az vmss extension set \
  --protected-settings $PROTECTEDSETTINGS
 ```
 
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
+```
+
 # [Windows Batch](#tab/bat)
 
 ```bat
@@ -2212,6 +2542,12 @@ az vmss update-instances \
  --instance-ids * \
  --name $VMSSNAME \
  --resource-group $RESOURCEGROUPNAME
+```
+
+# [Windows Powershell](#tab/powershell)
+
+```azurepowershell-interactive
+TODO: placeholder
 ```
 
 # [Windows Batch](#tab/bat)
