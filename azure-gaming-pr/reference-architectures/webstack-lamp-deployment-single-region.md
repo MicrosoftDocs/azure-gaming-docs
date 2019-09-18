@@ -92,7 +92,7 @@ az account list-locations
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-Get-AzureRmLocation |Format-Table
+Get-AzureRmLocation | Format-Table
 ```
 
 # [Windows Batch](#tab/bat)
@@ -163,7 +163,11 @@ export LOGINUSERNAME=azureuser
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$YOURSUBSCRIPTIONID="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+$RESOURCEGROUPNAME="myResourceGroup"
+$REGIONNAME="japanwest"
+$PREFIX="myGameBackend"
+$LOGINUSERNAME="azureuser"
 ```
 
 # [Windows Batch](#tab/bat)
@@ -230,7 +234,10 @@ export VMDATADISKSIZEINGB=5
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$VMNAME="myVirtualMachine"
+$IMAGE="Canonical:UbuntuServer:16.04-LTS:latest"
+$VMSIZE="Standard_B1s"
+$VMDATADISKSIZEINGB=5
 ```
 
 # [Windows Batch](#tab/bat)
@@ -257,7 +264,7 @@ az login
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+Connect-AzAccount
 ```
 
 # [Windows Batch](#tab/bat)
@@ -282,7 +289,8 @@ az account set \
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+Select-AzureSubscription `
+ -SubscriptionId $YOURSUBSCRIPTIONID
 ```
 
 # [Windows Batch](#tab/bat)
@@ -309,7 +317,9 @@ az group create \
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+New-AzureRmResourceGroup `
+ -Name $RESOURCEGROUPNAME `
+ -Location $REGIONNAME
 ```
 
 # [Windows Batch](#tab/bat)
