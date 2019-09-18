@@ -184,7 +184,7 @@ SET LOGINUSERNAME=azureuser
 
 #### Tools
 
-Should you choose to setup the architecture programmatically using a command line interface and the samples from this document, you are going to need to install [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2), a cross-platform command-line tool providing a great experience for managing Azure resources. The CLI is designed to make scripting easy, query data, support long-running operations, and more.
+Should you choose to setup the architecture programmatically using a command line interface and the samples from this document, you are going to need to install either [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2), a cross-platform command-line tool providing a great experience for managing Azure resources, or [Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). They are both designed to make scripting easy, query data, support long-running operations, and more.
 
 ## 1. Deploy a Virtual Machine on a Managed Disk
 
@@ -264,7 +264,7 @@ az login
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-Connect-AzAccount
+Connect-AzureRmAccount
 ```
 
 # [Windows Batch](#tab/bat)
