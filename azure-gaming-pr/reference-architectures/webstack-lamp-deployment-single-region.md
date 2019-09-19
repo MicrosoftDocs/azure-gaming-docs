@@ -870,7 +870,13 @@ az network public-ip create \
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$publicIp = New-AzureRmPublicIpAddress `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $PUBLICIPNAME `
+ -Location $REGIONNAME `
+ -AllocationMethod $PUBLICIPALLOCATION `
+ -IpAddressVersion $PUBLICIPVERSION `
+ -Sku $LBSKU
 ```
 
 # [Windows Batch](#tab/bat)
