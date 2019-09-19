@@ -767,21 +767,21 @@ export LBRULEHTTPSNAME=${LBNAME}HTTPSRule
 
 ```azurepowershell-interactive
 $LBSKU='Basic'
-$PUBLICIPNAME=$PREFIX'PublicIP'
+$PUBLICIPNAME=$PREFIX+'PublicIP'
 $PUBLICIPALLOCATION='Static'
 $PUBLICIPVERSION='IPv4'
-$LBNAME=$PREFIX'LB'
-$VNETNAME=$PREFIX'VNET'
+$LBNAME=$PREFIX+'LB'
+$VNETNAME=$PREFIX+'VNET'
 $VNETADDRESSPREFIX='10.0.0.0/16'
-$SUBNETNAME=$PREFIX'Subnet'
+$SUBNETNAME=$PREFIX+'Subnet'
 $SUBNETADDRESSPREFIX='10.0.0.0/24'
-$LBBEPOOLNAME=$LBNAME'BEPool'
-$LBFENAME=$LBNAME'FE'
+$LBBEPOOLNAME=$LBNAME+'BEPool'
+$LBFENAME=$LBNAME+'FE'
 $LBFEPORTRANGESTART=50000
 $LBFEPORTRANGEEND=50119
-$LBNATPOOLNAME=$LBNAME'NATPool'
-$LBRULEHTTPNAME=$LBNAME'HTTPRule'
-$LBRULEHTTPSNAME=$LBNAME'HTTPSRule'
+$LBNATPOOLNAME=$LBNAME+'NATPool'
+$LBRULEHTTPNAME=$LBNAME+'HTTPRule'
+$LBRULEHTTPSNAME=$LBNAME+'HTTPSRule'
 ```
 
 # [Windows Batch](#tab/bat)
@@ -825,7 +825,18 @@ az network vnet create \
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$vnet = New-AzureRmVirtualNetwork `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $VNETNAME `
+ -Location $REGIONAME `
+ -AddressPrefix $VNETADDRESSPREFIX
+
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
+  -Name $SUBNETNAME `
+  -AddressPrefix $SUBNETADDRESSPREFIX `
+  -VirtualNetwork $vnet
+
+$vnet | Set-AzVirtualNetwork
 ```
 
 # [Windows Batch](#tab/bat)
