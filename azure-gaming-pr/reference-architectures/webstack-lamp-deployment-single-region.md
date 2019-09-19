@@ -70,7 +70,7 @@ Do some [research](https://azure.microsoft.com/pricing/details/virtual-machines/
     4. Save the file.
     5. To execute, simply right click on the file and select **Open**.
 
-Don't feel obliged to stick to Bash or Windows Batch for deploying the whole architecture end-to-end. You could complete a step like deploying the Azure Cache for Redis using Windows Bash and then switch to Bash to deploy Azure Database for MySQL, although it's not the standard.
+Don't feel obliged to stick to Bash, Windows Powershell or Windows Batch for deploying the whole architecture end-to-end. You could complete a step like deploying the Azure Cache for Redis using Windows Bash and then switch to Bash to deploy Azure Database for MySQL, although it's not the standard.
 
 ### Command line general configuration variables and tools
 
@@ -289,7 +289,7 @@ az account set \
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-Select-AzureSubscription `
+Select-AzureRmSubscription `
  -SubscriptionId $YOURSUBSCRIPTIONID
 ```
 
