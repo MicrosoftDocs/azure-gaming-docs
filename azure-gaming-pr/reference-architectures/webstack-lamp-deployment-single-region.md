@@ -163,12 +163,12 @@ export LOGINUSERNAME=azureuser
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-$YOURSUBSCRIPTIONID="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-$RESOURCEGROUPNAME="myResourceGroup"
-$REGIONNAME="japanwest"
-$PREFIX="myGameBackend"
-$LOGINUSERNAME="azureuser"
-$LOGINPASSWORD = ConvertTo-SecureString "CHang3thisP4Ssw0rD" -AsPlainText -Force
+$YOURSUBSCRIPTIONID='XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
+$RESOURCEGROUPNAME='myResourceGroup'
+$REGIONNAME='japanwest'
+$PREFIX='myGameBackend'
+$LOGINUSERNAME='azureuser'
+$LOGINPASSWORD = ConvertTo-SecureString 'CHang3thisP4Ssw0rD' -AsPlainText -Force
 ```
 
 # [Windows Batch](#tab/bat)
@@ -766,7 +766,22 @@ export LBRULEHTTPSNAME=${LBNAME}HTTPSRule
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$LBSKU='Basic'
+$PUBLICIPNAME=$PREFIX'PublicIP'
+$PUBLICIPALLOCATION='Static'
+$PUBLICIPVERSION='IPv4'
+$LBNAME=$PREFIX'LB'
+$VNETNAME=$PREFIX'VNET'
+$VNETADDRESSPREFIX='10.0.0.0/16'
+$SUBNETNAME=$PREFIX'Subnet'
+$SUBNETADDRESSPREFIX='10.0.0.0/24'
+$LBBEPOOLNAME=$LBNAME'BEPool'
+$LBFENAME=$LBNAME'FE'
+$LBFEPORTRANGESTART=50000
+$LBFEPORTRANGEEND=50119
+$LBNATPOOLNAME=$LBNAME'NATPool'
+$LBRULEHTTPNAME=$LBNAME'HTTPRule'
+$LBRULEHTTPSNAME=$LBNAME'HTTPSRule'
 ```
 
 # [Windows Batch](#tab/bat)
