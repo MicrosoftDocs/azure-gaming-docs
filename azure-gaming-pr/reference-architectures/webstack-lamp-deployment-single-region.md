@@ -168,6 +168,7 @@ $RESOURCEGROUPNAME="myResourceGroup"
 $REGIONNAME="japanwest"
 $PREFIX="myGameBackend"
 $LOGINUSERNAME="azureuser"
+$LOGINPASSWORD = ConvertTo-SecureString "CHang3thisP4Ssw0rD" -AsPlainText -Force
 ```
 
 # [Windows Batch](#tab/bat)
@@ -354,7 +355,16 @@ az vm create \
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$VMCREDENTIALS = New-Object System.Management.Automation.PSCredential ($LOGINUSERNAME, $LOGINPASSWORD);
+
+New-AzureRmVM `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $VMNAME `
+ -Image $IMAGE `
+ -Size $VMSIZE `
+ -Credential $VMCREDENTIALS `
+ -DataDiskSizeInGb $VMDATADISKSIZEINGB `
+ -OpenPorts 80,443,22
 ```
 
 # [Windows Batch](#tab/bat)
@@ -395,7 +405,7 @@ az vm open-port \
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+This operation was previously done using the -OpenPorts parameter from the **New-AzureRmVM** command.
 ```
 
 # [Windows Batch](#tab/bat)
@@ -443,7 +453,9 @@ az network public-ip list \
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+Get-AzureRmVM `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $VMNAME | Get-AzureRmPublicIpAddress | Select-Object IPAddress
 ```
 
 # [Windows Batch](#tab/bat)
@@ -558,7 +570,15 @@ az vm generalize \
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+Stop-AzVM `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $VMNAME `
+ -Force
+
+Set-AzVM `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $VMNAME `
+ -Generalized
 ```
 
 # [Windows Batch](#tab/bat)
@@ -609,7 +629,7 @@ export GOLDENIMAGENAME=myGoldenImage
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$GOLDENIMAGENAME=myGoldenImage
 ```
 
 # [Windows Batch](#tab/bat)
@@ -637,7 +657,18 @@ az image create \
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$vm = Get-AzureRmVM `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $VMNAME
+
+$image = New-AzureRmImageConfig `
+ -Location $REGIONNAME `
+ -SourceVirtualMachineId $vm.ID
+
+New-AzureRmImage `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Image $image `
+ -ImageName $GOLDENIMAGENAME
 ```
 
 # [Windows Batch](#tab/bat)
