@@ -828,15 +828,15 @@ az network vnet create \
 $vnet = New-AzureRmVirtualNetwork `
  -ResourceGroupName $RESOURCEGROUPNAME `
  -Name $VNETNAME `
- -Location $REGIONAME `
+ -Location $REGIONNAME `
  -AddressPrefix $VNETADDRESSPREFIX
 
-$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
-  -Name $SUBNETNAME `
-  -AddressPrefix $SUBNETADDRESSPREFIX `
-  -VirtualNetwork $vnet
+$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
+ -Name $SUBNETNAME `
+ -AddressPrefix $SUBNETADDRESSPREFIX `
+ -VirtualNetwork $vnet
 
-$vnet | Set-AzVirtualNetwork
+$vnet | Set-AzureRmVirtualNetwork
 ```
 
 # [Windows Batch](#tab/bat)
