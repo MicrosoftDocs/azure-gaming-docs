@@ -157,7 +157,6 @@ export YOURSUBSCRIPTIONID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 export RESOURCEGROUPNAME=myResourceGroup
 export REGIONNAME=japanwest
 export PREFIX=myGameBackend
-export LOGINUSERNAME=azureuser
 ```
 
 # [Windows Powershell](#tab/powershell)
@@ -167,8 +166,6 @@ $YOURSUBSCRIPTIONID='XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
 $RESOURCEGROUPNAME='myResourceGroup'
 $REGIONNAME='japanwest'
 $PREFIX='myGameBackend'
-$LOGINUSERNAME='azureuser'
-$LOGINPASSWORD = ConvertTo-SecureString 'CHang3thisP4Ssw0rD' -AsPlainText -Force
 ```
 
 # [Windows Batch](#tab/bat)
@@ -178,7 +175,6 @@ SET YOURSUBSCRIPTIONID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 SET RESOURCEGROUPNAME=myResourceGroup
 SET REGIONNAME=japanwest
 SET PREFIX=myGameBackend
-SET LOGINUSERNAME=azureuser
 ```
 
 ---
@@ -226,6 +222,7 @@ Aside from the image to use, Virtual Machine size and the number of GBs of stora
 # [Bash](#tab/bash)
 
 ```azurecli-interactive
+export LOGINUSERNAME=azureuser
 export VMNAME=myVirtualMachine
 export IMAGE=Canonical:UbuntuServer:16.04-LTS:latest
 export VMSIZE=Standard_B1s
@@ -235,15 +232,18 @@ export VMDATADISKSIZEINGB=5
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
+$LOGINUSERNAME='azureuser'
 $VMNAME="myVirtualMachine"
 $IMAGE="Canonical:UbuntuServer:16.04-LTS:latest"
 $VMSIZE="Standard_B1s"
 $VMDATADISKSIZEINGB=5
+$LOGINPASSWORD = ConvertTo-SecureString 'CHang3thisP4Ssw0rD' -AsPlainText -Force
 ```
 
 # [Windows Batch](#tab/bat)
 
 ```bat
+SET LOGINUSERNAME=azureuser
 SET VMNAME=myVirtualMachine
 SET IMAGE=Canonical:UbuntuServer:16.04-LTS:latest
 SET VMSIZE=Standard_B1s
