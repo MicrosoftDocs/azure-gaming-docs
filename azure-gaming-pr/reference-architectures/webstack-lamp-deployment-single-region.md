@@ -1230,7 +1230,16 @@ export SUBNETID=/subscriptions/${YOURSUBSCRIPTIONID}/resourceGroups/${RESOURCEGR
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$RANDOMNUMBER=Get-Random
+$REDISNAME=$PREFIX+'Redis'
+$REDISNAMEUNIQUE=$REDISNAME+$RANDOMNUMBER
+$REDISVMSIZE='C1'
+$REDISSKU='Standard'
+$REDISSHARDSTOCREATE=2
+$VNETNAME=$PREFIX+'VNET'
+$REDISSUBNETNAME=$REDISNAME+'Subnet'
+$REDISSUBNETADDRESSPREFIX=10.0.1.0/24
+$SUBNETID='/subscriptions/'+$YOURSUBSCRIPTIONID+'/resourceGroups/'+$RESOURCEGROUPNAME+'/providers/Microsoft.Network/virtualNetworks/'+$VNETNAME+'/subnets/'+$REDISSUBNETNAME
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1267,7 +1276,16 @@ az network vnet subnet create \
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$vnet = Get-AzureRmVirtualNetwork `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $VNETNAME `
+
+$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
+ -Name $REDISSUBNETNAME `
+ -AddressPrefix $REDISSUBNETADDRESSPREFIX `
+ -VirtualNetwork $vnet
+
+$vnet | Set-AzureRmVirtualNetwork
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1313,7 +1331,27 @@ fi
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+if($REDISSKU -eq "Standard") {
+ New-AzureRmRedisCache `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $REDISNAMEUNIQUE `
+ -Location $REGIONNAME `
+ -Size $REDISVMSIZE `
+ -Sku $REDISSKU `
+ -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"}
+}
+
+if($REDISSKU -eq "Premium") {
+ New-AzureRmRedisCache `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $REDISNAMEUNIQUE `
+ -Location $REGIONNAME `
+ -Size $REDISVMSIZE `
+ -Sku $REDISSKU `
+ -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} `
+ -ShardCount $REDISSHARDSTOCREATE `
+ -SubnetId $SUBNETID
+}
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1362,7 +1400,13 @@ az redis list-keys \
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+Get-AzureRmRedisCache `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $REDISNAMEUNIQUE | Select-Object HostName, EnableNonSslPort, Port, SslPort
+
+Get-AzureRmRedisCacheKey `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $REDISNAMEUNIQUE
 ```
 
 # [Windows Batch](#tab/bat)
