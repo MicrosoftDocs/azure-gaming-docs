@@ -911,7 +911,17 @@ az network lb create \
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+New-AzureRmLoadBalancer `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $LBNAME `
+ -Location $REGIONNAME `
+ -Sku $LBSKU
+
+$lb = Get-AzureRmLoadBalancer -ResourceGroupName $RESOURCEGROUPNAME -Name $LBNAME
+
+$lb | Add-AzureRmLoadBalancerFrontendIpConfig -Name $LBFENAME -PublicIpAddress $publicIp | Set-AzureRmLoadBalancer
+
+$lb | Add-AzureRmLoadBalancerBackendAddressPoolConfig -Name $LBBEPOOLNAME | Set-AzureRmLoadBalancer
 ```
 
 # [Windows Batch](#tab/bat)
@@ -947,7 +957,7 @@ az network lb probe create \
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$lb | Add-AzureRmLoadBalancerProbeConfig -Name 'http' -RequestPath '/' -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2 | Set-AzureRmLoadBalancer
 ```
 
 # [Windows Batch](#tab/bat)
@@ -986,7 +996,9 @@ fi
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+if($LBSKU -eq "Standard") {
+ $lb | Add-AzureRmLoadBalancerProbeConfig -Name 'https' -RequestPath '/' -Protocol https -Port 443 -IntervalInSeconds 15 -ProbeCount 2 | Set-AzureRmLoadBalancer
+}
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1024,7 +1036,14 @@ az network lb inbound-nat-pool create \
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$feIpConfig = Get-AzureRmLoadBalancerFrontendIpConfig -Loadbalancer $lb -Name $LBFENAME
+$lb | Add-AzureRmLoadBalancerInboundNatPoolConfig `
+ -Name $LBNATPOOLNAME `
+ -Protocol TCP `
+ -FrontendIPConfigurationId $feIpConfig.Id `
+ -FrontendPortRangeStart $LBFEPORTRANGESTART `
+ -FrontendPortRangeEnd $LBFEPORTRANGEEND `
+ -BackendPort 22 | Set-AzureRmLoadBalancer
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1065,7 +1084,16 @@ az network lb rule create \
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$beAddressPool = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Loadbalancer $lb -Name $LBBEPOOLNAME
+$probe = Get-AzureRmLoadBalancerProbeConfig -Name "http" -LoadBalancer $lb
+$lb | Add-AzureRmLoadBalancerRuleConfig `
+ -Name $LBRULEHTTPNAME `
+ -FrontendIPConfigurationId $feIpConfig.Id `
+ -BackendAddressPoolId $beAddressPool.Id `
+ -Protocol "Tcp" `
+ -FrontendPort 80 `
+ -BackendPort 80 `
+ -ProbeId $probe.Id | Set-AzureRmLoadBalancer
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1110,7 +1138,17 @@ fi
 # [Windows Powershell](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+if($LBSKU -eq "Standard") {
+ $probe = Get-AzureRmLoadBalancerProbeConfig -Name "https" -LoadBalancer $lb
+ $lb | Add-AzureRmLoadBalancerRuleConfig `
+ -Name $LBRULEHTTPSNAME `
+ -FrontendIPConfigurationId $feIpConfig.Id `
+ -BackendAddressPoolId $beAddressPool.Id `
+ -Protocol "Tcp" `
+ -FrontendPort 443 `
+ -BackendPort 443 `
+ -ProbeId $probe.Id | Set-AzureRmLoadBalancer
+}
 ```
 
 # [Windows Batch](#tab/bat)
