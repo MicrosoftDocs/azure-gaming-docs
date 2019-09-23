@@ -1554,7 +1554,7 @@ CALL az extension add --name db-up
 #### Create the server, database and other routinely tasks
 
 > [!NOTE]
-> In addition to creating the server, the az mysql up command creates a sample database, a root user in the database, opens the firewall for Azure services, and creates default firewall rules for the client computer
+> In addition to creating the server, the Azure CLI `az mysql up` command creates a sample database, a root user in the database, opens the firewall for Azure services, and creates default firewall rules for the client computer. Also, Azure Database for MySQL doesn't have PowerShell commands yet.
 
 [Learn more about this command](https://docs.microsoft.com/cli/azure/ext/db-up/mysql?view=azure-cli-latest#ext-db-up-az-mysql-up).
 
@@ -1578,7 +1578,34 @@ az mysql up \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$storageProfileVariable = @{
+    "storageMB"=$MYSQLSTORAGEMBSIZE;
+    "backupRetentionDays"=$MYSQLBACKUPRETAINEDDAYS;
+    "geoRedundantBackup"=$MYSQLGEOREDUNDANTBACKUP
+}
+
+New-AzResource `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -ResourceType "Microsoft.DBforMySQL/servers" `
+ -ResourceName $MYSQLNAMEUNIQUE `
+ -ApiVersion 2017-12-01 `
+ -Location $REGIONNAME `
+ -SkuObject @{name=$MYSQLSKU} `
+ -PropertyObject @{version = $MYSQLVERSION; administratorLogin = $MYSQLUSERNAME; administratorLoginPassword = $MYSQLPASSWORD; storageProfile=$storageProfileVariable} `
+
+New-AzResource `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -ResourceType "Microsoft.DBforMySQL/servers/firewallRules" `
+ -ResourceName $MYSQLNAMEUNIQUE/rule1 `
+ -ApiVersion 2017-12-01 `
+ -PropertyObject @{startIpAddress="0.0.0.0"; endIpAddress="255.255.255.255"}
+
+New-AzResource `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -ResourceType "Microsoft.DBforMySQL/servers/databases" `
+ -ResourceName $MYSQLNAMEUNIQUE/$MYSQLDBNAME `
+ -ApiVersion 2017-12-01 `
+ -PropertyObject @{collation='utf8_general_ci'; charset='utf8'}
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1633,7 +1660,9 @@ CALL az network vnet subnet create ^
 ---
 
 > [!IMPORTANT]
-> **Microsoft.Sql** refers to the Azure service named SQL Database but this service tag also applies to the Azure SQL Database, Azure Database for PostgreSQL and MySQL services. It is important to note when applying the Microsoft.Sql service tag to a VNet service endpoint it configures service endpoint traffic for all Azure Database services, including Azure SQL Database, Azure Database for PostgreSQL and Azure Database for MySQL servers on the subnet.
+> When using Azure CLI, **Microsoft.Sql** refers to the Azure service named SQL Database but this service tag also applies to the Azure SQL Database, Azure Database for PostgreSQL and MySQL services. It is important to note when applying the Microsoft.Sql service tag to a VNet service endpoint it configures service endpoint traffic for all Azure Database services, including Azure SQL Database, Azure Database for PostgreSQL and Azure Database for MySQL servers on the subnet.
+>
+> When using PowerShell, refer to [allow Azure services](https://docs.microsoft.com/azure/mysql/howto-connect-webapp#solution-1---allow-azure-services) to read how to allow Azure services to connect to the Azure Database for MySQL that you just deployed.
 
 #### Create a Virtual Network rule on the MySQL server to secure it to the subnet
 
