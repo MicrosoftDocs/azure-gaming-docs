@@ -11,7 +11,7 @@ ms.service: azure
 
 # Deploy a single region LAMP architecture
 
-This document covers different methods to deploy a **single region LAMP architecture**, either using **command line tools** on either Bash, Windows Powershell or Windows Batch for a more hands on programmatic setup, or an Azure Resource Manager template for a **one-click deployment**. And in most cases there will be pointers to how to setup a certain portion of the architecture using the **Azure Portal**. Alternatively you can use third-party solutions like [Hashicorp Terraform](https://docs.microsoft.com/azure/terraform/terraform-overview).
+This document covers different methods to deploy a **single region LAMP architecture**, either using **command line tools** on either Bash, PowerShell or Windows Batch for a more hands on programmatic setup, or an Azure Resource Manager template for a **one-click deployment**. And in most cases there will be pointers to how to setup a certain portion of the architecture using the **Azure Portal**. Alternatively you can use third-party solutions like [Hashicorp Terraform](https://docs.microsoft.com/azure/terraform/terraform-overview).
 
 In general, when deploying a single region LAMP architecture there are certain steps that are mostly one-offs while others need to be executed in more regular basis as your backend gets updated to match your game requirements. Below is the full list of steps:
 
@@ -56,12 +56,11 @@ Do some [research](https://azure.microsoft.com/pricing/details/virtual-machines/
     1. Ensure it has execution permissions using `chmod +x [SCRIPTNAME.sh]` substituting `[SCRIPTNAME.sh]` with your script.
     1. To execute, simply use `./[SCRIPTNAME.sh]`.
 
-- **Windows Powershell**: Command-line shell designed especially for system administrators. Windows PowerShell includes an interactive prompt and a scripting environment that can be used independently or in combination. Unlike most shells, which accept and return text, Windows PowerShell is built on top of the .NET Framework common language runtime (CLR) and the .NET Framework, and accepts and returns .NET Framework objects. To create an execute a Windows Powershell script:
-    1. Create a new file in a folder (i.e: the Desktop) in your computer running Windows.
+- **PowerShell**: Command-line shell designed especially for system administrators. PowerShell includes an interactive prompt and a scripting environment that can be used independently or in combination. Unlike most shells, which accept and return text, PowerShell is built on top of the .NET Framework common language runtime (CLR) and the .NET Framework, and accepts and returns .NET Framework objects. To create an execute a Windows PowerShell or PowerShell Core script:
+    1. Create a new file in a folder (i.e: the Desktop) in your computer running Windows (Windows PowerShell or PowerShell Core) or Mac/Linux (PowerShell Core only).
     2. Choose a filename and ensure the extension of the file is `.ps1`, this is very important or the Operating System won't recognize the file as a script that can be run.
-    3. Edit the file using right-click on it, and copy/paste the Windows Powershell snippets provided in this document. Just remember that variables need to be initialized before they are used, so they need to be placed higher within the Windows Batch file than the commands that use them.
-    4. Save the file.
-    5. To execute, simply right click on the file and select **Run with Powershell**.
+    3. Edit the file using right-click on it, and copy/paste the Windows PowerShell or PowerShell Core snippets provided in this document. Just remember that variables need to be initialized before they are used, so they need to be placed higher within the Windows Batch file than the commands that use them.
+    4. Save the file and execute it.
 
 - **Windows Batch (bat)**: With batch files (also known as bat files) you can simplify routine or repetitive tasks on Windows. A batch file is an unformatted text file that contains one or more commands and has a `.bat` or `.cmd` file name extension. When you type the file name at the command prompt, the `Cmd.exe` (or Command Prompt) from the Windows operating system runs the commands sequentially as they appear in the file. To create and execute a Windows Batch script:
     1. Create a new file in a folder (i.e. the Desktop) in your computer running Windows.
@@ -70,7 +69,9 @@ Do some [research](https://azure.microsoft.com/pricing/details/virtual-machines/
     4. Save the file.
     5. To execute, simply right click on the file and select **Open**.
 
-Don't feel obliged to stick to Bash, Windows Powershell or Windows Batch for deploying the whole architecture end-to-end. You could complete a step like deploying the Azure Cache for Redis using Windows Bash and then switch to Bash to deploy Azure Database for MySQL, although it's not the standard.
+Don't feel obliged to stick to Bash, PowerShell or Windows Batch for deploying the whole architecture end-to-end. You could complete a step like deploying the Azure Cache for Redis using Windows Bash and then switch to Bash to deploy Azure Database for MySQL, although it's not the standard.
+
+Should you choose to setup the architecture programmatically using a command line interface and the samples from this document, you are going to need to install either [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2), a cross-platform command-line tool providing a great experience for managing Azure resources, or [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). They are both designed to make scripting easy, query data, support long-running operations, and more.
 
 ### Command line general configuration variables and tools
 
@@ -89,7 +90,7 @@ Regardless of what step you are working on, it's best practice to keep a set of 
 az account list-locations
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 Get-AzureRmLocation | Format-Table
@@ -102,7 +103,6 @@ CALL az account list-locations
 ```
 
 ---
-
 
 Here below are some examples of the region names currently available:
 
@@ -128,7 +128,7 @@ az vm list-skus --size Standard_F4s_v2 --query [].locationInfo[].location
 az vm list-skus --size Standard_F32s_v2 --query [].locationInfo[].location
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 Get-AzComputeResourceSku | where {$_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_B1s")}
@@ -159,7 +159,7 @@ export REGIONNAME=japanwest
 export PREFIX=myGameBackend
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 $YOURSUBSCRIPTIONID='XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
@@ -178,10 +178,6 @@ SET PREFIX=myGameBackend
 ```
 
 ---
-
-#### Tools
-
-Should you choose to setup the architecture programmatically using a command line interface and the samples from this document, you are going to need to install either [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2), a cross-platform command-line tool providing a great experience for managing Azure resources, or [Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). They are both designed to make scripting easy, query data, support long-running operations, and more.
 
 ## 1. Deploy a Virtual Machine on a Managed Disk
 
@@ -229,7 +225,7 @@ export VMSIZE=Standard_B1s
 export VMDATADISKSIZEINGB=5
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 $LOGINUSERNAME='azureuser'
@@ -262,7 +258,7 @@ Running this command will open a browser for you to log in with your Azure crede
 az login
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 Connect-AzureRmAccount
@@ -287,7 +283,7 @@ az account set \
  --subscription $YOURSUBSCRIPTIONID
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 Select-AzureRmSubscription `
@@ -315,7 +311,7 @@ az group create \
  --location $REGIONNAME
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup `
@@ -352,7 +348,7 @@ az vm create \
  --generate-ssh-keys
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 $VMCREDENTIALS = New-Object System.Management.Automation.PSCredential ($LOGINUSERNAME, $LOGINPASSWORD);
@@ -402,7 +398,7 @@ az vm open-port \
  --name $VMNAME
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 This operation was previously done using the -OpenPorts parameter from the **New-AzureRmVM** command.
@@ -450,7 +446,7 @@ az network public-ip list \
  --query [].ipAddress
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 Get-AzureRmVM `
@@ -567,7 +563,7 @@ az vm generalize \
  --name $VMNAME
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 Stop-AzVM `
@@ -626,7 +622,7 @@ You can be creative with the custom golden image name, as long as it complies wi
 export GOLDENIMAGENAME=myGoldenImage
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 $GOLDENIMAGENAME=myGoldenImage
@@ -654,7 +650,7 @@ az image create \
  --os-type Linux
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 $vm = Get-AzureRmVM `
@@ -763,7 +759,7 @@ export LBRULEHTTPNAME=${LBNAME}HTTPRule
 export LBRULEHTTPSNAME=${LBNAME}HTTPSRule
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 $LBSKU='Basic'
@@ -822,7 +818,7 @@ az network vnet create \
  --subnet-prefix $SUBNETADDRESSPREFIX
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 $vnet = New-AzureRmVirtualNetwork `
@@ -867,7 +863,7 @@ az network public-ip create \
  --version $PUBLICIPVERSION
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 $publicIp = New-AzureRmPublicIpAddress `
@@ -908,7 +904,7 @@ az network lb create \
  --public-ip-address $PUBLICIPNAME
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 New-AzureRmLoadBalancer `
@@ -954,7 +950,7 @@ az network lb probe create \
  --path /
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 $lb | Add-AzureRmLoadBalancerProbeConfig -Name 'http' -RequestPath '/' -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2 | Set-AzureRmLoadBalancer
@@ -993,7 +989,7 @@ az network lb probe create \
 fi
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 if($LBSKU -eq "Standard") {
@@ -1033,7 +1029,7 @@ az network lb inbound-nat-pool create \
  --protocol Tcp
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 $feIpConfig = Get-AzureRmLoadBalancerFrontendIpConfig -Loadbalancer $lb -Name $LBFENAME
@@ -1081,7 +1077,7 @@ az network lb rule create \
  --backend-pool-name $LBBEPOOLNAME
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 $beAddressPool = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Loadbalancer $lb -Name $LBBEPOOLNAME
@@ -1135,7 +1131,7 @@ az network lb rule create \
 fi
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 if($LBSKU -eq "Standard") {
@@ -1227,7 +1223,7 @@ export REDISSUBNETADDRESSPREFIX=10.0.1.0/24
 export SUBNETID=/subscriptions/${YOURSUBSCRIPTIONID}/resourceGroups/${RESOURCEGROUPNAME}/providers/Microsoft.Network/virtualNetworks/${VNETNAME}/subnets/${REDISSUBNETNAME}
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 $RANDOMNUMBER=Get-Random
@@ -1273,7 +1269,7 @@ az network vnet subnet create \
  --address-prefixes $REDISSUBNETADDRESSPREFIX
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork `
@@ -1328,7 +1324,7 @@ az redis create \
 fi
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 if($REDISSKU -eq "Standard") {
@@ -1397,7 +1393,7 @@ az redis list-keys \
  --output tsv
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 Get-AzureRmRedisCache `
@@ -1505,7 +1501,7 @@ export MYSQLSUBNETADDRESSPREFIX=10.0.2.0/24
 export MYSQLRULENAME=${MYSQLNAME}Rule
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -1540,7 +1536,7 @@ SET MYSQLRULENAME=%MYSQLNAME%Rule
 az extension add --name db-up
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -1578,7 +1574,7 @@ az mysql up \
  --version=$MYSQLVERSION
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -1616,7 +1612,7 @@ az network vnet subnet create \
  --address-prefix $MYSQLSUBNETADDRESSPREFIX
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -1653,7 +1649,7 @@ az mysql server vnet-rule create \
  --name $MYSQLRULENAME
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -1686,7 +1682,7 @@ az mysql server replica create \
  --location $MYSQLREADREPLICAREGION
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -1761,7 +1757,7 @@ export STORAGESKU=Standard_LRS
 export STORAGECONTAINERNAME=${STORAGENAMELOWER}cntnr
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -1794,7 +1790,7 @@ az storage account create \
  --location $REGIONNAME
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -1820,7 +1816,7 @@ CALL az storage account create ^
 export STORAGECONNECTIONSTRING=`az storage account show-connection-string -n $STORAGENAME -g $RESOURCEGROUPNAME --query connectionString -o tsv`
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -1848,7 +1844,7 @@ az storage container create \
  --connection-string $STORAGECONNECTIONSTRING
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -1877,7 +1873,7 @@ az network vnet subnet create \
  --address-prefix $STORAGESUBNETADDRESSPREFIX
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -1907,7 +1903,7 @@ $STORAGESUBNETID=`az network vnet subnet show --resource-group $RESOURCEGROUPNAM
 az storage account network-rule add --resource-group $RESOURCEGROUPNAME --account-name $STORAGENAMEUNIQUE --subnet $STORAGESUBNETID
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -1994,7 +1990,7 @@ export HEALTHPROBEID=/subscriptions/${YOURSUBSCRIPTIONID}/resourceGroups/${RESOU
 export VMSSOVERPROVISIONING=--disable-overprovision
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2042,7 +2038,7 @@ az vmss create \
  --generate-ssh-keys $VMSSOVERPROVISIONING
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2083,7 +2079,7 @@ az vmss show \
  --query upgradePolicy
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2114,7 +2110,7 @@ az vmss update \
  --set virtualMachineProfile.networkProfile.healthProbe.id='${HEALTHPROBEID}'
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2145,7 +2141,7 @@ az vmss update-instances \
  --instance-ids *
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2174,7 +2170,7 @@ az vmss update \
  --set upgradePolicy.mode=Rolling
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2247,7 +2243,7 @@ export VMSSAUTOSCALEROUTINCREASE=1
 export VMSSAUTOSCALERINDECREASE=1
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2285,7 +2281,7 @@ az monitor autoscale create \
  --count $VMSSVMTOCREATE
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2320,7 +2316,7 @@ az monitor autoscale rule create \
  --scale out $VMSSAUTOSCALEROUTINCREASE
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2350,7 +2346,7 @@ az monitor autoscale rule create \
  --scale in $VMSSAUTOSCALERINDECREASE
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2407,7 +2403,7 @@ az network ddos-protection create \
  --vnets $VNETNAME
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2436,7 +2432,7 @@ az network vnet update \
  --ddos-protection-plan $DDOSPROTECTIONNAME
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2497,7 +2493,7 @@ export DESTINATIONFOLDER=/var/www/html
 export SERVICETORESTART=apache2.service
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2526,7 +2522,7 @@ SET SERVICETORESTART=apache2.service
 export STORAGECONNECTIONSTRING=`az storage account show-connection-string -n $STORAGENAME -g $RESOURCEGROUPNAME --query connectionString -o tsv`
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2562,7 +2558,7 @@ az storage blob upload \
  --connection-string $STORAGECONNECTIONSTRING
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2597,7 +2593,7 @@ export BLOBURL=`az storage blob url -c $STORAGECONTAINERNAME -n $BLOBFILEDESTINA
 export SCRIPTURL=`az storage blob url -c $STORAGECONTAINERNAME -n $SCRIPTUPDATEFILEDESTINATIONAME -o tsv --connection-string $STORAGECONNECTIONSTRING`
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2629,7 +2625,7 @@ export PROTECTEDSETTINGS="{\"storageAccountName\":\"${STORAGENAME}\",\"storageAc
 export SETTINGS="{\"fileUris\":[\"${BLOBURL}\",\"${SCRIPTURL}\"],\"commandToExecute\":\"bash ${SCRIPTUPDATEFILEDESTINATIONAME} ${BLOBFILEDESTINATIONNAME} ${DESTINATIONFOLDER} ${SERVICETORESTART}\"}"
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2666,7 +2662,7 @@ az vmss extension set \
  --protected-settings $PROTECTEDSETTINGS
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
@@ -2701,7 +2697,7 @@ az vmss update-instances \
  --resource-group $RESOURCEGROUPNAME
 ```
 
-# [Windows Powershell](#tab/powershell)
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
 TODO: placeholder
