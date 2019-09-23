@@ -452,7 +452,7 @@ az network public-ip list \
 ```azurepowershell-interactive
 Get-AzVM `
  -ResourceGroupName $RESOURCEGROUPNAME `
- -Name $VMNAME | Get-AzureRmPublicIpAddress | Select-Object IPAddress
+ -Name $VMNAME | Get-AzPublicIpAddress | Select-Object IPAddress
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1273,16 +1273,16 @@ az network vnet subnet create \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-$vnet = Get-AzureRmVirtualNetwork `
+$vnet = Get-AzVirtualNetwork `
  -ResourceGroupName $RESOURCEGROUPNAME `
  -Name $VNETNAME `
 
-$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
  -Name $REDISSUBNETNAME `
  -AddressPrefix $REDISSUBNETADDRESSPREFIX `
  -VirtualNetwork $vnet
 
-$vnet | Set-AzureRmVirtualNetwork
+$vnet | Set-AzVirtualNetwork
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1329,7 +1329,7 @@ fi
 
 ```azurepowershell-interactive
 if($REDISSKU -eq "Standard") {
- New-AzureRmRedisCache `
+ New-AzRedisCache `
  -ResourceGroupName $RESOURCEGROUPNAME `
  -Name $REDISNAMEUNIQUE `
  -Location $REGIONNAME `
@@ -1339,7 +1339,7 @@ if($REDISSKU -eq "Standard") {
 }
 
 if($REDISSKU -eq "Premium") {
- New-AzureRmRedisCache `
+ New-AzRedisCache `
  -ResourceGroupName $RESOURCEGROUPNAME `
  -Name $REDISNAMEUNIQUE `
  -Location $REGIONNAME `
@@ -1397,11 +1397,11 @@ az redis list-keys \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-Get-AzureRmRedisCache `
+Get-AzRedisCache `
  -ResourceGroupName $RESOURCEGROUPNAME `
  -Name $REDISNAMEUNIQUE | Select-Object HostName, EnableNonSslPort, Port, SslPort
 
-Get-AzureRmRedisCacheKey `
+Get-AzRedisCacheKey `
  -ResourceGroupName $RESOURCEGROUPNAME `
  -Name $REDISNAMEUNIQUE
 ```
