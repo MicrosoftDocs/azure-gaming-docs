@@ -1275,7 +1275,7 @@ az network vnet subnet create \
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
  -ResourceGroupName $RESOURCEGROUPNAME `
- -Name $VNETNAME `
+ -Name $VNETNAME
 
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
  -Name $REDISSUBNETNAME `
@@ -1540,7 +1540,7 @@ az extension add --name db-up
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+Not applicable
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1643,7 +1643,7 @@ az network vnet subnet create \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+Not supported, use either Azure CLI or ARM templates
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1682,7 +1682,7 @@ az mysql server vnet-rule create \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+Not supported, use either Azure CLI or ARM templates
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1715,7 +1715,7 @@ az mysql server replica create \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+Not supported, use either Azure CLI or ARM templates
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1785,12 +1785,23 @@ export STORAGENAMELOWER=${STORAGENAME,,}
 export STORAGENAMEUNIQUE=${STORAGENAMELOWER}${RANDOMNUMBER}
 export STORAGESKU=Standard_LRS
 export STORAGECONTAINERNAME=${STORAGENAMELOWER}cntnr
+export STORAGESUBNETNAME=${STORAGENAME}+'Subnet'
+export STORAGESUBNETADDRESSPREFIX='10.0.3.0/24'
+export STORAGERULENAME=${STORAGENAME}+'Rule'
 ```
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$RANDOMNUMBER=Get-Random -Max 10000
+$STORAGENAME=$PREFIX+'STRG'
+$STORAGENAMELOWER=$STORAGENAME.tolower()
+$STORAGENAMEUNIQUE=$STORAGENAMELOWER+$RANDOMNUMBER
+$STORAGESKU='Standard_LRS'
+$STORAGECONTAINERNAME=$STORAGENAMELOWER+'cntnr'
+$STORAGESUBNETNAME=$STORAGENAME+'Subnet'
+$STORAGESUBNETADDRESSPREFIX='10.0.3.0/24'
+$STORAGERULENAME=$STORAGENAME+'Rule'
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1823,7 +1834,11 @@ az storage account create \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+New-AzStorageAccount `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $STORAGENAMEUNIQUE `
+ -SkuName $STORAGESKU `
+ -Location $REGIONNAME
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1849,7 +1864,7 @@ export STORAGECONNECTIONSTRING=`az storage account show-connection-string -n $ST
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+Not required
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1877,7 +1892,13 @@ az storage container create \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$accountObject = Get-AzStorageAccount `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -AccountName $STORAGENAMEUNIQUE
+
+New-AzRmStorageContainer `
+ -StorageAccount $accountObject `
+ -ContainerName $STORAGECONTAINERNAME
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1906,7 +1927,17 @@ az network vnet subnet create \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$vnet = Get-AzVirtualNetwork `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $VNETNAME
+
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
+ -Name $STORAGESUBNETNAME `
+ -AddressPrefix $STORAGESUBNETADDRESSPREFIX `
+ -VirtualNetwork $vnet `
+ -ServiceEndpoint Microsoft.Storage
+
+$vnet | Set-AzVirtualNetwork
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1936,7 +1967,12 @@ az storage account network-rule add --resource-group $RESOURCEGROUPNAME --accoun
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$subnetId = $vnet.Id + '/subnets/' + $STORAGESUBNETNAME
+
+Add-AzStorageAccountNetworkRule `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $STORAGENAMEUNIQUE `
+ -VirtualNetworkResourceId $subnetId
 ```
 
 # [Windows Batch](#tab/bat)
