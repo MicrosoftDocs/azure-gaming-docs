@@ -654,15 +654,15 @@ az image create \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-$vm = Get-AzureRmVM `
+$vm = Get-AzVM `
  -ResourceGroupName $RESOURCEGROUPNAME `
  -Name $VMNAME
 
-$image = New-AzureRmImageConfig `
+$image = New-AzImageConfig `
  -Location $REGIONNAME `
  -SourceVirtualMachineId $vm.ID
 
-New-AzureRmImage `
+New-AzImage `
  -ResourceGroupName $RESOURCEGROUPNAME `
  -Image $image `
  -ImageName $GOLDENIMAGENAME
