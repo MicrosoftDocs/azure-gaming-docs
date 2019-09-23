@@ -71,7 +71,8 @@ Do some [research](https://azure.microsoft.com/pricing/details/virtual-machines/
 
 Don't feel obliged to stick to Bash, PowerShell or Windows Batch for deploying the whole architecture end-to-end. You could complete a step like deploying the Azure Cache for Redis using Windows Bash and then switch to Bash to deploy Azure Database for MySQL, although it's not the standard.
 
-Should you choose to setup the architecture programmatically using a command line interface and the samples from this document, you are going to need to install either [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2), a cross-platform command-line tool providing a great experience for managing Azure resources, or [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). They are both designed to make scripting easy, query data, support long-running operations, and more.
+> [!IMPORTANT]
+> Should you choose to setup the architecture programmatically using a command line interface and the samples from this document, you are going to need to install either [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2), a cross-platform command-line tool providing a great experience for managing Azure resources, or [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). They are both designed to make scripting easy, query data, support long-running operations, and more.
 
 ### Command line general configuration variables and tools
 
@@ -93,7 +94,7 @@ az account list-locations
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-Get-AzureRmLocation | Format-Table
+Get-AzLocation | Format-Table
 ```
 
 # [Windows Batch](#tab/bat)
@@ -261,7 +262,7 @@ az login
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 # [Windows Batch](#tab/bat)
@@ -286,7 +287,7 @@ az account set \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-Select-AzureRmSubscription `
+Set-AzContext `
  -SubscriptionId $YOURSUBSCRIPTIONID
 ```
 
@@ -314,7 +315,7 @@ az group create \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup `
+New-AzResourceGroup `
  -Name $RESOURCEGROUPNAME `
  -Location $REGIONNAME
 ```
@@ -353,7 +354,7 @@ az vm create \
 ```azurepowershell-interactive
 $VMCREDENTIALS = New-Object System.Management.Automation.PSCredential ($LOGINUSERNAME, $LOGINPASSWORD);
 
-New-AzureRmVM `
+New-AzVM `
  -ResourceGroupName $RESOURCEGROUPNAME `
  -Name $VMNAME `
  -Image $IMAGE `
@@ -401,7 +402,7 @@ az vm open-port \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-This operation was previously done using the -OpenPorts parameter from the **New-AzureRmVM** command.
+This operation was previously done using the -OpenPorts parameter from the **New-AzVM** command.
 ```
 
 # [Windows Batch](#tab/bat)
@@ -449,7 +450,7 @@ az network public-ip list \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-Get-AzureRmVM `
+Get-AzVM `
  -ResourceGroupName $RESOURCEGROUPNAME `
  -Name $VMNAME | Get-AzureRmPublicIpAddress | Select-Object IPAddress
 ```
