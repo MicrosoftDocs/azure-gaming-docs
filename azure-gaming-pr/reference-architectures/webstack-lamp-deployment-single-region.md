@@ -206,7 +206,6 @@ On top of the general configuration variables, the following variables are also 
 | **VMNAME** | Canonical:UbuntuServer:16.04-LTS:latest | | | | The Linux OS that will be installed in the Virtual Machine.
 | **VMSIZE** | Standard_B1s | Standard_B1s | Standard_F4s_v2 | Standard_F32s_v2 | Virtual Machine option. Be aware that Premium SSD is not supported in every Virtual Machine option. [Learn more](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#Linux).
 | **VMDATADISKSIZEINGB** | 5 | 5 | 10 | 30 | How much persistent disk storage you are going to allocate per Virtual Machine. [Benefits of using managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#benefits-of-managed-disks).
-| **VMSTORAGESKU** | Standard_LRS | Standard_LRS | Premium_LRS | Premium_LRS | The storage SKU to setup, either standard, premium or ultra.
 
 > [!TIP]
 > In addition to the following documented individual commands and the order of execution, for you to understand each portion of a Virtual Machine deployment, you can download and tweak to your needs the full Bash [1-create-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/1-create-vm.sh) or Windows Batch [1-create-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/1-create-vm.bat) scripts to save you time.
@@ -347,7 +346,6 @@ az vm create \
  --size $VMSIZE \
  --admin-username $LOGINUSERNAME \
  --data-disk-sizes-gb $VMDATADISKSIZEINGB \
- --storage-sku $VMSTORAGESKU `
  --generate-ssh-keys
 ```
 
@@ -376,7 +374,6 @@ CALL az vm create ^
  --size %VMSIZE% ^
  --admin-username %LOGINUSERNAME% ^
  --data-disk-sizes-gb %VMDATADISKSIZEINGB% ^
- --storage-sku %VMSTORAGESKU% ^
  --generate-ssh-keys
 ```
 
