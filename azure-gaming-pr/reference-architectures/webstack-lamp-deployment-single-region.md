@@ -206,6 +206,7 @@ On top of the general configuration variables, the following variables are also 
 | **VMNAME** | Canonical:UbuntuServer:16.04-LTS:latest | | | | The Linux OS that will be installed in the Virtual Machine.
 | **VMSIZE** | Standard_B1s | Standard_B1s | Standard_F4s_v2 | Standard_F32s_v2 | Virtual Machine option. Be aware that Premium SSD is not supported in every Virtual Machine option. [Learn more](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#Linux).
 | **VMDATADISKSIZEINGB** | 5 | 5 | 10 | 30 | How much persistent disk storage you are going to allocate per Virtual Machine. [Benefits of using managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#benefits-of-managed-disks).
+| **VMSTORAGESKU** | Standard_LRS | Standard_LRS | Premium_LRS | Premium_LRS | The storage SKU to setup, either standard, premium or ultra.
 
 > [!TIP]
 > In addition to the following documented individual commands and the order of execution, for you to understand each portion of a Virtual Machine deployment, you can download and tweak to your needs the full Bash [1-create-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/1-create-vm.sh) or Windows Batch [1-create-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/1-create-vm.bat) scripts to save you time.
@@ -346,6 +347,7 @@ az vm create \
  --size $VMSIZE \
  --admin-username $LOGINUSERNAME \
  --data-disk-sizes-gb $VMDATADISKSIZEINGB \
+ --storage-sku $VMSTORAGESKU `
  --generate-ssh-keys
 ```
 
@@ -374,6 +376,7 @@ CALL az vm create ^
  --size %VMSIZE% ^
  --admin-username %LOGINUSERNAME% ^
  --data-disk-sizes-gb %VMDATADISKSIZEINGB% ^
+ --storage-sku %VMSTORAGESKU% ^
  --generate-ssh-keys
 ```
 
@@ -2030,7 +2033,7 @@ On top of the previously defined variables, the following variables are also bei
 | **VMSSNAME** | PREFIX + VMSS | | | | The name of the scale set.
 | **VMSSSKUSIZE** | Standard_B1s | Standard_B1s | Standard_F4s_v2 | Standard_F32s_v2 | The SKU to setup, either standard, premium or ultra.
 | **VMSSVMTOCREATE** | 2 | 2 | 10 | 20 | The number of Virtual Machine instances that will be deployed upon creation of the scale set.
-| **VMSSSTORAGETYPE** | Standard_LRS | Standard_LRS | Premium_LRS | Premium_LRS | The storage SKU to setup, either standard, premium or ultra.
+| **VMSSSTORAGESKU** | Standard_LRS | Standard_LRS | Premium_LRS | Premium_LRS | The storage SKU to setup, either standard, premium or ultra.
 | **VMSSACELERATEDNETWORKING** | false | false | true | true | [Learn more](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#benefits) about the benefits of accelerated networking.
 | **VMSSUPGRADEPOLICY** | Manual | Manual | Rolling | Rolling | Manual, Automatic or Rolling. Explained above.
 | **HEALTHPROBEID** |  |  | Use the health probe ID | Use the health probe ID | Required if Rolling upgrade mode.
@@ -2049,7 +2052,7 @@ export VMSSNAME=${PREFIX}VMSS
 export GOLDENIMAGENAME=myGoldenImage
 export VMSSSKUSIZE=Standard_B1s
 export VMSSVMTOCREATE=2
-export VMSSSTORAGETYPE=Premium_LRS
+export VMSSSTORAGESKU=Premium_LRS
 export VMSSACELERATEDNETWORKING=false
 export VMSSUPGRADEPOLICY=Manual
 export HEALTHPROBEID=/subscriptions/${YOURSUBSCRIPTIONID}/resourceGroups/${RESOURCEGROUPNAME}/providers/Microsoft.Network/loadBalancers/${LBNAME}/probes/http
@@ -2069,7 +2072,7 @@ SET VMSSNAME=%PREFIX%VMSS
 SET GOLDENIMAGENAME=myGoldenImage
 SET VMSSSKUSIZE=Standard_B1s
 SET VMSSVMTOCREATE=2
-SET VMSSSTORAGETYPE=Premium_LRS
+SET VMSSSTORAGESKU=Premium_LRS
 SET VMSSACELERATEDNETWORKING=false
 SET VMSSUPGRADEPOLICY=Manual
 SET HEALTHPROBEID=/subscriptions/%YOURSUBSCRIPTIONID%/resourceGroups/%RESOURCEGROUPNAME%/providers/Microsoft.Network/loadBalancers/%LBNAME%/probes/http
@@ -2097,7 +2100,7 @@ az vmss create \
  --admin-username $LOGINUSERNAME \
  --instance-count $VMSSVMTOCREATE \
  --backend-pool-name $LBBEPOOLNAME \
- --storage-sku $VMSSSTORAGETYPE \
+ --storage-sku $VMSSSTORAGESKU \
  --vm-sku $VMSSSKUSIZE \
  --lb-nat-pool-name $LBNATPOOLNAME \
  --accelerated-networking $VMSSACELERATEDNETWORKING \
@@ -2125,7 +2128,7 @@ CALL az vmss create ^
  --admin-username %LOGINUSERNAME% ^
  --instance-count %VMSSVMTOCREATE% ^
  --backend-pool-name %LBBEPOOLNAME% ^
- --storage-sku %VMSSSTORAGETYPE% ^
+ --storage-sku %VMSSSTORAGESKU% ^
  --vm-sku %VMSSSKUSIZE% ^
  --lb-nat-pool-name %LBNATPOOLNAME% ^
  --accelerated-networking %VMSSACELERATEDNETWORKING% ^
