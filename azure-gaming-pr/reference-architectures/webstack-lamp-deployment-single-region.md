@@ -2390,7 +2390,14 @@ export VMSSAUTOSCALERINDECREASE=1
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$VMSSAUTOSCALERNAME=$PREFIX+'Autoscaler'
+$VMSSAUTOSCALERCRITERIA='Percentage CPU'
+$VMSSAUTOSCALERMAXCOUNT=10
+$VMSSAUTOSCALERMINCOUNT=$VMSSVMTOCREATE
+$VMSSAUTOSCALERUPTRIGGER=50
+$VMSSAUTOSCALERDOWNTRIGGER=30
+$VMSSAUTOSCALEROUTINCREASE=1
+$VMSSAUTOSCALERINDECREASE=1
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2428,7 +2435,7 @@ az monitor autoscale create \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+In PowerShell, first you create the rules and then you enable the autoscaler, rather than creating it without rules like in Azure CLI
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2463,7 +2470,17 @@ az monitor autoscale rule create \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$scaleOutRule = New-AzAutoscaleRule `
+ -MetricName $VMSSAUTOSCALERCRITERIA `
+ -MetricResourceId /subscriptions/$YOURSUBSCRIPTIONID/resourceGroups/$RESOURCEGROUPNAME/providers/Microsoft.Compute/virtualMachineScaleSets/$VMSSNAME `
+ -Operator GreaterThan `
+ -MetricStatistic Average `
+ -Threshold $VMSSAUTOSCALERUPTRIGGER `
+ -TimeGrain 00:01:00 `
+ -TimeWindow 00:05:00 `
+ -ScaleActionCooldown 00:05:00 `
+ -ScaleActionDirection Increase `
+ -ScaleActionValue $VMSSAUTOSCALEROUTINCREASE
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2493,7 +2510,33 @@ az monitor autoscale rule create \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$scaleInRule = New-AzAutoscaleRule `
+ -MetricName $VMSSAUTOSCALERCRITERIA `
+ -MetricResourceId /subscriptions/$YOURSUBSCRIPTIONID/resourceGroups/$RESOURCEGROUPNAME/providers/Microsoft.Compute/virtualMachineScaleSets/$VMSSNAME `
+ -Operator LessThan `
+ -MetricStatistic Average `
+ -Threshold $VMSSAUTOSCALERDOWNTRIGGER `
+ -TimeGrain 00:01:00 `
+ -TimeWindow 00:05:00 `
+ -ScaleActionCooldown 00:05:00 `
+ -ScaleActionDirection Decrease `
+ -ScaleActionValue $VMSSAUTOSCALERINDECREASE
+
+# In the case of Powershell, after the rules are created then the autoscaler is enabled
+
+$autoscalerProfile = New-AzAutoscaleProfile `
+ -DefaultCapacity $VMSSVMTOCREATE `
+ -MaximumCapacity $VMSSAUTOSCALERMAXCOUNT `
+ -MinimumCapacity $VMSSAUTOSCALERMINCOUNT `
+ -Rule $scaleOutRule,$scaleInRule `
+ -Name $VMSSAUTOSCALERNAME
+
+Add-AzAutoscaleSetting `
+ -ResourceGroup $RESOURCEGROUPNAME `
+ -Location $REGIONNAME `
+ -Name $VMSSAUTOSCALERNAME `
+ -TargetResourceId /subscriptions/$YOURSUBSCRIPTIONID/resourceGroups/$RESOURCEGROUPNAME/providers/Microsoft.Compute/virtualMachineScaleSets/$VMSSNAME `
+ -AutoscaleProfile $autoscalerProfile
 ```
 
 # [Windows Batch](#tab/bat)
