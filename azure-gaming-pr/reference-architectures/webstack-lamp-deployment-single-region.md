@@ -2059,7 +2059,27 @@ export VMSSOVERPROVISIONING=--disable-overprovision
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$VMSSNAME=$PREFIX+'VMSS'
+$GOLDENIMAGENAME='myGoldenImage'
+$VMSSSKUSIZE='Standard_B1s'
+$VMSSVMTOCREATE=2
+$VMSSSTORAGESKU='Premium_LRS'
+$VMSSACELERATEDNETWORKING='false'
+$VMSSUPGRADEPOLICY='Manual'
+$HEALTHPROBEID='/subscriptions/'+$YOURSUBSCRIPTIONID+'/resourceGroups/'+$RESOURCEGROUPNAME+'/providers/Microsoft.Network/loadBalancers/'+$LBNAME+'/probes/http'
+$VMSSOVERPROVISIONING='false'
+
+if ($VMSSACELERATEDNETWORKING -eq 'true') {
+    $VMSSACELERATEDNETWORKING='-EnableAcceleratedNetworking'
+} else {
+    $VMSSACELERATEDNETWORKING=''
+}
+
+if ($VMSSOVERPROVISIONING -eq 'true') {
+    $VMSSOVERPROVISIONING='-Overprovision $True'
+} else {
+    $VMSSOVERPROVISIONING='-Overprovision $False'
+}
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2107,7 +2127,48 @@ az vmss create \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$vnet = Get-AzVirtualNetwork -ResourceGroupName $RESOURCEGROUPNAME -Name $VNETNAME
+$subnetId = $vnet.Id + '/subnets/' + $SUBNETNAME
+$lb = Get-AzLoadBalancer -ResourceGroupName $RESOURCEGROUPNAME -Name $LBNAME
+
+$ipConfig = New-AzVmssIpConfig `
+  -Name "myIPConfig" `
+  -LoadBalancerBackendAddressPoolsId $lb.BackendAddressPools[0].Id `
+  -LoadBalancerInboundNatPoolsId $lb.InboundNatPools[0].Id `
+  -SubnetId $subnetId
+
+$vmssConfig = New-AzVmssConfig `
+  -Location $REGIONNAME `
+  -SkuCapacity $VMSSVMTOCREATE `
+  -SkuName $VMSSSKUSIZE `
+  -UpgradePolicyMode $VMSSUPGRADEPOLICY `
+  -HealthProbeId $HEALTHPROBEID `
+  -Overprovision $True
+
+$customImage = Get-AzImage -ResourceGroupName $RESOURCEGROUPNAME -ImageName $GOLDENIMAGENAME
+Set-AzVmssStorageProfile `
+  -VirtualMachineScaleSet $vmssConfig `
+  -OsDiskCreateOption 'FromImage' `
+  -ManagedDisk $VMSSSTORAGESKU `
+  -OsDiskOsType Linux `
+  -ImageReferenceId $customImage.Id
+
+Set-AzVmssOsProfile `
+ -VirtualMachineScaleSet $vmssConfig `
+ -ComputerNamePrefix $PREFIX `
+ -AdminUsername $LOGINUSERNAME `
+ -AdminPassword $LOGINPASSWORD
+
+Add-AzVmssNetworkInterfaceConfiguration `
+  -VirtualMachineScaleSet $vmssConfig `
+  -Name "network-config" `
+  -Primary $True `
+  -IPConfiguration $ipConfig `
+
+New-AzVmss `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -VMScaleSetName $VMSSNAME `
+ -VirtualMachineScaleSet $vmssConfig
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2148,7 +2209,9 @@ az vmss show \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+Get-AzVmss `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -VMScaleSetName $VMSSNAME | select -expandproperty UpgradePolicy
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2179,7 +2242,7 @@ az vmss update \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+Previously setup during the creation of the Azure Virtual Machine Scale Set
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2210,7 +2273,7 @@ az vmss update-instances \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+Not required in this case using PowerShell as there were no changes because the health probe was added from the beginning tp the Azure Virtual Machine Scale Set
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2239,7 +2302,22 @@ az vmss update \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$vmss = Get-AzVmss `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -VMScaleSetName $VMSSNAME
+
+Set-AzVmssRollingUpgradePolicy `
+ -VirtualMachineScaleSet $vmss `
+ -MaxBatchInstancePercent 35 `
+ -MaxUnhealthyInstancePercent 40 `
+ -MaxUnhealthyUpgradedInstancePercent 30 `
+ -PauseTimeBetweenBatches 'PT30S'
+
+Update-AzVmss `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -VMScaleSetName $VMSSNAME `
+ -VirtualMachineScaleSet $vmss `
+ -UpgradePolicyMode Rolling
 ```
 
 # [Windows Batch](#tab/bat)
