@@ -401,8 +401,8 @@ az vm open-port \
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell-interactive
-This operation was previously done using the -OpenPorts parameter from the **New-AzVM** command.
+```azurepowershell
+This operation was previously done using the -OpenPorts parameter from the New-AzVM command.
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1505,7 +1505,23 @@ export MYSQLRULENAME=${MYSQLNAME}Rule
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$RANDOMNUMBER=Get-Random
+$MYSQLNAME=$PREFIX+'MySQL'
+$MYSQLNAMELOWER=$MYSQLNAME.tolower()
+$MYSQLNAMEUNIQUE=$MYSQLNAMELOWER+$RANDOMNUMBER
+$MYSQLUSERNAME='azuremysqluser'
+$MYSQLPASSWORD='CHang3thisP4Ssw0rD'
+$MYSQLDBNAME='gamedb'
+$MYSQLBACKUPRETAINEDDAYS=7
+$MYSQLGEOREDUNDANTBACKUP='Disabled'
+$MYSQLSKU='GP_Gen5_2'
+$MYSQLSTORAGEMBSIZE=51200
+$MYSQLVERSION='5.7'
+$MYSQLREADREPLICANAME=$MYSQLNAMEUNIQUE+'Replica'
+$MYSQLREADREPLICAREGION='westus'
+$MYSQLSUBNETNAME=$MYSQLNAME+'Subnet'
+$MYSQLSUBNETADDRESSPREFIX='10.0.2.0/24'
+$MYSQLRULENAME=$MYSQLNAME+'Rule'
 ```
 
 # [Windows Batch](#tab/bat)
@@ -1539,7 +1555,7 @@ az extension add --name db-up
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell-interactive
+```azurepowershell
 Not applicable
 ```
 
@@ -1642,7 +1658,7 @@ az network vnet subnet create \
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell-interactive
+```azurepowershell
 Not supported, use either Azure CLI or ARM templates
 ```
 
@@ -1681,7 +1697,7 @@ az mysql server vnet-rule create \
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell-interactive
+```azurepowershell
 Not supported, use either Azure CLI or ARM templates
 ```
 
@@ -1714,7 +1730,7 @@ az mysql server replica create \
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell-interactive
+```azurepowershell
 Not supported, use either Azure CLI or ARM templates
 ```
 
@@ -1863,7 +1879,7 @@ export STORAGECONNECTIONSTRING=`az storage account show-connection-string -n $ST
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell-interactive
+```azurepowershell
 Not required
 ```
 
@@ -2241,7 +2257,7 @@ az vmss update \
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell-interactive
+```azurepowershell
 Previously setup during the creation of the Azure Virtual Machine Scale Set
 ```
 
@@ -2272,7 +2288,7 @@ az vmss update-instances \
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell-interactive
+```azurepowershell
 Not required in this case using PowerShell as there were no changes because the health probe was added from the beginning tp the Azure Virtual Machine Scale Set
 ```
 
@@ -2434,7 +2450,7 @@ az monitor autoscale create \
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell-interactive
+```azurepowershell
 In PowerShell, first you create the rules and then you enable the autoscaler, rather than creating it without rules like in Azure CLI
 ```
 
@@ -2573,9 +2589,25 @@ On top of the previously defined variables, the following variables are also bei
 
 #### Initialize variables
 
+# [Bash](#tab/bash)
+
+```azurecli-interactive
+export DDOSPROTECTIONNAME=${PREFIX}DdosPlan
+```
+
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
+
+```azurepowershell-interactive
+$DDOSPROTECTIONNAME=$PREFIX+'DdosPlan'
+```
+
+# [Windows Batch](#tab/bat)
+
 ```bat
 SET DDOSPROTECTIONNAME=%PREFIX%DdosPlan
 ```
+
+---
 
 #### Create the DDoS protection plan
 
@@ -2593,7 +2625,10 @@ az network ddos-protection create \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$ddosProtectionPlan = New-AzDdosProtectionPlan `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -Name $DDOSPROTECTIONNAME `
+ -Location $REGIONNAME
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2622,7 +2657,11 @@ az network vnet update \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$vnet = Get-AzVirtualNetwork -Name $VNETNAME -ResourceGroupName $RESOURCEGROUPNAME
+$vnet.DdosProtectionPlan = New-Object Microsoft.Azure.Commands.Network.Models.PSResourceId
+$vnet.DdosProtectionPlan.Id = $ddosProtectionPlan.Id
+$vnet.EnableDdosProtection = $True
+$vnet | Set-AzVirtualNetwork
 ```
 
 # [Windows Batch](#tab/bat)
