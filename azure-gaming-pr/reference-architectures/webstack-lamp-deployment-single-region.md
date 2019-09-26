@@ -425,7 +425,9 @@ CALL az vm open-port ^
 
 ### Azure Resource Manager template
 
-TBD
+Click the following button to deploy the project to your Azure subscription:
+
+<a href="https://aka.ms/arm-gaming-lamp-create-vm" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 ### Azure Portal
 
