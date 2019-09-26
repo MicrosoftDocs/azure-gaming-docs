@@ -516,7 +516,7 @@ exit
 
 #### Azure Resource Manager template
 
-You could consider using the [Azure Custom Script Extension](https://docs.microsoft.com/azure/virtual-machines/extensions/custom-script-linux) that downloads and runs scripts on Azure virtual machines. Click the following button that installs Apache and the PHP 7.3 version using Virtual Machine Custom Script Extension.
+You could consider using the [Azure Custom Script Extension](https://docs.microsoft.com/azure/virtual-machines/extensions/custom-script-linux) that downloads and runs scripts on Azure Virtual Machines. Click the following button that installs Apache and the PHP 7.3 version using Virtual Machine Custom Script Extension.
 
 <a href="https://aka.ms/arm-gaming-lamp-install-apache-and-php" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
