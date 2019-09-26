@@ -2962,7 +2962,7 @@ Deploying a single region LAMP architecture on Azure should take less than 90 mi
 
 This table summarizes the scripts and templates available for steps covered in this document.
 
-| Action | Azure CLI | PowerShell | ARM template | Portal |
+| Action | Azure CLI | Azure PowerShell | ARM template | Portal |
 |--------|--------|--------|--------|--------|
 | **Deploy a Virtual Machine on a Managed Disk** | [1-create-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/1-create-vm.sh)<br>[1-create-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/1-create-vm.bat) | [1-create-vm.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/1-create-vm.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-vm" target="_blank">Deploy</a> | [Create VM](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal), [Attach Managed data disk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal#add-a-data-disk)
 | **Install Apache, PHP and other stuff you consider** | [2-install-apache-and-php.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/scripts/2-install-apache-and-php.sh) | N/A | <a href="https://aka.ms/arm-gaming-lamp-install-apache-and-php" target="_blank">Deploy</a> | N/A
