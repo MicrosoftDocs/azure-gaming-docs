@@ -512,7 +512,7 @@ exit
 ```
 
 > [!TIP]
-> You can create a shell script and execute all the commands in a more automated fashion, check [2-install-apache-and-php.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/scripts/2-install-apache-and-php.sh) out as an example.
+> You can create a shell script and execute all the commands in a more automated fashion, check [2-install-apache-and-php.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/scripts/2-install-apache-and-php.sh) out as an example. Or you could consider using the [Azure Custom Script Extension](https://docs.microsoft.com/azure/virtual-machines/extensions/custom-script-linux) that downloads and runs scripts on Azure virtual machines.
 
 ### Validate that the web server and PHP are running properly
 
@@ -686,7 +686,7 @@ TBD
 
 ### Azure Portal
 
-TBD
+Creating images with a managed disk is currently not supported via the Azure Portal.
 
 ## 5. Deploy the networking resources
 
