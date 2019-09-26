@@ -425,8 +425,6 @@ CALL az vm open-port ^
 
 ### Azure Resource Manager template
 
-Click the following button to deploy the project to your Azure subscription:
-
 <a href="https://aka.ms/arm-gaming-lamp-create-vm" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 ### Azure Portal
@@ -1169,7 +1167,7 @@ if %LBSKU%==Standard CALL az network lb rule create ^
 
 ### Azure Resource Manager template
 
-TBD
+<a href="https://aka.ms/arm-gaming-lamp-create-networking" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 ### Azure Portal
 
@@ -1428,7 +1426,7 @@ CALL az redis list-keys ^
 
 ### Azure Resource Manager template
 
-TBD
+<a href="https://aka.ms/arm-gaming-lamp-create-redis" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 ### Azure Portal
 
@@ -1750,7 +1748,7 @@ CALL az mysql server replica create ^
 
 ### Azure Resource Manager template
 
-TBD
+<a href="https://aka.ms/arm-gaming-lamp-create-mysql" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 ### Azure Portal
 
@@ -2010,7 +2008,7 @@ CALL az storage account network-rule add ^
 
 ### Azure Resource Manager template
 
-TBD
+<a href="https://aka.ms/arm-gaming-lamp-create-storage" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 ### Azure Portal
 
@@ -2352,7 +2350,7 @@ CALL az vmss update ^
 
 ### Azure Resource Manager template
 
-TBD
+<a href="https://aka.ms/arm-gaming-lamp-create-vmss" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 ### Azure Portal
 
@@ -2571,7 +2569,7 @@ CALL az monitor autoscale rule create ^
 
 ### Azure Resource Manager template
 
-TBD
+<a href="https://aka.ms/arm-gaming-lamp-create-autoscaler" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 ### Azure Portal
 
@@ -2680,7 +2678,7 @@ CALL az network vnet update ^
 
 ### Azure Resource Manager template
 
-TBD
+<a href="https://aka.ms/arm-gaming-lamp-enable-ddos-protection" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 ### Azure Portal
 
@@ -2944,7 +2942,7 @@ CALL az vmss update-instances ^
 
 ### Azure Resource Manager template
 
-TBD
+<a href="https://aka.ms/arm-gaming-lamp-update-app" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 ### Azure Portal
 
