@@ -46,7 +46,9 @@ Do some [research](https://azure.microsoft.com/pricing/details/virtual-machines/
 
 ### Command line alternatives
 
-- **Bash**: Bash is a Unix shell and command language, typically runs in a text window where the user types commands that cause actions. Bash can also read and execute commands from a file, called a shell script. To create and execute a Bash script:
+# [Bash](#tab/bash)
+
+Bash is a Unix shell and command language, typically runs in a text window where the user types commands that cause actions. Bash can also read and execute commands from a file, called a shell script. To create and execute a Bash script:
     1. Create a file in a directory in your computer running Linux/Unix.
     1. Choose a filename and ensure the extension of the file is `.sh`, to identify it as a Bash script.
     1. Use your favorite editor to open the file.
@@ -56,18 +58,24 @@ Do some [research](https://azure.microsoft.com/pricing/details/virtual-machines/
     1. Ensure it has execution permissions using `chmod +x [SCRIPTNAME.sh]` substituting `[SCRIPTNAME.sh]` with your script.
     1. To execute, simply use `./[SCRIPTNAME.sh]`.
 
-- **PowerShell**: Command-line shell designed especially for system administrators. PowerShell includes an interactive prompt and a scripting environment that can be used independently or in combination. Unlike most shells, which accept and return text, PowerShell is built on top of the .NET Framework common language runtime (CLR) and the .NET Framework, and accepts and returns .NET Framework objects. To create an execute a Windows PowerShell or PowerShell Core script:
+# [Windows PowerShell or PowerShell Core](#tab/powershell)
+
+Command-line shell designed especially for system administrators. PowerShell includes an interactive prompt and a scripting environment that can be used independently or in combination. Unlike most shells, which accept and return text, PowerShell is built on top of the .NET Framework common language runtime (CLR) and the .NET Framework, and accepts and returns .NET Framework objects. To create an execute a Windows PowerShell or PowerShell Core script:
     1. Create a new file in a folder (i.e: the Desktop) in your computer running Windows (Windows PowerShell or PowerShell Core) or Mac/Linux (PowerShell Core only).
     2. Choose a filename and ensure the extension of the file is `.ps1`, this is very important or the Operating System won't recognize the file as a script that can be run.
     3. Edit the file using right-click on it, and copy/paste the Windows PowerShell or PowerShell Core snippets provided in this document. Just remember that variables need to be initialized before they are used, so they need to be placed higher within the Windows Batch file than the commands that use them.
     4. Save the file and execute it.
 
-- **Windows Batch (bat)**: With batch files (also known as bat files) you can simplify routine or repetitive tasks on Windows. A batch file is an unformatted text file that contains one or more commands and has a `.bat` or `.cmd` file name extension. When you type the file name at the command prompt, the `Cmd.exe` (or Command Prompt) from the Windows operating system runs the commands sequentially as they appear in the file. To create and execute a Windows Batch script:
+# [Windows Batch](#tab/bat)
+
+With batch files (also known as bat files) you can simplify routine or repetitive tasks on Windows. A batch file is an unformatted text file that contains one or more commands and has a `.bat` or `.cmd` file name extension. When you type the file name at the command prompt, the `Cmd.exe` (or Command Prompt) from the Windows operating system runs the commands sequentially as they appear in the file. To create and execute a Windows Batch script:
     1. Create a new file in a folder (i.e. the Desktop) in your computer running Windows.
     2. Choose a filename and ensure the extension of the file is either `.bat` or `.cmd`, this is very important or the Operating System won't recognize the file as a script that can be run.
     3. Edit the file using right-click on it, and copy/paste the Windows Bash snippets provided in this document. Just remember that variables need to be initialized before they are used, so they need to be placed higher within the Windows Batch file than the commands that use them.
     4. Save the file.
     5. To execute, simply right click on the file and select **Open**.
+
+---
 
 Don't feel obliged to stick to Bash, PowerShell or Windows Batch for deploying the whole architecture end-to-end. You could complete a step like deploying the Azure Cache for Redis using Windows Bash and then switch to Bash to deploy Azure Database for MySQL, although it's not the standard.
 
