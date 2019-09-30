@@ -423,6 +423,8 @@ CALL az vm open-port ^
 
 ### Azure Resource Manager template
 
+This Azure Resource Manager (ARM) template is an example template that deploys an Azure Virtual Machine to serve as a foundation for the custom golden image. In most cases, it gets deleted afterwards.
+
 <a href="https://aka.ms/arm-gaming-lamp-create-vm" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 ### Azure Portal
