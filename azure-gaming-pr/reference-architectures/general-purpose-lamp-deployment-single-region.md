@@ -442,6 +442,11 @@ This Azure Resource Manager (ARM) template is an example template that deploys a
 
 Refer to [Create a Linux virtual machine in the Azure portal](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) and [Attach a managed data disk to a VM by using the Azure portal](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal#add-a-data-disk) if you prefer to create the Virtual Machine manually using the Azure Portal.
 
+### Hashicorp Terraform
+
+- [Create an Azure Resource Group](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html) using **azurerm_resource_group**
+- [Create an Azure Virtual Machine](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html) using **azurerm_virtual_machine**
+
 ## 2. Install Apache and PHP
 
 ### Get the public IP of the Virtual Machine that was just created
@@ -530,6 +535,10 @@ exit
 You could consider using the [Azure Custom Script Extension](https://docs.microsoft.com/azure/virtual-machines/extensions/custom-script-linux) that downloads and runs scripts on Azure Virtual Machines. Click the following button that installs Apache and the PHP 7.3 version using Virtual Machine Custom Script Extension.
 
 <a href="https://aka.ms/arm-gaming-lamp-install-apache-and-php" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+
+#### Hashicorp Terraform
+
+- [Create an Azure Virtual Machine with post deployment configuration and run automated tasks](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html) using **azurerm_virtual_machine_extension**
 
 ### Validate that the web server and PHP are running properly
 
@@ -704,6 +713,10 @@ TBD
 ### Azure Portal
 
 Creating images with a managed disk is currently not supported via the Azure Portal.
+
+### Hashicorp Terraform
+
+- [Create an image from an Azure Virtual Machine (must be generalized beforehand)](https://www.terraform.io/docs/providers/azurerm/r/image.html) using **azurerm_image**
 
 ## 5. Deploy the networking resources
 
@@ -1198,6 +1211,15 @@ Click the following button to deploy the networking resources with an Azure Load
 
 Refer to [Create a Basic Load Balancer by using the Azure portal](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) and [Create a Standard Load Balancer to load balance VMs using the Azure portal](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal) to learn how to create either Azure Load Balancer SKU using the Azure Portal.
 
+### Hashicorp Terraform
+
+- [Create an Azure Virtual Network](https://www.terraform.io/docs/providers/azurerm/r/virtual_network.html) using **azurerm_virtual_network**
+- [Create an inbound public IP address for the load balancer](https://www.terraform.io/docs/providers/azurerm/r/public_ip.html) using **azurerm_public_ip**
+- [Create an Azure Load Balancer](https://www.terraform.io/docs/providers/azurerm/r/loadbalancer_rule.html) using **azurerm_lb_rule**
+- [Create an Azure Load Balancer health probe for HTTP](https://www.terraform.io/docs/providers/azurerm/r/loadbalancer_probe.html) using **azurerm_lb_probe**
+- [Create an inbound NAT pool](https://www.terraform.io/docs/providers/azurerm/r/loadbalancer_nat_pool.html) using **azurerm_lb_nat_pool**
+- [Create an inbound rule](https://www.terraform.io/docs/providers/azurerm/r/loadbalancer_rule.html) using **azurerm_lb_rule**
+
 ## 6. Deploy the Azure Cache for Redis
 
 Azure Cache for Redis is based on the popular software Redis. It is typically used as a cache to improve the performance and scalability of systems that rely heavily on backend data-stores.
@@ -1462,6 +1484,10 @@ Refer to [Create a cache](https://docs.microsoft.com/azure/azure-cache-for-redis
 Refer to [How to configure Redis clustering for a Premium Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-clustering) that describes how to configure clustering in a premium Azure Cache for Redis instance using the Azure Portal.
 
 Refer to [How to configure Virtual Network Support for a Premium Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet) that describes how to configure virtual network support for a premium Azure Cache for Redis instance using the Azure Portal.
+
+### Hashicorp Terraform
+
+- [Create an Azure Cache for Redis](https://www.terraform.io/docs/providers/azurerm/r/redis_cache.html) using **azurerm_redis_cache**
 
 ## 7. Deploy the Azure Database for MySQL
 
@@ -1779,6 +1805,11 @@ Refer to [How to create and manage read replicas in Azure Database for MySQL usi
 
 Refer to [Create and manage Azure Database for MySQL VNet service endpoints and VNet rules by using the Azure portal](https://docs.microsoft.com/azure/mysql/howto-manage-vnet-using-portal?toc=%2fazure%2fvirtual-network%2ftoc.json), to learn how to enable security measures for your database.
 
+### Hashicorp Terraform
+
+- [Create an Azure Database for MySQL server](https://www.terraform.io/docs/providers/azurerm/r/mysql_server.html) using **azurerm_mysql_server**
+- [Create an Azure Database for MySQL database](https://www.terraform.io/docs/providers/azurerm/r/mysql_database.html) using **azurerm_mysql_database**
+
 ## 8. Create the Azure Storage account and container
 
 Azure Storage is Microsoft's cloud storage solution for modern data storage scenarios, like storing flat files. Azure Storage offers a massively scalable object store for data objects, a file system service for the cloud, a messaging store for reliable messaging, and a NoSQL store.
@@ -2036,6 +2067,10 @@ This ARM template is an example template that deploys an Azure storage account, 
 Refer to [Create a storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal#create-a-storage-account-1), showing you how to create an Azure Storage account using the Azure Portal.
 
 Refer to [Create a container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container), showing you how to create an storage containe in the Azure portal.
+
+### Hashicorp Terraform
+
+- [Create an Azure Storage account](https://www.terraform.io/docs/providers/azurerm/r/storage_account.html) using **azurerm_storage_account**
 
 ## 9. Create a Virtual Machine Scale Set
 
@@ -2375,6 +2410,10 @@ This ARM template is an example template that deploys an Azure virtual machine s
 
 Refer to [Create a virtual machine scale set in the Azure portal](https://docs.microsoft.com/azure/virtual-machine-scale-sets/quick-create-portal) to learn how to deploy a VM scale set using the Azure Portal.
 
+### Hashicorp Terraform
+
+- [Create an Azure Virtual Machine Scale Set](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine_scale_set.html) using **azurerm_virtual_machine_scale_set**
+
 ## 10. Create the autoscaler
 
 It monitors the performance of the Virtual Machine instances in your scale set. These autoscale rules increase or decrease the number of Virtual Machine instances in response to these performance metrics.
@@ -2594,6 +2633,10 @@ This ARM template is an example template that defines the autoscaling profile, e
 
 Refer to [Automatically scale a virtual machine scale set in the Azure portal](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal), showing you how to create autoscale rules in the Azure Portal.
 
+### Hashicorp Terraform
+
+- [Define an autoscaling profile](https://www.terraform.io/docs/providers/azurerm/r/autoscale_setting.html) using **azurerm_autoscale_setting**
+
 ## 11. Enable protection against DDoS attacks
 
 Distributed denial of service (DDoS) attacks are some of the largest availability and security concerns facing game studios that are moving their backends to the cloud. DDoS Protection Standard protects resources in a virtual network including public IP addresses associated with virtual machines and load balancers. [Learn more](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
@@ -2704,6 +2747,10 @@ This ARM template is an example template that creates a DDoS protection plan and
 ### Azure Portal
 
 Refer to [Manage Azure DDoS Protection Standard using the Azure portal](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection) to learn how to enable AzureDDoS Standard Protection via Azure Portal.
+
+### Hashicorp Terraform
+
+- [Enable an Azure DDoS Protection plan](https://www.terraform.io/docs/providers/azurerm/r/network_ddos_protection_plan.html) using **azurerm_network_ddos_protection_plan**
 
 ## 12. Update the Virtual Machine instances from the Virtual Machine Scale Set
 
