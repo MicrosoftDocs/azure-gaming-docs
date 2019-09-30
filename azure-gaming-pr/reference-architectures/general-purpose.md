@@ -9,7 +9,7 @@ ms.author: brpeek
 ms.service: azure
 ---
 
-# Generla Purpose Reference Architectures
+# General Purpose Reference Architectures
 
 These reference architectures describe a variety of general purpose backend use cases and implementations with different alternatives, enabling you to architect a cloud solution that works for your game.
 
