@@ -17,4 +17,4 @@ These reference architectures describe a variety of general purpose backend use 
 
 Following are some web services backend use cases for you to explore:
 
-- [LAMP](./general-purpose-lamp.md): the archetypal model of web service stacks, has many different uses from managing friends lists to storing in-game chat conversations to multiplayer matchmaking and more! 
+- [LAMP](./general-purpose-lamp.md): the archetypal model of web service stacks, has many different uses from managing friends lists to storing in-game chat conversations to enabling multiplayer matchmaking and more! 
