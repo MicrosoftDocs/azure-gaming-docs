@@ -401,9 +401,7 @@ az vm open-port \
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell
 This operation was previously done using the -OpenPorts parameter from the New-AzVM command.
-```
 
 # [Windows Batch](#tab/bat)
 
