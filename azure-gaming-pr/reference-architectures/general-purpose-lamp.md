@@ -17,10 +17,10 @@ ms.service: azure
 
 ### Abstract
 
-[![Abstract single region LAMP architecture](media/webstack/webstack-lamp-single-region-general.png)](media/webstack/webstack-lamp-single-region-general.png)
+[![Abstract single region LAMP architecture](media/general-purpose/general-purpose-lamp-single-region-general.png)](media/general-purpose/general-purpose-lamp-single-region-general.png)
 
 ### Azure specific
-[![Azure single region LAMP architecture](media/webstack/webstack-lamp-single-region.png)](media/webstack/webstack-lamp-single-region.png)
+[![Azure single region LAMP architecture](media/general-purpose/general-purpose-lamp-single-region.png)](media/general-purpose/general-purpose-lamp-single-region.png)
 
 ### Architecture services
 
@@ -57,7 +57,7 @@ The golden image approach, also known as immutable deployments has its advantage
 You can also do a combination of both, building a golden image that has the most immutable elements, like the OS version, Apache version, PHP version and your custom tools, while leaving out the PHP scripts that require more frequent update.
 
 > [!IMPORTANT]
-> Refer to [Deploy a single region LAMP architecture](./webstack-lamp-deployment-single-region.md) to find a detailed step by step to deploy this architecture using different methods.
+> Refer to [Deploy a single region LAMP architecture](./general-purpose-lamp-deployment-single-region.md) to find a detailed step by step to deploy this architecture using different methods.
 
 ### Distribute read workload to multiple MySQL read replicas in PHP
 
