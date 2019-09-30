@@ -159,7 +159,7 @@ To start, open the Azure Calculator using any of the different pre-set estimatio
 
 | | Small T-shirt configuration|Medium T-shirt configuration|Large T-shirt configuration|
 |----------|----------|----------|-----------|
-|Single region| **TODO** | **TODO** | **TODO** |
+|Single region| [Calculator](https://azure.com/e/868f344674504e41a6bb87f3e838b128) | [Calculator](https://azure.com/e/041f3f70c85545d0b50868ae044c680a) | [Calculator](https://azure.com/e/1f57f2008dff494596198d3ffc9780c5) |
 
 Set the **Region** in each section to the region you expect to run this from, Japan West for example.
 
