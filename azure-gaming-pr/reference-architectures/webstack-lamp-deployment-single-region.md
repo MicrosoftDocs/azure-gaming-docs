@@ -1565,9 +1565,7 @@ az extension add --name db-up
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell
-Not applicable
-```
+Not applicable.
 
 # [Windows Batch](#tab/bat)
 
@@ -1668,9 +1666,7 @@ az network vnet subnet create \
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell
-Not supported, use either Azure CLI or ARM templates
-```
+Not supported, use either Azure CLI or ARM templates.
 
 # [Windows Batch](#tab/bat)
 
@@ -1707,9 +1703,7 @@ az mysql server vnet-rule create \
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell
-Not supported, use either Azure CLI or ARM templates
-```
+Not supported, use either Azure CLI or ARM templates.
 
 # [Windows Batch](#tab/bat)
 
@@ -1740,9 +1734,7 @@ az mysql server replica create \
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell
-Not supported, use either Azure CLI or ARM templates
-```
+Not supported, use either Azure CLI or ARM templates.
 
 # [Windows Batch](#tab/bat)
 
@@ -1889,9 +1881,7 @@ export STORAGECONNECTIONSTRING=`az storage account show-connection-string -n $ST
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell
-Not required
-```
+Not required.
 
 # [Windows Batch](#tab/bat)
 
@@ -2267,9 +2257,7 @@ az vmss update \
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell
-Previously setup during the creation of the Azure Virtual Machine Scale Set
-```
+Previously setup during the creation of the Azure Virtual Machine Scale Set.
 
 # [Windows Batch](#tab/bat)
 
@@ -2298,9 +2286,7 @@ az vmss update-instances \
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell
-Not required in this case using PowerShell as there were no changes because the health probe was added from the beginning tp the Azure Virtual Machine Scale Set
-```
+Not required in this case using PowerShell as there were no changes because the health probe was added from the beginning tp the Azure Virtual Machine Scale Set.
 
 # [Windows Batch](#tab/bat)
 
@@ -2460,9 +2446,7 @@ az monitor autoscale create \
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
-```azurepowershell
-In PowerShell, first you create the rules and then you enable the autoscaler, rather than creating it without rules like in Azure CLI
-```
+In PowerShell, first you create the rules and then you enable the autoscaler, rather than creating it without rules like in Azure CLI.
 
 # [Windows Batch](#tab/bat)
 
