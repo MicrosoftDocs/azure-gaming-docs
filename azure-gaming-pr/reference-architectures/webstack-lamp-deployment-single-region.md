@@ -1171,6 +1171,8 @@ if %LBSKU%==Standard CALL az network lb rule create ^
 
 ### Azure Resource Manager template
 
+This Azure Resource Manager (ARM) template is an example template that deploys an Azure Virtual Network and an Azure Load Balancer. It also creates an inbound public IP address for the load balancer, Azure Load Balancer health probes for HTTP and HTTPS, an inbound NAT pool with backend port 22 and load balancing inbound rules for the port 80.
+
 Click the following button to deploy the networking resources with an Azure Load Balancer **Basic**:
 
 <a href="https://aka.ms/arm-gaming-lamp-create-networking" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
@@ -1435,6 +1437,8 @@ CALL az redis list-keys ^
 ---
 
 ### Azure Resource Manager template
+
+This Azure Resource Manager (ARM) template is an example template that deploys an Azure Cache for Redis.
 
 <a href="https://aka.ms/arm-gaming-lamp-create-redis" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
@@ -1750,6 +1754,8 @@ CALL az mysql server replica create ^
 
 ### Azure Resource Manager template
 
+This Azure Resource Manager (ARM) template is an example template that deploys an Azure Database for MySQL server, a number of replicas based on the 'Number Of Replica' parameter, and a sample database. It also creates and enables Azure Database for MySQL Virtual Network service endpoints, and creates a Virtual Network rule on the MySQL server to secure it to the subnet.
+
 <a href="https://aka.ms/arm-gaming-lamp-create-mysql" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 ### Azure Portal
@@ -2007,6 +2013,8 @@ CALL az storage account network-rule add ^
 ---
 
 ### Azure Resource Manager template
+
+This ARM template is an example template that deploys an Azure storage account, creates a storage container into the storage account, enables service endpoint for Azure Storage on the Virtual Network and subnet and adds a network rule for a virtual network and subnet. It gets the connection string from the storage account and provides it in the 'Output' field.
 
 <a href="https://aka.ms/arm-gaming-lamp-create-storage" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
@@ -2346,6 +2354,8 @@ CALL az vmss update ^
 
 ### Azure Resource Manager template
 
+This ARM template is an example template that deploys an Azure virtual machine scale set and associates the load balancer health probe to the scale set.
+
 <a href="https://aka.ms/arm-gaming-lamp-create-vmss" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 ### Azure Portal
@@ -2563,6 +2573,8 @@ CALL az monitor autoscale rule create ^
 
 ### Azure Resource Manager template
 
+This ARM template is an example template that defines the autoscaling profile, enables Azure Virtual Machines autoscale on virtual machine scale set for scaling out, and enables autoscale on virtual machine scale set for scaling in.
+
 <a href="https://aka.ms/arm-gaming-lamp-create-autoscaler" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 ### Azure Portal
@@ -2671,6 +2683,8 @@ CALL az network vnet update ^
 ---
 
 ### Azure Resource Manager template
+
+This ARM template is an example template that creates a DDoS protection plan and enables the DDoS Standard plan on the Virtual Network.
 
 <a href="https://aka.ms/arm-gaming-lamp-enable-ddos-protection" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
