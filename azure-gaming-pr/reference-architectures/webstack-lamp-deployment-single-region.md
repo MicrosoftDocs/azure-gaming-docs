@@ -1173,7 +1173,13 @@ if %LBSKU%==Standard CALL az network lb rule create ^
 
 ### Azure Resource Manager template
 
+Click the following button to deploy the networking resources with an Azure Load Balancer **Basic**:
+
 <a href="https://aka.ms/arm-gaming-lamp-create-networking" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+  
+Click the following button to deploy the networking resources with an Azure Load Balancer **Standard**:
+
+<a href="https://aka.ms/arm-gaming-lamp-create-networking-standard" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 ### Azure Portal
 
