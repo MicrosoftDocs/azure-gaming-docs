@@ -2071,6 +2071,7 @@ Refer to [Create a container](https://docs.microsoft.com/azure/storage/blobs/sto
 ### Hashicorp Terraform
 
 - [Create an Azure Storage account](https://www.terraform.io/docs/providers/azurerm/r/storage_account.html) using **azurerm_storage_account**
+- [Create a container within an Azure Storage account](https://www.terraform.io/docs/providers/azurerm/r/storage_container.html) using **azurerm_storage_container**
 
 ## 9. Create a Virtual Machine Scale Set
 
