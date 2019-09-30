@@ -2936,6 +2936,13 @@ CALL az vmss update-instances ^
 
 ### Azure Resource Manager template
 
+This ARM template is an example template that uploads a bunch of PHP files to the remote Virtual Machine instances and run a bash script that will decompress the PHP file remotely.
+
+> [!NOTE]
+> Unlike the full bash [12-update-app.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/12-update-app.sh) or Windows batch [12-update-app.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/12-update-app.bat) scripts, the template doesn't include file upload to blob storage. You can run [Initialize variables](#initialize-variables-4), [Get the connection string from the storage account](get-the-connection-string-from-the-storage-account-1), [Upload both the application files and update application script to the blob storage](#upload-both-the-application-files-and-update-application-script-to-the-blob-storage) and [Get the URLs from the uploaded files](#get-the-urls-from-the-uploaded-files) or upload files to the blob storage manually.
+
+The file path should be `<Blob Url>/app/package.tar.gz` and `<Script Url>/scripts/update-app.sh`.
+
 <a href="https://aka.ms/arm-gaming-lamp-update-app" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 ## Recapitulation
