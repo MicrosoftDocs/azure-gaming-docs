@@ -144,6 +144,15 @@ For someone implementing this system, these are the important pieces you will ne
 
     `(# or GBs of capacity) + (# of write operations) + (# of list/create operations) + (# of read operations) + (# of GBs retrieved) + (# of GBs written)`
 
+6. Bandwidth
+
+    On top of that you have to add the bandwidth cost, where:
+
+    - Inbound data transfers (i.e. data going into Azure data centers): Free
+    - Outbound data transfers (for West US) (i.e. data going out of Azure data centers) is charged using this formula:
+
+    `(# of GBs transferred outbound)`
+
 #### Open the calculator
 
 To start, open the Azure Calculator using any of the different pre-set estimations:
@@ -151,8 +160,7 @@ To start, open the Azure Calculator using any of the different pre-set estimatio
 | | Small T-shirt configuration|Medium T-shirt configuration|Large T-shirt configuration|
 |----------|----------|----------|-----------|
 |Single region| **TODO** | **TODO** | **TODO** |
-|Multi region| **TODO** | **TODO** | **TODO** |
 
-Set the **Region** in each section to the region you expect to run this from, Japan East for example.
+Set the **Region** in each section to the region you expect to run this from, Japan West for example.
 
 Make any adjustments you consider based on your own scenario.
