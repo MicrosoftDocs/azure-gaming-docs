@@ -108,41 +108,41 @@ For someone implementing this system, these are the important pieces you will ne
 
 1. Azure Virtual Machine instances
 
-There are no incremental charges for the Virtual Machine Scale Sets service itself, you are only charged for the compute instances you choose, as well as the other underlying infrastructure resources consumed such as storage and networking.
-
-Review the [harware](./multiplayer.md#hardware) considerations to determine the most appropriate Virtual Machine type to use and the number of instances you should start with in your architecture, based on your specific needs. Bear in mind that from your proof of concept (PoC) until your backend is used fully in production, you may need to make adjustments.
-
-To estimate the monthly compute cost, apply this formula, knowing that pricing may vary per region:
-
-    **(# of Virtual Machine instances * # of hours running per month) + (# of Virtual Machine instances * # of GBs per instance)**
-
+    There are no incremental charges for the Virtual Machine Scale Sets service itself, you are only charged for the compute instances you choose, as well as the other underlying infrastructure resources consumed such as storage and networking.
+    
+    Review the [harware](./multiplayer.md#hardware) considerations to determine the most appropriate Virtual Machine type to use and the number of instances you should start with in your architecture, based on your specific needs. Bear in mind that from your proof of concept (PoC) until your backend is used fully in production, you may need to make adjustments.
+    
+    To estimate the monthly compute cost, apply this formula, knowing that pricing may vary per region:
+    
+    `(# of Virtual Machine instances * # of hours running per month) + (# of Virtual Machine instances * # of GBs per instance)`
+    
 2. Azure Cache for Redis
 
-For selecting the right cache for your situation, review [What Azure Cache for Redis offering and size should I use?](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#what-azure-cache-for-redis-offering-and-size-should-i-use). To estimate the monthly Azure for Redis Cache cost, apply this formula, knowing that pricing varies per instance SKU (Premium > Standard > Basic) and also may vary per region:
+    For selecting the right cache for your situation, review [What Azure Cache for Redis offering and size should I use?](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#what-azure-cache-for-redis-offering-and-size-should-i-use). To estimate the monthly Azure for Redis Cache cost, apply this formula, knowing that pricing varies per instance SKU (Premium > Standard > Basic) and also may vary per region:
+    
+    `(# of instances * # of hours running per month) + (# of GBs per instance for persistence if enabled in Premium SKU)`
 
-    **(# of instances * # of hours running per month) + (# of GBs per instance for persistence if enabled in Premium SKU)**
-
-If you need a really large memory amount, you will need to use the Premium SKU and create a cluster where each node consists of a primary/replica cache pair for high availability.
-
+    If you need a really large memory amount, you will need to use the Premium SKU and create a cluster where each node consists of a primary/replica cache pair for high availability.
+    
 3. Azure Database for MySQL
 
-To estimate the monthly Azure Database for MySQL cost, apply this formula, knowing that pricing varies per database tier (Memory Optimized > General Purpose > Basic) and compute tier, and may also vary per region:
+    To estimate the monthly Azure Database for MySQL cost, apply this formula, knowing that pricing varies per database tier (Memory Optimized > General Purpose > Basic) and compute tier, and may also vary per region:
+    
+    `(# of servers * # of hours running per month) + (# of GBs provisioned) + (# of GBs in additional backup storage)`
 
-    **(# of servers * # of hours running per month) + (# of GBs provisioned) + (# of GBs in additional backup storage)**
-
-Note that there is no additional charge for backup storage for up to 100% of your total provisioned storage.
-
+    Note that there is no additional charge for backup storage for up to 100% of your total provisioned storage.
+    
 4. Azure Load Balancer
 
-Basic Azure Load Balancer is free of charge while the Standard Azure Load Balancer has a charge associated with it. To estimate the monthly Standard Load Balanacer cost, apply this formula, knowing that pricing may vary per region:
-
-    **(# or GBs of data processed) + (# of rules processed * # of hours running)**
+    Basic Azure Load Balancer is free of charge while the Standard Azure Load Balancer has a charge associated with it. To estimate the monthly Standard Load Balanacer cost, apply this formula, knowing that pricing may vary per region:
+    
+    `(# or GBs of data processed) + (# of rules processed * # of hours running)`
 
 5. Azure Storage
 
-To estimate the monthly storage cost, apply this formula, knowing that pricing varies per performance tier (Premium > Standard), redundancy alternative and access tier (Hot > Cool > Archive), and may also vary per region:
-
-    **(# or GBs of capacity) + (# of write operations) + (# of list/create operations) + (# of read operations) + (# of GBs retrieved) + (# of GBs written)**
+    To estimate the monthly storage cost, apply this formula, knowing that pricing varies per performance tier (Premium > Standard), redundancy alternative and access tier (Hot > Cool > Archive), and may also vary per region:
+    
+    `(# or GBs of capacity) + (# of write operations) + (# of list/create operations) + (# of read operations) + (# of GBs retrieved) + (# of GBs written)`
 
 #### Open the calculator
 
