@@ -11,6 +11,33 @@ ms.service: azure
 
 # LAMP Reference Architectures
 
+You may be already rocking a LAMP architecture on-premises and moving it to Azure couldn't be simpler. Follow this reference architecture to learn how to deploy it both effectively and efficiently.
+
+There are some added **benefits from using a public cloud** too, just to name a few:
+
+- It’s so easy to add new compute and database nodes on demand, so you can set up a much lighter infrastructure and scale up and down to fit your needs, as you have the assurance that you could add more servers in a short period of time.
+- Get performance boosts by using latest and greatest hardware, meaning you may be able to do more with less.
+- Gain improved reliability with zero effort as all Azure nodes are automatically backed up and automatically fail over if anything goes wrong.
+- Convenience, in the sense that you can focus more on the gaming aspect of your business, and less on IT that requires a lot of work to ensure that everything runs like clockwork in the backend.
+
+And once you are in the public cloud, you can continue the journey at a later stage using more recent cloud services that may be more optimum for enabling some features that you are considering to implement or are already in service. As an example, you may have implemented a multiplayer matchmaker leveraging LAMP, and a [serverless approach](./multiplayer-asynchronous-serverless) could be something to consider as it fits that feature pretty nicely.
+
+## Case studies
+
+:::row:::
+    :::column:::
+
+<img src="https://ms-f7-sites-01-cdn.azureedge.net/docs/stories/gameinsights/resources/6c5cf70e-1e44-4d01-83b5-492486cc5866/1105622815614042160" alt="GameInsight" width="60"/>
+
+    :::column-end:::
+    :::column:::
+<br><br>[Game developer dynamically scales fun in the cloud](https://customers.microsoft.com/story/gameinsights)
+
+*"Azure had everything we needed to run the LAMP stack."*<br>*"Azure “played well” with Terraform"*<br>Alex Shirov: Chief Technology Officer
+
+    :::column-end:::
+:::row-end:::
+
 ## Single region
 
 ### Architecture diagram
@@ -64,24 +91,6 @@ You can also do a combination of both, building a golden image that has the most
 Consider leveraging [mysqlnd_ms](https://www.php.net/manual/book.mysqlnd-ms.php) (a plugin for PHP’s native driver for MySQL) that can be used as load balancer proxy to distribute read workload to multiple read replicas.
 
 You can specify server name, user name, and password for connecting to a MySQL Server, so it can work to load balance and scale out by distributing read workload to Azure Database for MySQL read replicas.
-
-## Case studies
-
-:::row:::
-    :::column:::
-
-<img src="https://ms-f7-sites-01-cdn.azureedge.net/docs/stories/gameinsights/resources/6c5cf70e-1e44-4d01-83b5-492486cc5866/1105622815614042160" alt="GameInsight" width="60"/>
-
-    :::column-end:::
-    :::column:::
-
-<br><br>
-[Game developer dynamically scales fun in the cloud](https://customers.microsoft.com/story/gameinsights)
-
-*"Azure had everything we needed to run the LAMP stack."*<br>*"Azure “played well” with Terraform"*
-
-    :::column-end:::
-:::row-end:::
 
 ## Pricing
 
