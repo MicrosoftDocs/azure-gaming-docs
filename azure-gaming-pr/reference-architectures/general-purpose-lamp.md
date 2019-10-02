@@ -155,10 +155,7 @@ For someone implementing this system, these are the important pieces you will ne
 
 6. Bandwidth
 
-    On top of that you have to add the bandwidth cost, where:
-
-    - Inbound data transfers (i.e. data going into Azure data centers): Free
-    - Outbound data transfers (for West US) (i.e. data going out of Azure data centers) is charged using this formula:
+    On top of that you have to add the bandwidth cost. While inbound data transfers (i.e. data going into Azure data centers) are free, outbound data transfers (i.e. data going out of Azure data centers) are charged using this formula:
 
     `(# of GBs transferred outbound)`
 
