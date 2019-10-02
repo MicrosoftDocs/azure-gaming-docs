@@ -20,7 +20,7 @@ There are some added **benefits from using a public cloud** too, just to name a 
 - Gain improved reliability with zero effort as all Azure nodes are automatically backed up and automatically fail over if anything goes wrong.
 - Convenience, in the sense that you can focus more on the gaming aspect of your business, and less on IT that requires a lot of work to ensure that everything runs like clockwork in the backend.
 
-And once you are in the public cloud, you can **continue the journey** at a later stage using more recent cloud services that may be more optimum for enabling some features that you are considering to implement or are already in service. As an example, you may have implemented a multiplayer matchmaker leveraging LAMP, and a [serverless approach](./multiplayer-asynchronous-serverless) could be something to consider as it fits that feature pretty nicely.
+And once you are in the public cloud, you can **continue the journey** at a later stage using more recent cloud services that may be more optimum for enabling some features that you are considering to implement or are already in service. As an example, you may have implemented a multiplayer matchmaker leveraging LAMP, and a [serverless approach](./multiplayer-asynchronous-serverless.md) could be something to consider as it fits that feature pretty nicely.
 
 ## Case studies
 
