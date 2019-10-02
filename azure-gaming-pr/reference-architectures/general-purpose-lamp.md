@@ -33,7 +33,7 @@ And once you are in the public cloud, you can **continue the journey** at a late
     :::column:::
 <br><br>[Game developer dynamically scales fun in the cloud](https://customers.microsoft.com/story/gameinsights)
 
-*"Azure had everything we needed to run the LAMP stack."*<br>*"Azure “played well” with Terraform"*<br>Alex Shirov: Chief Technology Officer
+*"Azure had everything we needed to run the LAMP stack."*<br>*"Azure “played well” with Terraform."*<br>Alex Shirov: Chief Technology Officer
 
     :::column-end:::
 :::row-end:::
