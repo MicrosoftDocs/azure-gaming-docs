@@ -2173,7 +2173,7 @@ SET VMSSOVERPROVISIONING=--disable-overprovision
 
 #### Create a scale set
 
-[Learn more about this command](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-create).
+Learn more about the [az-vmss-create Azure CLI](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) and [New-AzVmss PowerShell](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) commands.
 
 # [Bash](#tab/bash)
 
