@@ -1291,8 +1291,8 @@ $SUBNETID='/subscriptions/'+$YOURSUBSCRIPTIONID+'/resourceGroups/'+$RESOURCEGROU
 ```bat
 SET REDISNAME=%PREFIX%Redis
 SET REDISNAMEUNIQUE=%REDISNAME%%RANDOM%
-SET REDISVMSIZE=P1
-SET REDISSKU=Premium
+SET REDISVMSIZE=C1
+SET REDISSKU=Standard
 SET REDISSHARDSTOCREATE=2
 SET VNETNAME=%PREFIX%VNET
 SET REDISSUBNETNAME=%REDISNAME%Subnet
@@ -1580,7 +1580,10 @@ $MYSQLRULENAME=$MYSQLNAME+'Rule'
 # [Windows Batch](#tab/bat)
 
 ```bat
+SET PREFIXLOWER=mygamebackend
 SET MYSQLNAME=%PREFIX%MySQL
+SET MYSQLNAMELOWER=%PREFIXLOWER%mysql
+SET MYSQLNAMEUNIQUE=%MYSQLNAMELOWER%RANDOM%
 SET MYSQLUSERNAME=azuremysqluser
 SET MYSQLPASSWORD=CHang3thisP4Ssw0rD
 SET MYSQLDBNAME=gamedb
@@ -1589,7 +1592,7 @@ SET MYSQLGEOREDUNDANTBACKUP=Disabled
 SET MYSQLSKU=GP_Gen5_2
 SET MYSQLSTORAGEMBSIZE=51200
 SET MYSQLVERSION=5.7
-SET MYSQLREADREPLICANAME=%MYSQLNAME%Replica
+SET MYSQLREADREPLICANAME=%MYSQLNAMEUNIQUE%Replica
 SET MYSQLREADREPLICAREGION=westus
 SET MYSQLSUBNETNAME=%MYSQLNAME%Subnet
 SET MYSQLSUBNETADDRESSPREFIX=10.0.2.0/24
@@ -1680,7 +1683,7 @@ New-AzResource `
 ```bat
 CALL az mysql up ^
  --resource-group %RESOURCEGROUPNAME% ^
- --server-name %MYSQLNAME% ^
+ --server-name %MYSQLNAMEUNIQUE% ^
  --admin-user %MYSQLUSERNAME% ^
  --admin-password %MYSQLPASSWORD% ^
  --backup-retention %MYSQLBACKUPRETAINEDDAYS% ^
@@ -1771,7 +1774,7 @@ Learn more about the [az mysql server replica create](https://docs.microsoft.com
 az mysql server replica create \
  --resource-group $RESOURCEGROUPNAME \
  --name $MYSQLREADREPLICANAME \
- --source-server $MYSQLNAME \
+ --source-server $MYSQLNAMEUNIQUE \
  --location $MYSQLREADREPLICAREGION
 ```
 
@@ -1785,7 +1788,7 @@ Not supported, use either Azure CLI or ARM templates.
 CALL az mysql server replica create ^
  --resource-group %RESOURCEGROUPNAME% ^
  --name %MYSQLREADREPLICANAME% ^
- --source-server %MYSQLNAME% ^
+ --source-server %MYSQLNAMEUNIQUE% ^
  --location %MYSQLREADREPLICAREGION%
 ```
 
@@ -1875,7 +1878,9 @@ $STORAGERULENAME=$STORAGENAME+'Rule'
 # [Windows Batch](#tab/bat)
 
 ```bat
-SET STORAGENAMEUNIQUE=mygamebackendstrg%RANDOM%
+SET STORAGENAME=%PREFIX%STRG
+SET STORAGENAMELOWER=%PREFIXLOWER%strg%RANDOM%
+SET STORAGENAMEUNIQUE=%STORAGENAMELOWER%%RANDOM%
 SET STORAGESKU=Standard_LRS
 SET STORAGECONTAINERNAME=%STORAGENAMELOWER%cntnr
 SET STORAGESUBNETNAME=%STORAGENAME%Subnet
@@ -1926,7 +1931,7 @@ CALL az storage account create ^
 # [Bash](#tab/bash)
 
 ```azurecli-interactive
-export STORAGECONNECTIONSTRING=`az storage account show-connection-string -n $STORAGENAME -g $RESOURCEGROUPNAME --query connectionString -o tsv`
+export STORAGECONNECTIONSTRING=`az storage account show-connection-string -n $STORAGENAMEUNIQUE -g $RESOURCEGROUPNAME --query connectionString -o tsv`
 ```
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
@@ -1936,7 +1941,7 @@ Not required.
 # [Windows Batch](#tab/bat)
 
 ```bat
-CALL az storage account show-connection-string -n %STORAGENAME% -g %RESOURCEGROUPNAME% --query connectionString -o tsv > connectionstring.tmp
+CALL az storage account show-connection-string -n %STORAGENAMEUNIQUE% -g %RESOURCEGROUPNAME% --query connectionString -o tsv > connectionstring.tmp
 SET /p STORAGECONNECTIONSTRING=<connectionstring.tmp
 CALL DEL connectionstring.tmp
 ```
