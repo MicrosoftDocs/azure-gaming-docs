@@ -136,7 +136,7 @@ More specifically you can also query what Azure regions support specific Azure L
 
 ```azurecli-interactive
 az vm list-skus --size Standard_B1s --query [].locationInfo[].location
-az vm list-skus --size Standard_F4s_v2 --query [].locationInfo[].location
+az vm list-skus --size Standard_F16s_v2 --query [].locationInfo[].location
 az vm list-skus --size Standard_F32s_v2 --query [].locationInfo[].location
 ```
 
@@ -144,7 +144,7 @@ az vm list-skus --size Standard_F32s_v2 --query [].locationInfo[].location
 
 ```azurepowershell-interactive
 Get-AzComputeResourceSku | where {$_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_B1s")}
-Get-AzComputeResourceSku | where {$_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_F4s_v2")}
+Get-AzComputeResourceSku | where {$_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_F16s_v2")}
 Get-AzComputeResourceSku | where {$_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_F32s_v2")}
 ```
 
@@ -152,7 +152,7 @@ Get-AzComputeResourceSku | where {$_.ResourceType.Contains("virtualMachines") -a
 
 ```bat
 CALL az vm list-skus --size Standard_B1s --query [].locationInfo[].location
-CALL az vm list-skus --size Standard_F4s_v2 --query [].locationInfo[].location
+CALL az vm list-skus --size Standard_F16s_v2 --query [].locationInfo[].location
 CALL az vm list-skus --size Standard_F32s_v2 --query [].locationInfo[].location
 ```
 
@@ -215,7 +215,7 @@ On top of the general configuration variables, the following variables are also 
 | **LOGINUSERNAME** | azureuser | | | | The admin username to connect to the Virtual Machine after being deployed.
 | **VMNAME** | myVirtualMachine | | | | The name of the Virtual Machine.
 | **VMNAME** | Canonical:UbuntuServer:16.04-LTS:latest | | | | The Linux OS that will be installed in the Virtual Machine.
-| **VMSIZE** | Standard_B1s | Standard_B1s | Standard_F4s_v2 | Standard_F32s_v2 | Virtual Machine option. Be aware that Premium SSD is not supported in every Virtual Machine option. [Learn more](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#Linux).
+| **VMSIZE** | Standard_B1s | Standard_B1s | Standard_F16s_v2 | Standard_F32s_v2 | Virtual Machine option. Be aware that Premium SSD is not supported in every Virtual Machine option. [Learn more](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#Linux).
 | **VMDATADISKSIZEINGB** | 5 | 5 | 10 | 30 | How much persistent disk storage you are going to allocate per Virtual Machine. [Benefits of using managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#benefits-of-managed-disks).
 
 > [!TIP]
@@ -1518,7 +1518,7 @@ On top of the previously defined variables, the following variables are also bei
 | **MYSQLBACKUPRETAINEDDAYS** | 7 | 7 | 15 | 30 | The backup retention period. [Learn more](https://docs.microsoft.com/azure/mysql/concepts-backup).
 | **MYSQLGEOREDUNDANTBACKUP** | Disabled | Disabled | Disabled | Enabled | [Learn more](https://docs.microsoft.com/azure/mysql/concepts-backup#backup-redundancy-options). Important: Configuring locally redundant or geo-redundant storage for backup is only allowed during server create. Once the server is provisioned, you cannot change the backup storage redundancy option.
 | **MYSQLSKU** | GP_Gen5_2 | GP_Gen5_2 | GP_Gen5_8 | MO_Gen5_16 | **Important**: There is a connection limit depending on the SKU type and number of cores. [Learn more](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
-| **MYSQLSTORAGEMBSIZE** | 51200 | 51200 | 256000 | 1024000 | Space and IOPS vary depending on the SKU and allocated storage size. [Learn more](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
+| **MYSQLSTORAGEMBSIZE** | 51200 | 8192 | 4096000 | 8192000 | Space and IOPS vary depending on the SKU and allocated storage size. [Learn more](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
 | **MYSQLVERSION** | 5.7 | 5.7 | 5.7 | 5.7 | MySQL version.
 | **MYSQLREADREPLICANAME** | | | MYSQLNAMEUNIQUE + Replica | MYSQLNAMEUNIQUE + Replica1 ... | Read replica MySQL name.
 | **MYSQLREADREPLICAREGION** | | | REGIONNAME | REGIONNAME | Azure region where the read replica will be deployed.
@@ -2106,8 +2106,8 @@ On top of the previously defined variables, the following variables are also bei
 |Variable|Default value|Small T-shirt value|Medium T-shirt value|Large T-shirt value|Description|
 |----------|----------|-----------|----------|----------|-----------|
 | **VMSSNAME** | PREFIX + VMSS | | | | The name of the scale set.
-| **VMSSSKUSIZE** | Standard_B1s | Standard_B1s | Standard_F4s_v2 | Standard_F32s_v2 | The SKU to setup, either standard, premium or ultra.
-| **VMSSVMTOCREATE** | 2 | 2 | 10 | 20 | The number of Virtual Machine instances that will be deployed upon creation of the scale set.
+| **VMSSSKUSIZE** | Standard_B1s | Standard_B1s | Standard_F16s_v2 | Standard_F32s_v2 | The SKU to setup, either standard, premium or ultra.
+| **VMSSVMTOCREATE** | 2 | 2 | 20 | 50 | The number of Virtual Machine instances that will be deployed upon creation of the scale set.
 | **VMSSSTORAGESKU** | Standard_LRS | Standard_LRS | Premium_LRS | Premium_LRS | The storage SKU to setup, either standard, premium or ultra.
 | **VMSSACELERATEDNETWORKING** | false | false | true | true | [Learn more](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#benefits) about the benefits of accelerated networking.
 | **VMSSUPGRADEPOLICY** | Manual | Manual | Rolling | Rolling | Manual, Automatic or Rolling. Explained above.
