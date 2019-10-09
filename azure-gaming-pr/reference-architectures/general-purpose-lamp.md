@@ -57,6 +57,7 @@ And once you are in the public cloud, you can **continue the journey** at a late
 - [Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-overview) - Cache to improve the performance and scalability of the architecture.
 - [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) - Distributes the traffic across the different Azure Linux Virtual Machine instances from the Azure Virtual Machine Scale Set.
 - [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction) - Stores the flat files.
+- [Azure DDoS Protection Standard](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview) - Azure DDoS protection, combined with application design best practices, provide defense against DDoS attacks.
 
 ### Step by step
 
