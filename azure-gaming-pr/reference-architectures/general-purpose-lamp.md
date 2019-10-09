@@ -105,6 +105,7 @@ You are responsible for the cost of the Azure services used while running these 
 - [Azure Cache for Redis](https://azure.microsoft.com/pricing/details/cache/)
 - [Azure Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/)
 - [Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
+- [Azure DDoS Protection Standard](https://azure.microsoft.com/pricing/details/ddos-protection/)
 
 You also have available the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/), to configure and estimate the costs for the Azure services that you are planning to use.
 
