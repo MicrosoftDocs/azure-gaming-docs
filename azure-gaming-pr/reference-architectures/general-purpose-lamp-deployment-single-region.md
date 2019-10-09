@@ -2796,7 +2796,12 @@ export SERVICETORESTART=apache2.service
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$BLOBSOURCEURI='./app/package.tar.gz'
+$BLOBFILEDESTINATIONNAME='package.tar.gz'
+$SCRIPTUPDATESOURCEURI='./scripts/update-app.sh'
+$SCRIPTUPDATEFILEDESTINATIONAME='update-app.sh'
+$DESTINATIONFOLDER='/var/www/html'
+$SERVICETORESTART='apache2.service'
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2824,8 +2829,12 @@ export STORAGECONNECTIONSTRING=`az storage account show-connection-string -n $ST
 
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
+Only a reference to the storage account is required instead of the connection string.
+
 ```azurepowershell-interactive
-TODO: placeholder
+Set-AzCurrentStorageAccount `
+ -ResourceGroupName $RESOURCEGROUPNAME `
+ -AccountName $STORAGENAMEUNIQUE
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2861,7 +2870,15 @@ az storage blob upload \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+Set-AzStorageBlobContent `
+  -File $BLOBSOURCEURI `
+  -Container $STORAGECONTAINERNAME `
+  -Blob $BLOBFILEDESTINATIONNAME
+
+Set-AzStorageBlobContent `
+  -File $SCRIPTUPDATESOURCEURI `
+  -Container $STORAGECONTAINERNAME `
+  -Blob $SCRIPTUPDATEFILEDESTINATIONAME
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2896,7 +2913,8 @@ export SCRIPTURL=`az storage blob url -c $STORAGECONTAINERNAME -n $SCRIPTUPDATEF
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$BLOBURL=(Get-AzStorageBlob -blob $BLOBFILEDESTINATIONNAME -Container $STORAGECONTAINERNAME).ICloudBlob.uri.AbsoluteUri
+$SCRIPTURL=(Get-AzStorageBlob -blob $SCRIPTUPDATEFILEDESTINATIONAME -Container $STORAGECONTAINERNAME).ICloudBlob.uri.AbsoluteUri
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2928,7 +2946,9 @@ export SETTINGS="{\"fileUris\":[\"${BLOBURL}\",\"${SCRIPTURL}\"],\"commandToExec
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$STORAGEKEY = Get-AzStorageAccountKey -ResourceGroupName $RESOURCEGROUPNAME -Name $STORAGENAMEUNIQUE
+$SETTINGS = @{"fileUris" = "[$BLOBURL,$SCRIPTURL]"; "commandToExecute" = "bash $SCRIPTUPDATEFILEDESTINATIONAME $BLOBFILEDESTINATIONNAME $DESTINATIONFOLDER $SERVICETORESTART"};
+$PROTECTEDSETTINGS = @{"storageAccountName" = $STORAGENAME; "storageAccountKey" = $STORAGEKEY};
 ```
 
 # [Windows Batch](#tab/bat)
@@ -2965,7 +2985,15 @@ az vmss extension set \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+$vmss = Get-AzVmss -ResourceGroupName $RESOURCEGROUPNAME -VMScaleSetName $VMSSNAME
+Add-AzVmssExtension `
+ -VirtualMachineScaleSet $vmss `
+ -Name CustomScript `
+ -Publisher Microsoft.Azure.Extensions `
+ -ForceUpdateTag 'true' `
+ -TypeHandlerVersion 2.0 `
+ -Setting $SETTINGS `
+ -ProtectedSetting $PROTECTEDSETTINGS
 ```
 
 # [Windows Batch](#tab/bat)
@@ -3000,7 +3028,9 @@ az vmss update-instances \
 # [Windows PowerShell or PowerShell Core](#tab/powershell)
 
 ```azurepowershell-interactive
-TODO: placeholder
+Get-AzVmssvm -ResourceGroupName $RESOURCEGROUPNAME -VMScaleSetName $VMSSNAME | ForEach-Object {
+    Update-AzVmssInstance -ResourceGroupName $RESOURCEGROUPNAME -VMScaleSetName $VMSSNAME -InstanceId $_.InstanceId
+}
 ```
 
 # [Windows Batch](#tab/bat)
