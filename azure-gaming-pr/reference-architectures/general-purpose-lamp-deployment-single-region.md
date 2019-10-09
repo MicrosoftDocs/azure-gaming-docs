@@ -219,7 +219,7 @@ On top of the general configuration variables, the following variables are also 
 | **VMDATADISKSIZEINGB** | 5 | 5 | 10 | 30 | How much persistent disk storage you are going to allocate per Virtual Machine. [Benefits of using managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#benefits-of-managed-disks).
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of a Virtual Machine deployment, you can download and tweak to your needs the full Bash [1-create-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/1-create-vm.sh) or Windows Batch [1-create-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/1-create-vm.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of a Virtual Machine deployment, you can download and tweak to your needs the full Bash [1-create-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/1-create-vm.sh) or Windows Batch [1-create-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/1-create-vm.bat) Azure CLI scripts or the [1-create-vm.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/1-create-vm.ps1) PowerShell script, to save you time.
 
 For more details about the process of deploying a Virtual Machine on a Managed Disk, refer to the [Create and Manage Linux VMs with the Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm) tutorial that covers basic Azure virtual machine deployment items such as selecting a Virtual Machine type, selecting a Virtual Machine image, and deploying a VM.
 
@@ -572,7 +572,7 @@ The command above performs the following tasks:
 Before creating an image it's needed to stop and prepare the Linux guest OS on the Virtual Machine. If you create an image from a Virtual Machine that **hasn't been generalized**, any Virtual Machines created from that image **won't start**. These operations should be really quick to complete.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Virtual Machine preparative, you can download and tweak to your needs the full Bash [3-prepare-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/3-prepare-vm.sh) or Windows Batch [3-prepare-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/3-prepare-vm.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Virtual Machine preparative, you can download and tweak to your needs the full Bash [3-prepare-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/3-prepare-vm.sh) or Windows Batch [3-prepare-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/3-prepare-vm.bat) Azure CLI scripts or the [3-prepare-vm.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/3-prepare-vm.ps1) PowerShell script, to save you time.
 
 #### Command line approach using Azure CLI
 
@@ -637,7 +637,7 @@ On top of the previously defined variables, the following variables are also bei
 | **GOLDENIMAGENAME** | myGoldenImage | The name of the custom golden image.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the creation of the custom golden image, you can download and tweak to your needs the full Bash [4-create-golden-image.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/4-create-golden-image.sh) or Windows Batch [4-create-golden-image.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/4-create-golden-image.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the creation of the custom golden image, you can download and tweak to your needs the full Bash [4-create-golden-image.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/4-create-golden-image.sh) or Windows Batch [4-create-golden-image.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/4-create-golden-image.bat) Azure CLI scripts or the [4-create-golden-image.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/4-create-golden-image.ps1) PowerShell script, to save you time.
 
 #### Initialize the variables
 
@@ -763,7 +763,7 @@ On top of the previously defined variables, the following variables are also bei
 | **LBRULEHTTPSNAME** | | Note: Only Standard SKU | LBNAME + HTTPSRule | LBNAME + HTTPSRule | The Azure Load Balancer inbound NAT rule name for the HTTPs connections.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the deployment of the networking resources, you can download and tweak to your needs the full Bash [5-create-networking.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/5-create-networking.sh) or Windows Batch [5-create-networking.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/5-create-networking.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the deployment of the networking resources, you can download and tweak to your needs the full Bash [5-create-networking.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/5-create-networking.sh) or Windows Batch [5-create-networking.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/5-create-networking.bat) Azure CLI scripts or the [5-create-networking.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/5-create-networking.ps1) PowerShell script, to save you time.
 
 #### Initialize the variables
 
@@ -1250,7 +1250,7 @@ On top of the previously defined variables, the following variables are also bei
 | **SUBNETID** | | Note: Only Premium SKU | Note: Only Premium SKU | SUBNETID | Note: The full string is required.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Cache for Redis deployment, you can download and tweak to your needs the full Bash [6-create-redis.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/6-create-redis.sh) or Windows Batch [6-create-redis.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/6-create-redis.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Cache for Redis deployment, you can download and tweak to your needs the full Bash [6-create-redis.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/6-create-redis.sh) or Windows Batch [6-create-redis.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/6-create-redis.bat) Azure CLI scripts or the [6-create-redis.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/6-create-redis.ps1) PowerShell script, to save you time.
 
 #### Initialize the variables
 
@@ -1527,7 +1527,7 @@ On top of the previously defined variables, the following variables are also bei
 | **MYSQLRULENAME** | MYSQLNAME + Rule | | | | Name of the rule enabled within the subnet.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Database for MySQL deployment, you can download and tweak to your needs the full Bash [7-create-mysql.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/7-create-mysql.sh) or Windows Batch [7-create-mysql.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/7-create-mysql.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Database for MySQL deployment, you can download and tweak to your needs the full Bash [7-create-mysql.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/7-create-mysql.sh) or Windows Batch [7-create-mysql.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/7-create-mysql.bat) Azure CLI scripts or the [7-create-mysql.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/7-create-mysql.ps1) PowerShell script, to save you time.
 
 #### Initialize the variables
 
@@ -1841,7 +1841,7 @@ On top of the previously defined variables, the following variables are also bei
 | **STORAGERULENAME** | STORAGENAME + Rule | | | | Name of the rule enabled within the subnet.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download and tweak to your needs the full Bash [8-create-storage.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/8-create-storage.sh) or Windows Batch [8-create-storage.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/8-create-storage.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download and tweak to your needs the full Bash [8-create-storage.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/8-create-storage.sh) or Windows Batch [8-create-storage.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/8-create-storage.bat) Azure CLI scripts or the [8-create-storage.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/8-create-storage.ps1) PowerShell script, to save you time.
 
 #### Initialize variables
 
@@ -2114,7 +2114,7 @@ On top of the previously defined variables, the following variables are also bei
 | **HEALTHPROBEID** |  |  | Use the health probe ID | Use the health probe ID | Required if Rolling upgrade mode.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download and tweak to your needs the full Bash [9-create-vmss.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/9-create-vmss.sh) or Windows Batch [9-create-vmss.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/9-create-vmss.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download and tweak to your needs the full Bash [9-create-vmss.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/9-create-vmss.sh) or Windows Batch [9-create-vmss.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/9-create-vmss.bat) Azure CLI scripts or the [9-create-vmss.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/9-create-vmss.ps1) PowerShell script, to save you time.
 
 #### Initialize variables
 
@@ -2448,7 +2448,7 @@ On top of the previously defined variables, the following variables are also bei
 | **VMSSAUTOSCALERINDECREASE** | 1 | 1 | 2 | 3 | How many instances will be removed from  the scale set upon being triggered the scale in request.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download and tweak to your needs the full Bash [10-create-autoscaler.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/10-create-autoscaler.sh) or Windows Batch [10-create-autoscaler.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/10-create-autoscaler.bat) scripts to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download and tweak to your needs the full Bash [10-create-autoscaler.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/10-create-autoscaler.sh) or Windows Batch [10-create-autoscaler.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/10-create-autoscaler.bat) Azure CLI scripts or the [10-create-autoscaler.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/10-create-autoscaler.ps1) PowerShell script, to save you time.
 
 #### Initialize variables
 
@@ -2776,7 +2776,7 @@ On top of the previously defined variables, the following variables are also bei
 | **SERVICETORESTART** | apache2.service | Service to restart after the PHP files are decompressed.
 
 > [!TIP]
-> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download and tweak to your needs the full Bash [12-update-app.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/12-update-app.sh) or Windows Batch [12-update-app.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/12-update-app.bat) Azure CLI scripts or the [12-update-app.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/12-update-app.ps1) PowerShell script to save you time.
+> In addition to the following documented individual commands and the order of execution, for you to understand each portion of the Azure Storage and container deployment, you can download and tweak to your needs the full Bash [12-update-app.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/12-update-app.sh) or Windows Batch [12-update-app.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/12-update-app.bat) Azure CLI scripts or the [12-update-app.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/12-update-app.ps1) PowerShell script, to save you time.
 
 #### Initialize variables
 
