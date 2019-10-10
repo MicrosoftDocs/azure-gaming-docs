@@ -708,7 +708,24 @@ CALL az image create ^
 
 ### Azure Resource Manager template
 
-TBD
+Creating images is not fully supported by the Azure Resource Manager. The Azure Virtual Machine that is used as a source must be generalized previously. If you can reference a generalized Azure Virtual Machine, then the ARM template that would create the custom golden image is:
+
+```json
+{
+  "type": "Microsoft.Compute/images",
+  "apiVersion": "2019-03-01",
+  "name": "[variables('imageName')]",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+    "[concat('Microsoft.Compute/virtualMachines/', variables('VMNAME'), '/extensions/', variables('extensionName'))]"
+  ],
+  "properties": {
+    "sourceVirtualMachine": {
+      "id": "[variables('vmResourceId')]"
+    }
+  }
+}
+```
 
 ### Azure Portal
 
@@ -3072,7 +3089,7 @@ This table summarizes the scripts and templates available for steps covered in t
 | **Deploy a Virtual Machine on a Managed Disk** | [1-create-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/1-create-vm.sh)<br>[1-create-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/1-create-vm.bat) | [1-create-vm.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/1-create-vm.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-vm" target="_blank">Deploy</a> | [Create VM](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal), [Attach Managed data disk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal#add-a-data-disk)
 | **Install Apache, PHP and other stuff you consider** | [2-install-apache-and-php.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/scripts/2-install-apache-and-php.sh) | N/A | <a href="https://aka.ms/arm-gaming-lamp-install-apache-and-php" target="_blank">Deploy</a> | N/A
 | **Deallocate and generalize the Virtual Machine** | [3-prepare-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/3-prepare-vm.sh)<br>[3-prepare-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/3-prepare-vm.bat) | [3-prepare-vm.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/3-prepare-vm.ps1) | N/A | N/A
-| **Generate the custom golden image** | [4-create-golden-image.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/4-create-golden-image.sh)<br>[4-create-golden-image.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/4-create-golden-image.bat) | [4-create-golden-image.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/4-create-golden-image.ps1) | TODO | N/A
+| **Generate the custom golden image** | [4-create-golden-image.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/4-create-golden-image.sh)<br>[4-create-golden-image.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/4-create-golden-image.bat) | [4-create-golden-image.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/4-create-golden-image.ps1) | N/A | N/A
 | **Deploy the networking resources** | [5-create-networking.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/5-create-networking.sh)<br>[5-create-networking.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/5-create-networking.bat) | [5-create-networking.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/5-create-networking.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-networking" target="_blank">Deploy Basic LB</a><br><a href="https://aka.ms/arm-gaming-lamp-create-networking-standard" target="_blank">Deploy Standard LB</a> | [Basic](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal), [Standard](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)
 | **Deploy the Azure Cache for Redis** | [6-create-redis.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/6-create-redis.sh)<br>[6-create-redis.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/6-create-redis.bat) | [6-create-redis.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/6-create-redis.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-redis" target="_blank">Deploy</a> | [Create a cache](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache#create-a-cache), [Configure cache](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure), [Clustering setup](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-clustering), [VNET support](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet)
 | **Deploy the Azure Database for MySQL** | [7-create-mysql.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/7-create-mysql.sh)<br>[7-create-mysql.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/7-create-mysql.bat) | [7-create-mysql.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/7-create-mysql.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-mysql" target="_blank">Deploy</a> | [Create server](https://docs.microsoft.com/azure/mysql/tutorial-design-database-using-portal), [Create read replicas](https://docs.microsoft.com/azure/mysql/howto-read-replicas-portal), [Create service endpoint](https://docs.microsoft.com/azure/mysql/howto-manage-vnet-using-portal?toc=%2fazure%2fvirtual-network%2ftoc.json)
