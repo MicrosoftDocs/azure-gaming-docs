@@ -15,9 +15,9 @@ You may be already rocking a LAMP architecture on-premises and moving it to Azur
 
 There are some added **benefits from using a public cloud** too, just to name a few:
 
-- It’s so easy to add new compute and database nodes on demand, so you can set up a much lighter infrastructure and scale up and down to fit your needs, as you have the assurance that you could add more servers in a short period of time.
-- Get performance boosts by using latest and greatest hardware, meaning you may be able to do more with less.
-- Gain improved reliability with zero effort as all Azure nodes are automatically backed up and automatically fail over if anything goes wrong.
+- It’s so easy to add new compute and database nodes on demand, so you can set up a much lighter infrastructure and scale up and down to fit your needs, as you have the assurance that you could add more servers in a short period of time. And to add to this, it’s a lot cheaper and faster to scale up and down in Azure than on-prem, where some operations that take minutes using the public cloud can take days or weeks to achieve the same thing on-prem. Similarly, the up-front cost is much lower when you don’t need to buy the hardware to spin up a new server, and the sustain cost can be lower if you are able to dynamically scale your capacity with demand.
+- Get performance boosts by using latest and greatest hardware, meaning you may be able to do more with less. And again, it's cheaper to user higher-end performance hardware using the public cloud than procuring it on-prem.
+- Hardware failures are inevitable, and they can be a nightmare to resolve on-prem. By running your infrastructure in Azure, you can sleep easy knowing our automatic backups and failover have you covered.
 - Convenience, in the sense that you can focus more on the gaming aspect of your business, and less on IT that requires a lot of work to ensure that everything runs like clockwork in the backend.
 
 And once you are in the public cloud, you can **continue the journey** at a later stage using more recent cloud services that may be more optimum for enabling some features that you are considering to implement or are already in service. As an example, you may have implemented a multiplayer matchmaker leveraging LAMP, and a [serverless approach](./multiplayer-asynchronous-serverless.md) could be something to consider as it fits that feature pretty nicely.
