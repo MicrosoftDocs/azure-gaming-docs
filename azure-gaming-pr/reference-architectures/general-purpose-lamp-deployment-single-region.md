@@ -210,7 +210,7 @@ Regardless of what method it's used to deploy the Virtual Machine on a Managed D
 
 On top of the general configuration variables, the following variables are also being used:
 
-|Variable|Default value|Small T-shirt value|Medium T-shirt value|Large T-shirt value|Description|
+|Variable|Default value|Small configuration|Medium configuration|Large configuration|Description|
 |----------|----------|-----------|----------|----------|-----------|
 | **LOGINUSERNAME** | azureuser | | | | The admin username to connect to the Virtual Machine after being deployed.
 | **VMNAME** | myVirtualMachine | | | | The name of the Virtual Machine.
@@ -760,7 +760,7 @@ Specifically to the networking resources, if you look within the resource group 
 
 On top of the previously defined variables, the following variables are also being used:
 
-|Variable|Default value|Small T-shirt value|Medium T-shirt value|Large T-shirt value|Description|
+|Variable|Default value|Small configuration|Medium configuration|Large configuration|Description|
 |----------|----------|-----------|----------|----------|-----------|
 | **LBSKU** | Basic | Basic | Standard | Standard | The Azure Load Balancer SKU. [Learn more](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#Linux).
 | **PUBLICIPNAME** | PREFIX + PublicIP | | | | The name to identify the public IP address of the Azure Load Balancer.
@@ -1255,7 +1255,7 @@ Deploying the Azure Cache for Redis should take less than 30 minutes in total.
 
 On top of the previously defined variables, the following variables are also being used:
 
-|Variable|Default value|Small T-shirt value|Medium T-shirt value|Large T-shirt value|Description|
+|Variable|Default value|Small configuration|Medium configuration|Large configuration|Description|
 |----------|----------|-----------|----------|----------|-----------|
 | **REDISNAME** | PREFIX + Redis | |  | | The Azure Cache for Redis name.
 | **REDISNAMEUNIQUE** | REDISNAME + [Random number] | | | | **Important**: The name of the Azure Cache for Redis has to be entirely unique across all Azure customers. Hence the scripts use a random generator.
@@ -1524,7 +1524,7 @@ Deploying the Azure Database for MySQL master and replicas should take less than
 
 On top of the previously defined variables, the following variables are also being used:
 
-|Variable|Default value|Small T-shirt value|Medium T-shirt value|Large T-shirt value|Description|
+|Variable|Default value|Small configuration|Medium configuration|Large configuration|Description|
 |----------|----------|-----------|----------|----------|-----------|
 | **MYSQLNAME** | PREFIX + MySQL | | | | The name of the Azure Database for MySQL server. |
 | **MYSQLNAMELOWER** | lowercase(MYSQLNAME) | | | | **Important**: The server name of the Azure Database for MySQL has to be entirely lowercase. |
@@ -1846,7 +1846,7 @@ Regardless of what method it's used to create the Azure Storage account and cont
 
 On top of the previously defined variables, the following variables are also being used:
 
-|Variable|Default value|Small T-shirt value|Medium T-shirt value|Large T-shirt value|Description|
+|Variable|Default value|Small configuration|Medium configuration|Large configuration|Description|
 |----------|----------|-----------|----------|----------|-----------|
 | **STORAGENAME** | PREFIX + STRG | | | | The name of the storage account. |
 | **STORAGENAMELOWER** | lowercase(STORAGENAME) | | | | **Important**: The name of the storage account has to be entirely lowercase. |
@@ -2120,7 +2120,7 @@ Regardless of what method it's used to create the Azure Virtual Machine Scale Se
 
 On top of the previously defined variables, the following variables are also being used:
 
-|Variable|Default value|Small T-shirt value|Medium T-shirt value|Large T-shirt value|Description|
+|Variable|Default value|Small configuration|Medium configuration|Large configuration|Description|
 |----------|----------|-----------|----------|----------|-----------|
 | **VMSSNAME** | PREFIX + VMSS | | | | The name of the scale set.
 | **VMSSSKUSIZE** | Standard_B1s | Standard_B1s | Standard_F16s_v2 | Standard_F32s_v2 | The SKU to setup, either standard, premium or ultra.
@@ -2453,7 +2453,7 @@ Regardless of what method it's used to create the autoscaler, it won't show up  
 
 On top of the previously defined variables, the following variables are also being used:
 
-|Variable|Default value|Small T-shirt value|Medium T-shirt value|Large T-shirt value|Description|
+|Variable|Default value|Small configuration|Medium configuration|Large configuration|Description|
 |----------|----------|-----------|----------|----------|-----------|
 | **VMSSAUTOSCALERNAME** | PREFIX + Autoscaler | | | | The name of the autoscaler.
 | **VMSSAUTOSCALERCRITERIA** | Percentage CPU | Percentage CPU | Percentage CPU | Percentage CPU | The general criteria that will be used to trigger the autoscaler. [Learn more](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftcomputevirtualmachinescalesets).
@@ -3072,7 +3072,7 @@ The file path should be `<Blob Url>/app/package.tar.gz` and `<Script Url>/script
 
 <a href="https://aka.ms/arm-gaming-lamp-update-app" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
-## Recapitulation
+## Summary
 
 Deploying a single region LAMP architecture on Azure should take less than 90 minutes end-to-end using scripts (either Bash or Windows Batch) or ARM deployment templates. Using the Azure Portal will take longer. The deployed architecture should look like the image below:
 
