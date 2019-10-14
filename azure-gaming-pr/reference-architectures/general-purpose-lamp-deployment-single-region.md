@@ -11,7 +11,7 @@ ms.service: azure
 
 # Deploy a single region LAMP architecture
 
-This document covers different methods to deploy a **single region LAMP architecture**, either using **command line tools** on either Bash, PowerShell or Windows Batch for a more hands on programmatic setup, or an Azure Resource Manager template for a **one-click deployment**. And in most cases there will be pointers to how to setup a certain portion of the architecture using the **Azure Portal**. Alternatively you can use third-party solutions like [Hashicorp Terraform](https://docs.microsoft.com/azure/terraform/terraform-overview).
+This document covers different methods to deploy a **single region LAMP architecture**, either using **command line tools** on either Bash, PowerShell or Windows Batch for a more hands on programmatic setup, or an Azure Resource Manager template for a **one-click deployment**. And in most cases there will be pointers to how to setup a certain portion of the architecture using the **Azure Portal**. Alternatively you can use third-party solutions like [Hashicorp Terraform](https://docs.microsoft.com/azure/terraform/terraform-overview) either using their [command line tools](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure) or [automating your infrastructure deployments with Azure Pipelines](https://www.azuredevopslabs.com/labs/vstsextend/terraform/), for your guidance specific step by step Terraform' Azure Provider templates have been provided in this paper, you can also find more templates in [this link](https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples).
 
 In general, when deploying a single region LAMP architecture there are certain steps that are mostly one-offs while others need to be executed in more regular basis as your backend gets updated to match your game requirements. Below is the full list of steps:
 
@@ -446,6 +446,8 @@ Refer to [Create a Linux virtual machine in the Azure portal](https://docs.micro
 
 - [Create an Azure Resource Group](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html) using **azurerm_resource_group**
 - [Create an Azure Virtual Machine](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html) using **azurerm_virtual_machine**
+
+This [Hashicorp Terraform's Azure Provider template](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/1-create-vm.tf) is an example template that deploys an Azure Virtual Machine to serve as a foundation for the custom golden image. In most cases, it gets deleted afterwards.
 
 ## 2. Install Apache and PHP
 
