@@ -53,7 +53,7 @@ Bash is a Unix shell and command language, typically runs in a text window where
 1. Create a file in a directory in your computer running Linux/Unix.
 1. Choose a filename and ensure the extension of the file is `.sh`, to identify it as a Bash script.
 1. Use your favorite editor to open the file.
-1. Ensure that that script includes `#!/bin/bash` at the very top.
+1. Ensure that the script includes `#!/bin/bash` at the very top.
 1. Copy/paste the Bash snippets provided in this document. Just remember that variables need to be initialized before they are used, so they need to be placed higher within the Bash file than the commands that use them.
 1. Save the file.
 1. Ensure it has execution permissions using `chmod +x [SCRIPTNAME.sh]` substituting `[SCRIPTNAME.sh]` with your script.
@@ -444,10 +444,10 @@ Refer to [Create a Linux virtual machine in the Azure portal](https://docs.micro
 
 ### Hashicorp Terraform
 
+This [Hashicorp Terraform's Azure Provider template](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/1-create-vm.tf) is an example template that deploys an Azure Virtual Machine to serve as a foundation for the custom golden image. In most cases, it gets deleted afterwards. Refer to the following materials to learn more about the commands used:
+
 - [Create an Azure Resource Group](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html) using **azurerm_resource_group**
 - [Create an Azure Virtual Machine](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html) using **azurerm_virtual_machine**
-
-This [Hashicorp Terraform's Azure Provider template](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/1-create-vm.tf) is an example template that deploys an Azure Virtual Machine to serve as a foundation for the custom golden image. In most cases, it gets deleted afterwards.
 
 ## 2. Install Apache and PHP
 
@@ -539,6 +539,8 @@ You could consider using the [Azure Custom Script Extension](https://docs.micros
 <a href="https://aka.ms/arm-gaming-lamp-install-apache-and-php" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
 #### Hashicorp Terraform
+
+This [Hashicorp Terraform's Azure Provider template](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/2-install-apache-and-php.tf) is an example template that downloads and run scripts on Azure Virtual Machines. Refer to the following material to learn more about the commands used:
 
 - [Create an Azure Virtual Machine with post deployment configuration and run automated tasks](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html) using **azurerm_virtual_machine_extension**
 
@@ -734,6 +736,8 @@ Creating images is not fully supported by the Azure Resource Manager. The Azure 
 Creating images with a managed disk is currently not supported via the Azure Portal.
 
 ### Hashicorp Terraform
+
+Creating images is not fully supported by the provider. The Azure Virtual Machine that is used as a source must be generalized previously. Refer to this material for additional guidance:
 
 - [Create an image from an Azure Virtual Machine (must be generalized beforehand)](https://www.terraform.io/docs/providers/azurerm/r/image.html) using **azurerm_image**
 
@@ -1232,6 +1236,8 @@ Refer to [Create a Basic Load Balancer by using the Azure portal](https://docs.m
 
 ### Hashicorp Terraform
 
+Two example templates are available that deploys an Azure Virtual Network and an Azure Load Balancer, they also creates an inbound public IP address for the load balancer, Azure Load Balancer health probes for HTTP and HTTPS, an inbound NAT pool with backend port 22 and load balancing inbound rules for the port 80. The main difference between both, is that this [Hashicorp Terraform's Azure Provider template](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/5-create-networking.tf) deploys a **Basic** Azure Load Balancer, while this other [Hashicorp Terraform's Azure Provider template](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/5-create-networking-standard.tf) deploys an **Standard** Azure Load Balancer. Refer to the following material to learn more about the commands used:
+
 - [Create an Azure Virtual Network](https://www.terraform.io/docs/providers/azurerm/r/virtual_network.html) using **azurerm_virtual_network**
 - [Create an inbound public IP address for the load balancer](https://www.terraform.io/docs/providers/azurerm/r/public_ip.html) using **azurerm_public_ip**
 - [Create an Azure Load Balancer](https://www.terraform.io/docs/providers/azurerm/r/loadbalancer_rule.html) using **azurerm_lb_rule**
@@ -1505,6 +1511,8 @@ Refer to [How to configure Redis clustering for a Premium Azure Cache for Redis]
 Refer to [How to configure Virtual Network Support for a Premium Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet) that describes how to configure virtual network support for a premium Azure Cache for Redis instance using the Azure Portal.
 
 ### Hashicorp Terraform
+
+This [Hashicorp Terraform's Azure Provider template](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/6-create-redis.tf) is an example template that deploys an Azure Cache for Redis. Refer to the following materials to learn more about the commands used:
 
 - [Create an Azure Cache for Redis](https://www.terraform.io/docs/providers/azurerm/r/redis_cache.html) using **azurerm_redis_cache**
 
@@ -1829,6 +1837,8 @@ Refer to [Create and manage Azure Database for MySQL VNet service endpoints and 
 
 ### Hashicorp Terraform
 
+This [Hashicorp Terraform's Azure Provider template](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/7-create-mysql.tf) is an example template that deploys an Azure Database for MySQL server and a sample database. It also creates and enables Azure Database for MySQL Virtual Network service endpoints, and creates a Virtual Network rule on the MySQL server to secure it to the subnet. At the moment, the provider doesn't support the creation of replicas, so use any other deployment mechanism to take care of that. Refer to the following materials to learn more about the commands used:
+
 - [Create an Azure Database for MySQL server](https://www.terraform.io/docs/providers/azurerm/r/mysql_server.html) using **azurerm_mysql_server**
 - [Create an Azure Database for MySQL database](https://www.terraform.io/docs/providers/azurerm/r/mysql_database.html) using **azurerm_mysql_database**
 
@@ -2093,6 +2103,8 @@ Refer to [Create a storage account](https://docs.microsoft.com/azure/storage/com
 Refer to [Create a container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container), showing you how to create an storage containe in the Azure portal.
 
 ### Hashicorp Terraform
+
+This [Hashicorp Terraform's Azure Provider template](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/8-create-storage.tf) is an example template that deploys an deploys an Azure storage account, enables service endpoint for Azure Storage on the Virtual Network and subnet and adds a network rule for a virtual network and subnet At the moment, the provider is having a bug creating an storage container into the storage account, so use any other deployment mechanism to take care of that. Refer to the following materials to learn more about the commands used:
 
 - [Create an Azure Storage account](https://www.terraform.io/docs/providers/azurerm/r/storage_account.html) using **azurerm_storage_account**
 - [Create a container within an Azure Storage account](https://www.terraform.io/docs/providers/azurerm/r/storage_container.html) using **azurerm_storage_container**
@@ -2437,6 +2449,8 @@ Refer to [Create a virtual machine scale set in the Azure portal](https://docs.m
 
 ### Hashicorp Terraform
 
+This [Hashicorp Terraform's Azure Provider template](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/9-create-vmss.tf) is an example template that deploys an Azure virtual machine scale set and associates the load balancer health probe to the scale set. It lacks the mapping of the Azure Virtual MAchine Scale Set instances to the load balancer NAT pool. Refer to the following materials to learn more about the commands used:
+
 - [Create an Azure Virtual Machine Scale Set](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine_scale_set.html) using **azurerm_virtual_machine_scale_set**
 
 ## 10. Create the autoscaler
@@ -2660,6 +2674,8 @@ Refer to [Automatically scale a virtual machine scale set in the Azure portal](h
 
 ### Hashicorp Terraform
 
+This [Hashicorp Terraform's Azure Provider template](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/10-create-autoscaler.tf) is an example template that defines the autoscaling profile, enables Azure Virtual Machines autoscale on virtual machine scale set for scaling out, and enables autoscale on virtual machine scale set for scaling in. Refer to the following materials to learn more about the commands used:
+
 - [Define an autoscaling profile](https://www.terraform.io/docs/providers/azurerm/r/autoscale_setting.html) using **azurerm_autoscale_setting**
 
 ## 11. Enable protection against DDoS attacks
@@ -2774,6 +2790,8 @@ This ARM template is an example template that creates a DDoS protection plan and
 Refer to [Manage Azure DDoS Protection Standard using the Azure portal](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection) to learn how to enable AzureDDoS Standard Protection via Azure Portal.
 
 ### Hashicorp Terraform
+
+This [Hashicorp Terraform's Azure Provider template](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/11-enable-ddos-protection.tf) is an example template that creates a DDoS protection plan and enables the DDoS Standard plan on the Virtual Network. Refer to the following materials to learn more about the commands used:
 
 - [Enable an Azure DDoS Protection plan](https://www.terraform.io/docs/providers/azurerm/r/network_ddos_protection_plan.html) using **azurerm_network_ddos_protection_plan**
 
@@ -3074,6 +3092,10 @@ The file path should be `<Blob Url>/app/package.tar.gz` and `<Script Url>/script
 
 <a href="https://aka.ms/arm-gaming-lamp-update-app" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
 
+### Hashicorp Terraform
+
+This [Hashicorp Terraform's Azure Provider template](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/12-update-app.tf) is an example template that uploads a bunch of PHP files to the remote Virtual Machine instances and run a bash script that will decompress the PHP file remotely.
+
 ## Summary
 
 Deploying a single region LAMP architecture on Azure should take less than 90 minutes end-to-end using scripts (either Bash or Windows Batch) or ARM deployment templates. Using the Azure Portal will take longer. The deployed architecture should look like the image below:
@@ -3086,17 +3108,17 @@ Deploying a single region LAMP architecture on Azure should take less than 90 mi
 
 This table summarizes the scripts and templates available for steps covered in this document.
 
-| Action | Azure CLI | Azure PowerShell | ARM Template | Portal |
-|--------|--------|--------|--------|--------|
-| **Deploy a Virtual Machine on a Managed Disk** | [1-create-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/1-create-vm.sh)<br>[1-create-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/1-create-vm.bat) | [1-create-vm.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/1-create-vm.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-vm" target="_blank">Deploy</a> | [Create VM](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal), [Attach Managed data disk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal#add-a-data-disk)
-| **Install Apache, PHP and other stuff you consider** | [2-install-apache-and-php.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/scripts/2-install-apache-and-php.sh) | N/A | <a href="https://aka.ms/arm-gaming-lamp-install-apache-and-php" target="_blank">Deploy</a> | N/A
-| **Deallocate and generalize the Virtual Machine** | [3-prepare-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/3-prepare-vm.sh)<br>[3-prepare-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/3-prepare-vm.bat) | [3-prepare-vm.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/3-prepare-vm.ps1) | N/A | N/A
-| **Generate the custom golden image** | [4-create-golden-image.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/4-create-golden-image.sh)<br>[4-create-golden-image.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/4-create-golden-image.bat) | [4-create-golden-image.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/4-create-golden-image.ps1) | N/A | N/A
-| **Deploy the networking resources** | [5-create-networking.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/5-create-networking.sh)<br>[5-create-networking.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/5-create-networking.bat) | [5-create-networking.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/5-create-networking.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-networking" target="_blank">Deploy Basic LB</a><br><a href="https://aka.ms/arm-gaming-lamp-create-networking-standard" target="_blank">Deploy Standard LB</a> | [Basic](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal), [Standard](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)
-| **Deploy the Azure Cache for Redis** | [6-create-redis.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/6-create-redis.sh)<br>[6-create-redis.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/6-create-redis.bat) | [6-create-redis.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/6-create-redis.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-redis" target="_blank">Deploy</a> | [Create a cache](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache#create-a-cache), [Configure cache](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure), [Clustering setup](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-clustering), [VNET support](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet)
-| **Deploy the Azure Database for MySQL** | [7-create-mysql.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/7-create-mysql.sh)<br>[7-create-mysql.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/7-create-mysql.bat) | [7-create-mysql.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/7-create-mysql.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-mysql" target="_blank">Deploy</a> | [Create server](https://docs.microsoft.com/azure/mysql/tutorial-design-database-using-portal), [Create read replicas](https://docs.microsoft.com/azure/mysql/howto-read-replicas-portal), [Create service endpoint](https://docs.microsoft.com/azure/mysql/howto-manage-vnet-using-portal?toc=%2fazure%2fvirtual-network%2ftoc.json)
-| **Create the Azure Storage account and container** | [8-create-storage.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/8-create-storage.sh)<br>[8-create-storage.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/8-create-storage.bat) | [8-create-storage.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/8-create-storage.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-storage" target="_blank">Deploy</a> | [Create storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal#create-a-storage-account-1), [Create container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
-| **Create the Virtual Machine Scale Set** | [9-create-vmss.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/9-create-vmss.sh)<br>[9-create-vmss.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/9-create-vmss.bat) | [9-create-vmss.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/9-create-vmss.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-vmss" target="_blank">Deploy</a> | [Create scale set](https://docs.microsoft.com/azure/virtual-machine-scale-sets/quick-create-portal)
-| **Setup the autoscale settings** | [10-create-autoscaler.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/10-create-autoscaler.sh)<br>[10-create-autoscaler.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/10-create-autoscaler.bat) | [10-create-autoscaler.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/10-create-autoscaler.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-autoscaler" target="_blank">Deploy</a> | [Autoscale scale set](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal)
-| **Enable protection against DDoS attacks** | [11-enable-ddos-protection.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/11-enable-ddos-protection.sh)<br>[11-enable-ddos-protection.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/11-enable-ddos-protection.bat) | [11-enable-ddos-protection.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/11-enable-ddos-protection.ps1) | <a href="https://aka.ms/arm-gaming-lamp-enable-ddos-protection" target="_blank">Deploy</a> | [Create DDoS plan](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
-| **Update the Virtual Machine instances** | [12-update-app.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/12-update-app.sh)<br>[12-update-app.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/12-update-app.bat) | [12-update-app.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/12-update-app.ps1) | <a href="https://aka.ms/arm-gaming-lamp-update-app" target="_blank">Deploy</a> | N/A
+| Action | Azure CLI | Azure PowerShell | ARM Template | Hashicorp Terraform| Portal |
+|--------|--------|--------|--------|--------|--------|
+| **Deploy a Virtual Machine on a Managed Disk** | [1-create-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/1-create-vm.sh)<br>[1-create-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/1-create-vm.bat) | [1-create-vm.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/1-create-vm.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-vm" target="_blank">Deploy</a> | [1-create-vm.tf](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/1-create-vm.tf) | [Create VM](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal), [Attach Managed data disk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal#add-a-data-disk)
+| **Install Apache, PHP and other stuff you consider** | [2-install-apache-and-php.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/scripts/2-install-apache-and-php.sh) | N/A | <a href="https://aka.ms/arm-gaming-lamp-install-apache-and-php" target="_blank">Deploy</a> | [2-install-apache-and-php.tf](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/2-install-apache-and-php.tf) | N/A
+| **Deallocate and generalize the Virtual Machine** | [3-prepare-vm.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/3-prepare-vm.sh)<br>[3-prepare-vm.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/3-prepare-vm.bat) | [3-prepare-vm.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/3-prepare-vm.ps1) | N/A | [3-prepare-vm.tf](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/3-prepare-vm.tf) | N/A
+| **Generate the custom golden image** | [4-create-golden-image.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/4-create-golden-image.sh)<br>[4-create-golden-image.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/4-create-golden-image.bat) | [4-create-golden-image.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/4-create-golden-image.ps1) | N/A | [4-create-golden-image.tf](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/4-create-golden-image.tf) | N/A
+| **Deploy the networking resources** | [5-create-networking.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/5-create-networking.sh)<br>[5-create-networking.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/5-create-networking.bat) | [5-create-networking.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/5-create-networking.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-networking" target="_blank">Deploy Basic LB</a><br><a href="https://aka.ms/arm-gaming-lamp-create-networking-standard" target="_blank">Deploy Standard LB</a> | [5-create-networking.tf](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/5-create-networking.tf)<br>[5-create-networking-standard.tf](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/5-create-networking-standard.tf) | [Basic](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal), [Standard](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)
+| **Deploy the Azure Cache for Redis** | [6-create-redis.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/6-create-redis.sh)<br>[6-create-redis.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/6-create-redis.bat) | [6-create-redis.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/6-create-redis.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-redis" target="_blank">Deploy</a> | [6-create-redis.tf](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/6-create-redis.tf) | [Create a cache](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache#create-a-cache), [Configure cache](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure), [Clustering setup](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-clustering), [VNET support](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet)
+| **Deploy the Azure Database for MySQL** | [7-create-mysql.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/7-create-mysql.sh)<br>[7-create-mysql.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/7-create-mysql.bat) | [7-create-mysql.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/7-create-mysql.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-mysql" target="_blank">Deploy</a> | [7-create-mysql.tf](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/7-create-mysql.tf) | [Create server](https://docs.microsoft.com/azure/mysql/tutorial-design-database-using-portal), [Create read replicas](https://docs.microsoft.com/azure/mysql/howto-read-replicas-portal), [Create service endpoint](https://docs.microsoft.com/azure/mysql/howto-manage-vnet-using-portal?toc=%2fazure%2fvirtual-network%2ftoc.json)
+| **Create the Azure Storage account and container** | [8-create-storage.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/8-create-storage.sh)<br>[8-create-storage.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/8-create-storage.bat) | [8-create-storage.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/8-create-storage.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-storage" target="_blank">Deploy</a> | [8-create-storage.tf](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/8-create-storage.tf) | [Create storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal#create-a-storage-account-1), [Create container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
+| **Create the Virtual Machine Scale Set** | [9-create-vmss.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/9-create-vmss.sh)<br>[9-create-vmss.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/9-create-vmss.bat) | [9-create-vmss.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/9-create-vmss.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-vmss" target="_blank">Deploy</a> | [9-create-vmss.tf](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/9-create-vmss.tf) | [Create scale set](https://docs.microsoft.com/azure/virtual-machine-scale-sets/quick-create-portal)
+| **Setup the autoscale settings** | [10-create-autoscaler.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/10-create-autoscaler.sh)<br>[10-create-autoscaler.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/10-create-autoscaler.bat) | [10-create-autoscaler.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/10-create-autoscaler.ps1) | <a href="https://aka.ms/arm-gaming-lamp-create-autoscaler" target="_blank">Deploy</a> | [10-create-autoscaler.tf](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/10-create-autoscaler.tf) | [Autoscale scale set](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal)
+| **Enable protection against DDoS attacks** | [11-enable-ddos-protection.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/11-enable-ddos-protection.sh)<br>[11-enable-ddos-protection.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/11-enable-ddos-protection.bat) | [11-enable-ddos-protection.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/11-enable-ddos-protection.ps1) | <a href="https://aka.ms/arm-gaming-lamp-enable-ddos-protection" target="_blank">Deploy</a> | [11-enable-ddos-protection.tf](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/11-enable-ddos-protection.tf) | [Create DDoS plan](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+| **Update the Virtual Machine instances** | [12-update-app.sh](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/bash/12-update-app.sh)<br>[12-update-app.bat](https://github.com/Azure-Samples/gaming-lamp/blob/master/azurecli/windowsbatch/12-update-app.bat) | [12-update-app.ps1](https://github.com/Azure-Samples/gaming-lamp/blob/master/powershell/12-update-app.ps1) | <a href="https://aka.ms/arm-gaming-lamp-update-app" target="_blank">Deploy</a> | [12-update-app.tf](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/12-update-app.tf) | N/A
