@@ -436,7 +436,7 @@ CALL az vm open-port ^
 
 This Azure Resource Manager (ARM) template is an example template that deploys an Azure Virtual Machine to serve as a foundation for the custom golden image. In most cases, it gets deleted afterwards.
 
-<a href="https://aka.ms/arm-gaming-lamp-create-vm" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+<a href="https://aka.ms/arm-gaming-lamp-create-vm" target="_blank"><img src="media/azure-resource-manager-deploy-button.png" alt="Deploy"></a>
 
 ### Azure Portal
 
@@ -536,7 +536,7 @@ exit
 
 You could consider using the [Azure Custom Script Extension](https://docs.microsoft.com/azure/virtual-machines/extensions/custom-script-linux) that downloads and runs scripts on Azure Virtual Machines. Click the following button that installs Apache and the PHP 7.3 version using Virtual Machine Custom Script Extension.
 
-<a href="https://aka.ms/arm-gaming-lamp-install-apache-and-php" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+<a href="https://aka.ms/arm-gaming-lamp-install-apache-and-php" target="_blank"><img src="media/azure-resource-manager-deploy-button.png" alt="Deploy"></a>
 
 #### Hashicorp Terraform
 
@@ -1224,11 +1224,11 @@ This Azure Resource Manager (ARM) template is an example template that deploys a
 
 Click the following button to deploy the networking resources with an Azure Load Balancer **Basic**:
 
-<a href="https://aka.ms/arm-gaming-lamp-create-networking" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+<a href="https://aka.ms/arm-gaming-lamp-create-networking" target="_blank"><img src="media/azure-resource-manager-deploy-button.png" alt="Deploy"></a>
   
 Click the following button to deploy the networking resources with an Azure Load Balancer **Standard**:
 
-<a href="https://aka.ms/arm-gaming-lamp-create-networking-standard" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+<a href="https://aka.ms/arm-gaming-lamp-create-networking-standard" target="_blank"><img src="media/azure-resource-manager-deploy-button.png" alt="Deploy"></a>
 
 ### Azure Portal
 
@@ -1500,7 +1500,7 @@ CALL az redis list-keys ^
 
 This Azure Resource Manager (ARM) template is an example template that deploys an Azure Cache for Redis.
 
-<a href="https://aka.ms/arm-gaming-lamp-create-redis" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+<a href="https://aka.ms/arm-gaming-lamp-create-redis" target="_blank"><img src="media/azure-resource-manager-deploy-button.png" alt="Deploy"></a>
 
 ### Azure Portal
 
@@ -1825,7 +1825,7 @@ CALL az mysql server replica create ^
 
 This Azure Resource Manager (ARM) template is an example template that deploys an Azure Database for MySQL server, a number of replicas based on the 'Number Of Replica' parameter, and a sample database. It also creates and enables Azure Database for MySQL Virtual Network service endpoints, and creates a Virtual Network rule on the MySQL server to secure it to the subnet.
 
-<a href="https://aka.ms/arm-gaming-lamp-create-mysql" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+<a href="https://aka.ms/arm-gaming-lamp-create-mysql" target="_blank"><img src="media/azure-resource-manager-deploy-button.png" alt="Deploy"></a>
 
 ### Azure Portal
 
@@ -2094,7 +2094,7 @@ CALL az storage account network-rule add ^
 
 This ARM template is an example template that deploys an Azure storage account, creates a storage container into the storage account, enables service endpoint for Azure Storage on the Virtual Network and subnet and adds a network rule for a virtual network and subnet. It gets the connection string from the storage account and provides it in the 'Output' field.
 
-<a href="https://aka.ms/arm-gaming-lamp-create-storage" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+<a href="https://aka.ms/arm-gaming-lamp-create-storage" target="_blank"><img src="media/azure-resource-manager-deploy-button.png" alt="Deploy"></a>
 
 ### Azure Portal
 
@@ -2441,7 +2441,7 @@ CALL az vmss update ^
 
 This ARM template is an example template that deploys an Azure virtual machine scale set and associates the load balancer health probe to the scale set.
 
-<a href="https://aka.ms/arm-gaming-lamp-create-vmss" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+<a href="https://aka.ms/arm-gaming-lamp-create-vmss" target="_blank"><img src="media/azure-resource-manager-deploy-button.png" alt="Deploy"></a>
 
 ### Azure Portal
 
@@ -2666,7 +2666,7 @@ CALL az monitor autoscale rule create ^
 
 This ARM template is an example template that defines the autoscaling profile, enables Azure Virtual Machines autoscale on virtual machine scale set for scaling out, and enables autoscale on virtual machine scale set for scaling in.
 
-<a href="https://aka.ms/arm-gaming-lamp-create-autoscaler" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+<a href="https://aka.ms/arm-gaming-lamp-create-autoscaler" target="_blank"><img src="media/azure-resource-manager-deploy-button.png" alt="Deploy"></a>
 
 ### Azure Portal
 
@@ -2783,7 +2783,7 @@ CALL az network vnet update ^
 
 This ARM template is an example template that creates a DDoS protection plan and enables the DDoS Standard plan on the Virtual Network.
 
-<a href="https://aka.ms/arm-gaming-lamp-enable-ddos-protection" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+<a href="https://aka.ms/arm-gaming-lamp-enable-ddos-protection" target="_blank"><img src="media/azure-resource-manager-deploy-button.png" alt="Deploy"></a>
 
 ### Azure Portal
 
@@ -3090,7 +3090,7 @@ This ARM template is an example template that uploads a bunch of PHP files to th
 
 The file path should be `<Blob Url>/app/package.tar.gz` and `<Script Url>/scripts/update-app.sh`.
 
-<a href="https://aka.ms/arm-gaming-lamp-update-app" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+<a href="https://aka.ms/arm-gaming-lamp-update-app" target="_blank"><img src="media/azure-resource-manager-deploy-button.png" alt="Deploy"></a>
 
 ### Hashicorp Terraform
 
