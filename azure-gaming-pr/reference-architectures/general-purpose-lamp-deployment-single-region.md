@@ -1,6 +1,6 @@
 ---
 title: Deploy a single region LAMP architecture
-description: Detailed step by step to deploy this architecture using different methods.
+description: Detailed step by step to deploy this LAMP architecture using different methods.
 author: David Jimenez
 keywords: 
 ms.topic: reference-architecture
