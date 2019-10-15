@@ -9,7 +9,7 @@ ms.author: dajimene
 ms.service: azure
 ---
 
-# LAMP Reference Architectures
+# LAMP Gaming Reference Architectures
 
 You may be already rocking a LAMP architecture on-premises and moving it to Azure couldn't be simpler. Follow this reference architecture to learn how to deploy it both effectively and efficiently.
 
