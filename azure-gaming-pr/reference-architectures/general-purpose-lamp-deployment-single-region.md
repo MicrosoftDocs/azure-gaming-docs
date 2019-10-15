@@ -3096,6 +3096,13 @@ The file path should be `<Blob Url>/app/package.tar.gz` and `<Script Url>/script
 
 This [Hashicorp Terraform's Azure Provider template](https://github.com/Azure-Samples/gaming-lamp/blob/master/terraform/12-update-app.tf) is an example template that uploads a bunch of PHP files to the remote Virtual Machine instances and run a bash script that will decompress the PHP file remotely.
 
+## Application layer
+
+- This [quickstart](https://docs.microsoft.com/azure/mysql/connect-php) demonstrates how to connect to an Azure Database for MySQL using a PHP application. It shows how to use SQL statements to query, insert, update, and delete data in the database. This topic assumes that you are familiar with development using PHP and that you are new to working with Azure Database for MySQL.
+- The [Retwis](https://github.com/SyntaxC4-MSFT/retwis) sample is the Redis Hello World. It is a minimal Twitter-style social network clone written using Redis and PHP using the Predis client. The source code is designed to be very simple and at the same time to show different Redis data structures.
+- View, download, and install the [PHP client library source code](https://github.com/Azure/azure-storage-php) for Azure Storage on GitHub.
+- Explore [Blob storage samples](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=php&term=blob) written using the PHP client library.
+
 ## Summary
 
 Deploying a single region LAMP architecture on Azure should take less than 90 minutes end-to-end using scripts (either Bash or Windows Batch) or ARM deployment templates. Using the Azure Portal will take longer. The deployed architecture should look like the image below:
