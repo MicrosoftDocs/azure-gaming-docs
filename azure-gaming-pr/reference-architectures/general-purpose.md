@@ -18,3 +18,7 @@ These reference architectures describe a variety of general purpose backend use 
 Following are some web services backend use cases for you to explore:
 
 - [LAMP](./general-purpose-lamp.md): the archetypal model of web service stacks, has many different uses from managing friends lists to storing in-game chat conversations to enabling multiplayer matchmaking and more! 
+
+## Additional resources and samples
+
+- [https://docs.microsoft.com/azure/architecture/](Azure architecture center)
