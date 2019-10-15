@@ -21,4 +21,4 @@ Following are some web services backend use cases for you to explore:
 
 ## Additional resources and samples
 
-- [https://docs.microsoft.com/azure/architecture/](Azure architecture center)
+- [Azure architecture center](https://docs.microsoft.com/azure/architecture/)
