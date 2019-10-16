@@ -58,3 +58,8 @@
       href: reference-architectures/cognitive-text-to-speech.md
     - name: Customer Service Bot
       href: reference-architectures/cognitive-css-bot.md
+  - name: General Purpose
+    href: reference-architectures/general-purpose.md
+    items:
+    - name: LAMP
+      href: reference-architectures/general-purpose-lamp.md

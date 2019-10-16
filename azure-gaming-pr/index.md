@@ -56,6 +56,7 @@ Some advantages of building your own game services and backend from scratch incl
                             <li><a href="reference-architectures/analytics.md">Analytics</a></li>
                             <li><a href="reference-architectures/leaderboard.md">Leaderboards</a></li>
                             <li><a href="reference-architectures/cognitive.md">Cognitive Services</a></li>
+                            <li><a href="reference-architectures/general-purpose.md">General Purpose</a></li>
                         </ul>
                     </div>
                 </div>
