@@ -13,7 +13,7 @@ ms.service: azure
 
 You may be already rocking a LAMP architecture on-premises and moving it to Azure couldn't be simpler. Follow this reference architecture to learn how to deploy it both effectively and efficiently.
 
-There are some added **benefits from using a public cloud** too, just to name a few:
+There are some added **benefits from using a public cloud** too, just to name a few of them:
 
 - It’s so easy to add new compute and database nodes on demand, so you can set up a much lighter infrastructure and scale up and down to fit your needs, as you have the assurance that you could add more servers in a short period of time. And to add to this, it’s a lot cheaper and faster to scale up and down in Azure than on-prem, where some operations that take minutes using the public cloud can take days or weeks to achieve the same thing on-prem. Similarly, the up-front cost is much lower when you don’t need to buy the hardware to spin up a new server, and the sustain cost can be lower if you are able to dynamically scale your capacity with demand.
 - Get performance boosts by using latest and greatest hardware, meaning you may be able to do more with less. And again, it's cheaper to user higher-end performance hardware using the public cloud than procuring it on-prem.
