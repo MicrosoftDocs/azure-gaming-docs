@@ -115,7 +115,7 @@ Once you have connected to the Azure Virtual Machine, you can proceed with the r
 
 ### Set up the operating system firewall
 
-Your virtual machine is already configure to accept requests to both the maintenance and game server specific ports, however the **operating system firewall** needs to be configured too. Follow these tutorials to open the **ports that your game server needs** to accept player requests.
+Your virtual machine is already configured to accept requests to both the maintenance and game server specific ports, however the **operating system firewall** needs to be configured too. Follow these tutorials to open the **ports that your game server needs** to accept player requests.
 
 |Windows|Linux|
 |----------|-----------|
