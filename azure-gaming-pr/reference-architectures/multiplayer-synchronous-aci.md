@@ -6,7 +6,7 @@ keywords:
 ms.topic: reference-architecture
 ms.date: 3/14/2019
 ms.author: brpeek
-ms.service: azure
+ms.prod: azure-gaming
 ---
 
 # Synchronous Multiplayer Using Azure Container Instances (ACI)

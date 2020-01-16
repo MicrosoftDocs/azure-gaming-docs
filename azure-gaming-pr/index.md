@@ -5,7 +5,7 @@ layout: LandingPage
 ms.topic: article
 author: BrianPeek
 ms.author: brpeek
-ms.prod: gaming
+ms.prod: azure-gaming
 ms.date: 03/08/2019
 ---
 
