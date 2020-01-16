@@ -56,7 +56,7 @@ And once you are in the public cloud, you can **continue the journey** at a late
 - [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) - The LAMP data-storage component.
 - [Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-overview) - Cache to improve the performance and scalability of the architecture.
 - [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) - Distributes the traffic across the different Azure Linux Virtual Machine instances from the Azure Virtual Machine Scale Set.
-- [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction) - Stores the flat files.
+- [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) - Stores the flat files.
 - [Azure DDoS Protection Standard](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview) - Azure DDoS protection, combined with application design best practices, provide defense against DDoS attacks.
 
 ### Step by step
@@ -167,7 +167,7 @@ To start, open the Azure Calculator using any of the different pre-set estimatio
 
 | | Small configuration|Medium configuration|Large configuration|
 |----------|----------|----------|-----------|
-|Single region| [Calculator](https://azure.microsoft.com/en-us/pricing/calculator/?shared-estimate=868f344674504e41a6bb87f3e838b128) | [Calculator](https://azure.microsoft.com/en-us/pricing/calculator/?shared-estimate=041f3f70c85545d0b50868ae044c680a) | [Calculator](https://azure.microsoft.com/en-us/pricing/calculator/?shared-estimate=1f57f2008dff494596198d3ffc9780c5) |
+|Single region| [Calculator](https://azure.microsoft.com/pricing/calculator/?shared-estimate=868f344674504e41a6bb87f3e838b128) | [Calculator](https://azure.microsoft.com/pricing/calculator/?shared-estimate=041f3f70c85545d0b50868ae044c680a) | [Calculator](https://azure.microsoft.com/pricing/calculator/?shared-estimate=1f57f2008dff494596198d3ffc9780c5) |
 
 Set the **Region** in each section to the region you expect to run this from, Japan West for example, and make any adjustments you consider based on your own scenario.
 
