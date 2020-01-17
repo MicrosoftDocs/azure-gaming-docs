@@ -1,11 +1,12 @@
 ---
 title: In-editor Debugging Telemetry
 description: This reference architecture focuses on the development phase and a small number of users, gathering data from gameplay sessions and displaying it directly within the game engine.
+author: Brian Peek
 keywords: analytics 
 ms.topic: reference-architecture
 ms.date: 3/14/2019
 ms.author: brpeek
-ms.service: azure
+ms.prod: azure-gaming
 ---
 
 # In-editor Debugging Telemetry Reference Architecture

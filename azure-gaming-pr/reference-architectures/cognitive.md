@@ -6,7 +6,7 @@ keywords:
 ms.topic: reference-architecture
 ms.date: 3/14/2019
 ms.author: brpeek
-ms.service: azure
+ms.prod: azure-gaming
 ---
 
 # Cognitive Services Reference Architectures
@@ -26,4 +26,4 @@ Cognitive Services can be used to improve a variety of gaming scenarios, both in
 
 ## Additional resources and samples
 
-[Azure Cognitive Services](https://docs.microsoft.com/en-us/azure/cognitive-services/)
+[Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)

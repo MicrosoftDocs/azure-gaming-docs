@@ -6,7 +6,7 @@ keywords:
 ms.topic: reference-architecture
 ms.date: 3/14/2019
 ms.author: dajimene
-ms.service: azure
+ms.prod: azure-gaming
 ---
 
 # Deploy a single region LAMP architecture
@@ -1979,7 +1979,7 @@ CALL DEL connectionstring.tmp
 
 #### Create a storage container into the storage account
 
-Learn more about the [az storage container create](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) Azure CLI and [New-AzRmStorageContainer](https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azrmstoragecontainer) PowerShell commands.
+Learn more about the [az storage container create](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) Azure CLI and [New-AzRmStorageContainer](https://docs.microsoft.com/powershell/module/az.storage/new-azrmstoragecontainer) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -2336,7 +2336,7 @@ CALL az vmss show ^
 
 #### Associate the load balancer health probe to the scale set
 
-Learn more about the [az vmss update](https://docs.microsoft.com/en-us/cli/azure/vmss?view=azure-cli-latest#az-vmss-update) Azure CLI command.
+Learn more about the [az vmss update](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-update) Azure CLI command.
 
 # [Bash](#tab/bash)
 

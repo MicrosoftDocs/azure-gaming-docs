@@ -1,11 +1,12 @@
 ---
 title: Non-real Time Analytics Dashboard
 description: This reference architecture represents a simple analytics pipeline that you can build on Azure. It can be leveraged when you won't be tracking data that requires real-time analysis and instead you just plan to do review sessions of the data every now and then (daily, weekly, ...).
+author: Brian Peek
 keywords: analytics 
 ms.topic: reference-architecture
 ms.date: 3/14/2019
 ms.author: brpeek
-ms.service: azure
+ms.prod: azure-gaming
 ---
 
 # Non-real Time Dashboard Reference Architectures
