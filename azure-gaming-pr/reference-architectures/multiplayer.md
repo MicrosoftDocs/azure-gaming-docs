@@ -43,7 +43,7 @@ Following are some multiplayer backend use cases for you to explore:
 Compute services vary based on the level of management they offer, from those managed entirely by you, to those managed entirely by the platform:
 
 - **Raw Virtual Machines** - Everything is managed by you, it needs a custom scaling solution
-- **Azure Container Instances (ACI)** - Everything is managed by your but in a container, it needs a custom scaling solution
+- **Azure Container Instances (ACI)** - Everything is managed by you but in a container, it needs a custom scaling solution
 - **Virtual Machine Scale Sets** / **Batch** - Manages the scaling of Virtual Machines on your behalf based on rules you define
 - **Service Fabric** / **Azure Kubernetes Service (AKS)** - Manages the orchestration of containers on your behalf
 - **PlayFab Multiplayer Servers** - Higher level orchestration of game servers on your behalf, running on top of Azure. For more information see [PlayFab Multiplayer Servers](https://docs.microsoft.com/gaming/playfab/features/multiplayer/servers/).
@@ -75,7 +75,7 @@ Some things to keep in mind when you are considering using dedicated servers:
 - They provide connectivity and reliability benefits.
 - They are fairly straightforward to implement and scale well.
 - It's more difficult for a player to be able to cheat.
-- Other player's internet could affect if game is frame synchronized.
+- Other player's internet could affect if the game is frame synchronized.
 - Depending on the type of game, players who live very close to the dedicate servers may have a measurable advantage over those who live further away.
 
 #### Peer to Peer (P2P)
@@ -83,7 +83,7 @@ Some things to keep in mind when you are considering using dedicated servers:
 Some things to keep in mind when you are considering a P2P model:
 
 - Operating cost is cheaper than leveraging dedicated servers.
-- It is more difficult to pull off a truly successful implementation over a dedicated server solution.
+- It is more difficult to pull off a truly successful implementation in contrast to a dedicated server solution.
 - In many places, home internet service does not have high enough upload speeds to cope with more than a small number of players.
 - A player with a bad connection can influence the game for the other players.
 - Clients sometimes cannot connect due to NAT punch-through issues. Port forwarding may be required.
@@ -153,7 +153,7 @@ To reduce or mitigate latency, there are several things to consider. From the im
 
 From an infrastructure stand-point, the longer the distance from the player to the game server, the greater the latency eventually will be. **Connecting the players to the game servers that are closest to their vicinity** will be have an impact. Azure has more [global regions](https://azure.microsoft.com/global-infrastructure/regions/) than any other cloud provider, offering the scale to bring you closer to your players around the world. [Accelerated networking](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) is a possibility for reducing latency on the server side, but keep in mind it's only enabled in virtual machines with at least 4 vCPUs. Also if you are going to be using Linux virtual machines, you could consider [DPDK](https://docs.microsoft.com/azure/virtual-network/setup-dpdk) to optimize latency and throughput when you have a large number of players in the same virtual machine.
 
-For games that support groups, there is the need to tackle the case where different members of the group are far from each other. In your game, add the ability of manuall choosing the region to connect to, or add a lowest latency common denominator algorithm.
+For games that support groups, there is the need to tackle the case where different members of the group are far from each other. In your game, add the ability of manually choosing the region to connect to, or add a lowest latency common denominator algorithm.
 
 In scenarios where mitigation efforts are unsuccessful, the network latency can reach unmanageable levels. When that happens, more drastic measures need to be applied, such as disconnecting the player suffering the largest latency.
 
@@ -182,7 +182,7 @@ As with any scaling service, spending time working on planning the proper number
 
 Test early and give yourself time. Run a **proof of concept** early on and **one or several betas** before releasing your game to get an idea of what times of the day your players are going to be using it most, and how much capacity you are going to support it.
 
-Make sure your software is scalable and is prepared for your players to enjoy the game, from the login and matchmaking to the game server itself. Test at different level of player concurrency (100, 1000, 10000, 100000, etc) as every time you add a zero to the number of concurrent players, you are likely going to identify new bottlenecks and you are going to have to make tweaks.
+Make sure your software is scalable and is prepared for your players to enjoy the game, from the login and matchmaking to the game server itself. Test at different levels of player concurrency (100, 1000, 10000, 100000, etc) as every time you add a zero to the number of concurrent players, you are likely going to identify new bottlenecks and you are going to have to make tweaks.
 
 ### Deployment Methodology
 
