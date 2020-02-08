@@ -27,7 +27,7 @@ And once you are in the public cloud, you can **continue the journey** at a late
 :::row:::
     :::column:::
 
-<img src="https://docs.microsoft.com/en-us/gaming/azure/reference-architectures/media/general-purpose/general-purpose-lamp-gameinsight.png" alt="GameInsight customer story" width="60"/>
+<img src="https://docs.microsoft.com/gaming/azure/reference-architectures/media/general-purpose/general-purpose-lamp-gameinsight.png" alt="GameInsight customer story" width="60"/>
 
     :::column-end:::
     :::column:::
