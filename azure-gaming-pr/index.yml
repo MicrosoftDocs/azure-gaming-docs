@@ -1,0 +1,114 @@
+### YamlMime:Hub
+
+title: Azure for Gaming
+summary: Build, scale, and operate your game on the global, secure Azure cloud. Quickly scale up and down when your needs change, only pay for the resources you use.
+#brand: azure
+
+metadata:
+  ms.topic: hub-page
+  author: BrianPeek
+  ms.author: brpeek
+  ms.prod: azure-gaming
+  ms.date: 03/12/2020
+
+# highlightedContent section
+# Maximum of 8 items
+highlightedContent:
+# itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
+  items:
+    # Card
+    - title: General Guidelines
+      itemType: get-started
+      url: reference-architectures/general-guidelines.md
+    # Card
+    - title: Create Azure account
+      itemType: get-started
+      url: https://azure.microsoft.com/solutions/gaming/ 
+
+# productDirectory section
+productDirectory:
+  title: Features
+  items:
+    # Card
+    - title: Game Server Hosting
+      # imageSrc should be square in ratio with no whitespace
+      imageSrc: ./media/game-server-hosting.svg
+      links:
+        - text: Basic Game Server Hosting
+          url: reference-architectures/multiplayer-basic-game-server-hosting.md
+        - text: LAMP
+          url: reference-architectures/general-purpose-lamp.md
+
+    # Card
+    - title: Multiplayer Servers
+      imageSrc: ./media/multiplayer-servers.svg
+      links:
+        - text: Multiplayer/Game Servers
+          url: reference-architectures/multiplayer.md
+        - text: Synchronous Multiplayer
+          url: reference-architectures/multiplayer-synchronous.md
+        - text: Azure Batch
+          url: reference-architectures/multiplayer-synchronous-batch.md
+        - text: Azure Kubernetes Service (AKS)
+          url: reference-architectures/multiplayer-synchronous-aks.md
+        - text: Azure Service Fabric
+          url: reference-architectures/multiplayer-synchronous-sf.md
+        - text: Azure Container Instances (ACI)
+          url: reference-architectures/multiplayer-synchronous-aci.md
+
+    # Card
+    - title: Game Server Scaling
+      imageSrc: ./media/game-server-scaling.svg
+      links:
+        - text: Custom Server Scaling
+          url: reference-architectures/multiplayer-custom-server-scaling.md
+        - text: Asynchronous Multiplayer
+          url: reference-architectures/multiplayer-asynchronous.md
+        - text: Serverless
+          url: reference-architectures/multiplayer-asynchronous-serverless.md
+
+    # Card
+    - title: Game Analytics
+      imageSrc: ./media/game-analytics.svg
+      links:
+        - text: Analytics
+          url: reference-architectures/analytics.md
+        - text: Non-real Time Dashboard
+          url: reference-architectures/analytics-non-real-time-dashboard.md
+        - text: In-editor Debugging Telemetry
+          url: reference-architectures/analytics-in-editor-debugging.md      
+
+    # Card
+    - title: Matchmaking
+      imageSrc: ./media/matchmaking.svg
+      links:
+        - text: Matchmaking Architecture
+          url: reference-architectures/multiplayer-matchmaker.md
+        - text: Serverless
+          url: reference-architectures/multiplayer-matchmaker-serverless.md
+
+    # Card
+    - title: Leaderboards
+      imageSrc: ./media/leaderboards.svg
+      links:
+        - text: Leaderboard
+          url: reference-architectures/leaderboard.md
+        - text: Non-relational Database Leaderboard
+          url: reference-architectures/leaderboard-non-relational.md
+        - text: Relational Database Leaderboard
+          url: reference-architectures/leaderboard-relational.md
+
+    # Card
+    - title: Artificial Intelligence in Games
+      imageSrc: ./media/ai-games.svg
+      links:
+        - text: Cognitive Services
+          url: reference-architectures/cognitive.md
+        - text: Content Moderation
+          url: reference-architectures/cognitive-content-moderation.md
+        - text: Text Translation
+          url: reference-architectures/cognitive-text-translation.md
+        - text: Text to Speech
+          url: reference-architectures/cognitive-text-to-speech.md
+        - text: Customer Service Bot
+          url: reference-architectures/cognitive-css-bot.md
