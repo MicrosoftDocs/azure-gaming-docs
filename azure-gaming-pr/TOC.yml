@@ -1,23 +1,22 @@
 - name: Azure Gaming
-  href: index.md
-- name: Reference Architectures
-  expanded: true
+  href: index.yml
   items:
-  - name: General Guidelines
-    href: reference-architectures/general-guidelines.md
-  - name: Multiplayer / Game Servers
-    href: reference-architectures/multiplayer.md
+  - name: Getting Started
+    items:
+    - name: General Guidelines
+      href: reference-architectures/general-guidelines.md
+  - name: Game Server Hosting
     items:
     - name: Basic Game Server Hosting
       href: reference-architectures/multiplayer-basic-game-server-hosting.md
-    - name: Matchmaker
-      href: reference-architectures/multiplayer-matchmaker.md
-      items:
-      - name: Serverless
-        href: reference-architectures/multiplayer-matchmaker-serverless.md
-    - name: Synchronous Multiplayer
-      href: reference-architectures/multiplayer-synchronous.md
-      items:
+    - name: LAMP
+      href: reference-architectures/general-purpose-lamp.md
+  - name: Multiplayer Servers
+    items:
+      - name: Multiplayer/Game Servers
+        href: reference-architectures/multiplayer.md
+      - name: Synchronous Multiplayer
+        href: reference-architectures/multiplayer-synchronous.md
       - name: Azure Batch
         href: reference-architectures/multiplayer-synchronous-batch.md
       - name: Azure Kubernetes Service (AKS)
@@ -26,30 +25,40 @@
         href: reference-architectures/multiplayer-synchronous-sf.md
       - name: Azure Container Instances (ACI)
         href: reference-architectures/multiplayer-synchronous-aci.md
-      - name: Custom Server Scaling
-        href: reference-architectures/multiplayer-custom-server-scaling.md
+  - name: Game Server Scaling
+    items:
+    - name: Custom Server Scaling
+      href: reference-architectures/multiplayer-custom-server-scaling.md
     - name: Asynchronous Multiplayer
       href: reference-architectures/multiplayer-asynchronous.md
-      items:
-      - name: Serverless
-        href: reference-architectures/multiplayer-asynchronous-serverless.md
-  - name: Analytics
-    href: reference-architectures/analytics.md
+    - name: Serverless
+      href: reference-architectures/multiplayer-asynchronous-serverless.md
+  - name: Game Analytics
     items:
+    - name: Analytics
+      href: reference-architectures/analytics.md
     - name: Non-real Time Dashboard
       href: reference-architectures/analytics-non-real-time-dashboard.md
     - name: In-editor Debugging Telemetry
       href: reference-architectures/analytics-in-editor-debugging.md      
-  - name: Leaderboard
-    href: reference-architectures/leaderboard.md
+  - name: Matchmaking
     items:
+    - name: Matchmaking Architecture
+      href: reference-architectures/multiplayer-matchmaker.md
+    - name: Serverless
+      href: reference-architectures/multiplayer-matchmaker-serverless.md
+  - name: Leaderboards
+    items:
+    - name: Leaderboard
+      href: reference-architectures/leaderboard.md
     - name: Non-relational Database Leaderboard
       href: reference-architectures/leaderboard-non-relational.md
     - name: Relational Database Leaderboard
       href: reference-architectures/leaderboard-relational.md
-  - name: Cognitive Services
-    href: reference-architectures/cognitive.md
+  - name: Artificial Intelligence in Games
     items:
+    - name: Cognitive Services
+      href: reference-architectures/cognitive.md
     - name: Content Moderation
       href: reference-architectures/cognitive-content-moderation.md
     - name: Text Translation
@@ -58,8 +67,3 @@
       href: reference-architectures/cognitive-text-to-speech.md
     - name: Customer Service Bot
       href: reference-architectures/cognitive-css-bot.md
-  - name: General Purpose
-    href: reference-architectures/general-purpose.md
-    items:
-    - name: LAMP
-      href: reference-architectures/general-purpose-lamp.md
