@@ -1,7 +1,7 @@
 ### YamlMime:Hub
 
-title: Azure Gaming
-summary: Create and run your game with a global, secure cloud and game-specific services for studios of all sizes and budgets.
+title: Azure for Gaming
+summary: Build, scale, and operate your game on the global, secure Azure cloud. Quickly scale up and down when your needs change, only pay for the resources you use.
 #brand: azure
 
 metadata:
@@ -23,7 +23,7 @@ highlightedContent:
     # Card
     - title: Create Azure account
       itemType: get-started
-      url: https://azure.microsoft.com/
+      url: https://azure.microsoft.com/solutions/gaming/ 
 
 # productDirectory section
 productDirectory:
