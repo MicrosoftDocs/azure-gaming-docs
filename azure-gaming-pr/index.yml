@@ -2,7 +2,7 @@
 
 title: Azure for Gaming
 summary: Build, scale, and operate your game on the global, secure Azure cloud. Quickly scale up and down when your needs change, only pay for the resources you use.
-#brand: azure
+brand: azure
 
 metadata:
   ms.topic: hub-page
@@ -10,6 +10,7 @@ metadata:
   ms.author: brpeek
   ms.prod: azure-gaming
   ms.date: 03/12/2020
+  brand: azure-gaming
 
 # highlightedContent section
 # Maximum of 8 items
