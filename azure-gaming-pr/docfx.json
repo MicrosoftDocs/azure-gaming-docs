@@ -42,7 +42,8 @@
       "feedback_system": "GitHub",
       "feedback_github_repo": "MicrosoftDocs/azure-gaming-docs",
       "searchScope": ["Azure gaming"],
-      "titleSuffix": "Azure Gaming"
+      "titleSuffix": "Azure Gaming",
+      "uhfHeaderId": "azure-gaming"
     },
     "fileMetadata": {},
     "template": [],
