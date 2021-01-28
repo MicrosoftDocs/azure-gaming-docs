@@ -31,7 +31,7 @@ When you are building your matchmaking logic, there are three key variables to t
 
 Additionally there are some related concepts to think about:
 
-- **Whitelisting/blacklisting** - Can players, or you as the game creator, block certain players or allow specific players to join a game session? 
+- **Allow/Deny** - Can players, or you as the game creator, block certain players or allow specific players to join a game session? 
 - **Join in progress** - Are players able to join a game session after it has started?
 - **Auto-cancellations** - Will you set a limit where a specific game session is auto-cancelled if it fails to start after some time?
 

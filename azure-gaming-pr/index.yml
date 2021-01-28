@@ -32,21 +32,18 @@ productDirectory:
   items:
     # Card
     - title: Game Server Hosting
-      # imageSrc should be square in ratio with no whitespace
       imageSrc: ./media/game-server-hosting.svg
       links:
-        - text: Basic Game Server Hosting
+        - text: Game Server Hosting Basics
           url: reference-architectures/multiplayer-basic-game-server-hosting.md
         - text: LAMP
           url: reference-architectures/general-purpose-lamp.md
 
     # Card
-    - title: Multiplayer Servers
+    - title: Realtime Multiplayer Servers
       imageSrc: ./media/multiplayer-servers.svg
       links:
-        - text: Multiplayer/Game Servers
-          url: reference-architectures/multiplayer.md
-        - text: Synchronous Multiplayer
+        - text: Realtime Multiplayer Basics
           url: reference-architectures/multiplayer-synchronous.md
         - text: Azure Batch
           url: reference-architectures/multiplayer-synchronous-batch.md
@@ -56,16 +53,16 @@ productDirectory:
           url: reference-architectures/multiplayer-synchronous-sf.md
         - text: Azure Container Instances (ACI)
           url: reference-architectures/multiplayer-synchronous-aci.md
-
-    # Card
-    - title: Game Server Scaling
-      imageSrc: ./media/game-server-scaling.svg
-      links:
         - text: Custom Server Scaling
           url: reference-architectures/multiplayer-custom-server-scaling.md
-        - text: Asynchronous Multiplayer
+
+    # Card
+    - title: Turn-Based Multiplayer Servers
+      imageSrc: ./media/game-server-scaling.svg
+      links:
+        - text: Turn-Based Multiplayer Basics
           url: reference-architectures/multiplayer-asynchronous.md
-        - text: Serverless
+        - text: Azure Functions (Serverless)
           url: reference-architectures/multiplayer-asynchronous-serverless.md
 
     # Card
@@ -83,7 +80,7 @@ productDirectory:
     - title: Matchmaking
       imageSrc: ./media/matchmaking.svg
       links:
-        - text: Matchmaking Architecture
+        - text: Matchmaking Basics
           url: reference-architectures/multiplayer-matchmaker.md
         - text: Serverless
           url: reference-architectures/multiplayer-matchmaker-serverless.md
@@ -92,7 +89,7 @@ productDirectory:
     - title: Leaderboards
       imageSrc: ./media/leaderboards.svg
       links:
-        - text: Leaderboard
+        - text: Leaderboard Basics
           url: reference-architectures/leaderboard.md
         - text: Non-relational Database Leaderboard
           url: reference-architectures/leaderboard-non-relational.md
@@ -100,7 +97,7 @@ productDirectory:
           url: reference-architectures/leaderboard-relational.md
 
     # Card
-    - title: Artificial Intelligence in Games
+    - title: AI in Games
       imageSrc: ./media/ai-games.svg
       links:
         - text: Cognitive Services
@@ -111,5 +108,7 @@ productDirectory:
           url: reference-architectures/cognitive-text-translation.md
         - text: Text to Speech
           url: reference-architectures/cognitive-text-to-speech.md
+        - text: Speech to Text
+          url: reference-architectures/cognitive-speech-to-text.md
         - text: Customer Service Bot
           url: reference-architectures/cognitive-css-bot.md

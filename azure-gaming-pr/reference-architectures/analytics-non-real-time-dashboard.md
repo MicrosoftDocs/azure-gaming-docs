@@ -41,7 +41,7 @@ This article will describe the architecture used in [this sample on GitHub](http
 
 Click the following button to deploy the project to your Azure subscription:
 
-<a href="https://aka.ms/arm-gaming-nonrealtime-analytics" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+[![Deploy to Azure](media/deploytoazure.svg)](https://aka.ms/arm-gaming-nonrealtime-analytics)
 
 This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/Azure-Samples/gaming-nonrealtime-analytics/blob/master/azuredeploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources. This may induce charges in your Azure account.
 
@@ -147,7 +147,7 @@ Leveraging [Azure Event Hubs Capture](https://docs.microsoft.com/azure/event-hub
 
 Click the following button to deploy the project to your Azure subscription:
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fevent-grid%2FEventHubsDataMigration.json" target="_blank"><img alt="Deploy using an Azure Resource Manager template" src="media/azure-resource-manager-deploy-button.png"/></a>
+[![Deploy to Azure](media/deploytoazure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fevent-grid%2FEventHubsDataMigration.json)
 
 This operation will trigger a template deployment of the [EventHubsDataMigration.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json) ARM template file to your Azure subscription, which will create the necessary Azure resources.
 
@@ -162,7 +162,6 @@ Optionally you can choose to prepare data outside of your warehouse to leverage 
 
 ## Additional resources and samples
 
-- [Azure Event Hubs SDK for Unity](https://docs.microsoft.com/sandbox/gamedev/unity/azure-event-hubs-unity) - This is a sandbox project. The content in this article is unsupported, and therefore may be out of date or not in a working state.
 - [Deploy Tableau Server via Azure Marketplace](https://azure.microsoft.com/blog/tableau-server-in-the-azure-marketplace/)
 - [Tableau Server in the Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tableau.tableau-server?tab=Overview)
 

@@ -60,7 +60,7 @@ Refer to the **microsoft-azure-batch** publisher documented in [this link](https
 
 Click the following button to deploy the project to your Azure subscription:
 
-<a href="https://aka.ms/arm-gaming-hosting-batch" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+[![Deploy to Azure](media/deploytoazure.svg)](https://aka.ms/arm-gaming-hosting-batch)
 
 This operation will trigger a template deployment of the [BatchWithPoolDeploy.json](https://gist.github.com/BrianPeek/1d02048356779f91d0a510be12cd0b4e) ARM template file to your Azure subscription, which will create the necessary Azure resources. To be more precise:
 

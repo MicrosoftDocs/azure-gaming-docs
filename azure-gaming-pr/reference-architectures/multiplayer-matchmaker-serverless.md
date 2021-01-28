@@ -27,7 +27,7 @@ This article will describe the architecture used in [this sample on GitHub](http
 
 Click the following button to deploy the project to your Azure subscription:
 
-<a href="https://aka.ms/arm-gaming-serverless-matchmaker" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+[![Deploy to Azure](media/deploytoazure.svg)](https://aka.ms/arm-gaming-serverless-matchmaker)
 
 This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/Azure-Samples/gaming-serverless-matchmaker/blob/master/azuredeploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources. This may induce charges in your Azure account.
 
@@ -126,10 +126,6 @@ Also the sample doesn't include the code to do **scale out requests** when there
 In terms of Azure Cache for Redis capacity, see [how to scale Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-scale) to learn how to scale appropriately the database storing the matchmaking information.
 
 Have a look at the [general guidelines documentation](./general-guidelines.md#azure-event-hub-partitions) to understand the Azure Event Hub peculiarities and the rule of thumb to model the partition count.
-
-## Additional resources and samples
-
-[Azure Event Hubs SDK for Unity](https://docs.microsoft.com/sandbox/gamedev/unity/azure-event-hubs-unity): This is a sandbox project. The content in this article is unsupported, and therefore may be out of date or not in a working state.
 
 ## Pricing
 

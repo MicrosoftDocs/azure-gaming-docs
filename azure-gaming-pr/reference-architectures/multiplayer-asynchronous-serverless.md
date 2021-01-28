@@ -29,25 +29,6 @@ This specific reference architecture showcases a **simple serverless tic-tac-toe
 
 In this reference architecture, a helper class (Data Client) will connect to and interact with the database, and the rest of the Functions will make use of it when needed. The Game Session class is used to run the turn with the information submitted by the player, and for calculating the winner. There will be 3 different action events supported: *forfeit* (to give up on a game), *addPlayer* (to join a player to a game session) and *takeTurn*
 
-## Deployment template
-
-Have a look at the [general guidelines documentation](./general-guidelines.md#naming-conventions) that includes a section summarizing the naming rules and restrictions for Azure services.
-
->[!NOTE]
-> If you're interested in how the ARM template works, review the Azure Resource Manager template documentation from each of the different services leveraged in this reference architecture:
->
-> - [Create an Event Hub using Azure Resource Manager template](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub)
-> - [Automate resource deployment for your function app in Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-infrastructure-as-code)
-> - [Azure Database for MySQL template](https://docs.microsoft.com/azure/templates/microsoft.dbformysql/servers)
-> - [Azure Notification Hub template](https://docs.microsoft.com/azure/templates/microsoft.notificationhubs/allversions)
-> - [Azure SignaR template](https://azure.microsoft.com/resources/templates/101-signalr/)
-
->[!WARNING]
-> The database admin password must contain 8 to 128 characters. Also, it must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, and so on).
-
->[!TIP]
-> To run the Azure Functions locally, update the *local.settings.json* file with these same app settings.
-
 ## Step by step
 
 ### Create a new game session
@@ -80,7 +61,7 @@ Have a look at the [general guidelines documentation](./general-guidelines.md#na
 
 ### Exercise for the reader
 
-The sample provided doesn't include logic to scale the *reads* from the database, only the *writes*. Consider [fronting the database with a cache](https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=/azure/redis-cache/toc.json#considerations-for-using-caching) or scale up the database to avoid exhausting the connections to the database.
+Consider [fronting the database with a cache](https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=/azure/redis-cache/toc.json#considerations-for-using-caching) or scale up the database to avoid exhausting the connections to the database.
 
 ## Security considerations
 
@@ -96,7 +77,7 @@ In this reference architecture, Azure Database for MySQL was used, however it co
 
 [![Trivia game using Azure SignalR Service and Durable Functions](media/multiplayer/multiplayer-async-trivia.png)](media/multiplayer/multiplayer-async-trivia.png)
 
-Though it's not entirely asynchronous (it runs on a 20 seconds timer), you can find the implementation of a **trivia game** built on durable Functions and Azure SignalR Service [at this link](https://github.com/anthonychu/serverless-trivia). Clues are retrieved from [jservice.io](https://jservice.io/). To see it running, see [this link](https://aka.ms/serverlesstriviatrivia).
+Though it's not entirely asynchronous (it runs on a 20 seconds timer), you can find the implementation of a **trivia game** built on durable Functions and Azure SignalR Service [at this link](https://github.com/anthonychu/serverless-trivia).
 
 Here's how it works:
 
