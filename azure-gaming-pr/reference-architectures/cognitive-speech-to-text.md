@@ -4,7 +4,7 @@ description: In the case of players with hearing impairment, being able to read 
 author: JeffBallard
 keywords: 
 ms.topic: reference-architecture
-ms.date: 1/29/2020
+ms.date: 1/29/2021
 ms.author: jeball
 ms.prod: azure-gaming
 ---
