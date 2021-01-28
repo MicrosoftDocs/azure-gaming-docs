@@ -27,11 +27,10 @@ There are many variables which can be taken into consideration when designing a 
 1. **Number of concurrent players** - Small, medium or large
 1. **Reconnection allowed** - If a player or players get disconnected, can they go back to the game or they have to start a new game session
 
-Following are some multiplayer backend use cases for you to explore:
+Here are are some multiplayer backend use cases for you to explore:
 
-- [Multiplayer matchmaker](./multiplayer-matchmaker.md)
-- [Synchronous multiplayer](./multiplayer-synchronous.md)
-- [Asynchronous multiplayer](./multiplayer-asynchronous.md)
+- [Realtime multiplayer](./multiplayer-synchronous.md)
+- [Turn-Based multiplayer](./multiplayer-asynchronous.md)
 
 > [!TIP]
 > If you are looking for an out-of-the-box scaling multiplayer server solution, **PlayFab** is a complete back-end platform for building, launching, and growing cloud connected games that has [multiplayer servers support](https://docs.microsoft.com/gaming/playfab/features/multiplayer/servers/).

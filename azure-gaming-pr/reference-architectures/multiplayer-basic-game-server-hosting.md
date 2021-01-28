@@ -68,13 +68,13 @@ A resource group is a logical collection of Azure resources. All resources are d
 
     |Windows|Linux|
     |----------|-----------|
-    |RDP (Remote Desktop Protocol) port: TCP/3389<br>Optionally add the SSH port too: TCP/22|SSH port: TCP/22|
+    |RDP (Remote Desktop Protocol) port: TCP/3389<br>Optionally add the SSH port: TCP/22|SSH port: TCP/22|
 
 6. Switch to the **disks** section and select **create and attach a new data empty disk** to the Azure Virtual Machine, to store the game server executable and the data files it produces. The source type is **none (empty disk)**.
 
     Azure Virtual Machines have one operating system disk and a temporary disk for short-term storage, but the information stored will be lost as soon as the Azure Virtual Machine is stopped. With a persistent disk, even if the Azure Virtual Machine running the server is stopped, **the data will continue to persist** afterwards.
 
-7. Switch to **networking** section to enable the **ports that your game server needs** to accept player requests and **create a public IP**.
+7. Switch to the **networking** section to enable the **ports that your game server needs** to accept player requests and **create a public IP**.
 
     For opening the ports, you will need to leverage a virtual network, a subnet and a Network Security Group (NSG).
 
@@ -172,20 +172,22 @@ To run the Minecraft Bedrock Edition server:
 - on Windows, just double click on the `bedrock_server.exe` executable.
 - on Linux, use `LD_LIBRARY_PATH=. ./bedrock_server` from the directory where the server was installed. The server doesn't need to be run as root.
 
-To wrap up, once the server is running double check that the ports needed for your game server are open, bear in mind that you need to have the game server running before the port is shown as *listening*:
+If you are using Minecraft Java Edition, once the server is running, you can check that the ports needed for your game server are open and listening.  But, ensure that the game server is running before testing:
 
-|Where are you checking from|Windows|Linux|
+|Testing from|Windows|Linux|
 |----------|-----------|-----------|
 |Within the Azure Virtual Machine|Run `netstat -an | find "LISTENING"` from the command line and validate that the port is shown as *listening*|Run `sudo netstat -ntlp | grep LISTEN` from the terminal|
-|Outside the Azure Virtual Machine|1. Enable Telnet by following these steps: Click on Start, Control Panel, Programs, and then Turn Windows Features on or off; then Scroll down and select Telnet Client and click OK<br>2. After that from the command line run `telnet host port` and validate that the connection is shown as *accepted*|Run `telnet host port` and validate that the connection is shown as *accepted*|
+|Outside the Azure Virtual Machine|1. Enable Telnet by following these steps: Click on Start, Control Panel, Programs, and then Turn Windows Features on or off; then Scroll down and select Telnet Client and click OK<br>2. After that, from the command line, run `telnet <host> <port>` and validate that the connection is shown as *accepted*|Run `telnet <host> <port>` and validate that the connection is shown as *accepted*|
+
+If you are using Minecraft Bedrock Edition:
+
+|Testing from|Windows|Linux|
+|----------|-----------|-----------|
+|Within the Azure Virtual Machine|Run `netstat -an | find "19132"` from the command line and validate that the port is shown|Run `sudo netstat -ntlp | grep 19132` from the terminal|
 
 ## Security considerations
 
 Public inbound ports are exposed to the internet so you should use the Azure Portal advanced controls to limit maintenance inbound traffic to known IP addresses, meaning only you can access the Azure Virtual Machine remotely.
-
-## Additional resources and samples
-
-[Deploying a Minecraft Server using the Azure Marketplace Minecraft Server offering](https://msftstack.wordpress.com/2017/02/11/deploying-minecraft-server-on-azure/)
 
 ## Pricing
 

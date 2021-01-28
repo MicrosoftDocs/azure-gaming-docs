@@ -14,6 +14,7 @@ ms.prod: azure-gaming
 ## Naming Conventions
 
 The choice of a name for any service in Azure is important because:
+
 - It is difficult to change a name later.
 - Names must meet the requirements of their specific resource type.
 
@@ -25,7 +26,7 @@ See the [naming conventions](https://docs.microsoft.com/azure/architecture/best-
 
 In Azure, all resources are allocated in a resource management group. Resource groups provide **logical groupings of resources** that make them easier to work with as a collection so they can be managed by lifetime, owner, or other criteria.
 
-See the page [manage resource groups](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal#manage-resource-groups) for all the details and information.
+See the [manage resource groups](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal#manage-resource-groups) page for more information.
 
 ## Azure Storage Regions
 
