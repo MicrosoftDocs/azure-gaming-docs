@@ -35,7 +35,7 @@ This article will describe the architecture used in [this sample on GitHub](http
 
 Click the following button to deploy the project to your Azure subscription:
 
-<a href="https://aka.ms/arm-aci-management" target="_blank"><img alt="Deploy using an Azure Resource Manager template" src="media/azure-resource-manager-deploy-button.png"/></a>
+[![Deploy to Azure](media/deploytoazure.svg)](https://aka.ms/arm-aci-management)
 
 This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/dgkanatsios/AzureContainerInstancesManagement/blob/master/deploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources as well as pull the source code from this repository. This may induce charges in your Azure account.
 

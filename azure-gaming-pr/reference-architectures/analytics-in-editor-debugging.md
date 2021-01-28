@@ -48,7 +48,7 @@ This article will describe the architecture used in [this sample on GitHub](http
 
 Click the following button to deploy the project to your Azure subscription:
 
-<a href="https://aka.ms/arm-gaming-in-editor-telemetry" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+[![Deploy to Azure](media/deploytoazure.svg)](https://aka.ms/arm-gaming-in-editor-telemetry)
 
 This operation will trigger a template deployment of the [telemetry_server.deployment.json](https://github.com/Azure-Samples/gaming-in-editor-telemetry/blob/master/Deployment/telemetry_server.deployment.json) ARM template file to your Azure subscription, which will create the necessary Azure resources. This may induce charges in your Azure account.
 

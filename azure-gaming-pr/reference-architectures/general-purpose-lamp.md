@@ -1,7 +1,7 @@
 ---
 title: LAMP Reference Architecture
 description: The LAMP architecture consists of 4 components that are structured in a layered way - OS (Linux), Web server (Apache), data-storage (MySQL) and application programming language (PHP).
-author: David Jimenez
+author: dajimenemsft
 keywords: 
 ms.topic: reference-architecture
 ms.date: 3/14/2019
@@ -11,9 +11,9 @@ ms.prod: azure-gaming
 
 # LAMP Gaming Reference Architectures
 
-You may be already rocking a LAMP architecture on-premises and moving it to Azure couldn't be simpler. Follow this reference architecture to learn how to deploy it both effectively and efficiently.
+You may be already be using a LAMP architecture on-premises, and moving it to Azure couldn't be simpler. This reference architecture will explain how to deploy it both effectively and efficiently.
 
-There are some added **benefits from using a public cloud** too, just to name a few of them:
+There are some added **benefits from using a public cloud** too:
 
 - It’s so easy to add new compute and database nodes on demand, so you can set up a much lighter infrastructure and scale up and down to fit your needs, as you have the assurance that you could add more servers in a short period of time. And to add to this, it’s a lot cheaper and faster to scale up and down in Azure than on-prem, where some operations that take minutes using the public cloud can take days or weeks to achieve the same thing on-prem. Similarly, the up-front cost is much lower when you don’t need to buy the hardware to spin up a new server, and the sustain cost can be lower if you are able to dynamically scale your capacity with demand.
 - Get performance boosts by using latest and greatest hardware, meaning you may be able to do more with less. And again, it's cheaper to user higher-end performance hardware using the public cloud than procuring it on-prem.
@@ -22,25 +22,7 @@ There are some added **benefits from using a public cloud** too, just to name a 
 
 And once you are in the public cloud, you can **continue the journey** at a later stage using more recent cloud services that may be more optimum for enabling some features that you are considering to implement or are already in service. As an example, you may have implemented a multiplayer matchmaker leveraging LAMP, and a [serverless approach](./multiplayer-asynchronous-serverless.md) could be something to consider as it fits that feature pretty nicely.
 
-## Case studies
-
-:::row:::
-    :::column:::
-
-<img src="https://docs.microsoft.com/gaming/azure/reference-architectures/media/general-purpose/general-purpose-lamp-gameinsight.png" alt="GameInsight customer story" width="60"/>
-
-    :::column-end:::
-    :::column:::
-<br><br>[Game developer dynamically scales fun in the cloud](https://customers.microsoft.com/story/gameinsights)
-
-*"Azure had everything we needed to run the LAMP stack."*<br>*"Azure “played well” with Terraform."*<br>Alex Shirov: Chief Technology Officer
-
-    :::column-end:::
-:::row-end:::
-
-## Single region
-
-### Architecture diagram
+## Single region architecture diagram
 
 ### Abstract
 
@@ -92,6 +74,10 @@ You can also do a combination of both, building a golden image that has the most
 Consider leveraging [mysqlnd_ms](https://www.php.net/manual/book.mysqlnd-ms.php) (a plugin for PHP’s native driver for MySQL) that can be used as load balancer proxy to distribute read workload to multiple read replicas.
 
 You can specify server name, user name, and password for connecting to a MySQL Server, so it can work to load balance and scale out by distributing read workload to Azure Database for MySQL read replicas.
+
+### Additional Resources
+
+Learn how [GameInsight uses Azure to host and run their LAMP-based architecture](https://customers.microsoft.com/story/gameinsights).
 
 ## Pricing
 
@@ -165,7 +151,7 @@ For someone implementing this system, these are the important pieces you will ne
 
 To start, open the Azure Calculator using any of the different pre-set estimations:
 
-| | Small configuration|Medium configuration|Large configuration|
+| Regions | Small configuration|Medium configuration|Large configuration|
 |----------|----------|----------|-----------|
 |Single region| [Calculator](https://azure.microsoft.com/pricing/calculator/?shared-estimate=868f344674504e41a6bb87f3e838b128) | [Calculator](https://azure.microsoft.com/pricing/calculator/?shared-estimate=041f3f70c85545d0b50868ae044c680a) | [Calculator](https://azure.microsoft.com/pricing/calculator/?shared-estimate=1f57f2008dff494596198d3ffc9780c5) |
 

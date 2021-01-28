@@ -123,7 +123,7 @@ Merely for clarification purposes, to demonstrate what would happen in a more co
 
 In this scenario, if the first player is driving in the track *Monza* (level) using a car belonging to the *fast class* (choice), the information stored in Azure Cosmos DB would look like this:
 
-|   |   |
+| Area | Data |
 | - | - |
 | Global leaderboard collection (leaderboards_all_data) | { userID: "XYZ", stat: "fastestlap", choice: "fastclass", level: "monza", value: "123" }  { userID: "XYZ", stat: "powerupspicked", choice: "fastclass", level: "monza", value: "1" } |
 | Partition 5 (monza_fastclass_fastestlap) | { userID: "XYZ", stat: "fastestlap", choice: "fastclass", level: "monza", value: "123" } |

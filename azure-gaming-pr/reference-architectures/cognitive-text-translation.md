@@ -36,7 +36,7 @@ Not every language is supported by the service today.  Please see the [language 
 
 Click the following button to deploy the project to your Azure subscription:
 
-<a href="https://aka.ms/arm-gaming-cognitive-services-text-translation" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+[![Deploy to Azure](media/deploytoazure.svg)](https://aka.ms/arm-gaming-cognitive-services-text-translation)
 
 This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/Azure-Samples/gaming-cognitive-services-text-translation/blob/master/azuredeploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources. This may induce charges in your Azure account.
 
@@ -104,10 +104,6 @@ There are two points that could become a bottleneck in this architecture that yo
 ## Alternatives
 
 You could consider leveraging [Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-overview) and [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) if you are interested in gathering analytics using an Apache Spark-based platform.
-
-## Additional resources and samples
-
-[Azure Event Hubs SDK for Unity](https://docs.microsoft.com/sandbox/gamedev/unity/azure-event-hubs-unity): This is a sandbox project. The content in this article is unsupported, and therefore may be out of date or not in a working state.
 
 ## Pricing
 
