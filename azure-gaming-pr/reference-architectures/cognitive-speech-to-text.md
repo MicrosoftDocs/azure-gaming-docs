@@ -11,7 +11,7 @@ ms.prod: azure-gaming
 
 # Speech to Text Reference Architecture
 
-Help bring everyone into the conversation by converting speech to text messages using **speech to text**.
+Help bring everyone into the conversation using the **Speech to Text** Cognitive Service provided by Azure.
 
 This article will describe the architecture used in [this sample on GitHub](https://github.com/Azure-Samples/gaming-cognitive-services-speech-to-text). Keep in mind that the code from this reference architecture is only an example for guidance and there may be places to optimize the code before using in a production environment.
 
@@ -21,8 +21,8 @@ This article will describe the architecture used in [this sample on GitHub](http
 
 ## Architecture Services
 
-- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview) - Simplest way to run code on-demand in the cloud.
-- [Azure Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-to-text) - The service that provides the speech to text functionality.
+- [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) - Simplest way to run code on-demand in the cloud.
+- [Azure Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-to-text) - The service that provides the speech to text functionality.
 
 ## Architecture Considerations
 
@@ -36,7 +36,7 @@ When enabling this functionality in your game, keep in mind the following variab
 
 Click the following button to deploy the project to your Azure subscription:
 
-<a href="https://aka.ms/arm-gaming-cognitive-services-speech-to-text" target="_blank"><img src="media/azure-resource-manager-deploy-button.png"/></a>
+[![Deploy to Azure](media/deploytoazure.svg)](https://aka.ms/arm-gaming-cognitive-services-speech-to-text)
 
 This operation will trigger a template deployment of the [azuredeploy.json](https://github.com/Azure-Samples/gaming-cognitive-services-speech-to-text/blob/master/azuredeploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources. This may induce charges in your Azure account.
 
@@ -77,7 +77,7 @@ If you don't have an Azure subscription, create a [free account](https://aka.ms/
 You are responsible for the cost of the Azure services used while running these reference architectures.  The total amount will vary based on usage. See the pricing webpages for each of the services that were used in the reference architecture:
 
 - [Azure Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/)
-- [Azure Function](https://azure.microsoft.com/pricing/details/functions/)
+- [Azure Functions](https://azure.microsoft.com/pricing/details/functions/)
 - [Azure Speech Services](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/)
 
 You can also use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to configure and estimate the costs for the Azure services that you are planning to use.
