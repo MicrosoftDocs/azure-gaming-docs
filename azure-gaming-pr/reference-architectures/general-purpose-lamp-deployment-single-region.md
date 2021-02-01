@@ -130,7 +130,7 @@ Here below are some examples of the region names currently available:
 | **Australia Central** | australiacentral |
 | **Australia Central 2** | australiacentral2 |
 
-More specifically you can also query what Azure regions support specific Azure Linux Virtual Machine types. Learn more about the [az-vm-list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-list-skus) Azure CLI and [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) PowerShell commands.
+More specifically you can also query what Azure regions support specific Azure Linux Virtual Machine types. Learn more about the [az-vm-list-skus](https://docs.microsoft.com/cli/azure/vm#az-vm-list-skus) Azure CLI and [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -262,7 +262,7 @@ SET VMDATADISKSIZEINGB=5
 
 #### Login
 
-Running this command will open a browser for you to log in with your Azure credentials. Learn more about the [az login](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) Azure CLI and [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) PowerShell commands.
+Running this command will open a browser for you to log in with your Azure credentials. Learn more about the [az login](https://docs.microsoft.com/cli/azure/authenticate-azure-cli) Azure CLI and [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -286,7 +286,7 @@ CALL az login
 
 #### Set the Azure subscription
 
-If you only have subscription, this step is optional. Learn more about the [az account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) Azure CLI and [Set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) PowerShell commands.
+If you only have subscription, this step is optional. Learn more about the [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) Azure CLI and [Set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -313,7 +313,7 @@ CALL az account set ^
 
 #### Create a resource group
 
-All resources created in Azure need to be part of a resource group. Learn more about the [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) Azure CLI and [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzResourceGroup) PowerShell commands.
+All resources created in Azure need to be part of a resource group. Learn more about the [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) Azure CLI and [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzResourceGroup) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -345,7 +345,7 @@ Have a look at the [general guidelines documentation](./general-guidelines.md#re
 
 #### Create a Virtual Machine
 
-This operation will take several minutes. Learn more about the [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) Azure CLI and [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) PowerShell commands.
+This operation will take several minutes. Learn more about the [az vm create](https://docs.microsoft.com/cli/azure/vm#az-vm-create) Azure CLI and [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -392,7 +392,7 @@ CALL az vm create ^
 
 #### Open the ports 80 and 443
 
-Learn more about the [az vm open-port](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-open-port) Azure CLI command.
+Learn more about the [az vm open-port](https://docs.microsoft.com/cli/azure/vm#az-vm-open-port) Azure CLI command.
 
 # [Bash](#tab/bash)
 
@@ -455,7 +455,7 @@ This [Hashicorp Terraform's Azure Provider template](https://github.com/Azure-Sa
 
 #### Command line approach using Azure CLI
 
-Learn more about the [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-list) Azure CLI and [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) PowerShell commands.
+Learn more about the [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-list) Azure CLI and [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -580,7 +580,7 @@ Before creating an image it's needed to stop and prepare the Linux guest OS on t
 
 #### Command line approach using Azure CLI
 
-Learn more about the [az vm deallocate](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-deallocate), [az vm generalize](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-generalize) Azure CLI, and [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) and [Set-AzVM](https://docs.microsoft.com/powershell/module/az.compute/set-azvm) PowerShell commands.
+Learn more about the [az vm deallocate](https://docs.microsoft.com/cli/azure/vm#az-vm-deallocate), [az vm generalize](https://docs.microsoft.com/cli/azure/vm#az-vm-generalize) Azure CLI, and [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) and [Set-AzVM](https://docs.microsoft.com/powershell/module/az.compute/set-azvm) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -669,7 +669,7 @@ SET GOLDENIMAGENAME=myGoldenImage
 
 #### Create the custom golden image
 
-Learn more about the [az image create](https://docs.microsoft.com/cli/azure/image?view=azure-cli-latest#az-image-create) Azure CLI and [New-AzImage](https://docs.microsoft.com/powershell/module/az.compute/new-azimage) PowerShell commands.
+Learn more about the [az image create](https://docs.microsoft.com/cli/azure/image#az-image-create) Azure CLI and [New-AzImage](https://docs.microsoft.com/powershell/module/az.compute/new-azimage) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -859,7 +859,7 @@ SET LBRULEHTTPSNAME=%LBNAME%HTTPSRule
 
 #### Create the Azure Virtual Network
 
-Learn more about the [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) Azure CLI and [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) PowerShell commands.
+Learn more about the [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) Azure CLI and [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -904,7 +904,7 @@ CALL az network vnet create ^
 
 #### Create an inbound public IP address for the load balancer
 
-Learn more about the [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) Azure CLI and [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) PowerShell commands.
+Learn more about the [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-create) Azure CLI and [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -944,7 +944,7 @@ CALL az network public-ip create ^
 
 #### Create an Azure Load Balancer
 
-Learn more about the [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) Azure CLI and [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) PowerShell commands.
+Learn more about the [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#az-network-lb-create) Azure CLI and [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -990,7 +990,7 @@ CALL az network lb create ^
 
 #### Create an Azure Load Balancer health probe for HTTP
 
-Learn more about the [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) Azure CLI and [Add-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerprobeconfig) PowerShell commands.
+Learn more about the [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#az-network-lb-probe-create) Azure CLI and [Add-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerprobeconfig) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -1067,7 +1067,7 @@ if %LBSKU%==Standard CALL az network lb probe create ^
 
 #### Create an inbound NAT pool with backend port 22
 
-Learn more about the [az network lb inbound-nat-pool create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az-network-lb-inbound-nat-pool-create) Azure CLI and [Add-AzLoadBalancerInboundNatPoolConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerinboundnatpoolconfig) PowerShell commands.
+Learn more about the [az network lb inbound-nat-pool create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-pool#az-network-lb-inbound-nat-pool-create) Azure CLI and [Add-AzLoadBalancerInboundNatPoolConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerinboundnatpoolconfig) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -1114,7 +1114,7 @@ CALL az network lb inbound-nat-pool create ^
 
 #### Create a load balancing inbound rule for the port 80
 
-Learn more about the [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) Azure CLI and [Add-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerruleconfig) PowerShell commands.
+Learn more about the [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#az-network-lb-rule-create) Azure CLI and [Add-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerruleconfig) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -1371,7 +1371,7 @@ CALL az network vnet subnet create ^
 
 #### Create an Azure Cache for Redis
 
-Learn more about the [az redis create](https://docs.microsoft.com/cli/azure/redis?view=azure-cli-latest#az-redis-create) Azure CLI and [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) PowerShell commands.
+Learn more about the [az redis create](https://docs.microsoft.com/cli/azure/redis#az-redis-create) Azure CLI and [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -1653,7 +1653,7 @@ CALL az extension add --name db-up
 > [!NOTE]
 > In addition to creating the server, the Azure CLI `az mysql up` command creates a sample database, a root user in the database, opens the firewall for Azure services, and creates default firewall rules for the client computer. Also, Azure Database for MySQL doesn't have PowerShell commands yet.
 
-Learn more about the [az mysql up](https://docs.microsoft.com/cli/azure/ext/db-up/mysql?view=azure-cli-latest#ext-db-up-az-mysql-up) Azure CLI and [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) PowerShell commands.
+Learn more about the [az mysql up](https://docs.microsoft.com/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI and [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -1761,7 +1761,7 @@ CALL az network vnet subnet create ^
 
 #### Create a Virtual Network rule on the MySQL server to secure it to the subnet
 
-Learn more about the [az mysql server vnet-rule create](https://docs.microsoft.com/cli/azure/mysql/server/vnet-rule?view=azure-cli-latest#az-mysql-server-vnet-rule-create) Azure CLI command.
+Learn more about the [az mysql server vnet-rule create](https://docs.microsoft.com/cli/azure/mysql/server/vnet-rule#az-mysql-server-vnet-rule-create) Azure CLI command.
 
 # [Bash](#tab/bash)
 
@@ -1793,7 +1793,7 @@ CALL az mysql server vnet-rule create ^
 
 #### Create a read replica using the MySQL server as a source (master)
 
-Learn more about the [az mysql server replica create](https://docs.microsoft.com/cli/azure/mysql/server/replica?view=azure-cli-latest#az-mysql-server-replica-create) Azure CLI command.
+Learn more about the [az mysql server replica create](https://docs.microsoft.com/cli/azure/mysql/server/replica#az-mysql-server-replica-create) Azure CLI command.
 
 # [Bash](#tab/bash)
 
@@ -1921,7 +1921,7 @@ SET STORAGERULENAME=%STORAGENAME%Rule
 
 #### Create a storage account
 
-Learn more about the [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) Azure CLI and [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) PowerShell commands.
+Learn more about the [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) Azure CLI and [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -1979,7 +1979,7 @@ CALL DEL connectionstring.tmp
 
 #### Create a storage container into the storage account
 
-Learn more about the [az storage container create](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) Azure CLI and [New-AzRmStorageContainer](https://docs.microsoft.com/powershell/module/az.storage/new-azrmstoragecontainer) PowerShell commands.
+Learn more about the [az storage container create](https://docs.microsoft.com/cli/azure/storage/container#az-storage-container-create) Azure CLI and [New-AzRmStorageContainer](https://docs.microsoft.com/powershell/module/az.storage/new-azrmstoragecontainer) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -2055,7 +2055,7 @@ CALL az network vnet subnet create ^
 
 #### Add a network rule for a virtual network and subnet
 
-Learn more about the [az storage account network-rule add](https://docs.microsoft.com/cli/azure/storage/account/network-rule?view=azure-cli-latest#az-storage-account-network-rule-add) Azure CLI and [Add-AzStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/az.storage/add-azstorageaccountnetworkrule) PowerShell commands.
+Learn more about the [az storage account network-rule add](https://docs.microsoft.com/cli/azure/storage/account/network-rule#az-storage-account-network-rule-add) Azure CLI and [Add-AzStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/az.storage/add-azstorageaccountnetworkrule) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -2209,7 +2209,7 @@ SET VMSSOVERPROVISIONING=--disable-overprovision
 
 #### Create a scale set
 
-Learn more about the [az-vmss-create](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) Azure CLI and [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) PowerShell commands.
+Learn more about the [az-vmss-create](https://docs.microsoft.com/cli/azure/vmss#az-vmss-create) Azure CLI and [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -2336,7 +2336,7 @@ CALL az vmss show ^
 
 #### Associate the load balancer health probe to the scale set
 
-Learn more about the [az vmss update](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-update) Azure CLI command.
+Learn more about the [az vmss update](https://docs.microsoft.com/cli/azure/vmss#az-vmss-update) Azure CLI command.
 
 # [Bash](#tab/bash)
 
@@ -2366,7 +2366,7 @@ CALL az vmss update ^
 
 #### Update all the instances from the scale set
 
-Learn more about the [az vmss update-instances](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-update-instances) Azure CLI command.
+Learn more about the [az vmss update-instances](https://docs.microsoft.com/cli/azure/vmss#az-vmss-update-instances) Azure CLI command.
 
 # [Bash](#tab/bash)
 
@@ -2530,7 +2530,7 @@ SET VMSSAUTOSCALERINDECREASE=1
 
 #### Define the autoscaling profile
 
-Learn more about the [az monitor autoscale create](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest#az-monitor-autoscale-create) Azure CLI command.
+Learn more about the [az monitor autoscale create](https://docs.microsoft.com/cli/azure/monitor/autoscale#az-monitor-autoscale-create) Azure CLI command.
 
 # [Bash](#tab/bash)
 
@@ -2566,7 +2566,7 @@ CALL az monitor autoscale create ^
 
 #### Enable virtual machine autoscaler for scaling out
 
-Learn more about the [az monitor autoscale rule create](https://docs.microsoft.com/cli/azure/monitor/autoscale/rule?view=azure-cli-latest#az-monitor-autoscale-rule-create) Azure CLI and [New-AzAutoscaleRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azautoscalerule) PowerShell commands.
+Learn more about the [az monitor autoscale rule create](https://docs.microsoft.com/cli/azure/monitor/autoscale/rule#az-monitor-autoscale-rule-create) Azure CLI and [New-AzAutoscaleRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azautoscalerule) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -2714,7 +2714,7 @@ SET DDOSPROTECTIONNAME=%PREFIX%DdosPlan
 
 #### Create the DDoS protection plan
 
-Learn more about the [az network ddos-protection create](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-create) Azure CLI and [New-AzDdosProtectionPlan](https://docs.microsoft.com/powershell/module/az.network/new-azddosprotectionplan) PowerShell commands.
+Learn more about the [az network ddos-protection create](https://docs.microsoft.com/cli/azure/network/ddos-protection#az-network-ddos-protection-create) Azure CLI and [New-AzDdosProtectionPlan](https://docs.microsoft.com/powershell/module/az.network/new-azddosprotectionplan) PowerShell commands.
 
 # [Bash](#tab/bash)
 
@@ -2856,7 +2856,7 @@ SET SERVICETORESTART=apache2.service
 
 #### Get the connection string from the storage account
 
-Learn more about the [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string) Azure CLI command.
+Learn more about the [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-show-connection-string) Azure CLI command.
 
 # [Bash](#tab/bash)
 
@@ -2886,7 +2886,7 @@ CALL DEL connectionstring.tmp
 
 #### Upload both the application files and update application script to the blob storage
 
-Learn more about the [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-upload) Azure CLI command.
+Learn more about the [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#az-storage-blob-upload) Azure CLI command.
 
 # [Bash](#tab/bash)
 
@@ -2938,7 +2938,7 @@ CALL az storage blob upload ^
 
 #### Get the URLs from the uploaded files
 
-Learn more about the [az storage blob url](https://docs.microsoft.com/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-url) Azure CLI command.
+Learn more about the [az storage blob url](https://docs.microsoft.com/cli/azure/storage/blob#az-storage-blob-url) Azure CLI command.
 
 # [Bash](#tab/bash)
 
@@ -2970,7 +2970,7 @@ CALL DEL scripturl.tmp
 
 #### Build the Protected Settings JSON string
 
-This will be  used by the Custom Script Extension to download the file or files from the storage account. [Learn more about this command](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list)
+This will be  used by the Custom Script Extension to download the file or files from the storage account. [Learn more about this command](https://docs.microsoft.com/cli/azure/storage/account/keys#az-storage-account-keys-list)
 
 # [Bash](#tab/bash)
 
@@ -3003,7 +3003,7 @@ SET SETTINGS="{\"fileUris\":[\"%BLOBURL%\",\"%SCRIPTURL%\"],\"commandToExecute\"
 
 #### Update the configuration file from the scale set
 
-Learn more about the [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension?view=azure-cli-latest#az-vmss-extension-set) Azure CLI command.
+Learn more about the [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension#az-vmss-extension-set) Azure CLI command.
 
 # [Bash](#tab/bash)
 
@@ -3051,7 +3051,7 @@ CALL az vmss extension set ^
 
 #### Update all the instances from the scale set
 
-This will ensure that in the next update round they download and install the files uploaded to the storage account. [Learn more about this command](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-update-instances).
+This will ensure that in the next update round they download and install the files uploaded to the storage account. [Learn more about this command](https://docs.microsoft.com/cli/azure/vmss#az-vmss-update-instances).
 
 # [Bash](#tab/bash)
 

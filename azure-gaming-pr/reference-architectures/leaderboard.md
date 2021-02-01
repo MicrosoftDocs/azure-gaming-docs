@@ -14,7 +14,7 @@ ms.prod: azure-gaming
 These reference architectures describe a leaderboard use case and implementation with different alternatives, enabling you to architect your own cloud solution so you can have full control and customization to fit your game design perfectly.
 
 > [!TIP]
-> If you are looking for an out-of-the-box leaderboard solution, **PlayFab** is a complete back-end platform for building, launching, and growing cloud connected games that has [leaderboard support](https://docs.microsoft.com/gaming/playfab/features/social/tournaments-leaderboards/).
+> If you are looking for an out-of-the-box leaderboard solution, **Azure PlayFab** is a complete back-end platform for building, launching, and growing cloud connected games that has [leaderboard support](https://docs.microsoft.com/gaming/playfab/features/social/tournaments-leaderboards/).
 
 ## Leaderboard design
 
@@ -30,21 +30,7 @@ There are many variables which can be taken into consideration when defining a l
 
 ### Player authentication and identity
 
-This reference architecture doesn't cover player authentication nor player identity.  Both are left as an exercise for the reader.
-
-PlayFab offers multiple [forms of authentication](https://docs.microsoft.com/gaming/playfab/#pivot=documentation&panel=authentication) so players can be tracked across multiple devices:
-
-- Device ID for guest login
-- Username/password
-- Google account
-- GameCenter account
-- Facebook account
-- Steam account
-- Kongregate account
-- Twitch account
-- Other oAuth providers
-- Android device ID
-- Custom player ID
+This reference architecture doesn't cover player authentication nor player identity.  For more information on authentication, check out Azure PlayFab, which offers many [forms of authentication](https://docs.microsoft.com/rest/api/playfab/client/authentication) so players can be tracked across multiple devices.
 
 ### Size and complexity
 
