@@ -31,7 +31,7 @@ The following sections are covering general design considerations common to the 
 
 This reference architecture doesn't cover neither player authentication nor an in-depth player identity management, both are left as an exercise for the reader.
 
-PlayFab offers multiple [forms of authentication](https://api.playfab.com/docs/tutorials#landing-players) so players can be tracked across multiple devices:
+Azure PlayFab offers multiple [forms of authentication](https://api.playfab.com/docs/tutorials#landing-players) so players can be tracked across multiple devices:
 
 - Device ID for guest login
 - Username/password

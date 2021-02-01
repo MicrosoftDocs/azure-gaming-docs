@@ -78,6 +78,6 @@ You are responsible for the cost of the Azure services used while running these 
 
 - [Azure Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/)
 - [Azure Functions](https://azure.microsoft.com/pricing/details/functions/)
-- [Azure Speech Services](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/)
+- [Azure Speech Services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 
 You can also use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to configure and estimate the costs for the Azure services that you are planning to use.
