@@ -1,7 +1,7 @@
 ---
 title: Analytics Reference Architectures
 description: These reference architectures describe a variety of analytics use cases and possible implementations to help you architect your own cloud solution customized for your game's needs.
-author: Brian Peek
+author: BrianPeek
 keywords: analytics 
 ms.topic: reference-architecture
 ms.date: 3/14/2019
@@ -14,7 +14,7 @@ ms.prod: azure-gaming
 These reference architectures describe a variety of analytics use cases and implementations with different alternatives, enabling you to architect your own cloud solution so you can have **full control and customization to fit your game design**.
 
 > [!TIP]
-> Azure PlayFab is a complete back-end platform for building, launching, and growing games. Learn more about PlayFab's **out-of-the-box** [analytics solutions](https://docs.microsoft.com/gaming/playfab/?branch=master#pivot=documentation&panel=analytics).
+> Azure PlayFab is a complete back-end platform for building, launching, and growing games. Learn more about Azure PlayFab's **out-of-the-box** [analytics solutions](https://docs.microsoft.com/gaming/playfab/?branch=master#pivot=documentation&panel=analytics).
 
 ## Use Cases
 

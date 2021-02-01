@@ -33,7 +33,7 @@ Here are are some multiplayer backend use cases for you to explore:
 - [Turn-Based multiplayer](./multiplayer-asynchronous.md)
 
 > [!TIP]
-> If you are looking for an out-of-the-box scaling multiplayer server solution, **PlayFab** is a complete back-end platform for building, launching, and growing cloud connected games that has [multiplayer servers support](https://docs.microsoft.com/gaming/playfab/features/multiplayer/servers/).
+> If you are looking for an out-of-the-box scaling multiplayer server solution, **Azure PlayFab** is a complete back-end platform for building, launching, and growing cloud connected games that has [multiplayer servers support](https://docs.microsoft.com/gaming/playfab/features/multiplayer/servers/).
 
 ## Multiplayer Design
 
@@ -45,7 +45,7 @@ Compute services vary based on the level of management they offer, from those ma
 - **Azure Container Instances (ACI)** - Everything is managed by your but in a container, it needs a custom scaling solution
 - **Virtual Machine Scale Sets** / **Batch** - Manages the scaling of Virtual Machines on your behalf based on rules you define
 - **Service Fabric** / **Azure Kubernetes Service (AKS)** - Manages the orchestration of containers on your behalf
-- **PlayFab Multiplayer Servers** - Higher level orchestration of game servers on your behalf, running on top of Azure. For more information see [PlayFab Multiplayer Servers](https://docs.microsoft.com/gaming/playfab/features/multiplayer/servers/).
+- **Azure PlayFab Multiplayer Servers** - Higher level orchestration of game servers on your behalf, running on top of Azure. For more information see [Azure PlayFab Multiplayer Servers](https://docs.microsoft.com/gaming/playfab/features/multiplayer/servers/).
 
 ### Operating System
 

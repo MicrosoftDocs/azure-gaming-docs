@@ -27,10 +27,10 @@ In this reference architecture, we define a “leaderboard” as showing the gam
 This reference architecture assumes the following **large scale** requirements:
 
 - 1 million players, each playing 4 games daily. This equates to:
-    - 4 million games per day (~ 46 games per second)
-    - ~ 121 million games per month
-    - ~ 1.46 billion games per year
-- Final individual game scores should be immediately available to the player upon game completion 
+  - 4 million games per day (~ 46 games per second)
+  - ~ 121 million games per month
+  - ~ 1.46 billion games per year
+- Final individual game scores should be immediately available to the player upon game completion
 - Players get daily rewards based on their rank and the global leaderboard used to define rank should be easily refreshed every 4 minutes (should run with ample execution-time buffer).
 - Gaming history should be periodically archived out of the “hot path.”  Archiving should be fast and not impact concurrent game result activity.
 The data tier in this reference architecture also assumes coverage of a single game that is accessible across one or more platforms (Xbox, PlayStation, Desktop, iOS, Android, etc.).
@@ -46,20 +46,20 @@ To ensure sufficient resources for gaming launches and ongoing large-scale throu
 
 ## Database schema
 
-For the purposes of this reference architecture, we will use the following base tables and supporting constraints and indexes. Each table is intended to cover the “minimum viable” schema and can be extended based on gaming requirements. 
+For the purposes of this reference architecture, we will use the following base tables and supporting constraints and indexes. Each table is intended to cover the “minimum viable” schema and can be extended based on gaming requirements.
 
 [![Relational database leaderboard schema](media/leaderboard/leaderboard-relational-schema.png)](media/leaderboard/leaderboard-relational-schema.png)
 
 This schema accommodates the following usage scenario:
 
 - We will insert final level and scores upon each individual game completion into the **GameCompletion** table. This table should be accessed specifically for new row inserts and periodic calculation of leaderboard snapshot rank results.
-- The GameCompletion table ideally contains all rows for the “hot path” of data (*data you expect to frequently use for ranking calculations*). For infrequently accessed older data, use the **GameCompletionHistory** table.This reference architecture will show how to benefit from fast partition-switching in order to minimize the time it takes to remove old data from GameCompletion. The GameCompletion partition function and scheme are described later and help facilitate efficient data archiving. 
+- The GameCompletion table ideally contains all rows for the “hot path” of data (*data you expect to frequently use for ranking calculations*). For infrequently accessed older data, use the **GameCompletionHistory** table.This reference architecture will show how to benefit from fast partition-switching in order to minimize the time it takes to remove old data from GameCompletion. The GameCompletion partition function and scheme are described later and help facilitate efficient data archiving.
 - The **GamePlatform** and **Player** tables contain supplemental game platform and player-related data.  This data can be joined to the GameCompletion and GameCompletionHistory tables.
 - The **LeaderboardSnapshot** table contains the calculated leaderboard ranking results.  
-    - This is the table that should be used by the application to return ranking results.
-    - This table should be populated by a separate process based on the required schedule and frequency (for example, calculating current daily leaderboard ranking every 4 minutes).
-    - Data is calculated using the GameCompletion table - and as necessary, the GameCompletionHistory table.
-    - For access to results, always use the LeaderboardSnapshot table (avoid repeated re-calculations of the same ranking results from GamePlatform). 
+  - This is the table that should be used by the application to return ranking results.
+  - This table should be populated by a separate process based on the required schedule and frequency (for example, calculating current daily leaderboard ranking every 4 minutes).
+  - Data is calculated using the GameCompletion table - and as necessary, the GameCompletionHistory table.
+  - For access to results, always use the LeaderboardSnapshot table (avoid repeated re-calculations of the same ranking results from GamePlatform).
 - The **RankResultType** table contains the different types of leaderboard snapshots required for the game. The primary key for this table can then be used in LeaderboardSnapshot to indicate the type of ranking results being retrieved.
 
 The next sections will detail the schema of each of the aforementioned objects.
@@ -69,7 +69,7 @@ The next sections will detail the schema of each of the aforementioned objects.
 This table contains the generated player surrogate key for optimal join performance and player “natural key” and alias columns.
 
 > [!NOTE]
-> **Natural keys** are unique keys based on “real world” attributes (for example, an Xbox Live ID). 
+> **Natural keys** are unique keys based on “real world” attributes (for example, an Xbox Live ID).
 >
 > **Surrogate keys** are unique system-generated keys. This type of key has no inherent real-world meaning but can be used to optimize performance (allowing a choice of optimal key data types) and also minimizes the dependency on later natural key changes. For example – if a game player changes their Live ID, if a surrogate key is used, only one change is required to the Player table – instead of multiple natural key changes required for all player game history.
 
@@ -274,7 +274,7 @@ GO
 
 ## Data access patterns
 
-The following section details leaderboard-related access patterns against a populated schema. 
+The following section details leaderboard-related access patterns against a populated schema.
 
 ### Ranking operations
 
@@ -328,7 +328,7 @@ SELECT PlayerSurrogateKey,
        RankResult
 FROM dbo.LeaderboardSnapshot
 WHERE LeaderboardSnapshotDate = '2019-02-28 18:08:01.0052490' 
-	AND RankResultTypeSurrogateKey = 2
+      AND RankResultTypeSurrogateKey = 2
 ORDER BY RankResult;
 GO
 ```
@@ -359,7 +359,7 @@ AS (SELECT DENSE_RANK() OVER (ORDER BY GameCompletionScore DESC, GameCompletionL
            GameCompletionScore,
            GameCompletionDate
     FROM dbo.GameCompletion
-	WHERE CAST(GameCompletionDate AS DATE) = '3/10/2019')
+    WHERE CAST(GameCompletionDate AS DATE) = '3/10/2019')
 INSERT dbo.LeaderboardSnapshot
 (
     PlayerSurrogateKey,
@@ -437,7 +437,7 @@ GO
 
 ### Handling singleton lookups
 
-Again, keep ad hoc activity to a minimum against the *GameCompletion* table.  If using this table for real-time individual score retrieval (vs. leaderboard generation), consider adding supporting [nonclustered b-tree indexes](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-2017) based on the anticipated lookup values.
+Again, keep ad hoc activity to a minimum against the *GameCompletion* table.  If using this table for real-time individual score retrieval (vs. leaderboard generation), consider adding supporting [nonclustered b-tree indexes](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described) based on the anticipated lookup values.
 
 For infrequent scenarios, the following is an example of a single game result lookup operation that uses just the underlying Columnstore index of GameCompletion:
 
@@ -450,7 +450,7 @@ SELECT GameCompletionSurrogateKey,
        GameCompletionDate
 FROM dbo.GameCompletion
 WHERE PlayerSurrogateKey = 944799
-	AND GameCompletionDate = '2019-12-30 00:00:02.9428411';
+      AND GameCompletionDate = '2019-12-30 00:00:02.9428411';
 GO
 ```
 
@@ -464,8 +464,8 @@ This reference architecture lends itself to easy archiving and migration of old 
 -- Switching out the oldest data by month
 -- Partition “1” in this example is January 2019 data
 ALTER TABLE dbo.GameCompletion 
-	SWITCH PARTITION 1 
-		TO dbo.GameCompletionHistory PARTITION 1;
+    SWITCH PARTITION 1 
+        TO dbo.GameCompletionHistory PARTITION 1;
 GO
 ```
 
@@ -473,10 +473,10 @@ The change and archive process runs immediately (sub-second) assuming all steps 
 
 ## Additional resources and samples
 
-- [Partitioned Tables and Indexes](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017)
-- [Columnstore indexes - Design guidance](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-design-guidance?view=sql-server-2017#choose-the-best-columnstore-index-for-your-needs)
+- [Partitioned Tables and Indexes](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes)
+- [Columnstore indexes - Design guidance](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-design-guidance#choose-the-best-columnstore-index-for-your-needs)
 - [Manual tune query performance in Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-performance-guidance)
-- [Clustered and Nonclustered Indexes DescribedSQL Server Index Architecture and Design Guide](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-2017)
+- [Clustered and Nonclustered Indexes DescribedSQL Server Index Architecture and Design Guide](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)
 - [Azure SQL Database for Gaming Industry Workloads technical white paper](https://azure.microsoft.com/resources/azure-sql-database-for-gaming-industry-workloads/)
 
 ## Pricing

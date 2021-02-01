@@ -58,7 +58,7 @@ There are two main approaches:
 
 1. Alternatively, like in this example, you can task the matchmaker to proactively let Azure Service Fabric know when to scale out. The best practice is to use a **pool management pattern**.
 
-    This pattern is providing a solution for situations where an application requires the ability to dynamically create Service Fabric Service Instances at run-time, most notably through calling [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet). It allows you to register a Service which should be managed and it will ensure the configured number of available instances of your Service are available in the Pool.
+    This pattern is providing a solution for situations where an application requires the ability to dynamically create Service Fabric Service Instances at run-time, most notably through calling [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync). It allows you to register a Service which should be managed and it will ensure the configured number of available instances of your Service are available in the Pool.
 
     Once deployed and initialized, the game simply calls into the manager "asking" for an instance of the Service and it returns a pointer to the Instance that can be used either by returning one previously used by the game, determined by a unique ID, or returning an available Instance not yet allocated. If there are instances of the service which remain idle for a period of time, the manager will deactivate them to open up additional capacity in the cluster.
 
@@ -75,7 +75,6 @@ To manage Azure Service Fabric games and clusters successfully, there are recomm
 If you don't have an Azure subscription, create a [free account](https://aka.ms/azfreegamedev) to get started with 12 months of free services. You're not charged for services included for free with Azure free account, unless you exceed the limits of these services. Learn how to check usage through the [Azure Portal](https://docs.microsoft.com/azure/billing/billing-check-free-service-usage#check-usage-on-the-azure-portal) or through the [usage file](https://docs.microsoft.com/azure/billing/billing-check-free-service-usage#check-usage-through-the-usage-file).
 
 You are responsible for the cost of the Azure services used while running these reference architectures.  The total amount will vary based on usage. See the pricing webpages for each of the services that were used in the reference architecture:
-
 
 - [Azure Service Fabric](https://azure.microsoft.com/pricing/details/service-fabric/)
 - [Azure Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/)

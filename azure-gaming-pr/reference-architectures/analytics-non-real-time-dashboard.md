@@ -1,7 +1,7 @@
 ---
 title: Non-real Time Analytics Dashboard
 description: This reference architecture represents a simple analytics pipeline that you can build on Azure. It can be leveraged when you won't be tracking data that requires real-time analysis and instead you just plan to do review sessions of the data every now and then (daily, weekly, ...).
-author: Brian Peek
+author: BrianPeek
 keywords: analytics 
 ms.topic: reference-architecture
 ms.date: 3/14/2019
@@ -62,7 +62,7 @@ Next, [start the Azure Databricks cluster](https://docs.azuredatabricks.net/user
 
 Then either mount the Azure Storage account using DBFS, or setup the access key for directly using APIs. See the document on how to [access Azure Blob Storage from Azure Databricks](https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html) for all the details. The recommended path is leveraging [secrets](https://docs.databricks.com/user-guide/secrets/secrets.html#secrets) and mounting a container or a folder within the container, then access files as if they were local files.
 
-Finally go to the Azure Databricks cluster that you created, then go to the folder you want to use (or create a new one), select **Import**, then **URL** and use [this script](https://github.com/Azure-Samples/gaming-nonrealtime-analytics/blob/master/avro_sample.py) to import the **Notebook**. 
+Finally go to the Azure Databricks cluster that you created, then go to the folder you want to use (or create a new one), select **Import**, then **URL** and use [this script](https://github.com/Azure-Samples/gaming-nonrealtime-analytics/blob/master/avro_sample.py) to import the **Notebook**.
 
 >[!TIP]
 > To run the Azure Functions locally, update the *local.settings.json* file with these same app settings.
