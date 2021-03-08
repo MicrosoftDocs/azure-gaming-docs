@@ -73,7 +73,7 @@ Data within each logical partition can be uniquely identified by the combination
 There are three key things that you need to take into consideration when defining a partition key:
 
 1. There is a limit of 20GB per logical partition. Data should not grow beyond this amount so careful design will be needed to ensure high enough cardinality for your partitioning strategy.
-2. The partition key property cannot be changed after the container has been created. If a partition key is defined as /userId, it cannot be later changed to be /gameId. However, [migrate a container](#partition-key-update) to overcome this.
+2. The partition key property cannot be changed after the container has been created. If a partition key is defined as /userId, it cannot be later changed to be /gameId. However, migrate a container to overcome this.
 3. In write-heavy scenarios, your partition key should spread your writes as evenly as possible to avoid hot spots. In read heavy workloads, queries should strive to serve data from one or as few partitions as possible and avoid high volume of cross-partition or fan-out queries. Where workloads are both read and write heavy, [Change Feed](https://docs.microsoft.com/azure/cosmos-db/change-feed-design-patterns) can be used to materialize data with a different partition key to better answer queries.
 
 For all the details on how to choose a partition key for your leaderboard, see [choosing a partition key](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey).
