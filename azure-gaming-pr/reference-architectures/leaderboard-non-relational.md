@@ -52,66 +52,71 @@ Alternatively to [Azure SQL Database](https://docs.microsoft.com/azure/sql-datab
 - [Azure Functions](https://docs.microsoft.com/azure/azure-functions/)
 - [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)
 
-In this implementation, an Azure Function is used to write the data, instead of the Azure Cosmos DB SDK. If you are looking for finer control and debugging, you can leverage an app service and the [change processor SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet-changefeed).
+In this implementation, an Azure Function is used to write the data, instead of the Azure Cosmos DB SDK. If you are looking for finer control and debugging, you can leverage an app service and the [Change Feed Processor](https://docs.microsoft.com/azure/cosmos-db/change-feed-processor).
 
 ### Architecture considerations
 
 There are a variety of design considerations and choices to make when designing a leaderboard for your game.
 
-#### Master collection, partitions and partition keys
+#### Containers, partitions and partition keys
 
 Before we go any further, it's worth explaining some of the Azure Cosmos DB foundational aspects.
 
-**Partitioning** is the technique used by Azure Cosmos DB to scale individual containers in a database. The items in a container are divided into distinct subsets, called logical partitions.
+**Partitioning** Cosmos DB is a horizontally scalable database with data stored on individual servers known as [physical partitions](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#physical-partitions). As data or throughput is increased. Cosmos adds additional partitions that allows the database to "scale out", increasing storage capacity and processing power.
 
-The **logical partitions** are created based on the value of a partition key property associated with each item and they are a distinct subset of items in a container.
+Azure Cosmos DB abstracts away physical partitions with what are known as **logical partitions**. When a new container is created, the user specifies a property that will be used to assign each item to a logical partition where it will be stored.
 
-The items in a logical partition are identified by the partition key value that is shared by all items in the logical partition. For example, consider a container that holds documents and each document has a UserID property. If UserID serves as the partition key for the items in a container, and there are 1000 unique UserID values, 1000 logical partitions will be created for the container.
+A container with a partition key of `userId` with 1000 users will have 1000 logical partitions. However logical partitions are virtual concepts. There is no limit on the number of logical partitions in a container. All data in a logical partition shares the same partition key value. So all data where `userId = abc` will all be in the same logical partition.
 
-Each item in a container has a **partition key** that determines the item’s logical partition, and each item also has an item id (which is unique within a logical partition). The index of an item uniquely identifies it and it is formed by combining the partition key and the item id.
+Data within each logical partition can be uniquely identified by the combination of it's partition key value and id value. All insert, update and delete operations are done using the partition key value and id value. Data can also be read using queries using a [special SQL syntax](https://docs.microsoft.com/azure/cosmos-db/sql-query-getting-started) unique to Azure Cosmos DB and designed to work with JSON data.
 
 There are three key things that you need to take into consideration when defining a partition key:
 
-1. There is a limit of 10GB per partition key, though each collection can have a large number of partition keys.
-2. Partition keys can't be updated. If a partition key like A_B_C is created, it cannot be later updated to A_B_C_D. However, new keys can be created and data [migrated](#partition-key-update).
-3. The goal is to spread the workload evenly across all partitions and avoid *hot spots*. 
+1. There is a limit of 20GB per logical partition. Data should not grow beyond this amount so careful design will be needed to ensure high enough cardinality for your partitioning strategy.
+2. The partition key property cannot be changed after the container has been created. If a partition key is defined as /userId, it cannot be later changed to be /gameId. However, migrate a container to overcome this.
+3. In write-heavy scenarios, your partition key should spread your writes as evenly as possible to avoid hot spots. In read heavy workloads, queries should strive to serve data from one or as few partitions as possible and avoid high volume of cross-partition or fan-out queries. Where workloads are both read and write heavy, [Change Feed](https://docs.microsoft.com/azure/cosmos-db/change-feed-design-patterns) can be used to materialize data with a different partition key to better answer queries.
 
 For all the details on how to choose a partition key for your leaderboard, see [choosing a partition key](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey).
 
-The implementation of this leaderboard reference architecture will leverage a **global leaderboard general collection** - aka the master collection that stores all the entries - and a **partition key for each combination of values**.
+The implementation of this leaderboard reference architecture will leverage a **global leaderboard general collection** - aka the game play container that stores all the entries - and a **partition key for each combination of values**.
 
-In this use case the **player's score will be ranked based on two variables: platform and level**, where the partition key used is `level_system`.
-
-To use a concrete example, if a game leveraging this reference architecture and implementation was launched on both Xbox and PlayStation platforms and it only had two levels (1 and 2), that would end up generating the following collection and partitions in Azure Cosmos DB:
-
-- Master collection
-- Partition 1 (all_all))
-- Partition 2 (xbox_all)
-- Partition 3 (ps4_all)
-- Partition 4 (all_level1)
-- Partition 5 (all_level2)
-- Partition 6 (xbox_level1)
-- Partition 7 (ps4_level1)
-- Partition 8 (xbox_level2)
-- Partition 9 (ps4_level2)
-
-The schema is:
+In this use case the **player's score will be ranked based on two variables: system and level**, where the partition key used is `system_level`. Here is an example of the schema for our leader board.
 
 ```json
 {
     "id": "1",
-    "platform": "Xbox Live",
-    "level": 3,
+    "level_system": "Xbox_3",
+    "name": "Brian",
+    "score": 12345
+}
+```
+
+To use a concrete example, if a game leveraging this reference architecture and implementation was launched on both Xbox, PlayStation and PC platforms and it only had two levels (1 and 2), that would end up generating the following partitions in Azure Cosmos DB:
+
+- Partition 1 (all_level1)
+- Partition 2 (all_level2)
+- Partition 3 (xbox_level1)
+- Partition 4 (ps4_level1)
+- Partition 5 (pc_level1)
+- Partition 6 (xbox_level2)
+- Partition 7 (ps4_level2)
+- Partition 8 (pc_level2)
+
+The schema for the game play data sent at the completion of a level is this:
+
+```json
+{
+    "id": "1",
+    "system": "Xbox Live",
+    "level": 2,
     "character": "Damian",
     "name": "Brian",  //platform gamertag
-    "xp": 12345, // stat 1
-    "quests": 12 //stat 2
+    "score": 12345 // stat
 }
 ```
 
 Merely for clarification purposes, to demonstrate what would happen in a more complex scenario with 3 variables from a racing game: **level** (Laguna Seca and Monza), **choice** (fast class and slow class) and **stat** (fastest lap and power ups picked up). The partition key structure used would be `level_choice_stat` generating the following combinations as users upload their records:
 
-- Master collection
 - Partition 1 (lagunaseca_fastclass_fastestlap) [000]
 - Partition 2 (lagunaseca_fastclass_powerupspicked) [001]
 - Partition 3 (lagunaseca_slowclass_fastestlap) [010]
@@ -131,15 +136,15 @@ In this scenario, if the first player is driving in the track *Monza* (level) us
 
 #### Cascade writing pattern
 
-Because it's going to be required to write information into the master collection and at least one or more sub-tables, especially if you have related variables (for example: iOS, Android and mobile. Where mobile is a filter that shows records from both iOS and Android users) the best practice is to not do more than a single writing operation and instead let the [Azure Cosmos DB change feed](https://docs.microsoft.com/azure/cosmos-db/change-feed) do the work by trickling effect to avoid inconsistencies that could happen if only one of the writes actually completed.
+Game play data may typically be written into multiple containers, especially if you have related variables (for example: iOS, Android and mobile. Where mobile is a filter that shows records from both iOS and Android users) the best practice is to not do more than a single writing operation and instead let the [Azure Cosmos DB change feed](https://docs.microsoft.com/azure/cosmos-db/change-feed) do the work by trickling effect to avoid inconsistencies that could happen if only one of the writes actually completed.
 
-#### Partition key update
+#### Changing the Partition key
 
-As previously mentioned, it's not possible to update an existing partition key, you can add new ones though.
+As previously mentioned, it's not possible to change an existing partition key. There are two strategies to deal with this. If you are still designing your data model you can design your schema to name your partition key with a generic name such as "pk". Then if you need to change what partition key value for a row, simply write a new row with the new partition key value and delete the old row.
 
-Piggybacking on the twp variable example, let's say that you want to add one more so you can split the data depending on what difficulty setting the users are playing with (easy, medium, hard). To enable this you would like to upgrade from the old partition key  `level_system` to `level_system_difficulty`. To work around the limitation of not being able to update an existing partition key there is a [migration tool](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/ChangeFeedMigrationTool) available that follows these steps:
+If you have an existing container with a descriptive name you can migrate the data to a new container. Let's say that you have a partition key of `system_level` and want to add the difficulty users are playing with (easy, medium, hard). To enable this you would migrate the container from the old partition key `system_level` to `System_level_difficulty`. To do this you can use the [Live Data migration tool](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator) available on GitHub that follows these steps:
 
-1. Drains the whole collection using the change feed.
+1. Reads the whole container using the change feed.
 2. Re-ingests the data using the different partition key.
 
 #### Azure Cosmos DB request units per second
