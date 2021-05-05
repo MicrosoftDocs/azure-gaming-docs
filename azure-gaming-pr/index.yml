@@ -112,3 +112,14 @@ productDirectory:
           url: reference-architectures/cognitive-speech-to-text.md
         - text: Customer Service Bot
           url: reference-architectures/cognitive-css-bot.md
+
+    # Card
+    - title: Game Streaming
+      imageSrc: ./media/game-streaming.svg
+      links:
+        - text: Unreal Pixel Streaming in Azure
+          url: reference-architectures/unreal-pixel-streaming-in-azure.md
+        - text: Deploying Unreal Pixel Streaming in Azure
+          url: reference-architectures/unreal-pixel-streaming-deploying.md
+        - text: Unreal Pixel Streaming at Scale in Azure
+          url: reference-architectures/unreal-pixel-streaming-at-scale.md
