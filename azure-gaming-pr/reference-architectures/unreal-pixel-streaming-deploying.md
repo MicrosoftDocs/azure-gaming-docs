@@ -61,15 +61,15 @@ Depending on your **Region** needs, choose a **Region** that is the closest to t
 [![RDP Login](media/pixel-streaming/pixel-streaming-rdp-login.png)](media/pixel-streaming/pixel-streaming-rdp-login.png)
 
 15. Once connected to the VM, accept the Windows Privacy options and copy (right click -&gt; copy) and paste (right click -&gt; paste) the exported Pixel Streaming package ([Unreal docs](https://docs.unrealengine.com/en-US/SharingAndReleasing/PixelStreaming/PixelStreamingIntro/index.html)) to the Windows desktop of the VM (i.e., WindowsNoEditor folder contents). **Note:** To speed up the copy it&#39;s recommended to zip up the files before copying over.
-16. The VM should now have the &lt;AppName&gt;.exe, &lt;AppName&gt;\ and Engine\ folder on the VM.
+16. The VM should now have the `<AppName>.exe`, `<AppName>\` and `Engine\` folder on the VM.
 17. Install the following pre-reqs to run a 3D application on the Windows GPU VM:
-    1.   Run the installer under \Engine\Extras\Redist\en-us\UE4PrereqSetup\_x64.exe to install required .NET, Visual C++ and DirectX runtimes. This also will be run if starting the UE4 app before manually installing the pre-reqs, as the app checks for dependencies.
-    2.   Once installed, ensure that if you launch the Pixel Streaming &lt;AppName&gt;.exe it runs successfully. If running into any errors:
-         1.   Ensure the NVIDIA extension was setup correctly (make sure C:\Program Files\Nvidia\....\Nvidia-smi.exe shows WDDM (not TCC) and check dxdiag (via the run command) to inspect directx libraries and NVIDIA drivers are installed.
+    1.   Run the installer under `\Engine\Extras\Redist\en-us\UE4PrereqSetup\_x64.exe` to install required .NET, Visual C++ and DirectX runtimes. This also will be run if starting the UE4 app before manually installing the pre-reqs, as the app checks for dependencies.
+    2.   Once installed, ensure that if you launch the Pixel Streaming `<AppName.exe>` it runs successfully. If running into any errors:
+         1.   Ensure the NVIDIA extension was setup correctly (make sure `C:\Program Files\Nvidia\...\Nvidia-smi.exe` shows `WDDM` (not `TCC`) and check dxdiag (via the run command) to inspect directx libraries and NVIDIA drivers are installed.
          2.   After the pre-req install try to restart and then run the app again.
 18. Close the UE4 app after testing it runs (Alt+F4 if no quit/esc option was added)
 19. Install Node.js for the Signaling Server and Matchmaker to run, which can be downloaded [here](https://nodejs.org/en/download/) from any installed Browser on the VM, or copy and paste the installer from your local computer.
-20. Download the following files to the SignallingWebServer\ folder: ….\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\
+20. Download the following files to the `SignallingWebServer\` folder: `…\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\`
     1.  [runAzure.bat](https://unrealbackendfiles.blob.core.windows.net/ourpublicblobs/runAzure.bat) (Required)
     2.  [runAzure\_WithTURN.bat](https://unrealbackendfiles.blob.core.windows.net/ourpublicblobs/runAzure_WithTURN.bat) (Optional if using TURN servers)
     3.  [Start\_Azure\_SignallingServer.ps1](https://unrealbackendfiles.blob.core.windows.net/ourpublicblobs/Start_Azure_SignallingServer.ps1) (Required)
@@ -78,10 +78,10 @@ Depending on your **Region** needs, choose a **Region** that is the closest to t
 Be sure to do a **Save As** in your browser for each file and make sure to remove any .txt added to the file name. These are also in a [GitHub PR request #7698](https://github.com/EpicGames/UnrealEngine/pull/7698) for users who [linked](https://www.epicgames.com/help/en-US/epic-accounts-c74/connect-accounts-c110/how-do-i-link-my-unreal-engine-account-with-my-github-account-a3618) their Epic and GitHub accounts)
 
 21. Ensure that the Windows Firewall allows incoming and outgoing traffic from 80 (TCP/UDP), 8888 (UDP, if not using localhost for PixelStreamingIP below), 19302 (If using Google&#39;s STUN server via above \*.ps1&#39;s, UDP), and any TURN server (none by default) ports (see [opening ports with Windows firewall](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-ver15#SSMSProcedure)).
-22. Right click on the UE4 &lt;AppName&gt;.exe and **Create shortcut**. Right click on the shortcut and choose **Properties**. Paste in the following [parameters](https://docs.unrealengine.com/en-US/SharingAndReleasing/PixelStreaming/PixelStreamingReference/#unrealenginecommand-lineparameters) in the **Target** after the .exe with a space:
-    1.  -AudioMixer -PixelStreamingIP=localhost -PixelStreamingPort=8888 -WinX=0 -WinY=0 -ResX=1920 -ResY=1080 -Windowed -RenderOffScreen -ForceRes
+22. Right click on the UE4 `<AppName>.exe` and **Create shortcut**. Right click on the shortcut and choose **Properties**. Paste in the following [parameters](https://docs.unrealengine.com/en-US/SharingAndReleasing/PixelStreaming/PixelStreamingReference/#unrealenginecommand-lineparameters) in the **Target** after the .exe with a space:
+    1.  `-AudioMixer -PixelStreamingIP=localhost -PixelStreamingPort=8888 -WinX=0 -WinY=0 -ResX=1920 -ResY=1080 -Windowed -RenderOffScreen -ForceRes`
 23. Run the shortcut to kick off the 3D app in the background (you can check Task Manager to verify it&#39;s running under the **Processes** tab—sort by Name or CPU/GPU to spot it easily). Windows may popup a dialog requiring you to confirm you wish to run the App and Node.js services when first started on the VM.
-24. Run the runAzure.bat under the SignallingWebServer\ folder and ensure the SS is connected to the 3D app by looking for the &quot;Streamer Connected::1&quot; log in the SS console output.
+24. Run the `runAzure.bat` under the `SignallingWebServer\` folder and ensure the SS is connected to the 3D app by looking for the `"Streamer Connected::1"` log in the SS console output.
 25. The solution is ready to be run by a user now. Navigate to a browser on your local computer or mobile device and type in the IP address of the Virtual Machine to start streaming. The IP can be found by going to the Overview page of the VM in the Azure Portal, noted under the Public IP address section.
 26. If using the default template exported from Unreal Engine, click the **Click to start** and the play icon button to begin streaming Unreal Pixel Streaming successfully in Azure.
     
@@ -117,17 +117,23 @@ Choose the same **Region** as the Signaling Server VM **Region** (though not nee
 11. Finish creating the VM from the **Review + create** page.
 12. Once the VM is successfully deployed, navigate to the VM in the Azure Portal and in the Networking page on the left, click the [Add inbound port rule](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nsg-quickstart-portal#create-an-inbound-security-rule) button to open up any additional ports such as 9999 (MM web socket). As always, please follow your security requirements to ensure desired network safety.
 13. Follow the quick-start documentation [here](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) for connecting to the VM via RDP.
-14. Once connected to the VM, copy ( **right click -&gt; copy** ) and paste ( **right click -&gt; paste** ) the Matchmaker\ folder (Engine\Source\Programs\PixelStreaming\WebServers\Matchmaker\) from the exported Pixel Streaming package ([Unreal docs](https://docs.unrealengine.com/en-US/SharingAndReleasing/PixelStreaming/PixelStreamingIntro/index.html)) to the Windows desktop of the VM.
+14. Once connected to the VM, copy ( **right click -&gt; copy** ) and paste ( **right click -&gt; paste** ) the Matchmaker\ folder (`Engine\Source\Programs\PixelStreaming\WebServers\Matchmaker\`) from the exported Pixel Streaming package ([Unreal docs](https://docs.unrealengine.com/en-US/SharingAndReleasing/PixelStreaming/PixelStreamingIntro/index.html)) to the Windows desktop of the VM.
 15. Install Node.js for the Matchmaker to run, which can be downloaded [here](https://nodejs.org/en/download/).
-16. Open the **matchmaker.js** file with something like Notepad and change the httpPort variable to 80 (default is 90)—don&#39;t forget to save the changes.
-17. Run the run.bat under the Matchmaker\ folder. Windows may popup a dialog requiring you to confirm you wish to run the Matchmaking service when first started on the VM.
-18. RDP back into the SS VM and in the SignallingWebServer\config.json and add the following configs (some will not be in the config by default so you&#39;ll need to add them):
-    1.  &quot;UseMatchmaker&quot;: true
-    2.  &quot;matchmakerAddress&quot;: &quot;_&lt;Put IP or DNS address of Matchmaker VM&gt;_&quot;,
-    3.  &quot;matchmakerPort&quot;: &quot;9999&quot;,
-    4.  &quot;publicIp&quot;: &quot;localhost&quot;,
-    5.  &quot;streamerPort&quot;: 8888,
-    6.  &quot;httpPort&quot;: 80
+16. Open the `matchmaker.js` file with something like Notepad and change the httpPort variable to 80 (default is 90)—don&#39;t forget to save the changes.
+17. Run the `run.bat` under the `Matchmaker\` folder. Windows may popup a dialog requiring you to confirm you wish to run the Matchmaking service when first started on the VM.
+18. RDP back into the SS VM and in the `SignallingWebServer\config.json` and add the following configs (some will not be in the config by default so you&#39;ll need to add them):
+
+```json
+{
+    ...
+    "UseMatchmaker": true,
+    "matchmakerAddress": "<Put IP or DNS address of Matchmaker VM>",
+    "matchmakerPort": "9999",
+    "publicIp": "localhost",
+    "streamerPort": 8888,
+    "httpPort": 80
+}
+```
 
 Ensure there is a comma after each line (except the last line) otherwise the MM service will fail.
 
@@ -142,7 +148,7 @@ Ensure there is a comma after each line (except the last line) otherwise the MM 
 
 <img src="media/pixel-streaming/pixel-streaming-example-game.png" title="Example Pixel Streaming app" width="100%" />
 
-23. To improve the customer experience, it&#39;s recommended to use a DNS domain/subdomain instead of exposing an IP address which can change or isn&#39;t as polished. A simple custom subdomain can be created for the VM by clicking on the **Public IP address** in the **Overview** page of the VM in the Azure Portal, which will allow for setting a **DNS name label**. Depending on the Azure region used, the dns would be: _&lt;subdomain&gt;_._&lt;azure\_region&gt;_.cloudapp.azure.com. It&#39;s of course recommended to use a proper registered domain for production solutions.
+23. To improve the customer experience, it&#39;s recommended to use a DNS domain/subdomain instead of exposing an IP address which can change or isn&#39;t as polished. A simple custom subdomain can be created for the VM by clicking on the **Public IP address** in the **Overview** page of the VM in the Azure Portal, which will allow for setting a **DNS name label**. Depending on the Azure region used, the dns would be: `<subdomain>.<azure_region>.cloudapp.azure.com`. It&#39;s of course recommended to use a proper registered domain for production solutions.
 24. If more available streams are desired, do the same steps for creating and starting a SS VM, with the same configurations used above to point the SS to the MM.
 
 # Optimizing Pixel Streaming in Azure
@@ -155,50 +161,42 @@ Below are notable configurations to consider when deploying the Pixel Streaming 
 
 ## Matchmaker Configuration
 
-Below are the [configurations](https://docs.unrealengine.com/en-US/SharingAndReleasing/PixelStreaming/Hosting/#multiplefullstackswithmatchmaking) available to the Matchmaker.js file:
+Below are the [configurations](https://docs.unrealengine.com/en-US/SharingAndReleasing/PixelStreaming/Hosting/#multiplefullstackswithmatchmaking) available to the `Matchmaker.js` file:
 
-// The port clients connect to the Matchmaking service over HTTP (default 90, recommend 80)
-
-httpPort: 90,
-
-// The Matchmaking port the Signaling Service connects to the matchmaker over sockets
-
-matchmakerPort: 9999,
+```json
+{
+    ...
+    // The port clients connect to the Matchmaking service over HTTP (default 90, recommend 80)
+    "httpPort": 90,
+    // The Matchmaking port the Signaling Service connects to the matchmaker over sockets
+    "matchmakerPort": 9999,
+}
+```
 
 ## Signaling Server Configuration
 
 Below are [configurations](https://docs.unrealengine.com/en-US/SharingAndReleasing/PixelStreaming/Hosting/#multiplefullstackswithmatchmaking) available to the Signaling Server in their config:
 
+```json
 {
-
-&quot;UseFrontend&quot;: false,
-
-&quot;UseMatchmaker&quot;: true, // Set to true if using Matchmaker
-
-&quot;UseHTTPS&quot;: false,
-
-&quot;UseAuthentication&quot;: false,
-
-&quot;LogToFile&quot;: true,
-
-&quot;HomepageFile&quot;: &quot;player.htm&quot;,
-
-&quot;AdditionalRoutes&quot;: {},
-
-&quot;EnableWebserver&quot;: true,
-
-&quot;matchmakerAddress&quot;: &quot;&quot;, // The DNS / IP address to the matchmaker (if enabled)
-
-&quot;matchmakerPort&quot;: &quot;9999&quot;, // The web socket port used to talk to the MM
-
-&quot;publicIp&quot;: &quot;localhost&quot;, // The Public IP of the VM, localhost usually is fine
-
+    "UseFrontend": false,
+    "UseMatchmaker": true, // Set to true if using Matchmaker
+    "UseHTTPS": false,
+    "UseAuthentication": false,
+    "LogToFile": true,
+    "HomepageFile": "player.htm",
+    "AdditionalRoutes": {},
+    "EnableWebserver": true,
+    "matchmakerAddress": "", // The DNS / IP address to the matchmaker (if enabled)
+    "matchmakerPort": "9999", // The web socket port used to talk to the MM
+    "publicIp": "localhost", // The Public IP of the VM, localhost usually is fine
 }
+```
 
 ### TURN / STUN Servers
 
-In some cases you might need a STUN / TURN server in between the UE4 app and the browser to help identify public IPs (STUN) or get around certain NAT&#39;ing/Mobile carrier settings (TURN) that might not support WebRTC. Please refer to Unreal Engine&#39;s [documentation](https://docs.unrealengine.com/en-US/SharingAndReleasing/PixelStreaming/Hosting/index.html) for details about these options; however, for most users a STUN server should be sufficient. Inside of the SignallingWebServer\ folder there are PowerShell scripts used to spin up the Cirrus.js service which communicates between the user and the UE4 app over WebRTC, and _Start\_Azure\_SignallingServer.ps1_ or _Start\_ Azure \_WithTURN\_SignallingServer.ps1_ are used to launch with STUN / TURN options. There are public stun servers like a Google one (_stun.l.google.com:19302)_, but it&#39;s highly recommended to **deploy your own for production**. You can find many other public options online as well (e.g., [1](https://gist.github.com/mondain/b0ec1cf5f60ae726202e), [2](https://stackoverflow.com/questions/20068944/how-to-self-host-to-not-rely-on-webrtc-stun-server-stun-l-google-com19302/20134888#20134888)). Unreal Engine exports out stunserver.exe and turnserver.exe when packaging up the Pixel Streaming 3D app to setup on your own servers:
- ….\Engine\Source\ThirdParty\WebRTC\rev.23789\programs\Win64\VS2017\release\
+In some cases you might need a STUN / TURN server in between the UE4 app and the browser to help identify public IPs (STUN) or get around certain NAT&#39;ing/Mobile carrier settings (TURN) that might not support WebRTC. Please refer to Unreal Engine&#39;s [documentation](https://docs.unrealengine.com/en-US/SharingAndReleasing/PixelStreaming/Hosting/index.html) for details about these options; however, for most users a STUN server should be sufficient. Inside of the SignallingWebServer\ folder there are PowerShell scripts used to spin up the Cirrus.js service which communicates between the user and the UE4 app over WebRTC, and `Start_Azure_SignallingServer.ps1` or `Start_Azure_WithTURN_SignallingServer.ps1` are used to launch with STUN / TURN options. There are public stun servers like a Google one (_stun.l.google.com:19302)_, but it&#39;s highly recommended to **deploy your own for production**. You can find many other public options online as well (e.g., [1](https://gist.github.com/mondain/b0ec1cf5f60ae726202e), [2](https://stackoverflow.com/questions/20068944/how-to-self-host-to-not-rely-on-webrtc-stun-server-stun-l-google-com19302/20134888#20134888)). Unreal Engine exports out stunserver.exe and turnserver.exe when packaging up the Pixel Streaming 3D app to setup on your own servers:
+ `…\Engine\Source\ThirdParty\WebRTC\rev.23789\programs\Win64\VS2017\release\`
 
 ##
 
@@ -206,14 +204,16 @@ In some cases you might need a STUN / TURN server in between the UE4 app and the
 
 The Unreal application has some key parameters that can be passed in upon startup.
 
-&lt;PixelStreamingApp&gt;.exe-AudioMixer -PixelStreamingIP=localhost -PixelStreamingPort=8888 -WinX=0 -WinY=0 -ResX=1920 -ResY=1080 -Windowed -RenderOffScreen -ForceRes
+```dos
+<PixelStreamingApp>.exe-AudioMixer -PixelStreamingIP=localhost -PixelStreamingPort=8888 -WinX=0 -WinY=0 -ResX=1920 -ResY=1080 -Windowed -RenderOffScreen -ForceRes
+```
 
 Notable app arguments to elaborate on (see Unreal [docs](https://docs.unrealengine.com/en-US/SharingAndReleasing/PixelStreaming/PixelStreamingReference/#unrealenginecommand-lineparameters) for others):
 
-- -ForceRes: It is important to make sure this argument is used to force the Azure VM&#39;s display adapter to use the specified resolution (i.e., ResX/ResY).
-- -RenderOffScreen: This renders the app in the background of the VM so it won&#39;t be seen if RDP&#39;ing into the box, which ensures that a window won&#39;t be minimized and not stream back to the user.
-- -Windowed: If this flag isn&#39;t used the resolution parameters will be ignored (i.e., ResX/ResY).
-- -PixelStreamingPort: This needs to be the same port specified in the Signaling Server, which is the port on the VM that the communicates with the 3D Unreal app over web sockets.
+- `-ForceRes`: It is important to make sure this argument is used to force the Azure VM&#39;s display adapter to use the specified resolution (i.e., ResX/ResY).
+- `-RenderOffScreen`: This renders the app in the background of the VM so it won&#39;t be seen if RDP&#39;ing into the box, which ensures that a window won&#39;t be minimized and not stream back to the user.
+- `-Windowed`: If this flag isn&#39;t used the resolution parameters will be ignored (i.e., ResX/ResY).
+- `-PixelStreamingPort`: This needs to be the same port specified in the Signaling Server, which is the port on the VM that the communicates with the 3D Unreal app over web sockets.
 
 ## Deploying at Scale and Autoscaling Configuration
 

@@ -116,127 +116,88 @@ The Git location referenced in the deployment is stored in the [iac\region\varia
 
 Below are the configurations available to the Matchmaker, which a config.json file was added to the existing Matchmaker code to reduce hard coding in the Matchmaker.js file:
 
+```json
 {
-
-// The port clients connect to the Matchmaking service over HTTP
-
-httpPort: 80,
-
-// The Matchmaking port the Signaling Service connects to the matchmaker over sockets
-
-matchmakerPort: 9999,
-
-// Instances deployed per node, to be used in the autoscale policy (i.e., 1 unreal app running per GPU VM) – not yet supported
-
-instancesPerNode: 1,
-
-// Amount of available Signaling Service / App instances to be available before we must scale up (0 will ignore)
-
-instanceCountBuffer: 5,
-
-// Percentage amount of available Signaling Service / App instances to be available before we must scale up (0 will ignore)
-
-percentBuffer: 25,
-
-//The amount of minutes of no scaling up activity before we decide we might want to see if we should scale down (i.e., after hours--reduce costs)
-
-idleMinutes: 60,
-
-// % of active connections to total instances that we want to trigger a scale down if idleMinutes passes with no scaleup
-
-connectionIdleRatio: 25,
-
-// Min number of available app instances we want to scale down to during an idle period (idleMinutes passed with no scaleup)
-
-minIdleInstanceCount: 0,
-
-// The total amount of VMSS nodes that we will approve scaling up to
-
-maxInstanceScaleCount: 500,
-
-// The Azure subscription used for autoscaling policy (set by Terraform)
-
-subscriptionId: &quot;(this is filled at run-time)&quot;,
-
-// The Azure Resource Group where the Azure VMSS is located, used for autoscaling (set by Terraform)
-
-resourceGroup: &quot;(this is filled at run-time)&quot;,
-
-// The Azure VMSS name used for scaling the Signaling Service / Unreal App compute (set by Terraform)
-
-virtualMachineScaleSet: &quot;(this is filled at run-time)&quot;,
-
-// Azure App Insights ID for logging and metrics (set by Terraform)
-
-appInsightsId: &quot;(this is filled at run-time)&quot;
-
-};
+  // The port clients connect to the Matchmaking service over HTTP
+  "httpPort": 80,
+  // The Matchmaking port the Signaling Service connects to the matchmaker over sockets
+  "matchmakerPort": 9999,
+  // Instances deployed per node, to be used in the autoscale policy (i.e., 1 unreal app running per GPU VM) – not yet supported
+  "instancesPerNode": 1,
+  // Amount of available Signaling Service / App instances to be available before we must scale up (0 will ignore)
+  "instanceCountBuffer": 5,
+  // Percentage amount of available Signaling Service / App instances to be available before we must scale up (0 will ignore)
+  "percentBuffer": 25,
+  //The amount of minutes of no scaling up activity before we decide we might want to see if we should scale down (i.e., after hours--reduce costs)
+  "idleMinutes": 60,
+  // % of active connections to total instances that we want to trigger a scale down if idleMinutes passes with no scaleup
+  "connectionIdleRatio": 25,
+  // Min number of available app instances we want to scale down to during an idle period (idleMinutes passed with no scaleup)
+  "minIdleInstanceCount": 0,
+  // The total amount of VMSS nodes that we will approve scaling up to
+  "maxInstanceScaleCount": 500,
+  // The Azure subscription used for autoscaling policy (set by Terraform)
+  "subscriptionId": "",
+  // The Azure Resource Group where the Azure VMSS is located, used for autoscaling (set by Terraform)
+  "resourceGroup": "",
+  // The Azure VMSS name used for scaling the Signaling Service / Unreal App compute (set by Terraform)
+  "virtualMachineScaleSet": "",
+  // Azure App Insights ID for logging and metrics (set by Terraform)
+  "appInsightsId": ""
+}
+```
 
 ## Signaling Server Configuration
 
 Below are configs available to the Signaling Server in their config, some added by Microsoft for Azure:
 
+```json
 {
-
-&quot;UseFrontend&quot;: false,
-
-&quot;UseMatchmaker&quot;: true, // Set to true if using Matchmaker.
-
-&quot;UseHTTPS&quot;: false,
-
-&quot;UseAuthentication&quot;: false,
-
-&quot;LogToFile&quot;: true,
-
-&quot;HomepageFile&quot;: &quot;player.htm&quot;,
-
-&quot;AdditionalRoutes&quot;: {},
-
-&quot;EnableWebserver&quot;: true,
-
-&quot;matchmakerAddress&quot;: &quot;&quot;,
-
-&quot;matchmakerPort&quot;: &quot;9999&quot;, // The web socket port used to talk to the MM.
-
-&quot;publicIp&quot;: &quot;localhost&quot;, // The Public IP of the VM, **set by Terraform**.
-
-&quot;subscriptionId&quot;: &quot;&quot;, // The Azure subscription, **set by Terraform**.
-
-&quot;resourceGroup&quot;: &quot;&quot;, // Azure RG **set by Terraform**.
-
-&quot;virtualMachineScaleSet&quot;: &quot;&quot;, // Azure VMSS **set by Terraform**.
-
-&quot;appInsightsId&quot;: &quot;&quot; // Azure App Insights ID for logging/metrics **set by Terraform**.
-
+  "UseFrontend": false,
+  "UseMatchmaker": true, // Set to true if using Matchmaker.
+  "UseHTTPS": false,
+  "UseAuthentication": false,
+  "LogToFile": true,
+  "HomepageFile": "player.htm",
+  "AdditionalRoutes": {},
+  "EnableWebserver": true,
+  "matchmakerAddress": "",
+  "matchmakerPort": "9999", // The web socket port used to talk to the MM.
+  "publicIp": "localhost", // The Public IP of the VM -- set by Terraform.
+  "subscriptionId": "", // The Azure subscription -- set by Terraform.
+  "resourceGroup": "", // Azure RG -- set by Terraform.
+  "virtualMachineScaleSet": "", // Azure VMSS -- set by Terraform.
+  "appInsightsId": "" // Azure App Insights ID for logging/metrics -- set by Terraform.
 }
+```
 
 ### TURN / STUN Servers
 
-In some cases, you might need a STUN / TURN server in between the UE4 app and the browser to help identify public IPs (STUN) or get around certain NAT&#39;ing/Mobile carrier settings (TURN) that might not support WebRTC. Please refer to Unreal Engine&#39;s [documentation](https://docs.unrealengine.com/en-US/SharingAndReleasing/PixelStreaming/Hosting/index.html) for details about these options; however, for most users a STUN server should be sufficient. Inside of the SignallingWebServer\ folder there are PowerShell scripts used to spin up the Cirrus.js service which communicates between the user and the UE4 app over WebRTC, and _Start\_Azure\_SignallingServer.ps1_ or _Start\_Azure\_WithTURN\_SignallingServer.ps1_ are used to launch with STUN / TURN options. Currently the _Start\_Azure\_SignallingServer.ps1_ file points to a public Google STUN server (_stun.l.google.com:19302)_, but it&#39;s highly recommended to **deploy your own for production**. You can find many other public options online as well (e.g., [1](https://gist.github.com/mondain/b0ec1cf5f60ae726202e), [2](https://stackoverflow.com/questions/20068944/how-to-self-host-to-not-rely-on-webrtc-stun-server-stun-l-google-com19302/20134888#20134888)). Unreal Engine exports out stunserver.exe and turnserver.exe when packaging up the Pixel Streaming 3D app to setup on your own servers (not included in repo):
- \Engine\Source\ThirdParty\WebRTC\rev.23789\programs\Win64\VS2017\release\
+In some cases, you might need a STUN / TURN server in between the UE4 app and the browser to help identify public IPs (STUN) or get around certain NAT&#39;ing/Mobile carrier settings (TURN) that might not support WebRTC. Please refer to Unreal Engine&#39;s [documentation](https://docs.unrealengine.com/en-US/SharingAndReleasing/PixelStreaming/Hosting/index.html) for details about these options; however, for most users a STUN server should be sufficient. Inside of the `SignallingWebServer\` folder there are PowerShell scripts used to spin up the Cirrus.js service which communicates between the user and the UE4 app over WebRTC, and `Start_Azure_SignallingServer.ps1` or `Start_Azure_WithTURN_SignallingServer.ps1` are used to launch with STUN / TURN options. Currently the `Start_Azure_SignallingServer.ps1` file points to a public Google STUN server (`stun.l.google.com:19302`), but it&#39;s highly recommended to **deploy your own for production**. You can find many other public options online as well (e.g., [1](https://gist.github.com/mondain/b0ec1cf5f60ae726202e), [2](https://stackoverflow.com/questions/20068944/how-to-self-host-to-not-rely-on-webrtc-stun-server-stun-l-google-com19302/20134888#20134888)). Unreal Engine exports out `stunserver.exe` and `turnserver.exe` when packaging up the Pixel Streaming 3D app to setup on your own servers (not included in repo):
+ `\Engine\Source\ThirdParty\WebRTC\rev.23789\programs\Win64\VS2017\release\`
 
-_Start\_Azure\_SignallingServer.ps1_ is called by _runAzure.bat_ when deploying the Terraform solution, so if a TURN server is needed this can be changed in runAzure.bat to call _Start\_Azure\_WithTURN\_SignallingServer.ps1_ with the right TURN server credentials updated in the PS file.
+`Start_Azure_SignallingServer.ps1` is called by `runAzure.bat` when deploying the Terraform solution, so if a TURN server is needed this can be changed in runAzure.bat to call `Start_Azure_WithTURN_SignallingServer.ps1` with the right TURN server credentials updated in the PS file.
 
 ## Unreal 3D App
 
 The Unreal 3D app and dependencies reside in GitHub (Git-LFS enabled) under the Unreal\ folder. The Unreal\ folder structure aligns with what is exported out of Unreal Engine, and below are the specific files\folders you will want to copy over the existing files provided in the example GitHub repository:
 
-1. Your exported &lt;ProjectName&gt;.exe should replace Unreal\PixelStreamingDemo.exe
-2. &lt;ProjectName&gt;\ folder associated with the &lt;ProjectName&gt;.exe should replace the Unreal\PixelStreaming\ folder.
-3. Replace the ThirdParty folder of the repo with **your** ThirdParty folder (i.e., \Engine\Binaries\ThirdParty\), as these third-party dlls are specific to what was used in your 3D application. The existing ones were just what was used in the example app provided in the repo. Make sure you can click on your &lt;ProjectName&gt;.exe to run it locally in your cloned repo folder to ensure all dependencies are copied over. This is the only thing needed to be copied over from your own Engine\ folder to the repo.
+1. Your exported `<ProjectName>.exe` should replace `Unreal\PixelStreamingDemo.exe`
+2. `<ProjectName>\` folder associated with the `<ProjectName>.exe` should replace the `Unreal\PixelStreaming\` folder.
+3. Replace the ThirdParty folder of the repo with **your** ThirdParty folder (i.e., `\Engine\Binaries\ThirdParty\`), as these third-party dlls are specific to what was used in your 3D application. The existing ones were just what was used in the example app provided in the repo. Make sure you can click on your `<ProjectName>.exe' to run it locally in your cloned repo folder to ensure all dependencies are copied over. This is the only thing needed to be copied over from your own Engine\ folder to the repo.
 4. **Nothing more is needed to copy** over unless you&#39;ve changed any player.htm or specific customizations to the MM or SS web servers. These changes must be merged with the Microsoft special customizations and **not replaced over our WebServer\ files** to ensure a correct merge.
 5. **Important:** Be sure to check in any code/app changes back into your forked repo as the Terraform deployment pulls from GitHub on your deployment and not your local resources.
 
-The Unreal application has some key parameters that are passed in upon startup, which the Terraform deployment and PowerShell script (startVMSS.ps1) handles for you:
-
-&lt;PixelStreamingApp&gt;.exe -AudioMixer -PixelStreamingIP=localhost -PixelStreamingPort=8888 -WinX=0 -WinY=0 -ResX=1920 -ResY=1080 -Windowed -RenderOffScreen -ForceRes
-
+The Unreal application has some key parameters that are passed in upon startup, which the Terraform deployment and PowerShell script (`startVMSS.ps1`) handles for you:
+```dos
+<PixelStreamingApp>.exe -AudioMixer -PixelStreamingIP=localhost -PixelStreamingPort=8888 -WinX=0 -WinY=0 -ResX=1920 -ResY=1080 -Windowed -RenderOffScreen -ForceRes
+```
 Notable app arguments to elaborate on for your understanding (see Unreal [docs](https://docs.unrealengine.com/en-US/SharingAndReleasing/PixelStreaming/PixelStreamingReference/#unrealenginecommand-lineparameters) for others):
 
-- -ForceRes: It is important to make sure this argument is used to force the Azure VM&#39;s display adapter to use the specified resolution (i.e., ResX/ResY).
-- -RenderOffScreen: This renders the app in the background of the VM, so it won&#39;t be seen if RDP&#39;ing into the box, which ensures that a window won&#39;t be minimized and not stream back to the user.
-- -Windowed: If this flag isn&#39;t used the resolution parameters will be ignored (i.e., ResX/ResY).
-- -PixelStreamingPort: This needs to be the same port specified in the Signaling Server, which is the port on the VM that the communicates with the 3D Unreal app over web sockets.
+- `-ForceRes`: It is important to make sure this argument is used to force the Azure VM&#39;s display adapter to use the specified resolution (i.e., `ResX`/`ResY`).
+- `-RenderOffScreen`: This renders the app in the background of the VM, so it won&#39;t be seen if RDP&#39;ing into the box, which ensures that a window won&#39;t be minimized and not stream back to the user.
+- `-Windowed`: If this flag isn&#39;t used the resolution parameters will be ignored (i.e., `ResX`/`ResY`).
+- `-PixelStreamingPort`: This needs to be the same port specified in the Signaling Server, which is the port on the VM that the communicates with the 3D Unreal app over web sockets.
 
 ## Autoscaling Configuration
 
@@ -258,7 +219,7 @@ Here are the key parameters in the Matchmaker config.json required to configure 
 
 ## Player HTML &amp; Custom Event Configuration
 
-When Unreal Pixel Streaming is packaged from Unreal Engine the solution contains a \Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\player.htm file to customize the experience, along with the ability to customize JavaScript functions to send custom events between the browser and the 3D Unreal application. Please see Epic&#39;s robust [documentation](https://docs.unrealengine.com/en-US/SharingAndReleasing/PixelStreaming/CustomPlayer/index.html) on how to make these extra customizations.
+When Unreal Pixel Streaming is packaged from Unreal Engine the solution contains a `\Engine\Source\Programs\PixelStreaming\WebServers\SignallingWebServer\player.htm` file to customize the experience, along with the ability to customize JavaScript functions to send custom events between the browser and the 3D Unreal application. Please see Epic&#39;s robust [documentation](https://docs.unrealengine.com/en-US/SharingAndReleasing/PixelStreaming/CustomPlayer/index.html) on how to make these extra customizations.
 
 # Deployment
 
@@ -271,34 +232,46 @@ To deploy the solution, use the steps here:
   - Make sure you have [Azure CLI installed](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
   - Make sure you have [terraform installed](https://learn.hashicorp.com/tutorials/terraform/install-cli).
 - Do a [git clone](https://git-scm.com/docs/git-clone) on the repo with a depth of 1 or a [git pull](https://git-scm.com/docs/git-pull) if already cloned. **Note:** If you don&#39;t use a --depth 1 it will download the entire Git history for Unreal Engine ( **will take a long time** ).
-  - git clone --depth 1 https://github.com/Azure/UnrealEngine.git
-- Run PowerShell as Administrator (needed for setting PowerShell&#39;s execution policy below) and [Login to Azure](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli) via Azure CLI in the PowerShell window: az login
-- [Set the Azure subscription](https://docs.microsoft.com/en-us/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription) with Azure CLI to deploy into: az account set --subscription &quot;_SUBSCRIPTION\_NAME\_HERE_&quot;
-- Set PowerShell&#39;s [execution policy](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1) (per your security needs): Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
-- Delete the terraform.tfstate file in the iac\ folder if existing from a previous deployment.
-- In a PowerShell window navigate to the \iac folder where the repo was cloned and use these 3 commands with your [Git PAT](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) since the repo is private:
-  - terraform init
-  - terraform validate
-  - terraform apply -var &#39;git-pat=**PUT\_GIT\_PAT\_HERE**&#39; --auto-approve
-
+```powershell
+  git clone --depth 1 https://github.com/Azure/UnrealEngine.git
+```
+- Run PowerShell as Administrator (needed for setting PowerShell&#39;s execution policy below) and [Login to Azure](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli) via Azure CLI in the PowerShell window:
+```powershell
+  az login
+```
+- [Set the Azure subscription](https://docs.microsoft.com/en-us/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription) with Azure CLI to deploy into: 
+```powershell
+az account set --subscription "SUBSCRIPTION_NAME_HERE"
+```
+- Set PowerShell&#39;s [execution policy](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1) (per your security needs): 
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+```
+- Delete the `terraform.tfstate` file in the `iac\` folder if existing from a previous deployment.
+- In a PowerShell window navigate to the \iac folder where the repo was cloned and use these 3 commands with your [Git PAT](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) since the repo is private (replace PUT_GIT_PAT_HERE with PAT):
+```powershell
+terraform init
+terraform validate
+terraform apply -var 'git-pat=PUT_GIT_PAT_HERE' --auto-approve
+```
 This process can take between 15-30 minutes to deploy, depending on resources deployed (i.e., UE4 app size, regions chosen, etc.). The PowerShell window should finish with a successfully completed message. The deployment creates 2 resources groups in Azure:
 
-1. **&lt;random\_prefix&gt;-global-unreal-rg** : This stores all global resources such as the Traffic Manager, Key Vault and Application Insights.
-2. **&lt;random\_prefix&gt;-&lt;region&gt;-unreal-rg** : This stores the Virtual Machine Scale Set (VMSS) for the GPU nodes that have the 3D app and Signaling Server, the Matchmaker VM and Virtual Network resources.
+1. `<random_prefix>-global-unreal-rg` : This stores all global resources such as the Traffic Manager, Key Vault and Application Insights.
+2. `<random_prefix>-<region>-unreal-rg` : This stores the Virtual Machine Scale Set (VMSS) for the GPU nodes that have the 3D app and Signaling Server, the Matchmaker VM and Virtual Network resources.
 
-**Testing the Deployment:** Open up a web browser and paste in the DNS name from the Traffic Manager in the global Resource Group (e.g., http://_&lt;random\_prefix&gt;_.trafficmanager.net) to be redirected to an available stream. The DNS name can be found under &quot;DNS name: _&lt;link&gt;_&quot; in the **Overview** page of the Traffic Manager resource in the Azure Portal. If you&#39;ve deployed to multiple regions, you will be redirected to the closet Azure region.
+**Testing the Deployment:** Open up a web browser and paste in the DNS name from the Traffic Manager in the global Resource Group (e.g., `http://<random_prefix>.trafficmanager.net`) to be redirected to an available stream. The DNS name can be found under &quot;DNS name: _&lt;link&gt;_&quot; in the **Overview** page of the Traffic Manager resource in the Azure Portal. If you&#39;ve deployed to multiple regions, you will be redirected to the closet Azure region.
 
 Post the deployment there are processes **that Terraform will**  **run** on the following solution components in each region upon startup of each VM:
 
 - Matchmaker VM
-  - Script: startMMS.ps1
-  - Executable: Node.exe
-  - Scheduled Task calling the script on restart: StartMMS
+  - Script: `startMMS.ps1`
+  - Executable: `Node.exe`
+  - Scheduled Task calling the script on restart: `StartMMS`
 - Backend (Web &amp; Signaling Services) VMSS
-  - Script: startVMSS.ps1
-  - Executable: Node.exe
-  - Executable: &lt;PixelStreamingApp&gt;.exe
-  - Scheduled Task calling the script on restart: StartVMSS
+  - Script: `startVMSS.ps1`
+  - Executable: `Node.exe`
+  - Executable: `<PixelStreamingApp>.exe`
+  - Scheduled Task calling the script on restart: `StartVMSS`
 
 # Redeploying Updates
 
@@ -310,13 +283,14 @@ The easiest way to redeploy during the solution would be to do the following for
   - Without having to redeploy everything from Terraform, the easiest way is to manually log into each of the deployed MM VM&#39;s and copy the code changes over from git – unless there needs to be any terraform transformations and, in that case, you will need to redeploy it fully from Terraform. If it&#39;s just a JavaScript change, replacing the matchmaker.js file is sufficient. Refer to the Matchmaker section above for the folder location.
 - **Full redeployment**
   - Use the following steps to redeploy the solution from Terraform:
-    - Delete the terraform.tfstate file in the iac\ folder.
+    - Delete the `terraform.tfstate` file in the `iac\` folder.
     - Do a Git sync and grab the latest updates.
-    - In the console use these 3 commands (Get a PAT from GItHub):
-      - terraform init
-      - terraform validate
-      - terraform apply -var &#39;git-pat=**PUT\_GIT\_PAT\_HERE**&#39; --auto-approve
-
+    - In the PowerShell console use these 3 commands (Get a PAT from GitHub):
+```powershell
+terraform init
+terraform validate
+terraform apply -var 'git-pat=PUT_GIT_PAT_HERE' --auto-approve
+```
 # Shutting Down and Restarting Later
 
 If we need to shut down the solution and start it up later, see below for the process. This is just shutting down the compute for the Matchmaker and the Signaling Servers, which are the costlier resources (especially the SS GPU VMs) vs. deleting all the resources and requiring a time-consuming redeployment.
@@ -337,12 +311,12 @@ If we need to shut down the solution and start it up later, see below for the pr
 ## Starting back up the core compute
 
 - **Matchmakers**
-  - Go to each regional [Resource Group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal) in the Azure Portal (i.e., \*-eastus-unreal-rg) and click on the matchmaker VMs (e.g., \*-mm-vm0). Once entered the **Overview** page of the VM choose the **Start** button at the top to turn on the VM. Do this for all regions that are deployed first before turning on the VMSS nodes so they can connect to the MM cleanly. The MM will come back on and start the MM service from the ScheduledTask _StartMMS_ setup on Windows.
+  - Go to each regional [Resource Group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal) in the Azure Portal (i.e., \*-eastus-unreal-rg) and click on the matchmaker VMs (e.g., \*-mm-vm0). Once entered the **Overview** page of the VM choose the **Start** button at the top to turn on the VM. Do this for all regions that are deployed first before turning on the VMSS nodes so they can connect to the MM cleanly. The MM will come back on and start the MM service from the ScheduledTask `StartMMS` setup on Windows.
 
 [![Start Matchmaker](media/pixel-streaming/pixel-streaming-start-mm.png)](media/pixel-streaming/pixel-streaming-start-mm.png)
 
 - **Signaling Servers / 3D app**
-  - Go to each regional [Resource Group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal) in the Azure Portal (i.e., \*-eastus-unreal-rg) and click on the Virtual Machine Scale Set (VMSS) resources (e.g., \*vmss). Once entered the **Overview** page of the VMSS choose the **Start** button at the top to turn back on the VMSS instances. Do this for all regions that are deployed. Each instance will come back on and start the SS and 3D automatically from the ScheduledTask _StartVMSS_ setup on Windows.
+  - Go to each regional [Resource Group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal) in the Azure Portal (i.e., \*-eastus-unreal-rg) and click on the Virtual Machine Scale Set (VMSS) resources (e.g., \*vmss). Once entered the **Overview** page of the VMSS choose the **Start** button at the top to turn back on the VMSS instances. Do this for all regions that are deployed. Each instance will come back on and start the SS and 3D automatically from the ScheduledTask `StartVMSS` setup on Windows.
 
 [![Start Signaling Server](media/pixel-streaming/pixel-streaming-start-ss.png)](media/pixel-streaming/pixel-streaming-start-ss.png)
 
@@ -350,13 +324,13 @@ If we need to shut down the solution and start it up later, see below for the pr
 
 Currently automated Azure dashboards aren&#39;t built when deploying the solution; however, outside of regular host metrics like CPU/Memory, some key metrics will be important to monitor in Azure Monitor/Application Insights such as:
 
-- SSPlayerConnected – The most key metric to know when a user connected (use Count)
-- SSPlayerDisconnected – When a user disconnects from the Signaling Server (use Count)
-- AvailableConnections – The amount of available Signaling Servers not being used (use Avg)
-- TotalConnectedClients – Amount of Signaling Servers connected to the Matchmaker (use Avg)
-- TotalInstances – The total number of VMSS instances—should be same as TotalCC&#39;s (use Avg)
-- PercentUtilized – The percentage of Signaling Servers (streams) in use (use Avg)
-- MatchmakerErrors – The number of Matchmaker (use Count)
+- `SSPlayerConnected` – The most key metric to know when a user connected (use Count)
+- `SSPlayerDisconnected` – When a user disconnects from the Signaling Server (use Count)
+- `AvailableConnections` – The amount of available Signaling Servers not being used (use Avg)
+- `TotalConnectedClients` – Amount of Signaling Servers connected to the Matchmaker (use Avg)
+- `TotalInstances` – The total number of VMSS instances
+- `PercentUtilized` – The percentage of Signaling Servers (streams) in use (use Avg)
+- `MatchmakerErrors` – The number of Matchmaker (use Count)
 
 View a tutorial on creating a dashboard in Azure Monitor [here](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/tutorial-metrics-explorer).
 
@@ -374,9 +348,9 @@ Below are the key files in the Terraform setup to understand when altering the c
 
 ## Folder Structure
 
-- **\iac** is the root of all infrastructure for the solution.
+- `\iac` is the root of all infrastructure for the solution.
   - [Outermain.tf](https://github.com/Azure/UnrealEngine/blob/release/iac/outermain.tf) is the primary TF File. This file sets base variables like the 5 character prefix on all assets, takes the optional GitHub PAT for private repos and deploys the Global Resource Group, and &quot;Stamps&quot; which are each of the regional deployments
-- **\iac\region** is the folder with the files to deploy a region
+- `\iac\region` is the folder with the files to deploy a region
   - [Main.tf](https://github.com/Azure/UnrealEngine/blob/release/iac/region/main.tf) is the TF file that handles deployment of all assets in each regional deployment
   - [Variables.tf](https://github.com/Azure/UnrealEngine/blob/release/iac/region/variables.tf) is the TF file that has parameters for each of the regional deployments
 
