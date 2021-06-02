@@ -21,7 +21,7 @@ For implementing a matchmaker you will need a database storing the data from the
 4. **Add servers** - When a new server is created, it passes the relevant connection information (IP:Port) for being added to the database.
 5. **High level manager** - Looks for game sessions that can be started and finds a server for each of them.
 
-Optionally you can have another process or Azure Function to **request a scale out** when it detects that there are not enough servers. The alternative is to delegate this to the game hosting orchestrator should you are using one.
+Optionally you can have another process or Azure Function to **request a scale out** when it detects that there are not enough servers. The alternative is to delegate this to the game hosting orchestrator should you be using one.
 
 When you are building your matchmaking logic, there are three key variables to take into consideration. Aim to make it work for two out of three at least:
 
