@@ -71,3 +71,11 @@
       href: reference-architectures/cognitive-speech-to-text.md
     - name: Customer Service Bot
       href: reference-architectures/cognitive-css-bot.md
+  - name: Game Streaming
+    items:
+    - name: Unreal Pixel Streaming in Azure
+      href: reference-architectures/unreal-pixel-streaming-in-azure.md
+    - name: Deploying Unreal Pixel Streaming in Azure
+      href: reference-architectures/unreal-pixel-streaming-deploying.md
+    - name: Unreal Pixel Streaming at Scale in Azure
+      href: reference-architectures/unreal-pixel-streaming-at-scale.md
