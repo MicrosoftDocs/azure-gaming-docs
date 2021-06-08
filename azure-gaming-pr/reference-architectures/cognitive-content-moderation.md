@@ -24,7 +24,7 @@ This article will describe the architecture used in [this sample on GitHub](http
 - [Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) - Checks text, image, and video content for material that is potentially offensive, risky, or otherwise undesirable. When such material is found, the service applies appropriate labels (flags) to the content.
 - [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) - When scaling across multiple regions globally, this service selects the closest region to connect to via DNS.
 - [Event Hub](https://azure.microsoft.com/services/event-hubs/) - A service tailored for real-time receiving and processing of a large number of events (chat strings in this case), in order, with little configuration or management overhead.
-- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview) - Serverless compute service to run code on-demand -- in this case, code that invokes the different cognitive services.
+- [Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-overview) - Serverless compute service to run code on-demand -- in this case, code that invokes the different Cognitive Services.
 
 ## Architecture considerations
 
