@@ -20,7 +20,7 @@ These reference architectures describe a leaderboard use case and implementation
 
 There are many variables which can be taken into consideration when defining a leaderboard. Here are some examples for you to consider:
 
-- **Geography**: Physical location where the player is located. Be as granular as you want, from countries to regions to continents and beyond. Examples: France, China, USA, North America, Asia, EMEA.
+- **Geography**: Physical location where the player is located. Be as granular as you want, from countries/regions to continents and beyond. Examples: France, China, USA, North America, Asia, EMEA.
 - **Platform**: Device or service the game is played on. You could also consider enabling leaderboards that combine more than one platform. Examples: Xbox, PlayStation, PC, iOS, Android, Mobile, Consoles.
 - **Mode**: Distinct configuration that changes gameplay and affects how other game mechanics behave. Examples: solo, duo, squad, PvE, PvP, campaign.
 - **Difficulty**: User-selected challenge. Examples: easy, medium, hard.
