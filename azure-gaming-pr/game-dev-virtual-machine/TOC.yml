@@ -16,6 +16,8 @@
     href: create-game-development-vm-for-unreal.md
   - name: Create a Virtual Machine with an ARM template
     href: create-game-development-vm-arm-template.md
+  - name: Create a Virtual Machine with an Bicep template
+    href: create-game-development-vm-bicep-template.md    
   - name: Remoting with Parsec 
     href: remote-to-vm-with-parsec.md
   - name: Remoting with Teradici 
