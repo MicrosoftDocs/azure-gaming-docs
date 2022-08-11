@@ -24,6 +24,8 @@ An Azure subscription. If you don't have an Azure subscription, create a [free a
 The Bicep file used in this quickstart is from [Azure Quickstart Templates](https://azure.microsoft.com/en-us/resources/templates/gamedev-vm/).
 
 ```bicep
+param vmName string
+param adminName string
 @secure()
 param adminPass string = newGuid()
 
@@ -52,14 +54,14 @@ outputs adminPass string = adminPass
 
     ```azurecli
     az group create --name exampleRG --location eastus
-    az deployment group create --resource-group exampleRG --template-file main.bicep --parameters adminUsername=<admin-user> vmName=<vm-name>
+    az deployment group create --resource-group exampleRG --template-file main.bicep --parameters adminName=<admin-user> vmName=<vm-name>
     ```
 
     # [PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     New-AzResourceGroup -Name exampleRG -Location eastus
-    New-AzResourceGroupDeployment -ResourceGroupName exampleRG -TemplateFile ./main.bicep -adminUsername "<admin-user>" -vmName "<vm-name>" 
+    New-AzResourceGroupDeployment -ResourceGroupName exampleRG -TemplateFile ./main.bicep -adminName "<admin-user>" -vmName "<vm-name>" 
     ```
 
     ---
