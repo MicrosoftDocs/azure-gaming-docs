@@ -105,9 +105,3 @@ Remove-AzResourceGroup -Name exampleRG
 
 ---
 
-## Next steps
-
-In this quickstart, you created a Data Science Virtual Machine using Bicep.
-
-> [!div class="nextstepaction"]
-> [Sample programs & ML walkthroughs](dsvm-samples-and-walkthroughs.md)
