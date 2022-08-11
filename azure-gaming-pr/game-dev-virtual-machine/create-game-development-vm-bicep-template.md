@@ -1,14 +1,11 @@
 ---
 title: 'Quickstart: Create an Game Developer VM - Bicep'
-titleSuffix: Azure Game Developer Virtual Machine
 description: In this quickstart, you use Bicep to quickly deploy a Game Developer Virtual Machine
-services: azure-gaming
 author: dciborow
-ms.author: dciborow 
-ms.date: 08/11/2022
 ms.topic: quickstart
-ms.service: azure-gaming
-ms.custom: subject-armqs, mode-arm
+ms.date: 08/11/2022
+ms.author: dciborow
+ms.prod: azure-gaming
 ---
 
 # Quickstart: Create an Game Developer Virtual Machine using Bicep
