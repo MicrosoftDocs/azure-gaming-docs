@@ -13,9 +13,7 @@ ms.custom: subject-armqs, mode-arm
 
 # Quickstart: Create an Game Developer Virtual Machine using Bicep
 
-This quickstart will show you how to create an windows 10 Game Developer Virtual Machine using Bicep. Game Developer Virtual Machines are cloud-based virtual machines preloaded with a suite of game developer frameworks and tools. When deployed on GPU-powered compute resources, all tools and libraries are configured to use the GPU.
-
-[!INCLUDE [About Bicep](../../../includes/resource-manager-quickstart-bicep-introduction.md)]
+This quickstart will show you how to create a Windows 10 Game Developer Virtual Machine using Bicep. Game Developer Virtual Machines are cloud-based virtual machines preloaded with a suite of game developer frameworks and tools. When deployed on GPU-powered compute resources, all tools and libraries are configured to use the GPU.
 
 ## Prerequisites
 
@@ -25,7 +23,25 @@ An Azure subscription. If you don't have an Azure subscription, create a [free a
 
 The Bicep file used in this quickstart is from [Azure Quickstart Templates](https://azure.microsoft.com/en-us/resources/templates/gamedev-vm/).
 
-:::code language="bicep" source="~/quickstart-templates/application-workloads/azure-gamedev/gamedev-vm/main.bicep":::
+```bicep
+@secure()
+param adminPass string = newGuid()
+
+module win10 'br/public:azure-gaming/game-dev-vm:1.0.1' = {
+  name: 'win10_ue_4_27_2'
+  params: {
+    location  : resourceGroup().location
+    vmName    : 'bicep'
+    adminName : 'dcibadmin'
+    adminPass : adminPass
+    osType    : 'win10'
+    gameEngine: 'ue_4_27_2'
+    vmSize    : 'Standard_D4s_v3'
+  }
+}
+
+outputs adminPass string = adminPass
+```
 
 ## Deploy the Bicep file
 
