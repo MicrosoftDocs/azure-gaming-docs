@@ -21,7 +21,7 @@ An Azure subscription. If you don't have an Azure subscription, create a [free a
 
 ## Review the Bicep file
 
-The Bicep file used in this quickstart is from [Azure Quickstart Templates](https://azure.microsoft.com/en-us/resources/templates/gamedev-vm/).
+The Bicep file based on the quickstart from [Azure Quickstart Templates](https://azure.microsoft.com/en-us/resources/templates/gamedev-vm/).
 
 ```bicep
 param vmName string
