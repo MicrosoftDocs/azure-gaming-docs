@@ -9,7 +9,7 @@ ms.author: brpeek
 ms.prod: azure-gaming
 ---
 
-# Analytics Reference Architectures
+# Azure Game Analytics
 
 These reference architectures describe a variety of analytics use cases and implementations with different alternatives, enabling you to architect your own cloud solution so you can have **full control and customization to fit your game design**.
 
