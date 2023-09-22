@@ -2,7 +2,7 @@
 title: Troubleshoot Azure Game Development Virtual Machine and Get Support
 description: View common support issues that customers might experience using the Azure Game Development Virtual Machine and steps to resolve those issues.
 author: meaghanlewis
-ms.topic: troubleshoot
+ms.topic: troubleshooting
 ms.date: 04/05/2022
 ms.author: mosagie
 ms.prod: azure-gaming
