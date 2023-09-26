@@ -1,0 +1,104 @@
+{
+    "redirections": [
+		{
+				"source_path": "reference-architectures/cognitive-content-moderation.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/cognitive-css-bot.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/cognitive-text-to-speech.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/cognitive-text-translation.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/analytics-in-editor-debugging.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/analytics-non-real-time-dashboard.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/leaderboard.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/leaderboard-non-relational.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/leaderboard-relational.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/multiplayer-matchmaker.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/multiplayer-matchmaker-serverless.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/multiplayer.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/multiplayer-synchronous-batch.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/multiplayer-synchronous-aci.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/multiplayer-synchronous-aks.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/multiplayer-custom-server-scaling.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/multiplayer-asynchronous.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/multiplayer-asynchronous-serverless.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/multiplayer-basic-game-server-hosting.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+				"source_path": "reference-architectures/general-purpose-lamp.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		}
+	]
+}
