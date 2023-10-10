@@ -2,7 +2,7 @@
 title: Troubleshoot Unreal Cloud DDC
 description: View common support issues that customers might experience using Unreal Cloud DDC and steps to resolve those issues.
 author: dciborow
-ms.topic: troubleshoot
+ms.topic: troubleshooting
 ms.date: 10/02/2022
 ms.author: dciborow
 ms.prod: azure-gaming
