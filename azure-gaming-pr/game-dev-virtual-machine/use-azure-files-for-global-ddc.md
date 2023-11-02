@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # Use Azure Files for network derived data cache with Unreal Engine
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 It is essential that you understand the Azure Files performance and redundancy, and Active Directory authentication and authorization features to support the requirement of using Derived Data Cache (DDC) for the Unreal Engine.
 
 ## Prerequisites

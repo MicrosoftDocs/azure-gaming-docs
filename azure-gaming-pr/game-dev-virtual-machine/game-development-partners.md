@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # Game Development Partners
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 In addition to the Azure Game Development Virtual Machine, Microsoft has partnered with various industry leaders to bring their solutions to Azure. And Microsoft is continuing building the Azure gaming ecosystem with many partners. We are committed to making Azure the cloud of choice for game creators and empower game creators to realize their dreams via Azure on any device.
 
 ## [Epic Games](https://www.epicgames.com/site/home)

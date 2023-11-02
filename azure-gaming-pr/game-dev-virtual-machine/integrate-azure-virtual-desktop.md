@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # Integrate with Azure Virtual Desktop (AVD)
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 [Azure Virtual Desktop (AVD)](https://azure.microsoft.com/services/virtual-desktop/#overview) is a desktop and app virtualization service that runs on the Azure cloud. It enables secure remote work using Windows hosts via a scalable multi-session experience for your end users. It saves costs by using existing eligible Windows licenses. You manage your end-to-end Azure Virtual Desktop deployment alongside other Azure services within the Azure portal, or via PowerShell or CLI.
 
 The Azure Game Development Virtual Machine provisioning supports direct integration with AVD. When this option is selected and the provisioning completes, the virtual machine is auto-registered as a session host within an existing [AVD Host Pool](/azure/virtual-desktop/environment-setup#host-pools) and it becomes available for new remote user sessions.

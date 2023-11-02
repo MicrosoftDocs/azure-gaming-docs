@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # Integrate with Azure Active Directory
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 You may integrate Azure Active Directory authentication with this Game Development Virtual Machine during resource creation.
 
 ## Enabling Azure AD

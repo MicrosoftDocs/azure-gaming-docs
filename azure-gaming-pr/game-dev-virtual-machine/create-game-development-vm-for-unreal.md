@@ -9,6 +9,9 @@ ms.prod: azure-gaming
 ---
 # Quickstart: Create a Game Development Virtual Machine with Unreal Engine
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 Get up and running with a Windows 11 or Windows Server 2022 Game Development Virtual Machine which has Unreal Engine and other common game development tools pre-installed. Unreal Engine is an incredibly powerful and advanced real-time 3D creation tool for photorealistic visuals and immersive experiences.
 
 > [!NOTE]

@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # Integrate with a Perforce depot
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 [Perforce Helix Core](https://www.perforce.com/products/helix-core) is a commonly used version control solution for the top AAA game studios. The Perforce depot is a file repository hosted on the Helix Core server. The Azure Game Development Virtual Machine comes with [Perforce Helix Visual Client (P4V)](https://www.perforce.com/downloads/helix-visual-client-p4v) pre-installed, which enables the option to configure the integration with a Perforce depot to pull down your assets during and after the VM creation. This means you can spin up a brand new VM, pull down your assets onto the VM asynchronously, and have you ready to build your game project and collaborate with your team soon after logging in. If you don’t already have Perforce deployed, you can [deploy Perforce from Azure](https://azuremarketplace.microsoft.com/marketplace/apps/perforce.perforce-enhanced-studio-pack?tab=overview).
 
 ## Configure the Perforce depot connection during VM creation

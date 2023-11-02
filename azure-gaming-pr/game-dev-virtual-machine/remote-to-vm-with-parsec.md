@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # Quickstart: Remoting into the Game Development Virtual Machine with Parsec
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 Access the Azure Game Development Virtual Machine using Parsec. Parsec is a high-performance remote access technology built for the Media & Entertainment industry. It provides high fidelity and low latency remote access experience. Parsec’s agent is pre-installed on the VM and requires a [Parsec client](https://parsec.app/downloads) to connect to the VM.
 
 ## Prerequisites

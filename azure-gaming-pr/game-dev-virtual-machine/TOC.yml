@@ -5,6 +5,8 @@
   items:
   - name: What is the Game Development Virtual Machine?
     href: overview.md
+  - name: Game Dev VM is retiring
+    href: game-dev-vm-retire.md   
   - name: Tools included
     href: tools-included-azure-game-dev-kit.md
   - name: Choosing the right GPU SKU
