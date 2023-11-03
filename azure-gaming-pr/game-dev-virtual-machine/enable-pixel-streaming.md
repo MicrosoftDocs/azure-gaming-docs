@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # Enabling Pixel Streaming 
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 With Unreal’s Pixel Streaming feature, you can stream your 3D application to any remote user with a modern web browser. The Azure Game Development VM comes with an option to enable Pixel Streaming access and with a few other steps, you can share your project in just minutes. 
 
 ## Enable Pixel Streaming during VM creation

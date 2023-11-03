@@ -9,6 +9,9 @@ ms.prod: azure-gaming
 ---
 # Quickstart: Create a Game Development Virtual Machine with other game engines
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 If you don't need have an Unreal Engine pre-installed, you can still leverage the Game Development Virtual Machine with either Windows 11 or Windows Server 2022 that bundles common game development tools, and then install your game engine of choice after deploying this VM. Some popular game engines in the market which are worth mentioning but not limited to are: [CryENGINE](https://www.cryengine.com/),  [GameMaker](https://gamemaker.io/en), [Godot](https://godotengine.org/), [O3DE](https://www.o3de.org/), and [Unity](https://unity.com/).
 
 > [!NOTE]

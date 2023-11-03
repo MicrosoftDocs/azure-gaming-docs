@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # Striped disks for more IOPS
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 When deploying the Game Development Virtual Machine in Azure, it is **highly** recommended to add an additional striped SSD disk in order to have the best performance for your game development workstation. It is also recommended that you save all your assets on the new striped drive versus the default C drive (256GB), enabling you faster reads, writes, IOPS and increased storage space. You can either configure a disk volume that is striped across multiple data disks for the Game Development Virtual Machine on the Azure portal during VM creation like below, or set up a striped volume using the Disk Management console in the Windows operating system.
 
 :::image type="content" source="./media/striped-disks-iops/striped-disk-volume-configuration.png" alt-text="Screenshot showing how to configure the disk volume for a game development VM":::

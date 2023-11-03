@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # Build a unique cloud game development workstation by customizing Game Dev VM
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 While the Azure Game Development VM bundles many [common tools](/gaming/azure/game-dev-virtual-machine/tools-included-azure-game-dev-kit) used in game production, it’s  understandable that each game studio and individual game developer usually has their unique toolset as well. The Game Development VM is a starting point from which users build their customized cloud development workstation. That way, they don’t need to worry about the common tooling, and only focus on the delta that produces the desired outcome.
 
 The high-level flow for producing a customized image based on the Game Development VM comprises of the following tasks:

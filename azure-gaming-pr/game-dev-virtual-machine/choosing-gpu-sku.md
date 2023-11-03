@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # Choosing the right GPU SKU and optimizing costs
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 With the Game Development Virtual Machine, game developers have a workstation in the cloud, leveraging the most powerful GPU machines to meet the high-performance requirements of game development. In this document we discuss how to determine which GPU SKU is right for you. Currently the Azure Game Development Virtual Machine supports four families of [GPU – accelerated compute](/azure/virtual-machines/sizes-gpu) SKUs, which are the [NV-series](/azure/virtual-machines/nv-series),  [NVv3-series](/azure/virtual-machines/nvv3-series), [NCasT4_v3-series](/azure/virtual-machines/nct4-v3-series) and [NVadsA10 v5-series](/azure/virtual-machines/nva10v5-series). Because they support [NVIDIA GRID drivers](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) that are used for 3D applications and content with virtual desktop infrastructure (VDI) solution in the cloud. Please refer to the respective documentation for detailed specifications of each VM series. The Azure VM family is growing, with more powerful GPU virtual machine SKUs on the Azure roadmap. As new GPU SKUs are released, the Game Development Virtual Machine will support them once they’re available.
 
 ## GPU Quota on Azure

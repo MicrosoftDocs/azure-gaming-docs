@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # Troubleshoot Azure Game Development Virtual Machine and Get Support
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 The Game Development Virtual Machine is built on top of common Windows images currently available in Azure, which allows you to use much of the same troubleshooting guidance found for general Azure VMs. For more details about how to get support with your Azure VMs, please visit the [Azure support FAQ](https://azure.microsoft.com/support/faq/#support-overview).
 
 We are very eager to hear your feedback and invite you to share your experiences and feedback in our <a href="https://forms.office.com/r/VHK5iEqeBm" target="_blank">survey</a>; however, be sure to [create a ticket](https://azure.microsoft.com/support/create-ticket/) in the Azure Portal if you run into issues that require support to help unblock you. Additionally, join our <a href="https://aka.ms/gamedevVMdiscord" target="_blank">Game Dev Discord channel</a> to connect with thousands of game developers around the world and talk with the Game Development Virtual Machine team.

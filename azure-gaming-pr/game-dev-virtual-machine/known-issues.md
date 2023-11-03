@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # Known issues and FAQs with the Azure Game Development Virtual Machine
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 This article discusses known issues to be aware of when you work with Azure Game Development VM. If you have suggestions about this product, please submit your ideas via this <a href="https://forms.office.com/r/VHK5iEqeBm" target="_blank">survey</a>. Or join this <a href="https://aka.ms/gamedevVMdiscord" target="_blank">Game Dev VM Discord channel</a> to connect with thousands of game developers around the world. Microsoft monitors the user feedback closely and listens to the voice of customers so that we can improve the service.
 
 > [!NOTE]
