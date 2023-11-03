@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # Quickstart: Create an Game Developer Virtual Machine using Bicep
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 This quickstart will show you how to create a Windows 10 Game Developer Virtual Machine using Bicep. Game Developer Virtual Machines are cloud-based virtual machines preloaded with a suite of game developer frameworks and tools. When deployed on GPU-powered compute resources, all tools and libraries are configured to use the GPU.
 
 ## Prerequisites

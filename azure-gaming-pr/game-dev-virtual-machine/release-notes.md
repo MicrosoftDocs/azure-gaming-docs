@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # Azure Game Development Virtual Machine release notes
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 In this article, learn about updates for Azure Game Development Virtual Machine. For a full list of tools included, check out the page: [Tools included with the Azure Game Development Virtual Machine](./tools-included-azure-game-dev-kit.md). And see the list of [known issues](./known-issues.md) to learn about known bugs and workarounds.
 
 Due to the rapidly evolving needs and packages updates, we target to release new Azure Game Development Virtual Machine images every month. Azure portal users will always find the latest image available for provisioning the Game Development Virtual Machine. For CLI or ARM users, we keep images of individual versions available for twelve months. After that period, a particular version of image is no longer available for provisioning.

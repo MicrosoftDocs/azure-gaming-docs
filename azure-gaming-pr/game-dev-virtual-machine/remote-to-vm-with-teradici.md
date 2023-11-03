@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # Quickstart: Remoting into the Game Development Virtual Machine with Teradici
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 Access the Game Development Virtual Machine using Teradici CAS (Cloud Access Software).
 
 Using Teradici’s PCoIP protocol, connect to the VM for a highly responsive, color-accurate, lossless, and distortion-free experience. Teradici’s Windows PCoIP agent is pre-installed on the VM and requires a [Teradici client](https://docs.teradici.com/find/product/software-and-mobile-clients) to connect to the VM.

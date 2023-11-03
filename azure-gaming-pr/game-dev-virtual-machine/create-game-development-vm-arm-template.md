@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # Quickstart: Create a Game Development Virtual Machine using an ARM template
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 In addition to the portal deployment method that supports Windows 11 and Server 2022, you can also create an instance of the Game Development Virtual Machine using an Azure Resource manager (ARM) template which supports additional operating systems like Windows 10 and Server 2019 with different game engine versions. Game Development Virtual Machines are cloud-based virtual machines preloaded with a suite of software and tools for game development. When deployed on GPU-powered compute resources, all tools are configured to use the GPU.
 
 An ARM template is a JavaScript Object Notation (JSON) file that defines the infrastructure and configuration for your project. The template uses declarative syntax. In declarative syntax, you describe your intended deployment without writing the sequence of programming commands to create the deployment.

@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # GitHub and Git Tools on the Game Development Virtual Machine
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 Using source control solutions like Git and GitHub are essential so that teams can collaboratively work on game development.
 
 ## Git tools

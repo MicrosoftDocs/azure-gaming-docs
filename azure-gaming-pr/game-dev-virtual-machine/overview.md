@@ -10,6 +10,9 @@ ms.prod: azure-gaming
 
 # What is the Azure Game Development Virtual Machine?
 
+> [!IMPORTANT]
+> [!INCLUDE [reminder](includes/game-dev-banner.md)]
+
 The Game Development Virtual Machine is a customized Azure Virtual Machine built for game developers to save them time in having to spend hours to install and setup common tools for game remote development in Azure. Microsoft has assembled the top game development tooling in one single VM, allowing you to focus less on setup and more on building great games. Supported by GPU intensive Azure VMs, these common game development tools include a game engine, frameworks, remoting protocols, drivers and SDKs, allowing you to get started developing your games in Azure within minutes. It can also be used for [scaled-out build servers](/gaming/azure/reference-architectures/incredibuild-scale-out-your-cloud-builds/) which also need similar tooling to build your game. In addition to Remote Desktop Protocol, this game dev VM includes options for Teradici and Parsec technology, which both provide a high fidelity and low latency remote access experience.
 
 The Game Development Virtual Machine is a great choice for developers who are building interactive games that use engines like Unreal and code with Visual Studio, leveraging Perforce and Git source control solutions. No matter if you’re working for your next AAA title or an Indie game, spin up a VM to enjoy the game development journey in the cloud. All tooling is pre-installed with Bring Your Own License (BYOL) options where applicable, and you only pay for the base Azure compute costs used—no additional costs are added for leveraging this VM.
