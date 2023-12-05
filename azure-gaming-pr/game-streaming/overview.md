@@ -47,7 +47,7 @@ After registering the Azure Application, configure your secret. For testing with
 
 After creating the secret, send the Application (Client) Id and Azure Tenant ID to abkstreaming@microsoft.com for secure access to the Microsoft Store and Battle.net endpoints.  
 
-![an image showing an Azure application's Application ID and Tenant ID in the Overview section](media/azure-app-appid)
+![an image showing an Azure application's Application ID and Tenant ID in the Overview section](media/azure-app-appid.png)
 
 Providers will also need to trigger a consent dialog for a user to consent to sharing their Entitlement Data from each Store by calling the endpoint with a particular Scope, such as the below example: 
 
@@ -55,3 +55,4 @@ Providers will also need to trigger a consent dialog for a user to consent to sh
 
 
 ## Entitlement Endpoint Technical Documentation 
+
