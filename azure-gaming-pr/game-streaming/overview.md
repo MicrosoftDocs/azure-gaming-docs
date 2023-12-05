@@ -56,3 +56,50 @@ Providers will also need to trigger a consent dialog for a user to consent to sh
 
 ## Entitlement Endpoint Technical Documentation 
 
+Endpoints
+Exact endpoint credentials will be shared once a Streaming Provider has shared their App ID and Tenant ID with the abkstreaming@microsoft.com email alias. 
+
+
+GET            
+
+Summary  
+
+This endpoint expects the caller to provide an MSA V2 token and a Market and returns the list of products the user has access to for the given market. Markets are two letter country codes, and the list of entitlements returned may vary based on the market. 
+
+Request Example 
+
+    GET  /entitlements?market= neutral 
+
+Headers 
+
+         Authorization: {MSA v2 Token with Library.Read scope} 
+
+         MS-CV: {A Correlation Vector to trace individual requests} 
+
+                       See [GitHub - microsoft/CorrelationVector](https://github.com/microsoft/CorrelationVector) for more details and implementation examples. 
+
+Response Example 
+~~~JSON 
+{ 
+    "entitlements": [ 
+
+        { 
+
+            "productId": "9NBLGGH52PH9", 
+
+            "skuId": "0010" 
+
+        }, 
+
+    ] 
+
+} 
+~~~
+
+Other Responses 
+
+    204 – request is valid, but user has no entitlements for the given market. 
+
+    400 – market is missing  
+
+    401 – Auth is missing or invalid. 
