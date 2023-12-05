@@ -39,9 +39,19 @@ To create an Azure App that will work for both User and S2S auth, use the follow
 2. For supported account type select the multi-tenant and personal account option. 
 3. Provide your redirect URI. The example below is configured to use postman for testing purposes. 
 
+![an image showing the Register an application screen in Microsoft Azure as an example with a test name and redirect URI](media/register-azure-application.png)
 
+After registering the Azure Application, configure your secret. For testing with postman we are using a client secret, for production it is recommended to use a certificate. 
 
+![an image showing an Azure Application's certificates and secrets configuration page](media/azure-app-secret.png)
 
-Providers will also need to trigger a consent dialog for a user to consent to sharing their Entitlement Data from each Store, such as the below example: 
+After creating the secret, send the Application (Client) Id and Azure Tenant ID to abkstreaming@microsoft.com for secure access to the Microsoft Store and Battle.net endpoints.  
+
+![an image showing an Azure application's Application ID and Tenant ID in the Overview section](media/azure-app-appid)
+
+Providers will also need to trigger a consent dialog for a user to consent to sharing their Entitlement Data from each Store by calling the endpoint with a particular Scope, such as the below example: 
 
 ![an image showing a consent dialog example for an application requesting a user's entitlement data](media/oauth-consent.png)
+
+
+## Entitlement Endpoint Technical Documentation 
