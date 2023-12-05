@@ -14,10 +14,10 @@ Please note that under the EC Commitments, Microsoft committed to provide, with 
 
 As Eligible Activision Blizzard games are available on both Battle.net and the Microsoft Store, there are two separate Entitlement endpoints for Streaming Providers to call for comprehensive Entitlement Data. For both APIs, Streaming Providers will need to perform secure Service-to-Service (S2S) with OAuth Credentials. Providers will need to share their Azure Application App ID and Tenant ID with Microsoft and Blizzard to allow list the Provider's application as a secure caller. To learn more about this pattern, learn how to [Configure protected web API apps](https://review.learn.microsoft.com/en-us/entra/identity-platform/scenario-protected-web-api-app-configuration?branch=main&tabs=aspnetcore).
 
-Providers will also need to trigger a consent dialog for a user to consent to sharing their Entitlement Data from each Store, such as the below example: 
-
+When Streaming Providers complete the Streaming Provider License, they will also attest to following certain Data Protection Agreements as they request customer Entitlement Data. This request requires user consent to share Entitlement Data from each Store with the provider, which the Provider must request as outlined in each API's documentation.
 
 This page will document the Entitlement API for Microsoft Store Entitlement Data of Eligible Activision Blizzard games and subgames. For documentation on the Battle.net Entitlement API, please read more [here](https://www.xbox.com).
+
 
 ## Entitlement Data Application and Onboarding 
 
@@ -30,4 +30,18 @@ To obtain Entitlement Data from Microsoft and Battle.net, here is a high level o
 6. Game streaming provider alias will confirm your application has been allow listed to call the Entitlement APIs, and credentials will be provided via email. 
 7. Streaming Provider may now call Entitlement APIs from their application. 
 
-## 
+
+## Azure App Configuration with MSA v2 
+
+To create an Azure App that will work for both User and S2S auth, use the following configuration:  
+
+1. Provide a friendly name for your app. Keep in mind this app name will be show to the user as part of the consent form (See Below). 
+2. For supported account type select the multi-tenant and personal account option. 
+3. Provide your redirect URI. The example below is configured to use postman for testing purposes. 
+
+
+
+
+Providers will also need to trigger a consent dialog for a user to consent to sharing their Entitlement Data from each Store, such as the below example: 
+
+![an image showing a consent dialog example for an application requesting a user's entitlement data](media/oauth-consent.png)
