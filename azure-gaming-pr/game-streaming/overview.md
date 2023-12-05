@@ -25,7 +25,7 @@ To obtain Entitlement Data from Microsoft and Battle.net, here is a high level o
 1. Apply for Entitlement Data via Streaming Provider License form on [https://www.xbox.com]
 2. Review API documentation on Microsoft Game Dev and Battle.net Developer Portal. 
 3. Create a free Azure account if you do not have one already. For step-by-step tutorial, see the learning module - [Create an Azure account](/learn/modules/create-an-azure-account/).
-4. Create a free Azure Application. 
+4. Create a free Azure Application. Configuration instructions below.
 5. Send Azure Application ID and Tenant ID to the game streaming provider email alias, abkstreaming@microsoft.com. 
 6. Game streaming provider alias will confirm your application has been allow listed to call the Entitlement APIs, and credentials will be provided via email. 
 7. Streaming Provider may now call Entitlement APIs from their application. 
