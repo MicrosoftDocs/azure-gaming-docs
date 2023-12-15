@@ -26,7 +26,7 @@ This page will document the Entitlement API for Microsoft Store Entitlement Data
 
 __If you are a Streaming Provider looking to obtain Entitlement Data from Microsoft and Battle.net, please follow the steps below__. If you encounter any issues, you can send an email to abkstreaming@microsoft.com for help: 
 
-1. Apply for Entitlement Data via the Streaming Provider License form on [https://www.xbox.com].
+1. Apply for Entitlement Data via the Streaming Provider License form.
 1. Review the API documentation on the Azure Gaming learning site (this page) and [Battle.net Developer Portal](https://develop.battle.net/documentation).
 1. Create a free Azure account if you do not have one already. For step-by-step tutorial, see - [Create an Azure account](/learn/modules/create-an-azure-account/).
 1. Create a free Azure Application on azure.com.
