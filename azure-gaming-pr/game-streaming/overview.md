@@ -20,6 +20,8 @@ This page will document the Entitlement API for Microsoft Store Entitlement Data
 
 \**Major Game Publisher includes one or more of: Tencent, Valve Corporation, Nexon, NetEase, EA, SmileGate Embracer (THQ) - Perfect World, Roblox Corporation, Take Two, Epic Games, Ubisoft, Square Enix, Bandai Namco Entertainment, Sony and Nintendo.*
 
+
+
 ## Entitlement Data Application and Onboarding 
 
 __If you are a Streaming Provider looking to obtain Entitlement Data from Microsoft and Battle.net, please follow the steps below__. If you encounter any issues, you can send an email to abkstreaming@microsoft.com for help: 
@@ -32,6 +34,7 @@ __If you are a Streaming Provider looking to obtain Entitlement Data from Micros
 1. Send your Azure Application ID and Tenant ID to the game streaming provider email alias, abkstreaming@microsoft.com. 
 1. The game streaming provider alias will confirm your application has been allow listed to call the Entitlement APIs, and credentials will be provided via email. 
 1. Streaming Provider may now call Entitlement APIs from their application. 
+
 
 
 ## Azure App Configuration with MSA v2 
@@ -59,61 +62,8 @@ Streaming Providers will also need to trigger a consent dialog for a user to con
 Information on how to call the endpoint with the correct Scopes will be shared directly with the Streaming Provider over email (step 6 above).
 
 
-## Entitlement Endpoint Technical Documentation 
-
-Endpoints
-
-> [!NOTE]
-> Exact endpoint credentials will be shared once a Streaming Provider has shared their App ID and Tenant ID with the abkstreaming@microsoft.com email alias. 
-
-
-**GET**            
-
-### Summary  
-
-This endpoint expects the caller to provide an MSA V2 token and a Market and returns the list of products the user has access to for the given market. Markets are two letter country codes, and the list of entitlements returned may vary based on the market. The product information returned is a Microsoft Store product ID, which can be "hydrated" with a call to our [Collections](https://learn.microsoft.com/gaming/gdk/_content/gc/commerce/service-to-service/microsoft-store-apis/xstore-v9-query-for-products) endpoint to extract product information such as product name, product description, etc.
-
-### Request example 
-```
-    GET  /entitlements?market= neutral 
-```
-### Headers 
-```
-         Authorization: {MSA v2 Token with Library.Read scope} 
-
-         MS-CV: {A Correlation Vector to trace individual requests} 
-```
-See [GitHub - microsoft/CorrelationVector](https://github.com/microsoft/CorrelationVector) for more details and implementation examples. 
-
-
-### Response example 
-```JSON 
-{ 
-    "entitlements": [ 
-
-        { 
-
-            "productId": "9NBLGGH52PH9", 
-
-            "skuId": "0010" 
-
-        }, 
-
-    ] 
-
-} 
-```
-
-### Other responses 
-```
-    204 – request is valid, but user has no entitlements for the given market. 
-
-    400 – market is missing  
-
-    401 – Auth is missing or invalid. 
-```
-
 ### See also 
+* [Activision Blizzard Games Entitlement API Documentation](/entitlement-api-documentation.md)
 * [Activision Blizzard Cloud Game Streaming FAQ](https://www.xbox.com/legal/activision-blizzard-cloud-game-streaming-eu/FAQ)
 * [Configure protected web API apps](https://review.learn.microsoft.com/entra/identity-platform/scenario-protected-web-api-app-configuration?branch=main&tabs=aspnetcore).
 * [Create an Azure account](/learn/modules/create-an-azure-account/)
