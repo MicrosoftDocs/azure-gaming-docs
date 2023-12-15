@@ -29,7 +29,7 @@ __If you are a Streaming Provider looking to obtain Entitlement Data from Micros
 1. Apply for Entitlement Data via the Streaming Provider License form.
 1. Review the API documentation on the Azure Gaming learning site (this page) and [Battle.net Developer Portal](https://develop.battle.net/documentation).
 1. Create a free Azure account if you do not have one already. For step-by-step tutorial, see - [Create an Azure account](/learn/modules/create-an-azure-account/).
-1. Create a free Azure Application on azure.com.
+1. Create a free Azure Application on Azure.com.
     1. __Follow the steps below in Azure App Configuration with MSA v2 before the next step!__ 
 1. Send your Azure Application ID and Tenant ID to the game streaming provider email alias, abkstreaming@microsoft.com. 
 1. The game streaming provider alias will confirm your application has been allow listed to call the Entitlement APIs, and credentials will be provided via email. 
