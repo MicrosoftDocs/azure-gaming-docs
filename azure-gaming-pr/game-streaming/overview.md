@@ -63,7 +63,7 @@ Information on how to call the endpoint with the correct Scopes will be shared d
 
 
 ### See also 
-* [Activision Blizzard Games Entitlement API Documentation](/entitlement-api-documentation.md)
+* [Activision Blizzard Games Entitlement API Documentation](entitlement-api-documentation.md)
 * [Activision Blizzard Cloud Game Streaming FAQ](https://www.xbox.com/legal/activision-blizzard-cloud-game-streaming-eu/FAQ)
 * [Configure protected web API apps](https://review.learn.microsoft.com/entra/identity-platform/scenario-protected-web-api-app-configuration?branch=main&tabs=aspnetcore).
 * [Create an Azure account](/learn/modules/create-an-azure-account/)
