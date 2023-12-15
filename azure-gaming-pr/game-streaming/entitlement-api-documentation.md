@@ -67,4 +67,4 @@ See [GitHub - microsoft/CorrelationVector](https://github.com/microsoft/Correlat
 
 ### See also 
 * [Entitlement Data for Activision Blizzard Games overview](overview.md)
-* [Microsoft Store Service APIs](https://learn.microsoft.com/gaming/gdk/_content/gc/commerce/service-to-service/microsoft-store-apis/xstore-v9-query-for-products)
+* [Microsoft Store Service APIs](/gaming/gdk/_content/gc/commerce/service-to-service/microsoft-store-apis/xstore-v9-query-for-products)
