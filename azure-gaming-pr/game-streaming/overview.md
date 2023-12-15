@@ -16,7 +16,7 @@ As Eligible Activision Blizzard games may be available on both Battle.net and/or
 
 When Streaming Providers complete the Streaming Provider License, they will also attest to following certain Data Protection Agreements as they request customer Entitlement Data. This request requires user consent to share Entitlement Data from each Store with the provider, which the Provider must request as outlined in each API's documentation.
 
-This page will document the Entitlement API for Microsoft Store Entitlement Data of Eligible Activision Blizzard games and subgames. For documentation on the Battle.net Entitlement API, please read more [here](https://www.xbox.com).
+This page will document the Entitlement API for Microsoft Store Entitlement Data of Eligible Activision Blizzard games and subgames. For documentation on the Battle.net Entitlement API, please read more [here](https://develop.battle.net/documentation).
 
 \**Major Game Publisher includes one or more of: Tencent, Valve Corporation, Nexon, NetEase, EA, SmileGate Embracer (THQ) - Perfect World, Roblox Corporation, Take Two, Epic Games, Ubisoft, Square Enix, Bandai Namco Entertainment, Sony and Nintendo.*
 
@@ -27,7 +27,7 @@ This page will document the Entitlement API for Microsoft Store Entitlement Data
 __If you are a Streaming Provider looking to obtain Entitlement Data from Microsoft and Battle.net, please follow the steps below__. If you encounter any issues, you can send an email to abkstreaming@microsoft.com for help: 
 
 1. Apply for Entitlement Data via the Streaming Provider License form on [https://www.xbox.com].
-1. Review the API documentation on the Azure Gaming learning site (this page) and Battle.net Developer Portal.
+1. Review the API documentation on the Azure Gaming learning site (this page) and [Battle.net Developer Portal](https://develop.battle.net/documentation).
 1. Create a free Azure account if you do not have one already. For step-by-step tutorial, see - [Create an Azure account](/learn/modules/create-an-azure-account/).
 1. Create a free Azure Application on azure.com.
     1. __Follow the steps below in Azure App Configuration with MSA v2 before the next step!__ 
@@ -39,7 +39,7 @@ __If you are a Streaming Provider looking to obtain Entitlement Data from Micros
 
 ## Azure App Configuration with MSA v2 
 
-__If you have not previously created an Azure Application to leverage secure service-to-service calls and user authentication, follow these steps before going back to step 5 above: __ 
+__If you have not previously created an Azure Application to leverage secure service-to-service calls and user authentication, follow these steps before going back to step 5 above:__ 
 
 1. Go to your Azure portal, select App Registration. Provide a friendly name for your application. This app name will be shown users in your game streaming client during collecting user consent to share their entitlement data with you (consent dialog example shown below). 
 1. For supported account, type select the multi-tenant and personal account option. 
