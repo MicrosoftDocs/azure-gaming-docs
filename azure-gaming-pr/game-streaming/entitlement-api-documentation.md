@@ -20,7 +20,7 @@ ms.prod: azure-gaming
 
 ## Summary  
 
-This endpoint expects the caller to provide an MSA V2 token and a Market and returns the list of products the user has access to for the given market. Markets are two letter country codes (ex. 'us','fr','mx'), and the list of entitlements returned may vary based on the market. The product information returned is a Microsoft Store product ID, which can be "hydrated" with a call to our [Collections](https://learn.microsoft.com/gaming/gdk/_content/gc/commerce/service-to-service/microsoft-store-apis/xstore-v9-query-for-products) endpoint to extract product information such as product name, product description, etc.
+This endpoint expects the caller to provide an MSA V2 token and a Market and returns the list of products the user has access to for the given market. Markets are two letter country codes (ex. 'us','fr','mx'), and the list of entitlements returned may vary based on the market. The product information returned is a Microsoft Store product ID, which can be "hydrated" with a call to our [Collections](/gaming/gdk/_content/gc/commerce/service-to-service/microsoft-store-apis/xstore-v9-query-for-products) endpoint to extract product information such as product name, product description, etc.
 
 ### Request example 
 ```
