@@ -58,3 +58,9 @@
     - name: Azure AI services
       displayName: cognitive
       href: ai/azure-cognitive-services.md
+  - name: Entitlement Data for cloud gaming 
+    items:
+    - name: Entitlement Data for Activision Blizzard games
+      href: game-streaming/overview.md
+    - name: Entitlement endpoint documentation
+      href: game-streaming/entitlement-api-documentation.md    
