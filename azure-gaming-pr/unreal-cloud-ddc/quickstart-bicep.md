@@ -90,7 +90,7 @@ resource hordeStorage 'Microsoft.Solutions/applications@2017-09-01' = {
 
 ## Review deployed resources
 
-[Azure CLI](/azure-resource-manager/management/manage-resource-groups-cli#list-resource-groups),
+[Azure CLI](/azure/azure-resource-manager/management/manage-resource-groups-cli#list-resource-groups),
 or [Azure PowerShell](/azure/azure-resource-manager/management/manage-resource-groups-powershell#list-resource-groups) to list the deployed resources in the resource group.
 
 #### [CLI](#tab/CLI)
