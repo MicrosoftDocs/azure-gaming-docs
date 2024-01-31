@@ -7,7 +7,7 @@
  ms.date: 01/31/2024
  ms.author: joanlee
  ms.custom: preview
- ms.prod: azure-gaming
+ ms.service: azure-gaming
 ---
 
 > [!IMPORTANT]

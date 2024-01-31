@@ -5,7 +5,7 @@ author: dciborow
 ms.topic: quickstart
 ms.date: 11/08/2022
 ms.author: dciborow
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Create Service Resources for Unreal Cloud DDC 

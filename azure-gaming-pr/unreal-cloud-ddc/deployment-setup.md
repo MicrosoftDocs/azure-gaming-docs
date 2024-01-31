@@ -5,7 +5,7 @@ author: dciborow
 ms.topic: quickstart
 ms.date: 10/01/2022
 ms.author: dciborow
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Post deployment configuration

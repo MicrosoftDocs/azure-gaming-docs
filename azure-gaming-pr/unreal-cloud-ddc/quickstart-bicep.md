@@ -5,7 +5,7 @@ author: dciborow
 ms.topic: quickstart
 ms.date: 08/11/2022
 ms.author: dciborow
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Quickstart: Create an Unreal Cloud DDC using Bicep

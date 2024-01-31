@@ -7,7 +7,7 @@
  ms.date: 10/31/2022
  ms.author: dciborow
  ms.custom: preview
- ms.prod: azure-gaming
+ ms.service: azure-gaming
 ---
 
 > [!NOTE]
