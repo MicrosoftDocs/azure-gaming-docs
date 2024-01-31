@@ -10,7 +10,7 @@ ms.prod: azure-gaming
 
 # Setup for Unreal Cloud DDC
 
-[!INCLUDE [preview](./includes/preview.md)]
+[!INCLUDE [retire-banner](./includes/retire-banner.md)]
 
 This article, part one of two, describes one-time setup process before you can create an Unreal Cloud DDC managed application using the Azure portal. You only need to do this on the first time.
 

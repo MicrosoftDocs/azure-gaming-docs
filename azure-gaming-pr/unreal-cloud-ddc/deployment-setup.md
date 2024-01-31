@@ -10,7 +10,7 @@ ms.prod: azure-gaming
 
 # Post deployment configuration
 
-[!INCLUDE [preview](./includes/preview.md)]
+[!INCLUDE [retire-banner](./includes/retire-banner.md)]
 
 You can either use the following script, or manually complete the configuration in the Azure Portal.
 

@@ -10,7 +10,7 @@ ms.prod: azure-gaming
 
 # Troubleshooting and support
 
-[!INCLUDE [preview](./includes/preview.md)]
+[!INCLUDE [retire-banner](./includes/retire-banner.md)]
 
 This article describes common support issues that customers might experience, and guidance from us about how to resolve them.
 

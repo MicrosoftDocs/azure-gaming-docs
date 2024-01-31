@@ -10,7 +10,7 @@ ms.prod: azure-gaming
 
 # Quickstart: Create an Unreal Cloud DDC using Bicep
 
-[!INCLUDE [preview](./includes/preview.md)]
+[!INCLUDE [retire-banner](./includes/retire-banner.md)]
 
 This quickstart will show you how to create an Unreal Cloud DDC deployment using Bicep.
 

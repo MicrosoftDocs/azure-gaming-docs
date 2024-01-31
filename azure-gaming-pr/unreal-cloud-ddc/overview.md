@@ -10,7 +10,7 @@ ms.prod: azure-gaming
 
 # What is Unreal Cloud DDC on Azure?
 
-[!INCLUDE [preview](./includes/preview.md)]
+[!INCLUDE [retire-banner](./includes/retire-banner.md)]
 
 Unreal Cloud Derived Data Cache (DDC) on Azure is a [managed application](/azure/azure-resource-manager/managed-applications/overview) that helps you deploy and operate Unreal Cloud DDC technology as a solution in the Azure cloud.
 

@@ -10,7 +10,7 @@ ms.prod: azure-gaming
 
 # Connect to Unreal Cloud DDC from Visual Studio
 
-[!INCLUDE [preview](./includes/preview.md)]
+[!INCLUDE [retire-banner](./includes/retire-banner.md)]
 
 ## Prerequisites
 

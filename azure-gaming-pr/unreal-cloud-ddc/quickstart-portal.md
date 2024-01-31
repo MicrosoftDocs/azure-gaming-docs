@@ -10,7 +10,7 @@ ms.prod: azure-gaming
 
 # Create Service Resources for Unreal Cloud DDC 
 
-[!INCLUDE [preview](./includes/preview.md)]
+[!INCLUDE [retire-banner](./includes/retire-banner.md)]
 
 This quickstart describes how to create an Unreal Cloud DDC managed application using the Azure portal.
 
