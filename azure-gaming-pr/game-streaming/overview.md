@@ -5,7 +5,7 @@ author: nascrims
 ms.topic: overview
 ms.date: 12/14/2023
 ms.author: nascrims
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Entitlement Data for Eligible Games 

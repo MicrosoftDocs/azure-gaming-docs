@@ -5,7 +5,7 @@ author: dciborow
 ms.topic: conceptual
 ms.date: 10/13/2022
 ms.author: dciborow
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Failover for high availability and disaster recovery

@@ -5,7 +5,7 @@ author: meaghanlewis
 ms.topic: quickstart
 ms.date: 03/10/2022
 ms.author: mosagie
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Quickstart: Remoting into the Game Development Virtual Machine with Teradici

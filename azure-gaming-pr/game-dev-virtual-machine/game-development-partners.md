@@ -5,7 +5,7 @@ author: meaghanlewis
 ms.topic: reference
 ms.date: 04/21/2022
 ms.author: mosagie
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Game Development Partners

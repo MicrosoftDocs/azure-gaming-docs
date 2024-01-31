@@ -5,7 +5,7 @@ author: dciborow
 ms.topic: troubleshoot
 ms.date: 10/02/2022
 ms.author: dciborow
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Troubleshooting and support

@@ -6,7 +6,7 @@ keywords: cognitive
 ms.topic: overview
 ms.date: 7/18/2023
 ms.author: joanlee
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Azure AI services

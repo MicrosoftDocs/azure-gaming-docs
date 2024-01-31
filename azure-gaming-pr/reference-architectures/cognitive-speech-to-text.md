@@ -6,7 +6,7 @@ keywords: cognitive
 ms.topic: reference-architecture
 ms.date: 1/29/2021
 ms.author: jeball
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Speech to Text Reference Architecture

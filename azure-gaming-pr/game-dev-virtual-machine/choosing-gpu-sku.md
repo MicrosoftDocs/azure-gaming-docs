@@ -5,7 +5,7 @@ author: meaghanlewis
 ms.topic: overview
 ms.date: 03/11/2022
 ms.author: mosagie
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Choosing the right GPU SKU and optimizing costs

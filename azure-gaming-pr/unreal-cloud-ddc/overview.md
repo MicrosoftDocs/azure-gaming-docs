@@ -5,7 +5,7 @@ author: joannaleecy
 ms.topic: overview
 ms.date: 10/20/2022
 ms.author: joanlee
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # What is Unreal Cloud DDC on Azure?

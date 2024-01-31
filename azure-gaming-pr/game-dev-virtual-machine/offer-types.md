@@ -5,7 +5,7 @@ author: meaghanlewis
 ms.topic: resources
 ms.date: 08/29/2022
 ms.author: mosagie
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Azure Offers that support GPU on Game Dev VM

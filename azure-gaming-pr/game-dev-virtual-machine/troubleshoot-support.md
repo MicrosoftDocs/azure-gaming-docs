@@ -5,7 +5,7 @@ author: meaghanlewis
 ms.topic: troubleshoot
 ms.date: 04/05/2022
 ms.author: mosagie
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Troubleshoot Azure Game Development Virtual Machine and Get Support

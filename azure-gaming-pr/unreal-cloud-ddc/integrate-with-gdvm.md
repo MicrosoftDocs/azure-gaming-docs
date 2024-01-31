@@ -5,7 +5,7 @@ author: dciborow
 ms.topic: how-to
 ms.date: 10/02/2022
 ms.author: dciborow
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 # Connect to Unreal Cloud DDC from a Game Development VM
 

@@ -5,7 +5,7 @@ author: meaghanlewis
 ms.topic: troubleshooting
 ms.date: 04/21/2022
 ms.author: mosagie
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Known issues and FAQs with the Azure Game Development Virtual Machine
