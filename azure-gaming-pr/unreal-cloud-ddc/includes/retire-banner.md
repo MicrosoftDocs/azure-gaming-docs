@@ -5,7 +5,7 @@
  author: joannaleecy
  ms.topic: preview
  ms.date: 01/31/2024
- ms.author: joannaleecy
+ ms.author: joanlee
  ms.custom: preview
  ms.prod: azure-gaming
 ---
