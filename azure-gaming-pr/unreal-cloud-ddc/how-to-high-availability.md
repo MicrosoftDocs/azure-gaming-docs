@@ -10,7 +10,7 @@ ms.service: azure-gaming
 
 # Failover for high availability and disaster recovery
 
-[!INCLUDE [preview](./includes/preview.md)]
+[!INCLUDE [retire-banner](./includes/retire-banner.md)]
 
 To maximize your uptime, plan ahead to maintain business continuity and prepare for disaster recovery with Unreal Cloud DDC.
 

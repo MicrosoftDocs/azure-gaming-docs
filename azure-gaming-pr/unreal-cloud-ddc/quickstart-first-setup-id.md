@@ -10,7 +10,7 @@ ms.service: azure-gaming
 
 # Manage identity and access
 
-[!INCLUDE [preview](./includes/preview.md)]
+[!INCLUDE [retire-banner](./includes/retire-banner.md)]
 
 This article, part two of two, describes one-time setup process before you can create an Unreal Cloud DDC managed application using the Azure portal.
 You only need to do this on the first time.

@@ -9,7 +9,7 @@ ms.service: azure-gaming
 ---
 # Connect to Unreal Cloud DDC from a Game Development VM
 
-[!INCLUDE [preview](./includes/preview.md)]
+[!INCLUDE [retire-banner](./includes/retire-banner.md)]
 
 ## Prerequisites
 
