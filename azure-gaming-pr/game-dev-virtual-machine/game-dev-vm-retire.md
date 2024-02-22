@@ -5,7 +5,7 @@ author:  joannaleecy
 ms.author: joanlee
 ms.date: 11/01/2023
 ms.topic: overview
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # What's happening to Azure Game Development Virtual Machine?

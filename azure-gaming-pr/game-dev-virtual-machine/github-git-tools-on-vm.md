@@ -5,7 +5,7 @@ author: meaghanlewis
 ms.author: mosagie
 ms.topic: conceptual
 ms.date: 03/09/2022
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # GitHub and Git Tools on the Game Development Virtual Machine

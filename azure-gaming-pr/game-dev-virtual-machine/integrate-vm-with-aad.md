@@ -5,7 +5,7 @@ author: meaghanlewis
 ms.topic: how-to
 ms.date: 03/15/2022
 ms.author: mosagie
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Integrate with Azure Active Directory

@@ -5,7 +5,7 @@ author: meaghanlewis
 ms.topic: reference
 ms.date: 08/09/2022
 ms.author: mosagie
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Azure Game Development Virtual Machine release notes

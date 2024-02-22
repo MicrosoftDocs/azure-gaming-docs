@@ -6,7 +6,7 @@ keywords:
 ms.topic: reference-architecture
 ms.date: 3/18/2022
 ms.author: tzong
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 # Section 4: The Build Agent
 

@@ -99,6 +99,11 @@
 				"source_path": "azure-gaming-pr/reference-architectures/general-purpose-lamp.md",
 				"redirect_url": "/gaming/azure",
 				"redirect_document_id": false
+		},
+		{
+				"source_path": "azure-gaming-pr/reference-architectures/cognitive.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
 		}
 	]
 }

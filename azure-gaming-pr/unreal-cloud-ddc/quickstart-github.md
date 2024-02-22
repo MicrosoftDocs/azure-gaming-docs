@@ -5,12 +5,12 @@ author: dciborow
 ms.topic: quickstart
 ms.date: 10/20/2022
 ms.author: dciborow
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Quickstart: Set up Unreal Cloud DDC by using GitHub
 
-[!INCLUDE [preview](./includes/preview.md)]
+[!INCLUDE [retire-banner](./includes/retire-banner.md)]
 
 This quickstart describes how to create and manage an Unreal Cloud DDC from a [GitHub Template Repository](https://github.com/microsoft/unreal-cloud-ddc-on-azure), using infrastructure as code (IaC) design principals.
 

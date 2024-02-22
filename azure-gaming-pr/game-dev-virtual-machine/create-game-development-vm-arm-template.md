@@ -5,7 +5,7 @@ author: meaghanlewis
 ms.topic: quickstart
 ms.date: 06/23/2022
 ms.author: mosagie
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Quickstart: Create a Game Development Virtual Machine using an ARM template

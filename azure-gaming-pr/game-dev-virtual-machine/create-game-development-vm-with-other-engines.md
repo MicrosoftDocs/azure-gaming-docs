@@ -5,7 +5,7 @@ author: cshea15
 ms.topic: quickstart
 ms.date: 12/1/2022
 ms.author: chashea
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 # Quickstart: Create a Game Development Virtual Machine with other game engines
 
