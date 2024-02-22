@@ -6,7 +6,7 @@ keywords:
 ms.topic: reference-architectures
 ms.date: 3/18/2022
 ms.author: tzong
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 # Section 2: Version Control
 

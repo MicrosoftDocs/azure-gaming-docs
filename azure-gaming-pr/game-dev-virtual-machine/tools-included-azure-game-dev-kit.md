@@ -5,7 +5,7 @@ author: meaghanlewis
 ms.topic: overview
 ms.date: 03/16/2022
 ms.author: mosagie
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Tools included with the Azure Game Development Virtual Machine

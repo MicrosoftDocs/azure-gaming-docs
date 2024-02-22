@@ -6,7 +6,7 @@ keywords:
 ms.topic: reference-architecture
 ms.date: 4/23/2021
 ms.author: behumphr
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Unreal Pixel Streaming at Scale in Azure

@@ -6,7 +6,7 @@ keywords:
 ms.topic: reference-architecture
 ms.date: 3/14/2022
 ms.author: erikja
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Set up a Perforce Proxy in Azure

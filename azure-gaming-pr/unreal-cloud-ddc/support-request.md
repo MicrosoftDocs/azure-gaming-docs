@@ -5,12 +5,12 @@ author: dciborow
 ms.topic: troubleshoot
 ms.date: 10/16/2022
 ms.author: dciborow
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Create an Azure support request
 
-[!INCLUDE [preview](./includes/preview.md)]
+[!INCLUDE [retire-banner](./includes/retire-banner.md)]
 
 Explore the range of [Azure support options and choose the plan](https://azure.microsoft.com/support/plans) that best fits, whether you're a developer just starting your cloud journey or a large organization deploying business-critical, strategic applications. Azure customers can create and manage support requests in the Azure portal.
 

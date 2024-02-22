@@ -5,12 +5,12 @@ author: dciborow
 ms.topic: quickstart
 ms.date: 08/11/2022
 ms.author: dciborow
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Quickstart: Create an Unreal Cloud DDC using Bicep
 
-[!INCLUDE [preview](./includes/preview.md)]
+[!INCLUDE [retire-banner](./includes/retire-banner.md)]
 
 This quickstart will show you how to create an Unreal Cloud DDC deployment using Bicep.
 
@@ -90,7 +90,7 @@ resource hordeStorage 'Microsoft.Solutions/applications@2017-09-01' = {
 
 ## Review deployed resources
 
-[Azure CLI](/azure-resource-manager/management/manage-resource-groups-cli#list-resource-groups),
+[Azure CLI](/azure/azure-resource-manager/management/manage-resource-groups-cli#list-resource-groups),
 or [Azure PowerShell](/azure/azure-resource-manager/management/manage-resource-groups-powershell#list-resource-groups) to list the deployed resources in the resource group.
 
 #### [CLI](#tab/CLI)

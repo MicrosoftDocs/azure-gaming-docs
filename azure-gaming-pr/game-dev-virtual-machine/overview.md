@@ -5,7 +5,7 @@ author: meaghanlewis
 ms.topic: overview
 ms.date: 2/1/2022
 ms.author: mosagie
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # What is the Azure Game Development Virtual Machine?

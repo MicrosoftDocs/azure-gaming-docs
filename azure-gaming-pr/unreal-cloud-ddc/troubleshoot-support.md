@@ -5,12 +5,12 @@ author: dciborow
 ms.topic: troubleshoot
 ms.date: 10/02/2022
 ms.author: dciborow
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Troubleshooting and support
 
-[!INCLUDE [preview](./includes/preview.md)]
+[!INCLUDE [retire-banner](./includes/retire-banner.md)]
 
 This article describes common support issues that customers might experience, and guidance from us about how to resolve them.
 

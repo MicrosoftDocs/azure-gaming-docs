@@ -5,7 +5,7 @@ author: meaghanlewis
 ms.topic: how-to
 ms.date: 08/29/2022
 ms.author: mosagie
-ms.prod: azure-gaming
+ms.service: azure-gaming
 ---
 
 # Build a unique cloud game development workstation by customizing Game Dev VM
