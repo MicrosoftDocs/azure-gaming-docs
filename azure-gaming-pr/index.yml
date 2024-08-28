@@ -6,7 +6,7 @@ summary: Learn how to build games using Microsoft Azure services.
 metadata:
   title: Azure gaming documentation
   description: Learn how to build games using Microsoft Azure services.
-  ms.service: playfab
+  ms.service: azure-gaming
   ms.topic: landing-page
   author: joannaleecy
   ms.author: joanlee
