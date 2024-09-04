@@ -19,16 +19,11 @@ In addition to the Azure Game Development Virtual Machine, Microsoft has partner
 
 - [Deploying Unreal Engine 4 on Azure](https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/CloudDeployments/Azure/)
 - [Announcing Unreal Engine Pixel Streaming in Azure](https://developer.microsoft.com/games/blog/announcing-unreal-engine-pixel-streaming-in-azure/)
-- [Unreal Engine Pixel Streaming in Azure (Azure Marketplace Version)](https://azuremarketplace.microsoft.com/marketplace/apps/epicgames.unreal-pixel-streaming?tab=Overview)
 
 ## [Incredibuild](https://www.incredibuild.com/)
 
 - [Turbocharge Development with Azure](https://www.incredibuild.com/partners/azure)
 - [Using IncrediBuild in Microsoft Azure](https://incredibuild.atlassian.net/wiki/spaces/IUM/pages/99352587/Using+IncrediBuild+in+Microsoft+Azure)
-
-## [Parsec](https://parsec.app/)
-
-- [Parsec remote desktop on Azure](https://developer.microsoft.com/games/blog/parsec-remote-desktop-is-now-available-on-azure/)
 
 ## [Perforce](https://www.perforce.com/)
 
