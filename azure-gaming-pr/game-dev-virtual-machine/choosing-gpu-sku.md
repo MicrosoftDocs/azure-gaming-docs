@@ -31,7 +31,7 @@ az vm list-usage -l westus -o table | grep "Name\b\|---\|\(NV\|NVSv3\|NCASv3_T4\
 ```
 
 **TIP:**
-If you are an independent game developer or startup interested in working with the Game Development VM, we strongly recommend that you join the [ID@Azure](https://www.azure.com/id) program. This program provides free access to developer tools and support from industry experts. If you have questions, see [Troubleshooting and Support](/azure/game-dev-virtual-machine/troubleshoot-support) or reach out to us on Game Dev VM [Discord Channel](https://aka.ms/gamedevVMdiscord).
+If you are an independent game developer or startup interested in working with the Game Development VM, we strongly recommend that you join the [ID@Azure](https://www.azure.com/id) program. This program provides free access to developer tools and support from industry experts. If you have questions, see [Troubleshooting and Support](./troubleshoot-support.md) or reach out to us on Game Dev VM [Discord Channel](https://aka.ms/gamedevVMdiscord).
 
 ## Determining the right GPU SKU to use
 
