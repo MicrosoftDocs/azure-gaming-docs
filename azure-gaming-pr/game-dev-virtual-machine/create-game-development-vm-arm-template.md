@@ -157,4 +157,4 @@ echo "Press [ENTER] to continue ..."
 ## Next steps
 
 In this Quickstart, you created a Game Development Virtual Machine from an ARM template. Now you can [access this VM](/gaming/azure/game-dev-virtual-machine/create-game-development-vm-for-unreal#access-the-game-development-vm), [explore the tools](/gaming/azure/game-dev-virtual-machine/tools-included-azure-game-dev-kit), and start your game development journey on Azure. 
-If you need create multiple Game Dev VMs for <a href="/overview#using-as-build-servers" target="_blank">build servers</a> or <a href="/overview#using-as-test-servers" target="_blank">test servers</a> purpose, please refer to this template: [Azure Game Development Virtual Machine Scale Set](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/azure-gamedev/gamedev-vmss)
+If you need create multiple Game Dev VMs for build servers or test servers purpose, please refer to this template: [Azure Game Development Virtual Machine Scale Set](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/azure-gamedev/gamedev-vmss)

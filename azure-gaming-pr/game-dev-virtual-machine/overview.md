@@ -42,8 +42,6 @@ With many teams working remotely either due to hybrid working scenarios or being
 * Better collaboration experiences when sharing your desktop or creative work across distributed teams, especially when using Parsec’s screen sharing or even Unreal Pixel Streaming.
 * Allow quick turnaround times for game testers to get compiled builds faster for testing
 
-Read this blog post [Game Creation Cloud Adoption and The Azure Game Dev VM](https://developer.microsoft.com/games/blog/game-creation-cloud-adoption-and-the-azure-game-dev-vm/) to know more.
-
 ## Use Cases for the Azure Game Development Virtual Machine
 
 Below we illustrate some common use cases for customers.

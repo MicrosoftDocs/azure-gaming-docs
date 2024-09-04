@@ -95,7 +95,6 @@ Here are some additional Parsec technical resources:
 
 - [Remote to Game Development Virtual Machine with Parsec](./remote-to-vm-with-parsec.md)
 - [Parsec for Teams Onboarding Guide](https://pages.parsec.app/hubfs/AWS%20AMI%20marketplace/Parsec%20for%20Teams%20Onboarding%20Guide.pdf)
-- [Getting Started with Parsec For Teams](https://support.parsec.app/hc/articles/360040562872-Getting-Started-With-Parsec-For-Teams)
 
 ### Teradici
 

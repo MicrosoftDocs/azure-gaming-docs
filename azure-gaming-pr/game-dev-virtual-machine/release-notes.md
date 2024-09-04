@@ -58,5 +58,3 @@ Due to the rapidly evolving needs and packages updates, we target to release new
 ## March 2022
 
 Announcing the public preview of the Azure Game Dev VM at the Game Developers Conference (GDC).
-
-See the blog post and video on [Game Creation Cloud Adoption and The Azure Game Dev VM](https://developer.microsoft.com/games/blog/game-creation-cloud-adoption-and-the-azure-game-dev-vm/) for more details.
