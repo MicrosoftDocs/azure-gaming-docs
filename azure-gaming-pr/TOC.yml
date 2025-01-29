@@ -5,10 +5,6 @@
     items:
     - name: Intro to Azure for developers
       href: intro-to-azure/TOC.yml  
-  - name: Game Development Virtual Machine
-    items:
-    - name: Game Development Virtual Machine docs
-      href: game-dev-virtual-machine/index.yml
   - name: Unreal DDC with Azure
     href: unreal-cloud-ddc/index.yml      
   - name: Unreal Pixel Streaming with Azure

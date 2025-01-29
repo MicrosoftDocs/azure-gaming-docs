@@ -15,38 +15,6 @@ metadata:
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
 landingContent:
-  # Develop games remotely
-  - title: Develop games remotely
-    linkLists:
-      - linkListType: overview
-        links:
-        - text: About Game Dev VM
-          url: game-dev-virtual-machine/overview.md
-        - text: Optimize using Unreal Cloud DDC
-          url: unreal-cloud-ddc/overview.md
-        - text: Tools included in Game Dev VM
-          url: game-dev-virtual-machine/tools-included-azure-game-dev-kit.md
-      - linkListType: quickstart
-        links:
-        - text: Using Unreal in Game Dev VM
-          url: game-dev-virtual-machine/create-game-development-vm-for-unreal.md
-        - text: Set up Unreal DDC in Azure
-          url: unreal-cloud-ddc/quickstart-portal.md
-        - text: Connect to Unreal DDC from Game Dev VM
-          url: unreal-cloud-ddc/integrate-with-gdvm.md
-        - text: Connect to Unreal DDC from Visual Studio
-          url: unreal-cloud-ddc/integrate-with-vs.md
-      - linkListType: concept
-        links:
-        - text: Choosing the right GPU SKU
-          url: game-dev-virtual-machine/choosing-gpu-sku.md   
-      - linkListType: how-to-guide
-        links:
-        - text: Remoting with Parsec
-          url: game-dev-virtual-machine/remote-to-vm-with-parsec.md
-        - text: Remoting with Teradici
-          url: game-dev-virtual-machine/remote-to-vm-with-teradici.md
-
   # Cloud Build Pipelines
   - title: Cloud Build Pipelines
     linkLists:
