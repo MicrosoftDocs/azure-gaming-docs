@@ -104,6 +104,121 @@
 				"source_path": "azure-gaming-pr/reference-architectures/cognitive.md",
 				"redirect_url": "/gaming/azure",
 				"redirect_document_id": false
+		},
+		{
+				"source_path": "azure-gaming-pr/game-dev-virtual-machine/choosing-gpu-sku.md",
+				"redirect_url": "/gaming/azure",
+				"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/create-game-development-vm-arm-template.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/create-game-development-vm-bicep-template.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/create-game-development-vm-for-unreal.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/create-game-development-vm-with-other-engines.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/customized-game-dev-vm.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/enable-pixel-streaming.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/game-dev-vm-retire.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/game-development-partners.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/github-git-tools-on-vm.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/integrate-azure-virtual-desktop.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/integrate-perforce-depot.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/integrate-vm-with-aad.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/known-issues.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/offer-types.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/overview.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/release-notes.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/remote-to-vm-with-parsec.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/remote-to-vm-with-teradici.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/striped-disks-iops.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/tools-included-azure-game-dev-kit.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/troubleshoot-support.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "azure-gaming-pr/game-dev-virtual-machine/use-azure-files-for-global-ddc.md",
+			"redirect_url": "/gaming/azure",
+			"redirect_document_id": false
 		}
 	]
 }

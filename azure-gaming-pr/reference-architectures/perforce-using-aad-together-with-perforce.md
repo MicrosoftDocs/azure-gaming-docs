@@ -450,7 +450,7 @@ p4 admin restart
 
 ## Test the setup
 
-Testing the setup can be done through multiple ways. Examples include the Windows Workstation that can be deployed as part of the Enhanced Studio Pack, or the use of the [Azure Game Dev VM](../game-dev-virtual-machine/overview.md). In the end we’ll need a machine with the Perforce Client tools installed, either P4V or the CLI tools. It can be an on-premises machine or a cloud-based machine.
+Testing the setup can be done through multiple ways. For example, the Windows Workstation that can be deployed as part of the Enhanced Studio Pack. In the end we’ll need a machine with the Perforce Client tools installed, either P4V or the CLI tools. It can be an on-premises machine or a cloud-based machine.
 
 In this walkthrough we’ll RDP into an instance of the Azure Game Dev VM, as it has all the tools installed.
 
