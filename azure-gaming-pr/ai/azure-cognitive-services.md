@@ -5,7 +5,6 @@ author: joannaleecy
 keywords: cognitive
 ms.topic: overview
 ms.date: 7/18/2023
-ms.author: joanlee
 ms.service: azure-gaming
 ---
 

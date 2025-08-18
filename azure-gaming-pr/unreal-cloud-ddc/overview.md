@@ -4,7 +4,6 @@ description: Describes Unreal Cloud DDC on Azure and how to use the Unreal Cloud
 author: joannaleecy
 ms.topic: overview
 ms.date: 10/20/2022
-ms.author: joanlee
 ms.service: azure-gaming
 ---
 
