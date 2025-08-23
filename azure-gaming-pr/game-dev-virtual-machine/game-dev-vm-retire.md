@@ -2,7 +2,6 @@
 title: "What's happening to Azure Game Development Virtual Machine"
 description: "Learn about Azure Game Development Virtual Machine retirement and the new game development options."
 author:  joannaleecy
-ms.author: joanlee
 ms.date: 11/01/2023
 ms.topic: overview
 ms.service: azure-gaming

@@ -4,7 +4,6 @@ description: Set up account to access Azure services
 author: joannaleecy
 ms.topic: conceptual
 ms.date: 10/20/2022
-ms.author: joanlee
 ms.service: azure-gaming
 ---
 

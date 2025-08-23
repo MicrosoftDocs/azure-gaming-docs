@@ -4,7 +4,6 @@ description: Announcement banner for game dev VM.
 author: joannaleecy
 ms.topic: overview
 ms.date: 11/01/2023
-ms.author: joanlee
 ms.service: azure-gaming
 ---
 

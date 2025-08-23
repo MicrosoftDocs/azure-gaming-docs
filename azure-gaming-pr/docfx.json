@@ -43,7 +43,15 @@
       "feedback_github_repo": "MicrosoftDocs/azure-gaming-docs",
       "searchScope": ["Azure gaming"],
       "titleSuffix": "Azure Gaming",
-      "uhfHeaderId": "Azure"
+      "uhfHeaderId": "Azure",
+      "author": {
+        "ai/**": "jenelleb",
+        "game-dev-virtual-machine/**": "jenelleb",
+        "game-streaming/**": "jenelleb",
+        "intro-to-azure/**": "jenelleb",
+        "reference-architectures/**": "jenelleb",
+        "unreal-cloud-ddc/**": "jenelleb"
+      }
     },
     "fileMetadata": {},
     "template": [],
