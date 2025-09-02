@@ -44,7 +44,7 @@
       "searchScope": ["Azure gaming"],
       "titleSuffix": "Azure Gaming",
       "uhfHeaderId": "Azure",
-      "author": {
+      "ms.author": {
         "ai/**": "jenelleb",
         "game-dev-virtual-machine/**": "jenelleb",
         "game-streaming/**": "jenelleb",
